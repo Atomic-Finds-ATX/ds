@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atomic Finds ATX — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Documentation-page chrome only — not part of the system. */
+  .doc-hero { padding: var(--af-space-9) 0 var(--af-space-7); }
+  .doc-sec { padding: var(--af-space-8) 0; border-top: 2px dashed var(--af-hairline); }
+  .doc-grid { display: grid; gap: var(--af-space-5); }
+  .doc-grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .doc-grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .doc-panel { padding: var(--af-space-5); background: var(--af-surface-raised);
+    border: 2px solid var(--af-hairline); border-radius: var(--af-radius-card); }
+  .doc-swatch { border: 2px solid var(--af-ink); border-radius: var(--af-radius-card); overflow: hidden; }
+  .doc-swatch__chip { height: 96px; }
+  .doc-swatch__info { padding: var(--af-space-3); background: var(--af-surface-raised);
+    border-top: 2px solid var(--af-ink); font-size: var(--af-text-sm); }
+  .doc-swatch__hex { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--af-text-xs);
+    letter-spacing: 0.04em; color: var(--af-ink-soft); }
+  .doc-ratio { display: inline-block; margin-top: 4px; font-size: var(--af-text-xs); font-weight: 600; }
+  .doc-lockup { display: flex; align-items: center; justify-content: center;
+    min-height: 190px; padding: var(--af-space-5); border-radius: var(--af-radius-card);
+    border: 2px solid var(--af-hairline); }
+  .doc-lockup img { max-width: 100%; max-height: 130px; object-fit: contain; }
+  .doc-do-dont { display: grid; gap: var(--af-space-4); grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+  .doc-do, .doc-dont { padding: var(--af-space-4); border-radius: var(--af-radius-card); border-left: 6px solid; }
+  .doc-do { border-color: var(--af-avocado-deep); background: rgba(107,122,50,0.08); }
+  .doc-dont { border-color: var(--af-orange-deep); background: rgba(200,80,30,0.08); }
+  .doc-do h4, .doc-dont h4 { font-family: var(--af-font-body); font-size: var(--af-text-sm);
+    letter-spacing: var(--af-tracking-label); text-transform: uppercase; margin: 0 0 var(--af-space-2); }
+  .doc-do ul, .doc-dont ul { margin: 0; padding-left: 1.1rem; font-size: var(--af-text-sm); }
+  .doc-do li, .doc-dont li { margin-bottom: 6px; }
+  .doc-code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--af-text-xs);
+    background: var(--af-cream); padding: 2px 6px; border-radius: 4px; }
+  .doc-scale-row { display: flex; align-items: baseline; gap: var(--af-space-4); flex-wrap: wrap;
+    padding: var(--af-space-3) 0; border-bottom: 1px dashed var(--af-hairline); }
+  .doc-scale-row .doc-code { flex: none; width: 12rem; }
+  /* The specimen must never push the page wider than the viewport — it gets
+     its own scroll container instead. */
+  .doc-scale-row > :last-child { min-width: 0; max-width: 100%; overflow-x: auto; }
+  @media (max-width: 40rem) {
+    .doc-scale-row .doc-code { width: auto; }
+  }
+  /* Tag + token-name rows wrap rather than overflow their panel. */
+  .doc-panel .af-row { flex-wrap: wrap; }
+  .doc-note { font-size: var(--af-text-sm); color: var(--af-ink-soft); max-width: var(--af-measure); }
+  .doc-texture-demo { height: 150px; border-radius: var(--af-radius-card);
+    border: 2px solid var(--af-ink); overflow: hidden; }
+  footer.doc-foot { padding: var(--af-space-8) 0; border-top: 2px dashed var(--af-hairline); }
+</style>
+</head>
+<body>
+
+<div class="af-container">
+
+  <!-- ================= HERO ================= -->
+  <header class="doc-hero">
+    <div class="af-eyebrow">
+      <span class="af-sparkle af-sparkle--twinkle"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+      <span class="af-label">Design System · v1</span>
+    </div>
+    <h1 style="font-size:var(--af-text-4xl); margin-bottom:var(--af-space-2);">Atomic Finds ATX</h1>
+    <p class="af-script" style="font-size:var(--af-text-xl); margin-bottom:var(--af-space-5);">Tiny Time Machines for Your Home</p>
+    <p class="af-lead">The working system behind the brand: locked palette, Mamba type, the sparkle and
+      starburst motifs, pattern rules, and the components the brand actually ships — product cards,
+      inspection stamps and the Time Traveler's Record.</p>
+    <p class="doc-note"><strong>Furniture is always the hero.</strong> Everything here exists to frame a piece,
+      never to compete with it.</p>
+  </header>
+
+  <!-- ================= LOGO ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Foundations</span></div>
+    <h2>Logo &amp; marks</h2>
+    <p class="doc-note">Three official lockups. The stacked wordmark is primary. All three are set in
+      Mamba — the wordmark <em>is</em> the typeface, so never re-set it in a substitute face.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <div>
+        <div class="doc-lockup" style="background:var(--af-surface)">
+          <img src="assets/logos/wordmark-stacked.png" alt="Atomic Finds atx stacked wordmark in avocado green">
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>Primary — stacked wordmark.</strong>
+          Avocado green with the <em>atx</em> script in burnt orange. Default for light/cream grounds.</p>
+      </div>
+      <div>
+        <div class="doc-lockup" style="background:var(--af-cream)">
+          <img src="assets/logos/wordmark-badge-orange.png" alt="Cream Atomic Finds wordmark on a burnt orange rounded badge">
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>Reversed badge.</strong>
+          Use where the mark needs to hold its own against photography or a busy ground.</p>
+      </div>
+      <div>
+        <div class="doc-lockup" style="background:var(--af-surface)">
+          <img src="assets/logos/monogram-roundel.png" alt="AF monogram roundel with dashed ring and sparkles">
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>AF roundel.</strong>
+          The small-space mark — avatars, stamps, tags, favicons. Holds legibility down to 32px.</p>
+      </div>
+    </div>
+
+    <div class="doc-do-dont" style="margin-top:var(--af-space-6)">
+      <div class="doc-do">
+        <h4>Do</h4>
+        <ul>
+          <li>Give the mark clear space of at least the cap-height of the <em>A</em> on all sides.</li>
+          <li>Drop to the AF roundel below ~140px of available width.</li>
+          <li>Let the sparkle accompany the mark — it is the primary motif.</li>
+        </ul>
+      </div>
+      <div class="doc-dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Fuse the Solihiya weave — or any texture — into the mark. The weave is a credited
+            material, not brand property.</li>
+          <li>Recolour the wordmark outside avocado / cream / burnt orange.</li>
+          <li>Stretch, outline, add a drop shadow, or set it in a substitute typeface.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLOR ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Foundations</span></div>
+    <h2>Color</h2>
+    <p class="doc-note">Six locked brand values. Cream is the dominant base — the palette works because
+      most of the page <em>isn't</em> coloured. Ratios below are measured against cream
+      <span class="doc-code">#FDF3E1</span>.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#C8501E"></div>
+        <div class="doc-swatch__info"><strong>Burnt Orange</strong><br><span class="doc-swatch__hex">#C8501E · --af-orange</span><br>
+        <span class="doc-ratio" style="color:var(--af-orange-deep)">4.13:1 — display &amp; graphics only</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#6B7A32"></div>
+        <div class="doc-swatch__info"><strong>Avocado Green</strong><br><span class="doc-swatch__hex">#6B7A32 · --af-avocado</span><br>
+        <span class="doc-ratio" style="color:var(--af-orange-deep)">3.82:1 — large text only</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#2E5D4E"></div>
+        <div class="doc-swatch__info"><strong>Olive / Teal</strong><br><span class="doc-swatch__hex">#2E5D4E · --af-olive-teal</span><br>
+        <span class="doc-ratio" style="color:var(--af-avocado-deep)">6.84:1 — AA body text</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#F3E6CE"></div>
+        <div class="doc-swatch__info"><strong>Warm Cream</strong><br><span class="doc-swatch__hex">#F3E6CE · --af-cream</span><br>
+        <span class="doc-ratio" style="color:var(--af-ink-soft)">The dominant base</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#E0A526"></div>
+        <div class="doc-swatch__info"><strong>Mustard Yellow</strong><br><span class="doc-swatch__hex">#E0A526 · --af-mustard</span><br>
+        <span class="doc-ratio" style="color:var(--af-avocado-deep)">Takes ink text, 6.37:1</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#E39AA8"></div>
+        <div class="doc-swatch__info"><strong>Pink</strong><br><span class="doc-swatch__hex">#E39AA8 · --af-pink</span><br>
+        <span class="doc-ratio" style="color:var(--af-orange-deep)">Minor accent ONLY — never a base</span></div></div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Ink &amp; surfaces</h3>
+    <p class="doc-note">The brand has no white and no true black. Every source artifact's darkest value is a
+      deep olive, so ink is olive too.</p>
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-4)">
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#2B2E14"></div>
+        <div class="doc-swatch__info"><strong>Ink</strong><br><span class="doc-swatch__hex">#2B2E14 · --af-ink</span><br>
+        <span class="doc-ratio" style="color:var(--af-avocado-deep)">12.69:1 — AAA</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#5B5F3E"></div>
+        <div class="doc-swatch__info"><strong>Ink Soft</strong><br><span class="doc-swatch__hex">#5B5F3E · --af-ink-soft</span><br>
+        <span class="doc-ratio" style="color:var(--af-avocado-deep)">AA — secondary copy</span></div></div>
+      <div class="doc-swatch"><div class="doc-swatch__chip" style="background:#FDF3E1"></div>
+        <div class="doc-swatch__info"><strong>Surface</strong><br><span class="doc-swatch__hex">#FDF3E1 · --af-surface</span><br>
+        <span class="doc-ratio" style="color:var(--af-ink-soft)">Page base</span></div></div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Accessible companions</h3>
+    <div class="doc-panel" style="margin-top:var(--af-space-4)">
+      <p class="doc-note" style="margin-bottom:var(--af-space-4)">Two locked hues can't carry cream text at
+        normal size. Rather than bend the brand values, the system adds one darker step of each for
+        text-bearing surfaces. The locked value stays the graphic colour.</p>
+      <div class="doc-grid doc-grid--2">
+        <div>
+          <div class="af-row" style="margin-bottom:var(--af-space-2)">
+            <span class="af-tag" style="background:#C8501E;color:#FDF3E1;border-color:#C8501E">4.13 ✗ AA</span>
+            <span class="doc-code">--af-orange</span>
+          </div>
+          <div class="af-row">
+            <span class="af-tag" style="background:#B4481B;color:#FDF3E1;border-color:#B4481B">4.91 ✓ AA</span>
+            <span class="doc-code">--af-orange-deep</span>
+          </div>
+        </div>
+        <div>
+          <div class="af-row" style="margin-bottom:var(--af-space-2)">
+            <span class="af-tag" style="background:#6B7A32;color:#FDF3E1;border-color:#6B7A32">4.28 ✗ AA</span>
+            <span class="doc-code">--af-avocado</span>
+          </div>
+          <div class="af-row">
+            <span class="af-tag" style="background:#606E2D;color:#FDF3E1;border-color:#606E2D">5.07 ✓ AA</span>
+            <span class="doc-code">--af-avocado-deep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-do-dont" style="margin-top:var(--af-space-6)">
+      <div class="doc-do">
+        <h4>Do</h4>
+        <ul>
+          <li>Keep cream as the ground and let one accent lead per composition.</li>
+          <li>Use <span class="doc-code">-deep</span> steps for buttons, links and any coloured text.</li>
+          <li>Pair mustard and pink with ink text, never cream.</li>
+        </ul>
+      </div>
+      <div class="doc-dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Use more than two background colours in one composition.</li>
+          <li>Let pink become a base, a headline colour, or the overall impression.</li>
+          <li>Introduce pure white, pure black, or a cool grey.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TYPE ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Foundations</span></div>
+    <h2>Typography</h2>
+    <p class="doc-note">Three faces, and a hard cap of <strong>three type levels per composition</strong>.
+      The personality lives in the Mamba/Pacifico pairing — body copy stays plain and legible.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <div class="doc-panel">
+        <span class="af-label">Display</span>
+        <p class="af-display" style="font-size:var(--af-text-2xl); color:var(--af-avocado-deep); margin:var(--af-space-3) 0">Atomic Finds</p>
+        <p class="doc-note"><strong>Mamba.</strong> The wordmark face. Headings, piece names, stamp verdicts.
+          Ships at <span class="doc-code">assets/fonts/Mamba.otf</span>. Never for body copy.</p>
+      </div>
+      <div class="doc-panel">
+        <span class="af-label">Script</span>
+        <p class="af-script" style="font-size:var(--af-text-xl); margin:var(--af-space-3) 0">Tiny Time Machines</p>
+        <p class="doc-note"><strong>Pacifico.</strong> Two uses only: the tagline, and character voice
+          (Nacho's asides, curator quotes). Never a heading, never a paragraph.</p>
+      </div>
+      <div class="doc-panel">
+        <span class="af-label">Body</span>
+        <p style="margin:var(--af-space-3) 0">Curated rattan &amp; bamboo for the modern home — each piece with a story to tell.</p>
+        <p class="doc-note"><strong>Poppins.</strong> All body copy, UI and labels.
+          An <em>addition</em> — source material only ever says "clean sans", so this one is swappable.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Scale</h3>
+    <div style="margin-top:var(--af-space-4)">
+      <div class="doc-scale-row"><span class="doc-code">--af-text-4xl · 80px</span><span class="af-display" style="font-size:var(--af-text-4xl);color:var(--af-avocado-deep)">Hero</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-3xl · 56px</span><span class="af-display" style="font-size:var(--af-text-3xl);color:var(--af-avocado-deep)">Page heading</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-2xl · 40px</span><span class="af-display" style="font-size:var(--af-text-2xl);color:var(--af-avocado-deep)">Section heading</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-xl · 28px</span><span class="af-display" style="font-size:var(--af-text-xl);color:var(--af-avocado-deep)">Piece name</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-lg · 20px</span><span style="font-size:var(--af-text-lg)">Lead paragraph</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-base · 16px</span><span>Body copy</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-sm · 14px</span><span style="font-size:var(--af-text-sm)">Caption &amp; label</span></div>
+      <div class="doc-scale-row"><span class="doc-code">--af-text-xs · 12px</span><span style="font-size:var(--af-text-xs)">Stamp text &amp; fine print</span></div>
+    </div>
+  </section>
+
+  <!-- ================= MOTIFS ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Foundations</span></div>
+    <h2>Motifs &amp; texture</h2>
+
+    <div class="doc-grid doc-grid--2" style="margin-top:var(--af-space-5)">
+      <div class="doc-panel">
+        <div class="af-row" style="gap:var(--af-space-5); margin-bottom:var(--af-space-4)">
+          <span class="af-sparkle af-sparkle--twinkle" style="font-size:3.5rem"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+          <span class="af-sparkle" style="font-size:2rem"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+          <span class="af-sparkle" style="font-size:1.25rem"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+        </div>
+        <h3 style="font-size:var(--af-text-lg)">Sparkle — primary motif</h3>
+        <p class="doc-note">The most-repeated graphic in the brand and the cheapest way to make a surface
+          recognisably Atomic Finds. Appears in the AF roundel, on tags, packaging and cards. Inherits
+          <span class="doc-code">currentColor</span>. A slow twinkle is the one decorative animation allowed.</p>
+      </div>
+      <div class="doc-panel">
+        <div class="af-row" style="gap:var(--af-space-5); margin-bottom:var(--af-space-4); color:var(--af-orange)">
+          <span class="af-starburst" style="font-size:3.5rem"><svg viewBox="0 0 64 64" aria-hidden="true"><g stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M32 32V6M32 32v26M32 32H6M32 32h26M32 32l18.4-18.4M32 32L13.6 50.4M32 32l18.4 18.4M32 32L13.6 13.6"/></g><g fill="currentColor"><circle cx="32" cy="6" r="3.4"/><circle cx="32" cy="58" r="3.4"/><circle cx="6" cy="32" r="3.4"/><circle cx="58" cy="32" r="3.4"/><circle cx="50.4" cy="13.6" r="2.6"/><circle cx="13.6" cy="50.4" r="2.6"/><circle cx="50.4" cy="50.4" r="2.6"/><circle cx="13.6" cy="13.6" r="2.6"/><circle cx="32" cy="32" r="5"/></g></svg></span>
+          <span class="af-starburst" style="font-size:2rem"><svg viewBox="0 0 64 64" aria-hidden="true"><g stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M32 32V6M32 32v26M32 32H6M32 32h26M32 32l18.4-18.4M32 32L13.6 50.4M32 32l18.4 18.4M32 32L13.6 13.6"/></g><g fill="currentColor"><circle cx="32" cy="6" r="3.4"/><circle cx="32" cy="58" r="3.4"/><circle cx="6" cy="32" r="3.4"/><circle cx="58" cy="32" r="3.4"/><circle cx="50.4" cy="13.6" r="2.6"/><circle cx="13.6" cy="50.4" r="2.6"/><circle cx="50.4" cy="50.4" r="2.6"/><circle cx="13.6" cy="13.6" r="2.6"/><circle cx="32" cy="32" r="5"/></g></svg></span>
+        </div>
+        <h3 style="font-size:var(--af-text-lg)">Atomic starburst — secondary</h3>
+        <p class="doc-note">The atomic-age signal. Used once per surface, as a corner or behind a headline —
+          <strong>never tiled</strong>. If both motifs appear together, the sparkle leads.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Pattern usage — one pattern, one role, per section</h3>
+    <p class="doc-note">Never mix patterns or scales in a single section, and always leave generous cream
+      around them.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-4)">
+      <div>
+        <div class="doc-texture-demo af-pattern-hero" style="display:grid;place-items:center">
+          <div class="af-pattern af-pattern--botanical af-pattern--ghost"></div>
+          <span class="af-label">Hero headline sits here</span>
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(a) Hero background.</strong>
+          Botanical, tone-on-tone and dropped to a whisper. Text keeps full contrast on top.</p>
+      </div>
+      <div>
+        <div class="doc-texture-demo" style="background:var(--af-cream); display:flex; flex-direction:column; justify-content:space-between">
+          <div class="af-pattern af-pattern--botanical af-pattern-rule"></div>
+          <span class="af-label" style="text-align:center">Featured section</span>
+          <div class="af-asset-missing af-pattern-rule">Weave sample needed</div>
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(b) Border / divider.</strong>
+          A thin band of one pattern marking a featured section &mdash; botanical above; the weave role below is awaiting its asset.</p>
+      </div>
+      <div>
+        <div class="doc-texture-demo af-pattern af-pattern--botanical af-pattern-frame" style="background-size:150px">
+          <img src="assets/product-photos/Ramona 1.png" alt="Ramona framed by the botanical pattern">
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(c) Card-as-frame.</strong>
+          Pattern is the card ground; the piece sits on a cream mat so the pattern frames it.
+          The mat is mandatory &mdash; a photo bled to the edge breaks this role.</p>
+      </div>
+    </div>
+
+    <div class="doc-panel" style="margin-top:var(--af-space-5); border-color:var(--af-orange-deep)">
+      <p class="doc-note" style="margin:0"><strong>Attribution rule.</strong> The Solihiya weave is a real
+        Filipino craft tradition. Wherever it appears as a named texture, credit it —
+        <em>“Solihiya · Philippines”</em>. It is never fused into the logo and never presented as brand IP.</p>
+    </div>
+  </section>
+
+  <!-- ================= COMPONENTS ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Components</span></div>
+    <h2>Buttons &amp; tags</h2>
+
+    <div class="doc-grid doc-grid--2" style="margin-top:var(--af-space-5)">
+      <div class="doc-panel">
+        <span class="af-label">Button</span>
+        <div class="af-row" style="margin-top:var(--af-space-4)">
+          <a href="#" class="af-btn af-btn--primary">Make an Offer</a>
+          <a href="#" class="af-btn af-btn--secondary">View Collection</a>
+          <a href="#" class="af-btn af-btn--ghost af-btn--sm">DM to Claim</a>
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-4)">Pill, heavy ink outline, solid fill, flat
+          offset shadow. Hover darkens and lifts 1px — no glow, no scale.</p>
+      </div>
+      <div class="doc-panel">
+        <span class="af-label">Tag</span>
+        <div class="af-row" style="margin-top:var(--af-space-4)">
+          <span class="af-tag af-tag--era">1970s</span>
+          <span class="af-tag af-tag--material">Rattan</span>
+          <span class="af-tag af-tag--material">Bamboo</span>
+          <span class="af-tag af-tag--available">Available</span>
+          <span class="af-tag af-tag--sold">Sold</span>
+          <span class="af-tag af-tag--accent">Atomic Home</span>
+        </div>
+        <p class="doc-note" style="margin-top:var(--af-space-4)">Era, material and availability. Availability
+          is the only tag that uses a filled brand green/orange, so status stays scannable.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Inspection stamp</h3>
+    <p class="doc-note">The Inspection Team's sign-off — deadpan, mock-bureaucratic, single-colour like real
+      rubber-stamp ink. A supporting cameo: small, and never the lead visual.</p>
+    <div class="af-row" style="gap:var(--af-space-7); margin-top:var(--af-space-5); padding:var(--af-space-5) 0">
+      <div class="af-stamp">
+        <span class="af-stamp__team">Atomic Inspection Team</span>
+        <span class="af-stamp__verdict">Passed</span>
+        <span class="af-stamp__curator">Insp. Milo</span>
+      </div>
+      <div class="af-stamp af-stamp--orange" style="transform:rotate(6deg)">
+        <span class="af-stamp__team">Approved for</span>
+        <span class="af-stamp__verdict">Time Travel</span>
+        <span class="af-stamp__curator">Insp. Daisy</span>
+      </div>
+      <div class="af-stamp af-stamp--flat" style="--af-stamp-color:var(--af-avocado-deep)">
+        <span class="af-stamp__team">Found Across</span>
+        <span class="af-stamp__verdict">Time + Space</span>
+        <span class="af-stamp__curator">Austin, TX</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Product card</h3>
+    <p class="doc-note">The photo takes the most area and the chrome stays quiet — the card exists to frame
+      the piece. Every piece is named, and the copy sells an adoption, not a transaction.</p>
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+
+      <article class="af-product">
+        <div class="af-product__media">
+          <img src="assets/product-photos/product-ramona.png" alt="Ramona — vintage rattan peacock chair">
+          <span class="af-tag af-tag--available af-product__status">Available</span>
+        </div>
+        <div class="af-product__body">
+          <h4 class="af-product__name">Ramona
+            <span class="af-sparkle" style="font-size:0.7em"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+          </h4>
+          <p class="af-product__story">A peacock chair with genuine presence — the kind of seat that decides
+            where the room points.</p>
+          <div class="af-product__meta">
+            <span class="af-tag af-tag--era">1970s</span>
+            <span class="af-tag af-tag--material">Rattan</span>
+          </div>
+          <div class="af-product__nacho">
+            <img src="assets/characters/nacho-rattan-hat.png" alt="Nacho">
+            <p>I have already tested this one for napping. It passed.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="af-product">
+        <div class="af-product__media">
+          <img src="assets/product-photos/product-flora.png" alt="Flora — vintage bamboo cabinet">
+          <span class="af-tag af-tag--sold af-product__status">Sold</span>
+        </div>
+        <div class="af-product__body">
+          <h4 class="af-product__name">Flora</h4>
+          <p class="af-product__story">Hand-woven panels, honest repairs, and fifty more years in her.
+            This tiny time machine has found a new home.</p>
+          <div class="af-product__meta">
+            <span class="af-tag af-tag--era">1960s</span>
+            <span class="af-tag af-tag--material">Bamboo</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="doc-panel">
+        <span class="af-label">Anatomy</span>
+        <ul class="doc-note" style="padding-left:1.1rem; margin-top:var(--af-space-3)">
+          <li>Warm, lived-in room photo — never studio-white</li>
+          <li>Availability tag, top-left of the media</li>
+          <li>Piece name in Mamba + sparkle</li>
+          <li>One line of story, not a spec sheet</li>
+          <li>Era + material tags</li>
+          <li>Optional Nacho aside below a dashed rule</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--af-space-7)">Showroom nav</h3>
+    <p class="doc-note">The four rooms. Each uses its illustrated icon from the brand icon set rather than a
+      generic UI glyph &mdash; the brand&rsquo;s &ldquo;icons&rdquo; are drawings.</p>
+
+    <ul class="af-showroom" style="margin-top:var(--af-space-4)">
+      <li><a class="af-showroom__link" href="#"><img class="af-showroom__icon" src="assets/icons/icon-living-room.png" alt=""><span class="af-showroom__name">Living Room</span></a></li>
+      <li><a class="af-showroom__link" href="#"><img class="af-showroom__icon" src="assets/icons/icon-kitchen-dining.png" alt=""><span class="af-showroom__name">Kitchen + Dining</span></a></li>
+      <li><a class="af-showroom__link" href="#"><img class="af-showroom__icon" src="assets/icons/icon-office.png" alt=""><span class="af-showroom__name">Office</span></a></li>
+      <li><a class="af-showroom__link" href="#"><img class="af-showroom__icon" src="assets/icons/icon-back-patio.png" alt=""><span class="af-showroom__name">Back Patio</span></a></li>
+    </ul>
+
+    <h3 style="margin-top:var(--af-space-7)">Origin badge</h3>
+    <p class="doc-note">The provenance strip from the passport: a named craft texture flanked by the plants of
+      its region, with the tradition credited underneath. The attribution is structural, not decorative.</p>
+
+    <div class="doc-panel" style="margin-top:var(--af-space-4)">
+      <div class="af-origin">
+        <div class="af-origin__specimens">
+          <img class="af-origin__plant" src="assets/icons/icon-monstera.png" alt="">
+          <div class="af-origin__swatch af-asset-missing">Weave sample<br>needed</div>
+          <img class="af-origin__plant" src="assets/icons/icon-rattan-chair.png" alt="">
+        </div>
+        <p class="af-origin__name">Solihiya weave &middot; Philippines</p>
+        <p class="af-origin__heritage">Craft heritage: Filipino cane-weaving tradition</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= RECORD CARD ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Signature template</span></div>
+    <h2>The Time Traveler's Record</h2>
+    <p class="doc-note">The brand's most important physical artifact — deliberately <em>not</em> a
+      certificate of authenticity. It should feel collectible enough that a buyer keeps it. Same template
+      every time; only the details swap.</p>
+
+    <div class="doc-grid doc-grid--2" style="margin-top:var(--af-space-5); align-items:start">
+      <div class="af-record">
+        <div class="af-record__head">
+          <div>
+            <p class="af-record__brand">Atomic Finds ATX</p>
+            <p class="af-record__tagline">Tiny Time Machines for Your Home</p>
+          </div>
+          <span class="af-sparkle af-sparkle--twinkle" style="font-size:1.75rem"><svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 1 Q36.5 27.5 63 32 Q36.5 36.5 32 63 Q27.5 36.5 1 32 Q27.5 27.5 32 1 Z"/></svg></span>
+        </div>
+
+        <h3 class="af-record__piece">Ramona</h3>
+        <p class="af-record__found">Found Across Time + Space</p>
+
+        <hr class="af-rule-dashed">
+
+        <dl class="af-record__fields">
+          <div class="af-record__field"><dt>Piece name</dt><dd>Ramona</dd></div>
+          <div class="af-record__field"><dt>Approx. era</dt><dd>1970s</dd></div>
+          <div class="af-record__field"><dt>Materials</dt><dd>Rattan · Solihiya weave (Philippines)</dd></div>
+          <div class="af-record__field"><dt>Curated by</dt><dd>Atomic Finds ATX</dd></div>
+          <div class="af-record__field"><dt>Date adopted</dt><dd></dd></div>
+          <div class="af-record__field"><dt>Care notes</dt><dd></dd></div>
+        </dl>
+
+        <div style="display:flex; justify-content:center; margin-top:var(--af-space-6)">
+          <div class="af-stamp" style="width:7rem;height:7rem">
+            <span class="af-stamp__team">Atomic Inspection Team</span>
+            <span class="af-stamp__verdict">Passed</span>
+            <span class="af-stamp__curator">Insp. Milo</span>
+          </div>
+        </div>
+
+        <p class="af-record__closing">This tiny time machine has found a new home.</p>
+      </div>
+
+      <div class="doc-panel">
+        <span class="af-label">Required elements</span>
+        <ul class="doc-note" style="padding-left:1.1rem; margin-top:var(--af-space-3)">
+          <li>Wordmark + tagline</li>
+          <li>Piece name in Mamba</li>
+          <li>“Found Across Time + Space”</li>
+          <li>Six fields: name, era, materials, curated by, date adopted, care notes</li>
+          <li>Inspection Team stamp</li>
+          <li>Closing line: “This tiny time machine has found a new home.”</li>
+          <li>At least one sparkle</li>
+        </ul>
+        <p class="doc-note" style="margin-top:var(--af-space-4)"><strong>Why dashed baselines.</strong>
+          Date adopted and care notes are left blank on purpose — a record someone writes on is kept, and
+          a printed-full card is not.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VOICE ================= -->
+  <section class="doc-sec">
+    <div class="af-eyebrow"><span class="af-label">Content</span></div>
+    <h2>Voice</h2>
+    <p class="doc-note">Warm, curious, witty, colourful. Never corporate, never precious. First person
+      plural (“we curate”), speaking directly to “you”. Short plain sentences.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <div class="doc-panel">
+        <span class="af-label">The brand</span>
+        <p style="margin-top:var(--af-space-3)">Names, never describes. Every piece gets a person's name —
+          Orbit, Agnes, Miami — and a sale reads as an adoption.</p>
+        <p class="af-script" style="margin:0">“Found Across Time + Space”</p>
+      </div>
+      <div class="doc-panel">
+        <span class="af-label">Nacho</span>
+        <p style="margin-top:var(--af-space-3)">Curious and observational. A companion commenting on a
+          piece, not a salesperson closing on it.</p>
+        <p class="af-script" style="margin:0">“I have already tested this one for napping.”</p>
+      </div>
+      <div class="doc-panel">
+        <span class="af-label">Inspection Team</span>
+        <p style="margin-top:var(--af-space-3)">Mysterious and deadpan-official. They sign off in a
+          mock-bureaucratic register.</p>
+        <p class="af-script" style="margin:0">“Approved for Time Travel.”</p>
+      </div>
+    </div>
+
+    <div class="doc-do-dont" style="margin-top:var(--af-space-6)">
+      <div class="doc-do">
+        <h4>House lines</h4>
+        <ul>
+          <li>Tiny Time Machines for Your Home</li>
+          <li>Found Across Time + Space</li>
+          <li>This tiny time machine has found a new home.</li>
+          <li>Restored with love in Austin, TX.</li>
+          <li>Far-out finds, down-to-earth prices.</li>
+        </ul>
+      </div>
+      <div class="doc-dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Emoji in customer-facing copy — the 🛸🪐👽 are internal planning markers only.</li>
+          <li>SKU-style titles (“Vintage Rattan Chair, Brown”).</li>
+          <li>Corporate register: “premium quality”, “shop our curated selection today”.</li>
+          <li>Letting the aliens take the lead — they are cameos, Nacho is the guide.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-foot">
+    <div class="af-row" style="gap:var(--af-space-4)">
+      <img src="assets/logos/monogram-roundel.png" alt="" style="width:56px;height:56px">
+      <div>
+        <p class="af-label" style="margin:0">Atomic Finds ATX · Design System v1</p>
+        <p class="doc-note" style="margin:4px 0 0">Built from the brand bible, website creative brief, logo
+          suite, Mamba font, character art and copy decks in this directory. See
+          <span class="doc-code">README.md</span> for provenance and open questions.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

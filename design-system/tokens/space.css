@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Atomic Finds ATX — Space, radius, elevation, motion
+   ========================================================================== */
+
+:root {
+  /* --- Spacing (8px multiplier grid) ----------------------------------- */
+  --af-space-1:  0.5rem;   /*  8px */
+  --af-space-2:  1rem;     /* 16px */
+  --af-space-3:  1.5rem;   /* 24px */
+  --af-space-4:  2rem;     /* 32px */
+  --af-space-5:  3rem;     /* 48px */
+  --af-space-6:  4rem;     /* 64px */
+  --af-space-7:  5rem;     /* 80px */
+  --af-space-8:  7.5rem;    /* 120px */
+  --af-space-9:  10rem;     /* 160px — section gutters; cream needs to breathe */
+
+  /* --- Radius -----------------------------------------------------------
+     Cards are generously rounded but never full-pill. Pills are reserved
+     for buttons, tags and badges, so the two never read as the same object. */
+  --af-radius-sm:   8px;
+  --af-radius-card: 18px;
+  --af-radius-lg:   24px;
+  --af-radius-pill: 999px;
+
+  /* --- Borders ----------------------------------------------------------
+     A heavy ink outline is the brand's structural signature (ticket stub /
+     postcard), which is why there is no soft-border token. */
+  --af-border-width: 2px;
+  --af-border-heavy: 3px;
+
+  /* --- Elevation -------------------------------------------------------
+     Flat offset "stamp" shadow — a solid ink block with NO blur. This is
+     deliberate: the brand is flat vector, so blurred drop shadows are
+     off-system. Do not add blur to these. */
+  --af-shadow-stamp:       4px 4px 0 var(--af-ink);
+  --af-shadow-stamp-sm:    2px 2px 0 var(--af-ink);
+  --af-shadow-stamp-lift:  6px 6px 0 var(--af-ink);
+
+  /* --- Motion ----------------------------------------------------------
+     Subtle and warm, never flashy. Motion supports the furniture. */
+  --af-ease:          cubic-bezier(0.2, 0.7, 0.3, 1);
+  --af-duration-fast: 120ms;
+  --af-duration:      220ms;
+  --af-duration-slow: 420ms;
+
+  /* --- Layout ---------------------------------------------------------- */
+  --af-measure:   66ch;   /* max body line length */
+  --af-container: 1180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --af-duration-fast: 1ms;
+    --af-duration:      1ms;
+    --af-duration-slow: 1ms;
+  }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility Statement — Atomic Finds ATX</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--af-surface); }
+  .legal-sec { padding-block: var(--af-space-6); max-width: 48rem; margin-inline: auto; }
+  .hp-announce {
+    background: var(--af-olive-teal); color: var(--af-cream);
+    text-align: center; padding: var(--af-space-2) var(--af-space-4);
+    font-size: var(--af-text-sm); letter-spacing: 0.04em;
+  }
+  .hp-header {
+    background: color-mix(in srgb, var(--af-surface) 94%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--af-hairline);
+  }
+  .hp-header__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: var(--af-container); margin-inline: auto;
+    padding: var(--af-space-3) var(--af-space-5);
+  }
+  .hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; }
+  .hp-logo__mark { height: 2.75rem; width: auto; }
+  .hp-logo__word { height: 2.1rem; width: auto; }
+  .hp-logo__tag {
+    font-size: var(--af-text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--af-ink-soft); border-left: 2px solid var(--af-hairline);
+    padding-left: var(--af-space-3); margin-left: var(--af-space-1);
+  }
+  .hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: var(--af-space-6) 0; }
+  .hp-footer a { color: var(--af-cream); }
+  .hp-footer__inner {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+    gap: var(--af-space-4);
+    max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
+  }
+  .hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); }
+  .hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
+  .hp-footer__bottom {
+    max-width: var(--af-container); margin: var(--af-space-5) auto 0;
+    padding: var(--af-space-4) var(--af-space-5) 0;
+    border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
+    display: flex; flex-wrap: wrap; gap: var(--af-space-3);
+    justify-content: space-between; font-size: var(--af-text-sm);
+  }
+  .legal-content h2 { color: var(--af-olive-teal); margin-top: var(--af-space-4); }
+  .legal-content p, .legal-content li { color: var(--af-ink-soft); line-height: var(--af-leading-body); }
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="hp-announce" data-en="New finds every week &middot; Free local pickup in Austin" data-es="Nuevos hallazgos cada semana &middot; Recogida local gratuita en Austin">
+  New finds every week &middot; Free local pickup in Austin
+</div>
+
+<!-- Header -->
+<header class="hp-header">
+  <div class="hp-header__inner">
+    <a class="hp-logo" href="homepage.html">
+      <img class="hp-logo__mark" src="../assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Logo">
+      <img class="hp-logo__word" src="../assets/logos/wordmark-stacked.png" alt="">
+      <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
+    </a>
+    <a href="homepage.html" class="af-btn af-btn--secondary af-btn--sm" data-en="Back to Home" data-es="Volver al Inicio">Back to Home</a>
+  </div>
+</header>
+
+<!-- Legal Content -->
+<main class="legal-sec af-container legal-content">
+  <h1 data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</h1>
+  <p data-en="Last Updated: August 2026" data-es="Última actualización: Agosto 2026">Last Updated: August 2026</p>
+
+  <h2 data-en="Our Commitment" data-es="Nuestro Compromiso">Our Commitment</h2>
+  <p data-en="Atomic Finds ATX is committed to ensuring digital accessibility for people with disabilities. We are continuously improving the user experience for everyone, and applying the relevant accessibility standards including WCAG 2.1 Level AA parameters." data-es="Atomic Finds ATX se compromete a garantizar la accesibilidad digital para personas con discapacidades. Mejoramos continuamente la experiencia del usuario para todos y aplicamos los estándares de accesibilidad pertinentes, incluidos los parámetros de WCAG 2.1 Nivel AA.">Atomic Finds ATX is committed to ensuring digital accessibility for people with disabilities. We are continuously improving the user experience for everyone, and applying the relevant accessibility standards including WCAG 2.1 Level AA parameters.</p>
+
+  <h2 data-en="Accessibility Features on This Site" data-es="Funciones de accesibilidad en este sitio">Accessibility Features on This Site</h2>
+  <ul>
+    <li data-en="Keyboard Navigation: All interactive elements, links, inputs, and buttons are fully reachable via the tab key with a prominent 2px focus ring." data-es="Navegación por teclado: Todos los elementos interactivos, enlaces, entradas y botones son completamente accesibles a través de la tecla Tab con un anillo de enfoque destacado de 2px.">Keyboard Navigation: All interactive elements, links, inputs, and buttons are fully reachable via the tab key with a prominent 2px focus ring.</li>
+    <li data-en="Screen Reader Support: Dynamic state attributes (aria-expanded and aria-hidden) are bound seamlessly on all expandable card widgets." data-es="Soporte para lectores de pantalla: Los atributos de estado dinámico (aria-expanded y aria-hidden) están vinculados sin problemas en todos los widgets de tarjetas expandibles.">Screen Reader Support: Dynamic state attributes (aria-expanded and aria-hidden) are bound seamlessly on all expandable card widgets.</li>
+    <li data-en="Reduced Motion Compliance: CSS transitions and scroll-reveal observers fully respect user 'prefers-reduced-motion' flags, disabling movement automatically." data-es="Cumplimiento de movimiento reducido: Las transiciones CSS y los observadores de desplazamiento respetan plenamente las banderas del usuario 'prefers-reduced-motion', desactivando el movimiento automáticamente.">Reduced Motion Compliance: CSS transitions and scroll-reveal observers fully respect user 'prefers-reduced-motion' flags, disabling movement automatically.</li>
+    <li data-en="Touch Targets: Interactive buttons and controls scale to a minimum of 44x44px target sizes on mobile resolutions to facilitate tap accuracy." data-es="Objetivos táctiles: Los botones y controles interactivos se escalan a tamaños objetivo mínimos de 44x44px en resoluciones móviles para facilitar la precisión del toque.">Touch Targets: Interactive buttons and controls scale to a minimum of 44x44px target sizes on mobile resolutions to facilitate tap accuracy.</li>
+    <li data-en="Bilingual Language Support: High-contrast translation hooks are natively embedded to enable client-side English/Spanish switching." data-es="Soporte de idioma bilingüe: Los ganchos de traducción de alto contraste están incrustados de forma nativa para permitir el cambio de inglés/español en el cliente.">Bilingual Language Support: High-contrast translation hooks are natively embedded to enable client-side English/Spanish switching.</li>
+  </ul>
+</main>
+
+<!-- Footer -->
+<footer class="hp-footer">
+  <div class="hp-footer__inner">
+    <div>
+      <h3>Atomic Finds</h3>
+      <p data-en="Tiny Time Machines for Your Home." data-es="Pequeñas Máquinas del Tiempo para tu Hogar.">Tiny Time Machines for Your Home.</p>
+    </div>
+    <div>
+      <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+      <ul>
+        <li><a href="mailto:hello@atomicfindsatx.com">hello@atomicfindsatx.com</a></li>
+        <li>Austin, Texas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hp-footer__bottom">
+    <span>&copy; 2026 Atomic Finds ATX &middot; Austin, Texas</span>
+    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap;">
+      <a href="terms-of-service.html">Terms of Service</a> &middot;
+      <a href="privacy-policy.html">Privacy Policy</a> &middot;
+      <a href="accessibility-statement.html">Accessibility Statement</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

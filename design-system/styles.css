@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Atomic Finds ATX — root stylesheet
+   Import order matters: tokens first, then base, then components.
+   ========================================================================== */
+
+@import url("tokens/colors.css");
+@import url("tokens/typography.css");
+@import url("tokens/space.css");
+@import url("components.css");
+
+/* --- Base ---------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--af-surface);
+  color: var(--af-text);
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-base);
+  line-height: var(--af-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headings are Mamba. Keep to three levels per composition. */
+h1, h2, h3, .af-display {
+  font-family: var(--af-font-display);
+  font-weight: 400;
+  line-height: var(--af-leading-tight);
+  letter-spacing: var(--af-tracking-display);
+  color: var(--af-olive-teal); /* #2E5D4E (Olive/Teal) */
+  margin: 0 0 var(--af-space-4);
+}
+
+h1 { font-size: var(--af-text-3xl); color: var(--af-avocado); /* #6B7A32 (Avocado) */ }
+h2 { font-size: var(--af-text-2xl); color: var(--af-olive-teal); }
+h3 { font-size: var(--af-text-xl); color: var(--af-avocado); }
+
+p { margin: 0 0 var(--af-space-4); max-width: var(--af-measure); }
+
+a { color: var(--af-orange); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--af-ink); }
+
+/* One visible focus treatment everywhere — 2px Burnt Orange offset by 4px. */
+:where(a, button, [tabindex], input, select, textarea):focus-visible {
+  outline: 2px solid var(--af-orange); /* Burnt Orange #C8501E */
+  outline-offset: 4px;
+  border-radius: var(--af-radius-sm);
+}
+
+/* --- Brand type utilities ------------------------------------------------ */
+
+/* The tagline and curator quotes — the only two places script is used. */
+.af-script {
+  font-family: var(--af-font-script);
+  color: var(--af-orange-deep);
+  line-height: var(--af-leading-snug);
+}
+
+/* Small-caps label: section eyebrows, field names on the record card. */
+.af-label {
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-sm);
+  font-weight: 600;
+  letter-spacing: var(--af-tracking-label);
+  text-transform: uppercase;
+  color: var(--af-ink-soft);
+}
+
+.af-lead { font-size: var(--af-text-lg); color: var(--af-ink-soft); }
+
+/* --- Motifs -------------------------------------------------------------- */
+
+/* Sparkle is the PRIMARY motif; starburst is secondary. Both inherit
+   currentColor so they can sit on any brand surface. */
+.af-sparkle, .af-starburst {
+  display: inline-block;
+  vertical-align: -0.125em;
+  color: var(--af-orange);
+  flex: none;
+}
+
+/* The sparkle is taller than it is wide (see sparkle.svg) — give it the real
+   5:8 ratio rather than squashing it into a square box. */
+.af-sparkle   { height: 1em; width: 0.625em; }
+.af-starburst { height: 1em; width: 1em; }
+
+/* Mustard is the sparkle's second colourway — used for the small accent
+   sparkles that trail a headline. */
+.af-sparkle--gold { color: var(--af-mustard); }
+
+/* Slow twinkle — the one piece of decorative motion the brand allows. */
+@keyframes af-twinkle {
+  0%, 100% { opacity: 1;    transform: scale(1)    rotate(0deg); }
+  50%      { opacity: 0.55; transform: scale(0.86) rotate(12deg); }
+}
+.af-sparkle--twinkle { animation: af-twinkle 4.5s var(--af-ease) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .af-sparkle--twinkle { animation: none; }
+}
+
+/* --- Patterns ------------------------------------------------------------
+   The brand guide names five elements in its Visual Language row:
+     sparkle (primary motif) · atomic starburst (secondary motif) ·
+     cowboy boot · botanical pattern · rattan/cane weave texture.
+
+   Three of those exist as repeating patterns. Each pattern is a SURFACE, and
+   the rule is ONE pattern per section in ONE role only — never two patterns,
+   never two scales, always generous cream around it.                       */
+
+.af-pattern { background-color: var(--af-cream); background-repeat: repeat; }
+
+/* Botanical — the workhorse. Sage line-art on cream, straight from the guide. */
+.af-pattern--botanical {
+  background-image: url("assets/textures/botanical_pattern.png");
+  background-size: 460px;
+}
+
+/* Atomic starbursts scattered on cream — for playful/celebratory surfaces. */
+.af-pattern--atomic {
+  background-image: url("assets/textures/atomic_pattern.png");
+  background-size: 380px;
+}
+
+/* Sparkle field — the lightest of the three; good behind large type. */
+.af-pattern--sparkle {
+  background-image: url("assets/textures/sparkle_pattern.png");
+  background-size: 380px;
+}
+
+/* --- MISSING ASSET placeholder ------------------------------------------
+   The rattan / Solihiya cane weave is one of the five named elements in the
+   brand guide's Visual Language row, and there is NO weave asset in this
+   system. There was an SVG lattice here that approximated one; it has been
+   removed because a hand-drawn line-art stand-in is not the texture — the
+   weave is a photographic/illustrated craft sample, and faking it misrepresents
+   an attributed tradition.
+
+   Anything that needs the weave uses this placeholder until the real artwork
+   is supplied, so the gap stays visible instead of silently shipping.        */
+.af-asset-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--af-space-2);
+  text-align: center;
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--af-ink-soft);
+  background: repeating-linear-gradient(
+    45deg, var(--af-cream) 0 8px, var(--af-surface-sunk) 8px 16px);
+  border: 2px dashed var(--af-orange);
+  border-radius: var(--af-radius-sm);
+}
+
+/* Tone-on-tone: drop a pattern to a whisper so text sits on top of it.
+
+   MULTIPLY, not just opacity. The pattern tiles ship with their own near-white
+   ground, so fading them alone washes the artwork out while still leaving pale
+   plates you can read. Multiplying makes that ground a no-op — only the leaf
+   ink darkens the cream — and opacity then controls ink strength cleanly.
+
+   This is deliberately very low: the pattern should register as texture in the
+   cream, not as leaves you can identify at a glance. If you can name the
+   plants without leaning in, it is too strong.
+
+   Measured: the tile's ink averages rgb(50,83,58) and its leaves are FILLED,
+   not outlined — so broad areas shift, not just hairlines. At 0.03 the darkest
+   ink moves cream by ~5 levels, which sits about at the threshold of
+   perception. Raising this past ~0.05 makes the leaves legible again.        */
+.af-pattern--ghost {
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+}
+
+/* --- The three pattern ROLES ---------------------------------------------
+   (a) hero background  (b) border / divider  (c) card-as-frame            */
+
+/* (a) Hero background — pattern sits in a ::before layer so it can be faded
+   independently while the content above stays at full contrast. */
+.af-pattern-hero { position: relative; isolation: isolate; background: var(--af-cream); }
+.af-pattern-hero > .af-pattern {
+  position: absolute; inset: 0; z-index: -1;
+  background-color: transparent;
+}
+
+/* (b) Border / divider — a thin band of pattern marking a featured section. */
+.af-pattern-rule { height: 22px; width: 100%; }
+
+/* (c) Card-as-frame — the pattern IS the card ground and the piece sits on a
+   cream mat inside it, so the pattern frames the furniture instead of
+   covering it. The inner mat is mandatory; that is the whole point of the
+   role, and a photo stretched edge-to-edge here breaks it. */
+.af-pattern-frame { padding: var(--af-space-5); border-radius: var(--af-radius-card); }
+.af-pattern-frame > * {
+  background: var(--af-surface);
+  border-radius: var(--af-radius-sm);
+  padding: var(--af-space-3);
+  display: block;
+}
+.af-pattern-frame img { width: 100%; height: auto; display: block; border-radius: 4px; }
+
+/* --- Layout helpers ------------------------------------------------------ */
+
+.af-container {
+  max-width: var(--af-container);
+  margin-inline: auto;
+  padding-inline: var(--af-space-5);
+}
+
+.af-stack > * + * { margin-top: var(--af-space-4); }
+.af-row { display: flex; gap: var(--af-space-3); align-items: center; flex-wrap: wrap; }
+
+/* Dashed rule — the "form to fill in" divider from the record-card language. */
+.af-rule-dashed {
+  border: 0;
+  border-top: 2px dashed var(--af-hairline);
+  margin: var(--af-space-5) 0;
+}

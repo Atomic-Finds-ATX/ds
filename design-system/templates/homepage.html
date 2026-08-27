@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>/* Set before first paint so revealed content never flashes. */
+document.documentElement.classList.add('js');</script>
+<style>
+/* ==========================================================================
+   Homepage — one responsive page covering desktop, tablet and mobile.
+
+   Section order follows the sitemap:
+     00 Header · 01 Hero · 02 Our Story · 03 Featured Collection ·
+     04 Meet Nacho · 05 Visit Our Showroom · 06 Instagram ·
+     07 Testimonials · 08 Footer
+
+   Only tokens and components from the design system are used. Rules specific
+   to this page's composition live here rather than in the shared sheets.
+   ========================================================================== */
+
+/* overflow-x on BOTH html and body: with it on body alone the stray pixels
+   leak into the html scroll box and the page still pans sideways.
+
+   `clip`, not `hidden` — `hidden` makes the element a scroll container, which
+   would break `position: sticky` on the header. `clip` trims without that. */
+html, body { overflow-x: clip; }
+body { background: var(--af-surface); }
+
+/* Section rhythm is fluid, so vertical space compresses on small screens
+   instead of leaving huge cream gaps between sections.
+
+   padding-BLOCK only. The shorthand would zero the inline padding that
+   .af-container supplies, and since this sheet loads after the component
+   sheet it wins — which pushed content flush to the screen edge on mobile. */
+.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); }
+.hp-sec__head { margin-bottom: clamp(2rem, 5vw, 3rem); }
+.hp-sec__head--center { text-align: center; }
+.hp-sec__head h2 { margin-bottom: var(--af-space-2); }
+.hp-sec__head p { color: var(--af-ink-soft); margin-bottom: 0; }
+.hp-sec__head--center p { margin-inline: auto; }
+
+/* --- 00 Header ----------------------------------------------------------- */
+.hp-announce {
+  background: var(--af-olive-teal); color: var(--af-cream);
+  text-align: center; padding: var(--af-space-2) var(--af-space-4);
+  font-size: var(--af-text-sm); letter-spacing: 0.04em;
+}
+.hp-announce .af-sparkle { color: var(--af-mustard); }
+
+.hp-header {
+  position: sticky; top: 0; z-index: 30;
+  background: color-mix(in srgb, var(--af-surface) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--af-hairline);
+}
+.hp-header__inner {
+  display: flex; align-items: center; gap: var(--af-space-4);
+  max-width: var(--af-container); margin-inline: auto;
+  padding: var(--af-space-3) var(--af-space-5);
+}
+.hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; flex: none; }
+.hp-logo__mark { height: 2.75rem; width: auto; }
+.hp-logo__word { height: 2.1rem; width: auto; }
+/* The tagline rides with the logo at desktop — the sitemap wants it prominent
+   in the header — and drops away when there is no room for it. */
+.hp-logo__tag {
+  font-size: var(--af-text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--af-ink-soft); border-left: 2px solid var(--af-hairline);
+  padding-left: var(--af-space-3); margin-left: var(--af-space-1);
+}
+.hp-nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); margin-left: auto; align-items: center; }
+.hp-nav a {
+  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--af-ink); text-decoration: none; white-space: nowrap;
+}
+.hp-nav a:hover { color: var(--af-orange-btn); }
+/* `.hp-nav a` outranks `.af-btn`, so a button in the nav would otherwise take
+   ink for its label while keeping its coloured rule. Restore the button ink at
+   matching specificity, in both states. */
+.hp-nav a.af-btn,
+.hp-nav a.af-btn:hover { color: var(--af-btn-ink); }
+.hp-burger {
+  display: none; margin-left: auto;
+  background: var(--af-cream); color: var(--af-ink);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: 12px; padding: 0.5rem 0.75rem; cursor: pointer;
+  font: inherit; font-size: var(--af-text-sm); font-weight: 600;
+}
+
+/* --- 01 Hero -------------------------------------------------------------
+   Full-width botanical ground (pattern role a), centred headline, CTA and
+   social links, then a large image band. */
+.hp-hero { position: relative; isolation: isolate; background: var(--af-cream); overflow: hidden; }
+.hp-hero__inner {
+  max-width: 60rem; margin-inline: auto; text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) var(--af-space-5) clamp(2rem, 5vw, 3rem);
+}
+.hp-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: var(--af-space-2);
+  margin: 0 0 var(--af-space-4);
+}
+.hp-hero__eyebrow .af-label { color: var(--af-olive-teal); letter-spacing: 0.22em; }
+
+/* L1 — the one piece of display type on this band. */
+.hp-hero h1 { font-size: var(--af-text-4xl); color: var(--af-avocado-deep); margin: 0; }
+.hp-hero h1 .af-sparkle { height: 0.42em; width: 0.26em; vertical-align: 0.06em; margin-left: 0.1em; }
+
+/* L2 — sub-headline in the clean sans, deliberately not display. */
+.hp-hero__sub {
+  font-family: var(--af-font-body); font-weight: 400;
+  font-size: var(--af-text-2xl); color: var(--af-ink);
+  line-height: var(--af-leading-snug);
+  margin: var(--af-space-2) auto var(--af-space-6); max-width: 24ch;
+}
+.hp-hero__social {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--af-space-2) var(--af-space-4);
+  margin-top: var(--af-space-6);
+}
+.hp-hero__social a {
+  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--af-olive-teal); text-decoration: none;
+}
+.hp-hero__social a:hover { color: var(--af-orange-btn); }
+
+/* The image band — large, and the reason the hero carries weight. */
+.hp-hero__media {
+  width: min(100%, 84rem); margin-inline: auto;
+  padding: 0 var(--af-space-5) clamp(3rem, 7vw, 5rem);
+}
+.hp-hero__media img {
+  width: 100%; height: clamp(18rem, 46vw, 34rem);
+  object-fit: cover; display: block;
+  border-radius: var(--af-radius-lg);
+}
+
+/* --- Values strip -------------------------------------------------------- */
+.hp-values {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: var(--af-space-3) var(--af-space-4);
+  padding: var(--af-space-5); background: var(--af-surface);
+  border-block: 2px solid var(--af-hairline);
+}
+.hp-values span {
+  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--af-ink-soft);
+}
+
+/* --- 02 Our Story / 06 Instagram — two-column ---------------------------- */
+.hp-split {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+.hp-split__media img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  display: block; border-radius: var(--af-radius-lg);
+}
+
+/* --- 03 Featured Collection --------------------------------------------- */
+.hp-grid-3 {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+.hp-arrivals__head {
+  display: flex; align-items: center; gap: var(--af-space-3);
+  border-bottom: 3px solid var(--af-ink);
+  padding-bottom: var(--af-space-3); margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.hp-arrivals__head h2 { margin: 0; }
+
+/* Pattern role (c) — CARD-AS-FRAME. The botanical pattern is the card ground
+   and everything sits on a cream mat inside it, so the pattern frames the
+   piece rather than covering it. The mat is what makes the role work. */
+.hp-find {
+  display: flex;
+  flex-direction: column;
+  padding: var(--af-space-3);
+  border-radius: var(--af-radius-card);
+  background-size: 190px;
+  border: var(--af-border-width) solid var(--af-ink);
+  box-shadow: var(--af-shadow-stamp);
+  transition: transform 0.25s var(--af-ease), box-shadow 0.25s var(--af-ease);
+}
+.hp-find:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--af-shadow-stamp-lift);
+}
+.hp-find__mat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--af-surface);
+  border-radius: var(--af-radius-sm);
+  padding: var(--af-space-3);
+  text-align: center;
+}
+.hp-find__image-frame {
+  background: var(--af-surface-sunk); /* #E5D6B8 Warm Cream Base */
+  padding: var(--af-space-3);
+  border-radius: var(--af-radius-sm);
+  border: var(--af-border-width) solid var(--af-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--af-space-2);
+}
+.hp-find__image-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+.hp-find__name {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--af-space-2);
+  flex-wrap: wrap;
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-base);
+  color: var(--af-olive-teal);
+  margin: var(--af-space-4) 0 var(--af-space-1);
+}
+.hp-find__name .af-sparkle {
+  align-self: center;
+}
+.hp-find__price {
+  margin: 0 0 var(--af-space-3);
+  color: var(--af-ink);
+}
+.hp-find__actions {
+  display: flex;
+  gap: var(--af-space-2);
+  justify-content: center;
+  margin-top: auto;
+}
+.hp-find__passport-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  text-align: left;
+}
+.hp-find__passport-wrapper.is-expanded {
+  grid-template-rows: 1fr;
+}
+.hp-find__passport {
+  min-height: 0;
+  padding-top: var(--af-space-2);
+}
+.hp-find__passport-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--af-space-2);
+  font-size: var(--af-text-sm);
+}
+.hp-find__passport-table tr {
+  border-bottom: 1px dashed var(--af-hairline);
+}
+.hp-find__passport-table th {
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--af-text-xs);
+  letter-spacing: var(--af-tracking-label);
+  color: var(--af-ink-soft);
+  padding: var(--af-space-1) 0;
+  width: 40%;
+}
+.hp-find__passport-table td {
+  padding: var(--af-space-1) 0;
+  color: var(--af-ink);
+}
+.hp-find__passport-quote {
+  margin: var(--af-space-2) 0 0;
+  padding: var(--af-space-2);
+  background: var(--af-surface-raised);
+  border-left: 3px solid var(--af-orange);
+  border-radius: var(--af-radius-sm);
+}
+.hp-find__passport-quote p {
+  margin: 0;
+  font-size: var(--af-text-sm);
+  color: var(--af-orange-deep);
+}
+
+/* --- 04 Meet Nacho — single column on a colour ground -------------------- */
+.hp-nacho { background: var(--af-cream); }
+.hp-nacho__inner {
+  max-width: 46rem; margin-inline: auto; text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) var(--af-space-5);
+}
+.hp-nacho__portrait {
+  width: clamp(9rem, 22vw, 13rem); aspect-ratio: 1; object-fit: cover;
+  border-radius: 50%; border: var(--af-border-heavy) solid var(--af-avocado-deep);
+  margin-bottom: var(--af-space-5);
+}
+.hp-nacho p { margin-inline: auto; }
+
+/* --- 05 Visit Our Showroom — full-width CTA over a photo ----------------- */
+.hp-visit { position: relative; isolation: isolate; }
+.hp-visit img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+}
+/* Ink scrim: the copy has to clear AA over a photograph, and a photograph
+   alone cannot guarantee that. */
+.hp-visit::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: color-mix(in srgb, var(--af-ink) 68%, transparent);
+}
+.hp-visit__inner {
+  max-width: 42rem; margin-inline: auto; text-align: center;
+  padding: clamp(4rem, 10vw, 7rem) var(--af-space-5);
+  color: var(--af-cream);
+}
+.hp-visit h2 { color: var(--af-cream); }
+.hp-visit p { color: var(--af-cream); margin-inline: auto; }
+
+/* --- 06 Instagram feed --------------------------------------------------- */
+.hp-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--af-space-2); }
+.hp-feed img {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  display: block; border-radius: var(--af-radius-sm);
+}
+
+/* --- 07 Testimonials — scroll-snap slider -------------------------------- */
+.hp-slider {
+  display: grid; grid-auto-flow: column;
+  grid-auto-columns: minmax(min(21rem, 82vw), 1fr);
+  gap: var(--af-space-5);
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: var(--af-space-4);
+  scrollbar-width: thin;
+}
+.hp-quote {
+  scroll-snap-align: center; text-align: center;
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  padding: var(--af-space-6) var(--af-space-5);
+}
+/* The rating uses the brand's own sparkle rather than a generic star glyph. */
+.hp-stars { display: flex; justify-content: center; gap: 3px; margin-bottom: var(--af-space-4); }
+.hp-stars .af-sparkle { color: var(--af-mustard); height: 1.1rem; width: 0.69rem; }
+.hp-quote blockquote { margin: 0 0 var(--af-space-4); font-size: var(--af-text-lg); }
+.hp-quote cite { font-style: normal; font-size: var(--af-text-sm); color: var(--af-ink-soft); }
+
+/* --- Signup -------------------------------------------------------------- */
+.hp-signup form {
+  display: flex; flex-wrap: wrap; gap: var(--af-space-3); justify-content: center;
+  margin-top: var(--af-space-5);
+}
+.hp-signup input {
+  flex: 1 1 18rem; max-width: 22rem; padding: 0.75rem 1rem;
+  font: inherit; color: var(--af-ink);
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: 12px;
+}
+
+/* --- 08 Footer ----------------------------------------------------------- */
+.hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(2.5rem, 6vw, 4rem) 0 var(--af-space-6); }
+.hp-footer a { color: var(--af-cream); }
+.hp-footer__inner {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
+}
+.hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); }
+.hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
+.hp-footer__badge { width: 7rem; height: auto; }
+.hp-footer__bottom {
+  max-width: var(--af-container); margin: clamp(2rem, 5vw, 3rem) auto 0;
+  padding: var(--af-space-4) var(--af-space-5) 0;
+  border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
+  display: flex; flex-wrap: wrap; gap: var(--af-space-3);
+  justify-content: space-between; font-size: var(--af-text-sm);
+}
+
+/* --- Scroll reveal -------------------------------------------------------
+   Gated behind `.js`, which is set by an inline script in <head>. Content is
+   therefore VISIBLE BY DEFAULT: if the script fails, is blocked, or the page
+   is scraped, every section still renders. Only a browser that has actually
+   run the script opts into starting them hidden. */
+.js .hp-reveal { opacity: 0; transform: translateY(14px); transition: opacity 600ms var(--af-ease), transform 600ms var(--af-ease); }
+.js .hp-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .hp-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 1080px) { .hp-logo__tag { display: none; } }
+
+@media (max-width: 900px) {
+  .hp-nav { display: none; }
+  .hp-nav.is-open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--af-surface); border-bottom: 2px solid var(--af-hairline);
+    padding: var(--af-space-4) var(--af-space-5); gap: var(--af-space-4);
+  }
+  .hp-nav.is-open .af-btn { justify-content: center; }
+  .hp-burger { display: block; }
+  .hp-hero h1 { font-size: var(--af-text-3xl); }
+  .hp-hero__sub { font-size: var(--af-text-xl); }
+}
+
+@media (max-width: 560px) {
+  /* Keep the eyebrow on one line — when it wraps, its leading sparkle is left
+     stranded beside two lines of text instead of reading as a lead-in. */
+  .hp-hero__eyebrow .af-label { font-size: var(--af-text-xs); letter-spacing: 0.12em; }
+  .hp-logo__word { height: 1.7rem; }
+  .hp-logo__mark { height: 2.25rem; }
+  .hp-feed { grid-template-columns: repeat(2, 1fr); }
+  .hp-values { gap: var(--af-space-2); }
+  .hp-values span { font-size: var(--af-text-xs); }
+  .hp-footer__bottom { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ 00 HEADER ============================ -->
+<div class="hp-announce" data-en="New finds every week &middot; Free local pickup in Austin" data-es="Nuevos hallazgos cada semana &middot; Recogida local gratuita en Austin">
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  New finds every week &middot; Free local pickup in Austin
+</div>
+
+<header class="hp-header">
+  <div class="hp-header__inner">
+    <a class="hp-logo" href="#top">
+      <img class="hp-logo__mark" src="../assets/logos/monogram-roundel.png" alt="Atomic Finds ATX">
+      <img class="hp-logo__word" src="../assets/logos/wordmark-stacked.png" alt="">
+      <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: var(--af-space-1); margin-left: auto;">
+      <button class="hp-lang-toggle af-btn af-btn--ghost af-btn--sm" aria-label="Switch language to Spanish" style="min-height: 44px; min-width: 44px;">ES</button>
+      <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
+    </div>
+    <nav class="hp-nav" id="hp-nav">
+      <a href="#collection" data-en="Collection" data-es="Colección">Collection</a>
+      <a href="#story" data-en="Story" data-es="Historia">Story</a>
+      <a href="#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
+      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+      <a href="#" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== 01 HERO — pattern role (a) ==================== -->
+<section class="hp-hero" id="top">
+  <div class="af-pattern af-pattern--botanical af-pattern--ghost"
+       style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+
+  <div class="hp-hero__inner">
+    <p class="hp-hero__eyebrow hp-reveal">
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span class="af-label" data-en="Welcome to Atomic Finds ATX" data-es="Bienvenido a Atomic Finds ATX">Welcome to Atomic Finds ATX</span>
+    </p>
+    <h1 class="hp-reveal" data-en="Tiny Time Machines" data-es="Pequeñas Máquinas">Tiny Time <span style="white-space:nowrap">Machines<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
+    <p class="hp-hero__sub hp-reveal" data-en="for Your Home" data-es="del Tiempo para tu Hogar">for Your Home</p>
+    <div class="hp-reveal">
+      <a href="#collection" class="af-btn af-btn--primary" data-en="Shop the Collection" data-es="Comprar la Colección">
+        Shop the Collection
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      </a>
+    </div>
+    <div class="hp-hero__social hp-reveal">
+      <a href="#" data-en="Instagram" data-es="Instagram">Instagram</a>
+      <a href="#" data-en="Facebook" data-es="Facebook">Facebook</a>
+      <a href="#" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+    </div>
+  </div>
+
+  <div class="hp-hero__media hp-reveal">
+    <img src="../assets/product-photos/Sunny.png" alt="A vintage rattan coffee table in a sunlit Austin living room">
+  </div>
+</section>
+
+<!-- ============================ VALUES =============================== -->
+<div class="hp-values">
+  <span data-en="Handpicked Vintage" data-es="Colección Vintage Seleccionada">Handpicked Vintage</span>
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span data-en="Timeless Charm" data-es="Encanto Eterno">Timeless Charm</span>
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span data-en="A Little Bit of Magic" data-es="Un Poco de Magia">A Little Bit of Magic</span>
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span data-en="Austin, Texas" data-es="Austin, Texas">Austin, Texas</span>
+</div>
+
+<!-- ========================== 02 OUR STORY =========================== -->
+<section class="hp-sec af-container" id="story">
+  <div class="hp-split">
+    <div class="hp-reveal">
+      <span class="af-label" data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Found across time + space" data-es="Encontrado a través del tiempo + espacio">Found across time <span style="white-space:nowrap">+ space</span></h2>
+      <p>Every piece in our collection is a tiny time machine &mdash; a chair with a past, a shelf with
+         stories. We find them, name them, and give them a new chapter in your home.</p>
+      <p>We only bring home rattan and bamboo that has earned it: sound joints, honest wear, and the kind
+         of silhouette nobody makes any more. Then it gets inspected, photographed in real light, and sent
+         out with a passport telling you exactly where it came from.</p>
+      <a href="#collection" class="af-btn af-btn--secondary" data-en="Meet the collection" data-es="Conoce la colección">Meet the collection</a>
+    </div>
+    <div class="hp-split__media hp-reveal">
+      <img src="../assets/product-photos/Product 7.png" alt="A styled showroom corner with a vintage rattan console">
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 FEATURED COLLECTION ====================== -->
+<section class="hp-sec af-container" id="collection">
+  <div class="hp-arrivals__head hp-reveal">
+    <h2 data-en="Featured Collection" data-es="Colección Destacada">Featured Collection</h2>
+    <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  </div>
+
+  <div class="hp-grid-3">
+    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find__mat">
+        <div class="hp-find__image-frame">
+          <img src="../assets/product-photos/Amelia 1.png" alt="Amelia, an arched rattan étagère">
+        </div>
+        <h3 class="hp-find__name" data-en="Amelia &middot; c. 1974" data-es="Amelia &middot; c. 1974">Amelia <span aria-hidden="true">&middot;</span> c. 1974
+          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
+        <p class="hp-find__price">$485</p>
+        <div class="hp-find__actions">
+          <a href="#" class="af-btn af-btn--primary af-btn--sm hp-find__cta" data-en="Ready to adopt" data-es="Listo para adoptar">Ready to adopt</a>
+          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-amelia" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
+        </div>
+        
+        <div class="hp-find__passport-wrapper" id="passport-amelia" aria-hidden="true">
+          <div class="hp-find__passport">
+            <hr class="af-rule-dashed">
+            <table class="hp-find__passport-table">
+              <tr>
+                <th data-en="Weave" data-es="Tejido">Weave</th>
+                <td data-en="Solihiya" data-es="Solihiya">Solihiya</td>
+              </tr>
+              <tr>
+                <th data-en="Origin" data-es="Origen">Origin</th>
+                <td data-en="Philippines" data-es="Filipinas">Philippines</td>
+              </tr>
+              <tr>
+                <th data-en="Material" data-es="Material">Material</th>
+                <td data-en="Rattan & Bamboo" data-es="Rattán y Bambú">Rattan & Bamboo</td>
+              </tr>
+              <tr>
+                <th data-en="Condition" data-es="Condición">Condition</th>
+                <td data-en="Excellent" data-es="Excelente">Excellent</td>
+              </tr>
+              <tr>
+                <th data-en="Found" data-es="Encontrado">Found</th>
+                <td data-en="East Austin" data-es="East Austin">East Austin</td>
+              </tr>
+            </table>
+            <blockquote class="hp-find__passport-quote">
+              <p class="af-script" data-en="&ldquo;Amelia has a silhouette that commands a room. She holds records and plants with equal ease.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Amelia tiene una silueta que domina una habitación. Alberga discos y plantas con la misma facilidad.&rdquo; &mdash; Insp. Milo">&ldquo;Amelia has a silhouette that commands a room. She holds records and plants with equal ease.&rdquo; &mdash; Insp. Milo</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find__mat">
+        <div class="hp-find__image-frame">
+          <img src="../assets/product-photos/Ramona 1.png" alt="Ramona, a lattice bamboo shelf">
+        </div>
+        <h3 class="hp-find__name" data-en="Ramona &middot; c. 1972" data-es="Ramona &middot; c. 1972">Ramona <span aria-hidden="true">&middot;</span> c. 1972
+          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
+        <p class="hp-find__price">$640</p>
+        <div class="hp-find__actions">
+          <a href="#" class="af-btn af-btn--primary af-btn--sm hp-find__cta" data-en="Ready to adopt" data-es="Listo para adoptar">Ready to adopt</a>
+          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-ramona" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
+        </div>
+        
+        <div class="hp-find__passport-wrapper" id="passport-ramona" aria-hidden="true">
+          <div class="hp-find__passport">
+            <hr class="af-rule-dashed">
+            <table class="hp-find__passport-table">
+              <tr>
+                <th data-en="Weave" data-es="Tejido">Weave</th>
+                <td data-en="Solihiya" data-es="Solihiya">Solihiya</td>
+              </tr>
+              <tr>
+                <th data-en="Origin" data-es="Origen">Origin</th>
+                <td data-en="Philippines" data-es="Filipinas">Philippines</td>
+              </tr>
+              <tr>
+                <th data-en="Material" data-es="Material">Material</th>
+                <td data-en="Rattan" data-es="Rattán">Rattan</td>
+              </tr>
+              <tr>
+                <th data-en="Condition" data-es="Condición">Condition</th>
+                <td data-en="Very Good" data-es="Muy Bueno">Very Good</td>
+              </tr>
+              <tr>
+                <th data-en="Found" data-es="Encontrado">Found</th>
+                <td data-en="Hyde Park" data-es="Hyde Park">Hyde Park</td>
+              </tr>
+            </table>
+            <blockquote class="hp-find__passport-quote">
+              <p class="af-script" data-en="&ldquo;Passed our aggressive nap tests. Ramona is built for comfort and presence.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Pasó nuestras agresivas pruebas de siesta. Ramona está construida para el confort y la presencia.&rdquo; &mdash; Insp. Milo">&ldquo;Passed our aggressive nap tests. Ramona is built for comfort and presence.&rdquo; &mdash; Insp. Milo</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find__mat">
+        <div class="hp-find__image-frame">
+          <img src="../assets/product-photos/Flora.png" alt="Flora, a rattan dining set">
+        </div>
+        <h3 class="hp-find__name" data-en="Flora &middot; c. 1978" data-es="Flora &middot; c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978
+          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
+        <p class="hp-find__price">$325</p>
+        <div class="hp-find__actions">
+          <span class="af-tag af-tag--sold hp-find__cta" data-en="Adopted" data-es="Adoptado">Adopted</span>
+          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-flora" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
+        </div>
+        
+        <div class="hp-find__passport-wrapper" id="passport-flora" aria-hidden="true">
+          <div class="hp-find__passport">
+            <hr class="af-rule-dashed">
+            <table class="hp-find__passport-table">
+              <tr>
+                <th data-en="Weave" data-es="Tejido">Weave</th>
+                <td data-en="Rattan Webbing" data-es="Tejido de Rattán">Rattan Webbing</td>
+              </tr>
+              <tr>
+                <th data-en="Origin" data-es="Origen">Origin</th>
+                <td data-en="Austin-curated" data-es="Curada en Austin">Austin-curated</td>
+              </tr>
+              <tr>
+                <th data-en="Material" data-es="Material">Material</th>
+                <td data-en="Bamboo" data-es="Bambú">Bamboo</td>
+              </tr>
+              <tr>
+                <th data-en="Condition" data-es="Condición">Condition</th>
+                <td data-en="Restored" data-es="Restaurado">Restored</td>
+              </tr>
+              <tr>
+                <th data-en="Found" data-es="Encontrado">Found</th>
+                <td data-en="South Congress" data-es="South Congress">South Congress</td>
+              </tr>
+            </table>
+            <blockquote class="hp-find__passport-quote">
+              <p class="af-script" data-en="&ldquo;Flora carries fifty more years in her. Hand-woven panels and honest repairs.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Flora lleva cincuenta años más en ella. Paneles tejidos a mano y reparaciones honestas.&rdquo; &mdash; Insp. Milo">&ldquo;Flora carries fifty more years in her. Hand-woven panels and honest repairs.&rdquo; &mdash; Insp. Milo</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========================== 04 MEET NACHO ========================== -->
+<section class="hp-nacho" id="nacho">
+  <div class="hp-nacho__inner hp-reveal">
+    <img class="hp-nacho__portrait" src="../assets/characters/nacho-rattan-hat.png" alt="Nacho wearing a straw hat">
+    <span class="af-label" data-en="Chief Curiosity Officer &amp; Find Inspector" data-es="Director de Curiosidad e Inspector de Hallazgos">Chief Curiosity Officer &amp; Find Inspector</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Hi, I'm Nacho" data-es="Hola, soy Nacho">Hi, I&rsquo;m Nacho</h2>
+    <p>I sniff every piece before it goes out. If it doesn&rsquo;t smell like a good story, it doesn&rsquo;t
+       make the showroom. So far my record is spotless and my nap schedule is aggressive.</p>
+  </div>
+</section>
+
+<!-- ===================== 05 VISIT OUR SHOWROOM ======================= -->
+<section class="hp-visit" id="showroom">
+  <img src="../assets/product-photos/Product 5.png" alt="">
+  <div class="hp-visit__inner hp-reveal">
+    <span class="af-label" style="color:var(--af-mustard)" data-en="Visit Our Showroom" data-es="Visita Nuestra Exposición">Visit Our Showroom</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Come sit in it first" data-es="Ven a sentarte primero">Come sit in it first</h2>
+    <p>Photos only get you so far. Book a time to come by, or take the virtual tour and wander the
+       rooms from your couch.</p>
+    <div class="af-row" style="justify-content:center; margin-top:var(--af-space-5)">
+      <a href="#contact" class="af-btn af-btn--primary" data-en="Book a visit" data-es="Reservar una visita">Book a visit</a>
+      <a href="#" class="af-btn af-btn--secondary" data-en="Virtual tour" data-es="Recorrido virtual">Virtual tour</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== 06 INSTAGRAM =========================== -->
+<section class="hp-sec af-container" id="instagram">
+  <div class="hp-split">
+    <div class="hp-feed hp-reveal">
+      <img src="../assets/product-photos/Ramona 2.png" alt="Instagram post">
+      <img src="../assets/product-photos/Product 1.png" alt="Instagram post">
+      <img src="../assets/product-photos/Amelia 3.png" alt="Instagram post">
+      <img src="../assets/product-photos/Product 6.png" alt="Instagram post">
+      <img src="../assets/product-photos/Ramona 5.png" alt="Instagram post">
+      <img src="../assets/product-photos/Product 3.png" alt="Instagram post">
+    </div>
+    <div class="hp-reveal">
+      <span class="af-label" data-en="Follow Along" data-es="Síguenos">Follow Along</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</h2>
+      <p>New finds land on Instagram first &mdash; usually still in the truck, usually with Nacho
+         supervising. Follow for restock days, before-and-afters, and the occasional estate-sale story
+         that got out of hand.</p>
+      <a href="#" class="af-btn af-btn--primary" data-en="Follow on Instagram" data-es="Seguir en Instagram">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 07 TESTIMONIALS ========================= -->
+<section class="hp-sec af-container">
+  <div class="hp-sec__head hp-sec__head--center hp-reveal">
+    <span class="af-label" data-en="What Our Customers Say" data-es="Lo que Dicen Nuestros Clientes">What Our Customers Say</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Adopted &amp; adored" data-es="Adoptado y adorado">Adopted &amp; adored</h2>
+  </div>
+
+  <div class="hp-slider" tabindex="0" role="region" aria-label="Customer testimonials, scrollable" data-en="Customer testimonials, scrollable" data-es="Testimonios de clientes, desplazable">
+    <figure class="hp-quote hp-reveal">
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      </div>
+      <blockquote>&ldquo;Amelia showed up better than the photos, which never happens. She&rsquo;s holding
+        every record I own and half the plants.&rdquo;</blockquote>
+      <cite>&mdash; Priya R., East Austin</cite>
+    </figure>
+
+    <figure class="hp-quote hp-reveal">
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      </div>
+      <blockquote>&ldquo;The passport card is such a good touch. I know the weave, the era, and roughly
+        how many living rooms this thing has outlasted.&rdquo;</blockquote>
+      <cite>&mdash; Marcus L., Hyde Park</cite>
+    </figure>
+
+    <figure class="hp-quote hp-reveal">
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      </div>
+      <blockquote>&ldquo;Drove across town for a shelf and left having met a dog in a hat. Ten out of ten,
+        would adopt furniture again.&rdquo;</blockquote>
+      <cite>&mdash; Dani K., South Congress</cite>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ SIGNUP =============================== -->
+<section class="hp-sec af-container hp-signup" id="contact">
+  <div class="hp-sec__head hp-sec__head--center hp-reveal" style="margin-bottom:0">
+    <span class="af-label" data-en="The Dispatch" data-es="El Despacho">The Dispatch</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Get first look at new finds" data-es="Sé el primero en ver los nuevos hallazgos">Get first look at new finds</h2>
+    <p>One note a week. New arrivals, restock days, and the occasional truly unhinged estate-sale story.</p>
+    <form onsubmit="return false">
+      <label class="af-label" for="hp-email" style="position:absolute;left:-9999px" data-en="Email address" data-es="Dirección de correo electrónico">Email address</label>
+      <input id="hp-email" type="email" placeholder="you@example.com" autocomplete="email">
+      <button type="submit" class="af-btn af-btn--primary" data-en="Sign me up" data-es="Registrarme">Sign me up</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ 08 FOOTER ============================ -->
+<footer class="hp-footer">
+  <div class="hp-footer__inner">
+    <div>
+      <img class="hp-footer__badge" src="../assets/motifs/made-in-austin.png" alt="Made in Austin, TX">
+      <p style="margin-top:var(--af-space-3)" data-en="Tiny Time Machines for Your Home." data-es="Pequeñas Máquinas del Tiempo para tu Hogar.">Tiny Time Machines for Your Home.</p>
+    </div>
+    <div>
+      <h3 data-en="Showroom" data-es="Exposición">Showroom</h3>
+      <ul>
+        <li><a href="#" data-en="Living Room" data-es="Sala de Estar">Living Room</a></li>
+        <li><a href="#" data-en="Kitchen + Dining" data-es="Cocina + Comedor">Kitchen + Dining</a></li>
+        <li><a href="#" data-en="Office" data-es="Oficina">Office</a></li>
+        <li><a href="#" data-en="Back Patio" data-es="Patio Trasero">Back Patio</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-en="Atomic Finds" data-es="Atomic Finds">Atomic Finds</h3>
+      <ul>
+        <li><a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
+        <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
+        <li><a href="#" data-en="The Provenance Passport" data-es="El Pasaporte de Procedencia">The Provenance Passport</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+      <ul>
+        <li><a href="#" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a></li>
+        <li><a href="#" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</a></li>
+        <li><a href="mailto:hello@atomicfindsatx.com">hello@atomicfindsatx.com</a></li>
+        <li data-en="Austin, Texas" data-es="Austin, Texas">Austin, Texas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hp-footer__bottom" style="display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;">
+    <span>&copy; 2026 Atomic Finds ATX &middot; Austin, Texas</span>
+    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
+      <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a> &middot;
+      <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
+      <a href="accessibility-statement.html" data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</a>
+    </span>
+    <span data-en="Named weaves are credited to their craft traditions." data-es="Los tejidos nombrados se acreditan a sus tradiciones artesanales.">Named weaves are credited to their craft traditions.</span>
+  </div>
+</footer>
+
+<script>
+// Mobile navigation toggle
+var burger = document.querySelector('.hp-burger');
+var nav = document.getElementById('hp-nav');
+burger.addEventListener('click', function () {
+  var open = nav.classList.toggle('is-open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+nav.addEventListener('click', function (e) {
+  if (e.target.tagName === 'A') {
+    nav.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Expandable Provenance Passport logic
+document.querySelectorAll('.hp-find__toggle-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    var targetId = btn.getAttribute('aria-controls');
+    var passport = document.getElementById(targetId);
+
+    btn.setAttribute('aria-expanded', !isExpanded);
+    passport.classList.toggle('is-expanded', !isExpanded);
+    passport.setAttribute('aria-hidden', isExpanded);
+
+    // Update button text for bilingual translation support
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    if (!isExpanded) {
+      btn.setAttribute('data-en', 'Close Passport');
+      btn.setAttribute('data-es', 'Cerrar Pasaporte');
+      btn.textContent = lang === 'es' ? 'Cerrar Pasaporte' : 'Close Passport';
+    } else {
+      btn.setAttribute('data-en', 'View Passport');
+      btn.setAttribute('data-es', 'Ver Pasaporte');
+      btn.textContent = lang === 'es' ? 'Ver Pasaporte' : 'View Passport';
+    }
+  });
+});
+
+// Client-side language switcher
+var langToggle = document.querySelector('.hp-lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', function () {
+    var currentLang = document.documentElement.getAttribute('lang') || 'en';
+    var nextLang = currentLang === 'en' ? 'es' : 'en';
+
+    document.documentElement.setAttribute('lang', nextLang);
+    langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
+    langToggle.setAttribute('aria-label', nextLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés');
+
+    // Find and update all components with data-en/data-es
+    document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
+      var text = el.getAttribute('data-' + nextLang);
+      var svg = el.querySelector('svg');
+      el.textContent = text;
+      if (svg) {
+        el.appendChild(svg);
+      }
+    });
+
+    // Sync current toggle buttons text according to expansion states
+    document.querySelectorAll('.hp-find__toggle-btn').forEach(function (btn) {
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        btn.textContent = nextLang === 'es' ? 'Cerrar Pasaporte' : 'Close Passport';
+      } else {
+        btn.textContent = nextLang === 'es' ? 'Ver Pasaporte' : 'View Passport';
+      }
+    });
+  });
+}
+
+// Gentle fade/slide-up on scroll with a 50ms stagger step between siblings
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var items = document.querySelectorAll('.hp-reveal');
+if (reduce || !('IntersectionObserver' in window)) {
+  items.forEach(function (el) { el.classList.add('is-in'); });
+} else {
+  var intersectedQueue = [];
+  var intersectTimeout = null;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        intersectedQueue.push(e.target);
+        io.unobserve(e.target);
+      }
+    });
+
+    if (intersectedQueue.length > 0) {
+      if (intersectTimeout) clearTimeout(intersectTimeout);
+      intersectTimeout = setTimeout(function () {
+        intersectedQueue.forEach(function (el, index) {
+          setTimeout(function () {
+            el.classList.add('is-in');
+          }, index * 50);
+        });
+        intersectedQueue = [];
+      }, 20);
+    }
+  }, { rootMargin: '0px 0px -8% 0px' });
+
+  items.forEach(function (el) { io.observe(el); });
+}
+</script>
+</body>
+</html>

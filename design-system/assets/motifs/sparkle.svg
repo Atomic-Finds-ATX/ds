@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 64" fill="currentColor" role="img" aria-label="Atomic Finds sparkle">
+  <!--
+    The sparkle is the PRIMARY motif (the atomic starburst is secondary — see
+    the brand guide's Visual Language row). It is a four-point star with deeply
+    concave sides and a vertical axis noticeably longer than the horizontal one,
+    which is what keeps it from reading as a generic asterisk.
+  -->
+  <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/>
+</svg>

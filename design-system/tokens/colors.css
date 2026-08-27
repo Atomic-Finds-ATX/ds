@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Atomic Finds ATX — Color tokens
+   --------------------------------------------------------------------------
+   LOCKED BRAND HEXES (do not change): the six palette values below are the
+   documented brand constants, stated in Atomic_Finds_ATX_Brand_Bible_V1.pdf
+   and brand_system_sheet.png.
+
+   Each locked hue also gets a `-deep` companion. Those exist ONLY because
+   several locked hues do not carry cream text at WCAG AA (burnt orange +
+   cream = 4.13:1, which fails normal-size AA). The `-deep` steps are for
+   text-bearing surfaces; the locked value stays the graphic/display color.
+   Measured ratios are noted inline. See guidelines in README.md.
+   ========================================================================== */
+
+:root {
+  /* --- Locked brand palette ------------------------------------------- */
+  --af-orange:      #C8501E;  /* Burnt orange — dominant accent */
+  --af-avocado:     #6B7A32;  /* Avocado green — wordmark color */
+  --af-olive-teal:  #2E5D4E;  /* Olive/teal — deepest brand green */
+  --af-cream:       #F3E6CE;  /* Warm cream — the dominant base */
+  --af-mustard:     #E0A526;  /* Mustard yellow — warm highlight */
+  --af-pink:        #E39AA8;  /* Pink — MINOR ACCENT ONLY, never a base */
+
+  /* --- Accessible companions (text-bearing surfaces) ------------------ */
+  --af-orange-deep:  #B4481B; /* on --af-surface #FDF3E1: 4.91 AA */
+  /* One step deeper again, for ORANGE TEXT ON A CREAM PLATE (the button
+     treatment). --af-orange-deep measures only 4.38:1 on --af-cream and fails
+     AA at label size; this clears it on every button ground:
+     cream 4.89 · surface 5.48 · hover tint 5.22. */
+  --af-orange-btn:   #A8431A;
+  --af-avocado-deep: #606E2D; /* on cream: 4.52 AA · cream on this: 5.07 AA */
+
+  /* --- Surfaces --------------------------------------------------------
+     The brand has no white and no true black. Cream is the page, and the
+     darkest value in every source artifact is a deep olive, not neutral. */
+  --af-surface:      #F3E6CE; /* page base — Warm Cream (#F3E6CE) making up 95% of visual workspace */
+  --af-surface-sunk: #E5D6B8; /* slightly darker sunk cream */
+  --af-surface-raised: #FAF1DF; /* lighter cream for raised surfaces */
+
+  /* --- Ink ------------------------------------------------------------- */
+  --af-ink:          #2B2E14; /* deep olive — 11.32 AAA on cream */
+  --af-ink-soft:     #5B5F3E; /* secondary copy — 5.31 AA on cream */
+  --af-hairline:     #D8C7A6; /* dashed rules, card dividers */
+
+  /* --- Status ---------------------------------------------------------- */
+  --af-available:    var(--af-avocado-deep);
+  --af-sold:         var(--af-orange-deep);
+
+  /* --- Semantic aliases ------------------------------------------------ */
+  --af-text:         var(--af-ink);
+  --af-text-muted:   var(--af-ink-soft);
+  --af-text-invert:  var(--af-surface);
+  --af-border:       var(--af-ink);
+  --af-focus:        var(--af-olive-teal);
+}

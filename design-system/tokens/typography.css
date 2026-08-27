@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Atomic Finds ATX — Type tokens
+   --------------------------------------------------------------------------
+   Mamba is the brand face: the "Atomic Finds" wordmark in assets/logos/ is
+   set in it (verified by rendering Mamba against the logo artwork). It ships
+   here as assets/fonts/Mamba.otf.
+
+   Pacifico (script) and Inter (body) come from Google Fonts. Pacifico is
+   named in the source brief. The guide's Typography page calls the body face
+   only "Clean Sans", but its specimen is a neutral grotesque with a
+   double-storey 'a' — so Inter stands in, not a geometric sans like Poppins.
+   It is a stand-in, not a brand constant; swap it freely.
+
+   RULE: max three type levels in one composition. The personality lives in
+   the Mamba/Pacifico pairing, not in the body font.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Mamba";
+  src: url("../assets/fonts/Mamba.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* --- Families -------------------------------------------------------- */
+  --af-font-display: "Mamba", "Cooper Black", "Bookman Old Style", Georgia, serif;
+  --af-font-script:  "Pacifico", "Brush Script MT", cursive;
+  --af-font-body:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* --- Scale (1.25 major third, 16px base) ----------------------------- */
+  --af-text-xs:   0.75rem;   /* 12px — stamp text, fine print */
+  --af-text-sm:   0.875rem;  /* 14px — tags, captions, labels */
+  --af-text-base: 1rem;      /* 16px — body */
+  --af-text-lg:   1.25rem;   /* 20px — lead paragraph */
+  --af-text-xl:   1.75rem;   /* 28px — card / piece names */
+
+  /* Display sizes are FLUID. Mamba is a wide face — a fixed 80px hero
+     overflows a 375px screen. These clamp between a mobile and desktop
+     size so display type never forces a horizontal scroll. */
+  --af-text-2xl:  clamp(2rem,   1.40rem + 2.6vw, 2.5rem); /* 32 → 40 */
+  --af-text-3xl:  clamp(2.4rem, 1.50rem + 4.0vw, 3.5rem); /* 38 → 56 */
+  --af-text-4xl:  clamp(3rem,   1.60rem + 6.4vw, 5rem);   /* 48 → 80 */
+
+  /* --- Line height ----------------------------------------------------- */
+  --af-leading-tight: 1.05;  /* Mamba display — it is already tall & round */
+  --af-leading-snug:  1.3;
+  --af-leading-body:  1.6;
+
+  /* --- The three levels, named --------------------------------------------
+     The guide's Typography page fixes the hierarchy at exactly three levels
+     and nothing may add a fourth:
+       L1 — piece name / headline  (display face)
+       L2 — subtitle / sub-headline (clean sans, regular)
+       L3 — body / caption          (clean sans, italic for captions)         */
+  --af-level-1: var(--af-text-3xl);
+  --af-level-2: var(--af-text-lg);
+  --af-level-3: var(--af-text-base);
+
+  /* --- Tracking ---------------------------------------------------------
+     Mamba is wide and soft; it needs no extra tracking. Small-caps labels
+     and stamp text are the only places letter-spacing is added. */
+  --af-tracking-display: 0;
+  --af-tracking-label:   0.14em;
+  --af-tracking-stamp:   0.2em;
+}
