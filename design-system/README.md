@@ -15,6 +15,13 @@ exists to frame a piece, never to compete with it.
 
 ---
 
+## Official Contact Information
+- **Email**: `atomicfindsatx@gmail.com` *(Never use hello@atomicfindsatx.com)*
+- **Instagram**: `https://www.instagram.com/atomicfindsatx/`
+- **Facebook Marketplace**: `https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh`
+
+---
+
 ## What's here
 
 ```
