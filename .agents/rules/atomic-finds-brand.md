@@ -9,19 +9,17 @@
 - **Facebook Marketplace Profile**: `https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh`
 
 ## Team Roles & Attribution
+- **Founder & Restorer**: **Jennyfer** (Atomic Finds ATX is a one-woman operation start-to-finish; Jennyfer sources every 1970s rattan & bamboo piece from Austin estate sales, markets, and private collections, restoring each item by hand).
 - **Designer**: **Anthony** (Web & Design System Lead).
 
-## Strict Design & Implementation Constraints
-1. **NO FREE STYLING**: Strictly follow the established design system templates and exact user instructions. Never add unrequested sections, extra cards, or ad-hoc design elements.
-2. **NO CURATORS / MASCOTS**: Do not include a Curators or Mascots section on the site.
-3. **NO GALAXY / SPACE THEMES**: Filter out and drop all galaxy, alien, space, or sci-fi theme elements and copy.
-4. **PRESERVE SIZES & LAYOUTS**: Do not alter template max-widths, sizing, or component layouts unless explicitly instructed.
-
-## Core Brand & Copy Guidelines
-- **Core Taglines**:
-  - *"Tiny Time Machines for Your Home"*
-  - *"Handpicked Mid-Century Rattan &middot; Timeless Austin Charm &middot; Local Austin Delivery &amp; Pickup"*
-- **Authentic Customer Reviews (Facebook Marketplace)**:
-  - Esteban: *"Jennyfer and her husband are awesome! Wonderful sellers and wonderful people. We live nearby and they even went out of their way to deliver the table so I didn't have to get a U-Haul. Thank you so much!"*
-  - Amanda: *"It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly."*
-  - Brittney: *"Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I got!!"*
+## Strict Design System Rules
+1. **Design System Adherence**: Always reference `design-system/styles.css` and `components.css` for canonical scales and proportions.
+2. **Shadow Rule**: Images OUTSIDE of cards (e.g. Hero image) DO NOT get drop shadows. Drop shadows (`box-shadow: 5px 5px 0 var(--af-ink);`) belong ONLY on cards and interactive plates.
+3. **Button Proportions**: Buttons must remain slender and proportional to text labels (`padding: 0.5rem 1rem; font-size: 0.875rem; border-radius: 12px;`).
+4. **Header Logo**: Header uses `wordmark-stacked.png` + Tagline (no monogram roundel in header).
+5. **Footer Monogram**: Footer uses `monogram-roundel.png` at natural proportions (`width: 140px; height: auto;`).
+6. **Product Cards**: Large, stacked cards featuring the signature `.af-pattern--botanical` background framing an inner cream mat plate (`.hp-find-card__mat`). No left callout border or corner radius curves on text.
+7. **Animated Yellow Marquee**: Continuous smooth scrolling marquee strip underneath the Hero section.
+8. **Meet Nacho**: Centered layout with a subtle, playful idle floating/bounce micro-animation.
+9. **NO CURATORS / MASCOTS**: Do not include a Curators section.
+10. **NO GALAXY / SPACE THEMES**: Filter out and drop all galaxy, alien, space, or sci-fi theme elements and copy.

@@ -3,39 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
+<title>Atomic Finds ATX — Far-out finds, down-to-earth prices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system/styles.css">
 <script>/* Set before first paint so revealed content never flashes. */
 document.documentElement.classList.add('js');</script>
 <style>
 /* ==========================================================================
-   Homepage — one responsive page covering desktop, tablet and mobile.
-
-   Section order follows the sitemap:
-     00 Header · 01 Hero · 02 Our Story · 03 Featured Collection ·
-     04 Meet Nacho · 05 Visit Our Showroom · 06 Instagram ·
-     07 Testimonials · 08 Footer
-
-   Only tokens and components from the design system are used. Rules specific
-   to this page's composition live here rather than in the shared sheets.
+   Homepage — Atomic Finds ATX (Design System Aligned)
    ========================================================================== */
 
-/* overflow-x on BOTH html and body: with it on body alone the stray pixels
-   leak into the html scroll box and the page still pans sideways.
-
-   `clip`, not `hidden` — `hidden` makes the element a scroll container, which
-   would break `position: sticky` on the header. `clip` trims without that. */
 html, body { overflow-x: clip; }
 body { background: var(--af-surface); }
 
-/* Section rhythm is fluid, so vertical space compresses on small screens
-   instead of leaving huge cream gaps between sections.
-
-   padding-BLOCK only. The shorthand would zero the inline padding that
-   .af-container supplies, and since this sheet loads after the component
-   sheet it wins — which pushed content flush to the screen edge on mobile. */
-.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); }
+.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); position: relative; }
 .hp-sec__head { margin-bottom: clamp(2rem, 5vw, 3rem); }
 .hp-sec__head--center { text-align: center; }
 .hp-sec__head h2 { margin-bottom: var(--af-space-2); }
@@ -47,13 +30,14 @@ body { background: var(--af-surface); }
   background: var(--af-olive-teal); color: var(--af-cream);
   text-align: center; padding: var(--af-space-2) var(--af-space-4);
   font-size: var(--af-text-sm); letter-spacing: 0.04em;
+  display: flex; align-items: center; justify-content: center; gap: var(--af-space-2);
 }
 .hp-announce .af-sparkle { color: var(--af-mustard); }
 
 .hp-header {
   position: sticky; top: 0; z-index: 30;
-  background: color-mix(in srgb, var(--af-surface) 94%, transparent);
-  backdrop-filter: blur(6px);
+  background: color-mix(in srgb, var(--af-surface) 95%, transparent);
+  backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--af-hairline);
 }
 .hp-header__inner {
@@ -62,14 +46,10 @@ body { background: var(--af-surface); }
   padding: var(--af-space-3) var(--af-space-5);
 }
 .hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; flex: none; }
-.hp-logo__mark { height: 2.75rem; width: auto; }
-.hp-logo__word { height: 2.1rem; width: auto; }
-/* The tagline rides with the logo at desktop — the sitemap wants it prominent
-   in the header — and drops away when there is no room for it. */
+.hp-logo__word { height: 2.2rem; width: auto; }
 .hp-logo__tag {
-  font-size: var(--af-text-xs); letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--af-ink-soft); border-left: 2px solid var(--af-hairline);
-  padding-left: var(--af-space-3); margin-left: var(--af-space-1);
+  font-size: var(--af-text-xs); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--af-ink-soft); padding-left: var(--af-space-2); margin-left: var(--af-space-1);
 }
 .hp-nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); margin-left: auto; align-items: center; }
 .hp-nav a {
@@ -77,265 +57,215 @@ body { background: var(--af-surface); }
   text-transform: uppercase; color: var(--af-ink); text-decoration: none; white-space: nowrap;
 }
 .hp-nav a:hover { color: var(--af-orange-btn); }
-/* `.hp-nav a` outranks `.af-btn`, so a button in the nav would otherwise take
-   ink for its label while keeping its coloured rule. Restore the button ink at
-   matching specificity, in both states. */
 .hp-nav a.af-btn,
 .hp-nav a.af-btn:hover { color: var(--af-btn-ink); }
 .hp-burger {
   display: none; margin-left: auto;
   background: var(--af-cream); color: var(--af-ink);
   border: var(--af-border-width) solid var(--af-ink);
-  border-radius: 12px; padding: 0.5rem 0.75rem; cursor: pointer;
+  border-radius: 12px; padding: 0.4rem 0.75rem; cursor: pointer;
   font: inherit; font-size: var(--af-text-sm); font-weight: 600;
 }
 
-/* --- 01 Hero -------------------------------------------------------------
-   Full-width botanical ground (pattern role a), centred headline, CTA and
-   social links, then a large image band. */
-.hp-hero { position: relative; isolation: isolate; background: var(--af-cream); overflow: hidden; }
+/* Compact Language Switcher Toggle */
+.hp-lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 999px; background: var(--af-cream); color: var(--af-ink);
+  border: 1.5px solid var(--af-ink); cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hp-lang-toggle:hover { background: var(--af-mustard); color: var(--af-ink); }
+
+/* --- 01 Hero ------------------------------------------------------------- */
+.hp-hero {
+  position: relative; isolation: isolate; background: var(--af-cream); overflow: hidden;
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
 .hp-hero__inner {
   max-width: 60rem; margin-inline: auto; text-align: center;
-  padding: clamp(3rem, 8vw, 6rem) var(--af-space-5) clamp(2rem, 5vw, 3rem);
+  padding: clamp(3rem, 6vw, 5rem) var(--af-space-5) clamp(1.5rem, 3vw, 2.5rem);
 }
-.hp-hero__eyebrow {
-  display: inline-flex; align-items: center; gap: var(--af-space-2);
-  margin: 0 0 var(--af-space-4);
-}
-.hp-hero__eyebrow .af-label { color: var(--af-olive-teal); letter-spacing: 0.22em; }
-
-/* L1 — the one piece of display type on this band. */
-.hp-hero h1 { font-size: var(--af-text-4xl); color: var(--af-avocado-deep); margin: 0; }
-.hp-hero h1 .af-sparkle { height: 0.42em; width: 0.26em; vertical-align: 0.06em; margin-left: 0.1em; }
-
-/* L2 — sub-headline in the clean sans, deliberately not display. */
-.hp-hero__sub {
-  font-family: var(--af-font-body); font-weight: 400;
-  font-size: var(--af-text-2xl); color: var(--af-ink);
-  line-height: var(--af-leading-snug);
-  margin: var(--af-space-2) auto var(--af-space-6); max-width: 24ch;
-}
-.hp-hero__social {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: var(--af-space-2) var(--af-space-4);
-  margin-top: var(--af-space-6);
-}
-.hp-hero__social a {
-  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--af-olive-teal); text-decoration: none;
-}
+.hp-hero h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); }
+.hp-hero__eyebrow { display: flex; align-items: center; justify-content: center; gap: var(--af-space-2); margin-bottom: var(--af-space-2); }
+.hp-hero__sub { font-size: var(--af-text-xl); color: var(--af-ink-soft); margin-bottom: var(--af-space-5); max-width: 48rem; margin-inline: auto; }
+.hp-hero__social { display: flex; gap: var(--af-space-4); justify-content: center; margin-top: var(--af-space-4); font-size: var(--af-text-sm); font-weight: 600; }
+.hp-hero__social a { color: var(--af-ink-soft); text-decoration: none; }
 .hp-hero__social a:hover { color: var(--af-orange-btn); }
-
-/* The image band — large, and the reason the hero carries weight. */
-.hp-hero__media {
-  width: min(100%, 84rem); margin-inline: auto;
-  padding: 0 var(--af-space-5) clamp(3rem, 7vw, 5rem);
-}
+.hp-hero__media { max-width: 68rem; margin: var(--af-space-4) auto 0; padding-inline: var(--af-space-5); }
 .hp-hero__media img {
-  width: 100%; height: clamp(18rem, 46vw, 34rem);
-  object-fit: cover; display: block;
-  border-radius: var(--af-radius-lg);
-}
-
-/* --- Values strip -------------------------------------------------------- */
-.hp-values {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: var(--af-space-3) var(--af-space-4);
-  padding: var(--af-space-5); background: var(--af-surface);
-  border-block: 2px solid var(--af-hairline);
-}
-.hp-values span {
-  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--af-ink-soft);
-}
-
-/* --- 02 Our Story / 06 Instagram — two-column ---------------------------- */
-.hp-split {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
-  gap: clamp(2rem, 5vw, 4rem); align-items: center;
-}
-.hp-split__media img {
-  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
-  display: block; border-radius: var(--af-radius-lg);
-}
-
-/* --- 03 Featured Collection --------------------------------------------- */
-.hp-grid-3 {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
-  gap: clamp(1.25rem, 3vw, 2rem);
-}
-.hp-arrivals__head {
-  display: flex; align-items: center; gap: var(--af-space-3);
-  border-bottom: 3px solid var(--af-ink);
-  padding-bottom: var(--af-space-3); margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-}
-.hp-arrivals__head h2 { margin: 0; }
-
-/* Pattern role (c) — CARD-AS-FRAME. The botanical pattern is the card ground
-   and everything sits on a cream mat inside it, so the pattern frames the
-   piece rather than covering it. The mat is what makes the role work. */
-.hp-find {
-  display: flex;
-  flex-direction: column;
-  padding: var(--af-space-3);
-  border-radius: var(--af-radius-card);
-  background-size: 190px;
-  border: var(--af-border-width) solid var(--af-ink);
-  box-shadow: var(--af-shadow-stamp);
-  transition: transform 0.25s var(--af-ease), box-shadow 0.25s var(--af-ease);
-}
-.hp-find:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--af-shadow-stamp-lift);
-}
-.hp-find__mat {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background: var(--af-surface);
-  border-radius: var(--af-radius-sm);
-  padding: var(--af-space-3);
-  text-align: center;
-}
-.hp-find__image-frame {
-  background: var(--af-surface-sunk); /* #E5D6B8 Warm Cream Base */
-  padding: var(--af-space-3);
-  border-radius: var(--af-radius-sm);
-  border: var(--af-border-width) solid var(--af-ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--af-space-2);
-}
-.hp-find__image-frame img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  width: 100%; height: auto; max-height: 480px; object-fit: cover;
+  border-radius: var(--af-radius-card); border: var(--af-border-width) solid var(--af-ink);
+  box-shadow: none; /* NO DROP SHADOW ON HERO IMAGE ACCORDING TO DESIGN SYSTEM RULES */
   display: block;
-  border-radius: 4px;
 }
-.hp-find__name {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: var(--af-space-2);
-  flex-wrap: wrap;
-  font-family: var(--af-font-display);
-  font-size: var(--af-text-base);
-  color: var(--af-olive-teal);
-  margin: var(--af-space-4) 0 var(--af-space-1);
+
+/* --- Animated Yellow Marquee Ribbon -------------------------------------- */
+.hp-marquee {
+  background: var(--af-mustard); color: var(--af-ink);
+  border-block: 2px solid var(--af-ink);
+  padding: 0.875rem 0; overflow: hidden;
+  position: relative; width: 100%;
 }
-.hp-find__name .af-sparkle {
-  align-self: center;
+.hp-marquee__track {
+  display: flex; gap: var(--af-space-5); width: max-content;
+  animation: hp-marquee-scroll 35s linear infinite;
+  will-change: transform;
 }
-.hp-find__price {
-  margin: 0 0 var(--af-space-3);
-  color: var(--af-ink);
+.hp-marquee__content {
+  display: flex; align-items: center; gap: var(--af-space-4);
+  font-size: var(--af-text-sm); font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
 }
-.hp-find__actions {
-  display: flex;
-  gap: var(--af-space-2);
-  justify-content: center;
-  margin-top: auto;
+@keyframes hp-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.hp-find__passport-wrapper {
+
+/* --- 02 Our Story / Meet Jennyfer ---------------------------------------- */
+.hp-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hp-split__media img {
+  width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--af-radius-card); border: var(--af-border-width) solid var(--af-ink);
+  box-shadow: 5px 5px 0 var(--af-ink); display: block;
+}
+
+/* --- 03 Featured Collection (Stacked Cards with Botanical Pattern) ------- */
+.hp-featured-list { display: flex; flex-direction: column; gap: var(--af-space-6); }
+
+.hp-find-card {
+  position: relative; isolation: isolate;
+  background-color: var(--af-cream);
+  background-image: url("design-system/assets/textures/botanical_pattern.jpg");
+  background-size: 380px;
+  background-repeat: repeat;
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  box-shadow: 6px 6px 0 var(--af-ink);
+  padding: var(--af-space-4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hp-find-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--af-ink);
+}
+
+/* Inner Cream Mat Plate */
+.hp-find-card__mat {
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: calc(var(--af-radius-card) - 6px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+}
+
+.hp-find-card__media {
+  background: var(--af-surface-sunk);
+  padding: var(--af-space-3);
+  border-radius: var(--af-radius-sm);
+  border: var(--af-border-width) solid var(--af-ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.hp-find-card__media img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 6px; display: block;
+}
+
+.hp-find-card__content { display: flex; flex-direction: column; height: 100%; }
+.hp-find-card__header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--af-space-2); margin-bottom: var(--af-space-2); }
+.hp-find-card__title { font-family: var(--af-font-display); font-size: var(--af-text-2xl); color: var(--af-olive-teal); margin: 0; }
+.hp-find-card__price { font-size: var(--af-text-xl); font-weight: 700; color: var(--af-orange-btn); margin: 0; }
+.hp-find-card__desc { font-size: var(--af-text-base); color: var(--af-ink); line-height: 1.6; margin-bottom: var(--af-space-4); }
+
+.hp-find-card__actions { display: flex; flex-wrap: wrap; gap: var(--af-space-3); align-items: center; margin-top: auto; }
+
+/* Smooth expandable details animation */
+.hp-find-card__details-wrapper {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
-  text-align: left;
+  grid-column: 1 / -1;
+  width: 100%;
 }
-.hp-find__passport-wrapper.is-expanded {
+.hp-find-card__details-wrapper.is-expanded {
   grid-template-rows: 1fr;
 }
-.hp-find__passport {
+.hp-find-card__details {
   min-height: 0;
-  padding-top: var(--af-space-2);
+  padding-top: var(--af-space-4);
+  border-top: 2px dashed var(--af-hairline);
+  margin-top: var(--af-space-4);
 }
-.hp-find__passport-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: var(--af-space-2);
-  font-size: var(--af-text-sm);
+.hp-find-card__specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--af-space-3);
+  margin-bottom: var(--af-space-3);
 }
-.hp-find__passport-table tr {
-  border-bottom: 1px dashed var(--af-hairline);
-}
-.hp-find__passport-table th {
-  text-align: left;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: var(--af-text-xs);
-  letter-spacing: var(--af-tracking-label);
-  color: var(--af-ink-soft);
-  padding: var(--af-space-1) 0;
-  width: 40%;
-}
-.hp-find__passport-table td {
-  padding: var(--af-space-1) 0;
-  color: var(--af-ink);
-}
-.hp-find__passport-quote {
-  margin: var(--af-space-2) 0 0;
-  padding: var(--af-space-2);
-  background: var(--af-surface-raised);
-  border-left: 3px solid var(--af-orange);
-  border-radius: var(--af-radius-sm);
-}
-.hp-find__passport-quote p {
-  margin: 0;
-  font-size: var(--af-text-sm);
-  color: var(--af-orange-deep);
+.hp-spec-item { font-size: var(--af-text-sm); }
+.hp-spec-item strong { display: block; font-size: var(--af-text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--af-ink-soft); }
+
+.hp-find-card__quote {
+  padding: var(--af-space-3) 0 0;
+  border-top: 1px dashed var(--af-hairline);
+  margin-top: var(--af-space-3);
+  font-style: italic; font-size: var(--af-text-sm); color: var(--af-orange-deep);
 }
 
-/* --- 04 Meet Nacho — single column on a colour ground -------------------- */
-.hp-nacho { background: var(--af-cream); }
+/* --- 04 Meet Nacho (Centered & Animated) -------------------------------- */
+.hp-nacho { background: var(--af-cream); border-block: 2px solid var(--af-hairline); }
 .hp-nacho__inner {
   max-width: 46rem; margin-inline: auto; text-align: center;
-  padding: clamp(3rem, 8vw, 6rem) var(--af-space-5);
+  padding: clamp(3rem, 7vw, 5rem) var(--af-space-5);
 }
 .hp-nacho__portrait {
-  width: clamp(9rem, 22vw, 13rem); aspect-ratio: 1; object-fit: cover;
+  width: clamp(9rem, 20vw, 12rem); aspect-ratio: 1; object-fit: cover;
   border-radius: 50%; border: var(--af-border-heavy) solid var(--af-avocado-deep);
-  margin-bottom: var(--af-space-5);
+  margin-bottom: var(--af-space-4); display: block; margin-inline: auto;
+  animation: hp-nacho-float 4s ease-in-out infinite;
 }
-.hp-nacho p { margin-inline: auto; }
-
-/* --- 05 Visit Our Showroom — full-width CTA over a photo ----------------- */
-.hp-visit { position: relative; isolation: isolate; }
-.hp-visit img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; z-index: -2;
-}
-/* Ink scrim: the copy has to clear AA over a photograph, and a photograph
-   alone cannot guarantee that. */
-.hp-visit::after {
-  content: ''; position: absolute; inset: 0; z-index: -1;
-  background: color-mix(in srgb, var(--af-ink) 68%, transparent);
-}
-.hp-visit__inner {
-  max-width: 42rem; margin-inline: auto; text-align: center;
-  padding: clamp(4rem, 10vw, 7rem) var(--af-space-5);
-  color: var(--af-cream);
-}
-.hp-visit h2 { color: var(--af-cream); }
-.hp-visit p { color: var(--af-cream); margin-inline: auto; }
-
-/* --- 06 Instagram feed --------------------------------------------------- */
-.hp-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--af-space-2); }
-.hp-feed img {
-  width: 100%; aspect-ratio: 1; object-fit: cover;
-  display: block; border-radius: var(--af-radius-sm);
+@keyframes hp-nacho-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(2deg); }
 }
 
-/* --- 07 Testimonials — scroll-snap slider -------------------------------- */
+/* --- 05 Fullwidth Photo Gallery --------------------------------------- */
+.hp-gallery-sec { padding-block: clamp(3rem, 6vw, 5rem); }
+.hp-gallery-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--af-space-3);
+  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
+}
+.hp-gallery-item {
+  position: relative; overflow: hidden; border-radius: var(--af-radius-card);
+  border: var(--af-border-width) solid var(--af-ink); aspect-ratio: 4 / 3;
+}
+.hp-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.hp-gallery-item:hover img { transform: scale(1.04); }
+
+/* --- 06 Instagram Feed --------------------------------------------------- */
+.hp-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--af-space-3); }
+.hp-feed-item {
+  position: relative; display: block; overflow: hidden; border-radius: var(--af-radius-card);
+  border: var(--af-border-width) solid var(--af-ink); aspect-ratio: 1;
+}
+.hp-feed-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.hp-feed-item:hover img { transform: scale(1.05); }
+
+/* --- 07 Testimonials ----------------------------------------------------- */
 .hp-slider {
   display: grid; grid-auto-flow: column;
-  grid-auto-columns: minmax(min(21rem, 82vw), 1fr);
+  grid-auto-columns: minmax(min(22rem, 85vw), 1fr);
   gap: var(--af-space-5);
   overflow-x: auto; scroll-snap-type: x mandatory;
-  padding-bottom: var(--af-space-4);
-  scrollbar-width: thin;
+  padding-bottom: var(--af-space-4); scrollbar-width: thin;
 }
 .hp-quote {
   scroll-snap-align: center; text-align: center;
@@ -343,14 +273,14 @@ body { background: var(--af-surface); }
   border: var(--af-border-width) solid var(--af-ink);
   border-radius: var(--af-radius-card);
   padding: var(--af-space-6) var(--af-space-5);
+  box-shadow: 4px 4px 0 var(--af-ink);
 }
-/* The rating uses the brand's own sparkle rather than a generic star glyph. */
-.hp-stars { display: flex; justify-content: center; gap: 3px; margin-bottom: var(--af-space-4); }
-.hp-stars .af-sparkle { color: var(--af-mustard); height: 1.1rem; width: 0.69rem; }
-.hp-quote blockquote { margin: 0 0 var(--af-space-4); font-size: var(--af-text-lg); }
-.hp-quote cite { font-style: normal; font-size: var(--af-text-sm); color: var(--af-ink-soft); }
+.hp-stars { display: flex; justify-content: center; gap: 4px; margin-bottom: var(--af-space-3); }
+.hp-stars .af-sparkle { color: var(--af-mustard); height: 1.1rem; width: 0.7rem; }
+.hp-quote blockquote { margin: 0 0 var(--af-space-3); font-size: var(--af-text-lg); line-height: 1.5; }
+.hp-quote cite { font-style: normal; font-size: var(--af-text-sm); font-weight: 600; color: var(--af-ink-soft); }
 
-/* --- Signup -------------------------------------------------------------- */
+/* --- Signup Form --------------------------------------------------------- */
 .hp-signup form {
   display: flex; flex-wrap: wrap; gap: var(--af-space-3); justify-content: center;
   margin-top: var(--af-space-5);
@@ -364,36 +294,35 @@ body { background: var(--af-surface); }
 }
 
 /* --- 08 Footer ----------------------------------------------------------- */
-.hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(2.5rem, 6vw, 4rem) 0 var(--af-space-6); }
+.hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6); }
 .hp-footer a { color: var(--af-cream); }
 .hp-footer__inner {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
   gap: clamp(1.5rem, 4vw, 2.5rem);
   max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
 }
-.hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); }
+.hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); margin-bottom: var(--af-space-3); }
 .hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
-.hp-footer__badge { width: 7rem; height: auto; }
+.hp-footer-logo-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.hp-footer__monogram { width: 140px; height: auto; display: block; margin-bottom: var(--af-space-2); }
+
 .hp-footer__bottom {
   max-width: var(--af-container); margin: clamp(2rem, 5vw, 3rem) auto 0;
   padding: var(--af-space-4) var(--af-space-5) 0;
   border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
-  display: flex; flex-wrap: wrap; gap: var(--af-space-3);
-  justify-content: space-between; font-size: var(--af-text-sm);
+  display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;
+  font-size: var(--af-text-sm);
 }
 
-/* --- Scroll reveal -------------------------------------------------------
-   Gated behind `.js`, which is set by an inline script in <head>. Content is
-   therefore VISIBLE BY DEFAULT: if the script fails, is blocked, or the page
-   is scraped, every section still renders. Only a browser that has actually
-   run the script opts into starting them hidden. */
-.js .hp-reveal { opacity: 0; transform: translateY(14px); transition: opacity 600ms var(--af-ease), transform 600ms var(--af-ease); }
+/* --- Scroll reveal ------------------------------------------------------- */
+.js .hp-reveal { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--af-ease), transform 500ms var(--af-ease); }
 .js .hp-reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js .hp-reveal { opacity: 1; transform: none; transition: none; }
+  .hp-nacho__portrait { animation: none; }
 }
 
-/* --- Responsive ---------------------------------------------------------- */
+/* --- Responsive Layout Adjustments --------------------------------------- */
 @media (max-width: 1080px) { .hp-logo__tag { display: none; } }
 
 @media (max-width: 900px) {
@@ -406,252 +335,251 @@ body { background: var(--af-surface); }
   }
   .hp-nav.is-open .af-btn { justify-content: center; }
   .hp-burger { display: block; }
-  .hp-hero h1 { font-size: var(--af-text-3xl); }
-  .hp-hero__sub { font-size: var(--af-text-xl); }
+  .hp-split { grid-template-columns: 1fr; }
+  .hp-find-card__mat { grid-template-columns: 1fr; gap: var(--af-space-4); }
+  .hp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
-  /* Keep the eyebrow on one line — when it wraps, its leading sparkle is left
-     stranded beside two lines of text instead of reading as a lead-in. */
-  .hp-hero__eyebrow .af-label { font-size: var(--af-text-xs); letter-spacing: 0.12em; }
-  .hp-logo__word { height: 1.7rem; }
-  .hp-logo__mark { height: 2.25rem; }
+  .hp-logo__word { height: 1.8rem; }
   .hp-feed { grid-template-columns: repeat(2, 1fr); }
-  .hp-values { gap: var(--af-space-2); }
-  .hp-values span { font-size: var(--af-text-xs); }
-  .hp-footer__bottom { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
 <!-- ============================ 00 HEADER ============================ -->
-<div class="hp-announce" data-en="New finds every week &middot; Free local pickup in Austin" data-es="Nuevos hallazgos cada semana &middot; Recogida local gratuita en Austin">
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  New finds every week &middot; Free local pickup in Austin
+<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
 </div>
 
 <header class="hp-header">
   <div class="hp-header__inner">
     <a class="hp-logo" href="#top">
-      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX">
-      <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
+      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX" width="240" height="67">
+      <span class="hp-logo__tag" data-en="Far-out finds, down-to-earth prices" data-es="Hallazgos increíbles, precios accesibles">Far-out finds, down-to-earth prices</span>
     </a>
-    <div style="display: flex; align-items: center; gap: var(--af-space-1); margin-left: auto;">
-      <button class="hp-lang-toggle af-btn af-btn--ghost af-btn--sm" aria-label="Switch language to Spanish" style="min-height: 44px; min-width: 44px;">ES</button>
+    <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
+      <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
       <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
     </div>
     <nav class="hp-nav" id="hp-nav">
-      <a href="#collection" data-en="Collection" data-es="Colección">Collection</a>
-      <a href="#story" data-en="Story" data-es="Historia">Story</a>
+      <a href="#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
+      <a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
       <a href="#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-      <a href="#" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
     </nav>
   </div>
 </header>
 
-<!-- ===================== 01 HERO — pattern role (a) ==================== -->
+<!-- ===================== 01 HERO ==================== -->
 <section class="hp-hero" id="top">
-  <div class="af-pattern af-pattern--botanical af-pattern--ghost"
-       style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+  <div class="af-pattern af-pattern--botanical af-pattern--ghost" style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
 
   <div class="hp-hero__inner">
     <p class="hp-hero__eyebrow hp-reveal">
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span class="af-label" data-en="Welcome to Atomic Finds ATX" data-es="Bienvenido a Atomic Finds ATX">Welcome to Atomic Finds ATX</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span class="af-label" data-en="Vintage, Written in the Stars" data-es="Vintage, Escrito en las Estrellas">Vintage, Written in the Stars</span>
     </p>
-    <h1 class="hp-reveal" data-en="Tiny Time Machines" data-es="Pequeñas Máquinas">Tiny Time <span style="white-space:nowrap">Machines<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
-    <p class="hp-hero__sub hp-reveal" data-en="for Your Home" data-es="del Tiempo para tu Hogar">for Your Home</p>
+    <h1 class="hp-reveal" data-en="Far-Out Finds" data-es="Hallazgos Increíbles">Far-Out <span style="white-space:nowrap">Finds<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="20" height="32"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
+    <p class="hp-hero__sub hp-reveal" data-en="Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last." data-es="Explora auténtico rattán y bambú de los años 70, restaurado en Austin para una nueva generación. Diseño eterno, construido para durar.">
+      Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last.
+    </p>
     <div class="hp-reveal">
       <a href="#collection" class="af-btn af-btn--primary" data-en="Shop the Collection" data-es="Comprar la Colección">
         Shop the Collection
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </a>
     </div>
     <div class="hp-hero__social hp-reveal">
       <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" data-en="Instagram" data-es="Instagram">Instagram</a>
-      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook" data-es="Facebook">Facebook</a>
-      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a>
     </div>
   </div>
 
   <div class="hp-hero__media hp-reveal">
-    <img src="design-system/assets/product-photos/Sunny.png" alt="A vintage rattan coffee table in a sunlit Austin living room">
+    <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798" fetchpriority="high" decoding="async">
   </div>
 </section>
 
-<!-- ============================ VALUES =============================== -->
-<div class="hp-values">
-  <span data-en="Handpicked Vintage" data-es="Colección Vintage Seleccionada">Handpicked Vintage</span>
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span data-en="Timeless Charm" data-es="Encanto Eterno">Timeless Charm</span>
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span data-en="A Little Bit of Magic" data-es="Un Poco de Magia">A Little Bit of Magic</span>
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span data-en="Austin, Texas" data-es="Austin, Texas">Austin, Texas</span>
+<!-- ==================== ANIMATED MARQUEE RIBBON ======================= -->
+<div class="hp-marquee" aria-label="Brand highlights">
+  <div class="hp-marquee__track">
+    <div class="hp-marquee__content">
+      <span>Authentic 1970s Rattan &amp; Bamboo</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Hand-Restored by Jennyfer in Austin</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>White-Glove Local Austin Delivery</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Far-out finds, down-to-earth prices</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    </div>
+    <div class="hp-marquee__content" aria-hidden="true">
+      <span>Authentic 1970s Rattan &amp; Bamboo</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Hand-Restored by Jennyfer in Austin</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>White-Glove Local Austin Delivery</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Far-out finds, down-to-earth prices</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    </div>
+  </div>
 </div>
 
 <!-- ========================== 02 OUR STORY =========================== -->
 <section class="hp-sec af-container" id="story">
   <div class="hp-split">
     <div class="hp-reveal">
-      <span class="af-label" data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
-      <h2 style="margin-top:var(--af-space-2)" data-en="Found across time + space" data-es="Encontrado a través del tiempo + espacio">Found across time <span style="white-space:nowrap">+ space</span></h2>
-      <p>Every piece in our collection is a tiny time machine &mdash; a chair with a past, a shelf with
-         stories. We find them, name them, and give them a new chapter in your home.</p>
-      <p>We only bring home rattan and bamboo that has earned it: sound joints, honest wear, and the kind
-         of silhouette nobody makes any more. Then it gets inspected, photographed in real light, and sent
-         out with a passport telling you exactly where it came from.</p>
-      <a href="#collection" class="af-btn af-btn--secondary" data-en="Meet the collection" data-es="Conoce la colección">Meet the collection</a>
+      <span class="af-label" data-en="Meet Jennyfer &amp; Our Story" data-es="Conoce a Jennyfer y Nuestra Historia">Meet Jennyfer &amp; Our Story</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Restored by Hand for the Modern Home" data-es="Restaurado a Mano para el Hogar Moderno">Restored by Hand for the Modern Home</h2>
+      <p data-en="Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life." data-es="Atomic Finds ATX es una operación de una sola mujer, de principio a fin. Jennyfer busca cada pieza ella misma y luego restaura cada una a mano. Su ojo es todo el negocio: un instinto para las piezas que vale la pena salvar.">
+        Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life.
+      </p>
+      <p data-en="No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor." data-es="Sin almacenes, sin producción en masa: solo Jennyfer, un taller y un amor genuino por la artesanía de mediados de siglo. Cada pieza es seleccionada a mano en ventas de casas y colecciones privadas de Austin.">
+        No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor.
+      </p>
+      <a href="#collection" class="af-btn af-btn--secondary" data-en="Explore the collection" data-es="Explorar la colección">Explore the collection</a>
     </div>
     <div class="hp-split__media hp-reveal">
-      <img src="design-system/assets/product-photos/Product 7.png" alt="A styled showroom corner with a vintage rattan console">
+      <img src="design-system/assets/product-photos/Product 7.jpg" alt="A styled Austin showroom corner with a vintage rattan console" width="1200" height="800" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
 <!-- ===================== 03 FEATURED COLLECTION ====================== -->
 <section class="hp-sec af-container" id="collection">
-  <div class="hp-arrivals__head hp-reveal">
-    <h2 data-en="Featured Collection" data-es="Colección Destacada">Featured Collection</h2>
-    <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <div class="hp-sec__head hp-sec__head--center hp-reveal">
+    <span class="af-label" data-en="Curated Vintage Collection" data-es="Colección Vintage Curada">Curated Vintage Collection</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Featured Collection" data-es="Colección Destacada">Featured Collection</h2>
+    <p data-en="Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin." data-es="Piezas mid-century de rattán, bambú y tejido seleccionadas a mano listas para adoptar en Austin.">Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin.</p>
   </div>
 
-  <div class="hp-grid-3">
-    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find__mat">
-        <div class="hp-find__image-frame">
-          <img src="design-system/assets/product-photos/Amelia 1.png" alt="Amelia, an arched rattan étagère">
+  <div class="hp-featured-list">
+    <!-- Featured Card 1: Sunny -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a 1970s vintage rattan coffee table" width="1200" height="798" loading="lazy" decoding="async">
         </div>
-        <h3 class="hp-find__name" data-en="Amelia &middot; c. 1974" data-es="Amelia &middot; c. 1974">Amelia <span aria-hidden="true">&middot;</span> c. 1974
-          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
-        <p class="hp-find__price">$485</p>
-        <div class="hp-find__actions">
-          <a href="#" class="af-btn af-btn--primary af-btn--sm hp-find__cta" data-en="Ready to adopt" data-es="Listo para adoptar">Ready to adopt</a>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-amelia" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
-        </div>
-        
-        <div class="hp-find__passport-wrapper" id="passport-amelia" aria-hidden="true">
-          <div class="hp-find__passport">
-            <hr class="af-rule-dashed">
-            <table class="hp-find__passport-table">
-              <tr>
-                <th data-en="Weave" data-es="Tejido">Weave</th>
-                <td data-en="Solihiya" data-es="Solihiya">Solihiya</td>
-              </tr>
-              <tr>
-                <th data-en="Origin" data-es="Origen">Origin</th>
-                <td data-en="Philippines" data-es="Filipinas">Philippines</td>
-              </tr>
-              <tr>
-                <th data-en="Material" data-es="Material">Material</th>
-                <td data-en="Rattan & Bamboo" data-es="Rattán y Bambú">Rattan & Bamboo</td>
-              </tr>
-              <tr>
-                <th data-en="Condition" data-es="Condición">Condition</th>
-                <td data-en="Excellent" data-es="Excelente">Excellent</td>
-              </tr>
-              <tr>
-                <th data-en="Found" data-es="Encontrado">Found</th>
-                <td data-en="East Austin" data-es="East Austin">East Austin</td>
-              </tr>
-            </table>
-            <blockquote class="hp-find__passport-quote">
-              <p class="af-script" data-en="&ldquo;Amelia has a silhouette that commands a room. She holds records and plants with equal ease.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Amelia tiene una silueta que domina una habitación. Alberga discos y plantas con la misma facilidad.&rdquo; &mdash; Insp. Milo">&ldquo;Amelia has a silhouette that commands a room. She holds records and plants with equal ease.&rdquo; &mdash; Insp. Milo</p>
-            </blockquote>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table" data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974</h3>
+            <span class="hp-find-card__price">$485</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer." data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas y un marco resistente. Restaurada a mano por Jennyfer.">
+            A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-sunny" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp; Origin</strong><span data-en="Solihiya &middot; Philippines" data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage Wear</span></div>
+                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or Local White-Glove Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or Local White-Glove Delivery</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </article>
 
-    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find__mat">
-        <div class="hp-find__image-frame">
-          <img src="design-system/assets/product-photos/Ramona 1.png" alt="Ramona, a lattice bamboo shelf">
+    <!-- Featured Card 2: Flora Dining Set -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Flora.jpg" alt="Flora, a 4-piece 1970s bamboo dining set" width="1200" height="800" loading="lazy" decoding="async">
         </div>
-        <h3 class="hp-find__name" data-en="Ramona &middot; c. 1972" data-es="Ramona &middot; c. 1972">Ramona <span aria-hidden="true">&middot;</span> c. 1972
-          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
-        <p class="hp-find__price">$640</p>
-        <div class="hp-find__actions">
-          <a href="#" class="af-btn af-btn--primary af-btn--sm hp-find__cta" data-en="Ready to adopt" data-es="Listo para adoptar">Ready to adopt</a>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-ramona" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
-        </div>
-        
-        <div class="hp-find__passport-wrapper" id="passport-ramona" aria-hidden="true">
-          <div class="hp-find__passport">
-            <hr class="af-rule-dashed">
-            <table class="hp-find__passport-table">
-              <tr>
-                <th data-en="Weave" data-es="Tejido">Weave</th>
-                <td data-en="Solihiya" data-es="Solihiya">Solihiya</td>
-              </tr>
-              <tr>
-                <th data-en="Origin" data-es="Origen">Origin</th>
-                <td data-en="Philippines" data-es="Filipinas">Philippines</td>
-              </tr>
-              <tr>
-                <th data-en="Material" data-es="Material">Material</th>
-                <td data-en="Rattan" data-es="Rattán">Rattan</td>
-              </tr>
-              <tr>
-                <th data-en="Condition" data-es="Condición">Condition</th>
-                <td data-en="Very Good" data-es="Muy Bueno">Very Good</td>
-              </tr>
-              <tr>
-                <th data-en="Found" data-es="Encontrado">Found</th>
-                <td data-en="Hyde Park" data-es="Hyde Park">Hyde Park</td>
-              </tr>
-            </table>
-            <blockquote class="hp-find__passport-quote">
-              <p class="af-script" data-en="&ldquo;Passed our aggressive nap tests. Ramona is built for comfort and presence.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Pasó nuestras agresivas pruebas de siesta. Ramona está construida para el confort y la presencia.&rdquo; &mdash; Insp. Milo">&ldquo;Passed our aggressive nap tests. Ramona is built for comfort and presence.&rdquo; &mdash; Insp. Milo</p>
-            </blockquote>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Bamboo Dining Set" data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978</h3>
+            <span class="hp-find-card__price">$640</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved." data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado por Jennyfer.">
+            A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-flora" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Chairs Included" data-es="Sillas Incluidas">Chairs Included</strong><span data-en="4 Barrel Armchairs" data-es="4 Sillas de Barril">4 Barrel Armchairs</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored &amp; Oiled</span></div>
+                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or White-Glove Local Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or White-Glove Local Delivery</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </article>
 
-    <article class="hp-find af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find__mat">
-        <div class="hp-find__image-frame">
-          <img src="design-system/assets/product-photos/Flora.png" alt="Flora, a rattan dining set">
+    <!-- Featured Card 3: Agnes Console Table -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Product 2.jpg" alt="Agnes, a mid-century woven rattan console table" width="1200" height="800" loading="lazy" decoding="async">
         </div>
-        <h3 class="hp-find__name" data-en="Flora &middot; c. 1978" data-es="Flora &middot; c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978
-          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></h3>
-        <p class="hp-find__price">$325</p>
-        <div class="hp-find__actions">
-          <span class="af-tag af-tag--sold hp-find__cta" data-en="Adopted" data-es="Adoptado">Adopted</span>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-find__toggle-btn" aria-expanded="false" aria-controls="passport-flora" data-en="View Passport" data-es="Ver Pasaporte">View Passport</button>
-        </div>
-        
-        <div class="hp-find__passport-wrapper" id="passport-flora" aria-hidden="true">
-          <div class="hp-find__passport">
-            <hr class="af-rule-dashed">
-            <table class="hp-find__passport-table">
-              <tr>
-                <th data-en="Weave" data-es="Tejido">Weave</th>
-                <td data-en="Rattan Webbing" data-es="Tejido de Rattán">Rattan Webbing</td>
-              </tr>
-              <tr>
-                <th data-en="Origin" data-es="Origen">Origin</th>
-                <td data-en="Austin-curated" data-es="Curada en Austin">Austin-curated</td>
-              </tr>
-              <tr>
-                <th data-en="Material" data-es="Material">Material</th>
-                <td data-en="Bamboo" data-es="Bambú">Bamboo</td>
-              </tr>
-              <tr>
-                <th data-en="Condition" data-es="Condición">Condition</th>
-                <td data-en="Restored" data-es="Restaurado">Restored</td>
-              </tr>
-              <tr>
-                <th data-en="Found" data-es="Encontrado">Found</th>
-                <td data-en="South Congress" data-es="South Congress">South Congress</td>
-              </tr>
-            </table>
-            <blockquote class="hp-find__passport-quote">
-              <p class="af-script" data-en="&ldquo;Flora carries fifty more years in her. Hand-woven panels and honest repairs.&rdquo; &mdash; Insp. Milo" data-es="&ldquo;Flora lleva cincuenta años más en ella. Paneles tejidos a mano y reparaciones honestas.&rdquo; &mdash; Insp. Milo">&ldquo;Flora carries fifty more years in her. Hand-woven panels and honest repairs.&rdquo; &mdash; Insp. Milo</p>
-            </blockquote>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Woven Console" data-es="Agnes &middot; Consola Tejida c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972</h3>
+            <span class="hp-find-card__price">$385</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale." data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero extremadamente resistente. Obtenida en Hyde Park.">
+            A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-agnes" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Procedencia</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage Condition</span></div>
+                <div class="hp-spec-item"><strong data-en="Found Location" data-es="Lugar Encontrado">Found Location</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park, Austin</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -662,25 +590,35 @@ body { background: var(--af-surface); }
 <!-- ========================== 04 MEET NACHO ========================== -->
 <section class="hp-nacho" id="nacho">
   <div class="hp-nacho__inner hp-reveal">
-    <img class="hp-nacho__portrait" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho wearing a straw hat">
+    <img class="hp-nacho__portrait" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho wearing a straw hat" width="208" height="208" loading="lazy" decoding="async">
     <span class="af-label" data-en="Chief Curiosity Officer &amp; Find Inspector" data-es="Director de Curiosidad e Inspector de Hallazgos">Chief Curiosity Officer &amp; Find Inspector</span>
     <h2 style="margin-top:var(--af-space-2)" data-en="Hi, I'm Nacho" data-es="Hola, soy Nacho">Hi, I&rsquo;m Nacho</h2>
-    <p>I sniff every piece before it goes out. If it doesn&rsquo;t smell like a good story, it doesn&rsquo;t
-       make the showroom. So far my record is spotless and my nap schedule is aggressive.</p>
+    <p data-en="I sniff every piece before it leaves for its new home. If a chair or table doesn't have good character and solid joints, it doesn't make the cut. My nap schedule is aggressive and my inspection standards are high." data-es="Husmeo cada pieza antes de que salga hacia su nuevo hogar. Si una silla o mesa no tiene buen carácter y uniones sólidas, no pasa la prueba. Mi horario de siesta es agresivo y mis estándares de inspección son altos.">
+      I sniff every piece before it leaves for its new home. If a chair or table doesn&rsquo;t have good character and solid joints, it doesn&rsquo;t make the cut. My nap schedule is aggressive and my inspection standards are high.
+    </p>
   </div>
 </section>
 
-<!-- ===================== 05 VISIT OUR SHOWROOM ======================= -->
-<section class="hp-visit" id="showroom">
-  <img src="design-system/assets/product-photos/Product 5.png" alt="">
-  <div class="hp-visit__inner hp-reveal">
-    <span class="af-label" style="color:var(--af-mustard)" data-en="Visit Our Showroom" data-es="Visita Nuestra Exposición">Visit Our Showroom</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Come sit in it first" data-es="Ven a sentarte primero">Come sit in it first</h2>
-    <p>Photos only get you so far. Book a time to come by, or take the virtual tour and wander the
-       rooms from your couch.</p>
-    <div class="af-row" style="justify-content:center; margin-top:var(--af-space-5)">
-      <a href="#contact" class="af-btn af-btn--primary" data-en="Book a visit" data-es="Reservar una visita">Book a visit</a>
-      <a href="#" class="af-btn af-btn--secondary" data-en="Virtual tour" data-es="Recorrido virtual">Virtual tour</a>
+<!-- ===================== 05 FULLWIDTH PHOTO GALLERY ======================= -->
+<section class="hp-gallery-sec" id="showroom">
+  <div class="hp-sec__head hp-sec__head--center hp-reveal">
+    <span class="af-label" data-en="Austin Showroom Showcase" data-es="Exposición en Austin">Austin Showroom Showcase</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="Styled In Real Austin Homes" data-es="Estilizado en Hogares de Austin">Styled In Real Austin Homes</h2>
+    <p data-en="Explore how vintage rattan and bamboo bring natural warmth to modern spaces." data-es="Explora cómo el rattán y el bambú vintage aportan calidez natural a espacios modernos.">Explore how vintage rattan and bamboo bring natural warmth to modern spaces.</p>
+  </div>
+
+  <div class="hp-gallery-grid hp-reveal">
+    <div class="hp-gallery-item">
+      <img src="design-system/assets/product-photos/Product 7.jpg" alt="Vintage rattan console styled in Austin home" width="1200" height="800" loading="lazy" decoding="async">
+    </div>
+    <div class="hp-gallery-item">
+      <img src="design-system/assets/product-photos/Product 5.jpg" alt="Rattan lounge seating area" width="1200" height="800" loading="lazy" decoding="async">
+    </div>
+    <div class="hp-gallery-item">
+      <img src="design-system/assets/product-photos/Amelia 2.jpg" alt="Arched rattan shelf with plants" width="1200" height="800" loading="lazy" decoding="async">
+    </div>
+    <div class="hp-gallery-item">
+      <img src="design-system/assets/product-photos/Product 2.jpg" alt="Woven rattan coffee table corner" width="1200" height="800" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -689,19 +627,31 @@ body { background: var(--af-surface); }
 <section class="hp-sec af-container" id="instagram">
   <div class="hp-split">
     <div class="hp-feed hp-reveal">
-      <img src="design-system/assets/product-photos/Ramona 2.png" alt="Instagram post">
-      <img src="design-system/assets/product-photos/Product 1.png" alt="Instagram post">
-      <img src="design-system/assets/product-photos/Amelia 3.png" alt="Instagram post">
-      <img src="design-system/assets/product-photos/Product 6.png" alt="Instagram post">
-      <img src="design-system/assets/product-photos/Ramona 5.png" alt="Instagram post">
-      <img src="design-system/assets/product-photos/Product 3.png" alt="Instagram post">
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Ramona 2.jpg" alt="Instagram post - Ramona shelf" width="400" height="400" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Product 1.jpg" alt="Instagram post - Rattan armchair" width="400" height="400" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Amelia 3.jpg" alt="Instagram post - Amelia étagère" width="400" height="400" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Product 6.jpg" alt="Instagram post - Woven side table" width="400" height="400" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Ramona 5.jpg" alt="Instagram post - Bamboo shelf detail" width="400" height="400" loading="lazy" decoding="async">
+      </a>
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
+        <img src="design-system/assets/product-photos/Product 3.jpg" alt="Instagram post - Rattan chair" width="400" height="400" loading="lazy" decoding="async">
+      </a>
     </div>
     <div class="hp-reveal">
       <span class="af-label" data-en="Follow Along" data-es="Síguenos">Follow Along</span>
       <h2 style="margin-top:var(--af-space-2)" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</h2>
-      <p>New finds land on Instagram first &mdash; usually still in the truck, usually with Nacho
-         supervising. Follow for restock days, before-and-afters, and the occasional estate-sale story
-         that got out of hand.</p>
+      <p data-en="New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations." data-es="Los nuevos hallazgos llegan primero a Instagram, directamente desde ventas de casas locales en Austin, con Jennyfer y Nacho supervisando. Síguenos para alertas de inventario.">
+        New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations.
+      </p>
       <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="af-btn af-btn--primary" data-en="Follow on Instagram" data-es="Seguir en Instagram">Follow on Instagram</a>
     </div>
   </div>
@@ -710,48 +660,46 @@ body { background: var(--af-surface); }
 <!-- ========================= 07 TESTIMONIALS ========================= -->
 <section class="hp-sec af-container">
   <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="What Our Customers Say" data-es="Lo que Dicen Nuestros Clientes">What Our Customers Say</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Adopted &amp; adored" data-es="Adoptado y adorado">Adopted &amp; adored</h2>
+    <span class="af-label" data-en="Customer Reviews" data-es="Reseñas de Clientes">Customer Reviews</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="What Austin Is Saying" data-es="Lo que Dice Austin">What Austin Is Saying</h2>
+    <p data-en="Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)" data-es="Jennyfer Gomez &middot; 5.0 &#9733; (81 valoraciones &middot; Altamente Calificado)">Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)</p>
   </div>
 
   <div class="hp-slider" tabindex="0" role="region" aria-label="Customer testimonials, scrollable" data-en="Customer testimonials, scrollable" data-es="Testimonios de clientes, desplazable">
     <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;Amelia showed up better than the photos, which never happens. She&rsquo;s holding
-        every record I own and half the plants.&rdquo;</blockquote>
-      <cite>&mdash; Priya R., East Austin</cite>
+      <blockquote>&ldquo;Jennyfer and her husband are awesome! Wonderful sellers and wonderful people. We live nearby and they even went out of their way to deliver the table so I didn't have to get a U-Haul. Thank you so much!&rdquo;</blockquote>
+      <cite>&mdash; Esteban &middot; July 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
     </figure>
 
     <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;The passport card is such a good touch. I know the weave, the era, and roughly
-        how many living rooms this thing has outlasted.&rdquo;</blockquote>
-      <cite>&mdash; Marcus L., Hyde Park</cite>
+      <blockquote>&ldquo;It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly.&rdquo;</blockquote>
+      <cite>&mdash; Amanda &middot; May 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
     </figure>
 
     <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5" data-en="Rated 5 out of 5" data-es="Calificación 5 de 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;Drove across town for a shelf and left having met a dog in a hat. Ten out of ten,
-        would adopt furniture again.&rdquo;</blockquote>
-      <cite>&mdash; Dani K., South Congress</cite>
+      <blockquote>&ldquo;Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I got!! I will most likely be back &gt;:)&rdquo;</blockquote>
+      <cite>&mdash; Brittney &middot; April 2026 (Item Description &middot; Communication)</cite>
     </figure>
   </div>
 </section>
@@ -761,7 +709,7 @@ body { background: var(--af-surface); }
   <div class="hp-sec__head hp-sec__head--center hp-reveal" style="margin-bottom:0">
     <span class="af-label" data-en="The Dispatch" data-es="El Despacho">The Dispatch</span>
     <h2 style="margin-top:var(--af-space-2)" data-en="Get first look at new finds" data-es="Sé el primero en ver los nuevos hallazgos">Get first look at new finds</h2>
-    <p>One note a week. New arrivals, restock days, and the occasional truly unhinged estate-sale story.</p>
+    <p data-en="One note a week. New arrivals, restock days, and local Austin estate sale updates." data-es="Una nota por semana. Nuevas llegadas, días de inventario y novedades en Austin.">One note a week. New arrivals, restock days, and local Austin estate sale updates.</p>
     <form onsubmit="return false">
       <label class="af-label" for="hp-email" style="position:absolute;left:-9999px" data-en="Email address" data-es="Dirección de correo electrónico">Email address</label>
       <input id="hp-email" type="email" placeholder="you@example.com" autocomplete="email">
@@ -773,45 +721,45 @@ body { background: var(--af-surface); }
 <!-- ============================ 08 FOOTER ============================ -->
 <footer class="hp-footer">
   <div class="hp-footer__inner">
-    <div>
-      <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" style="width: 140px; height: auto; display: block;">
-      <p style="margin-top:var(--af-space-3)" data-en="Tiny Time Machines for Your Home." data-es="Pequeñas Máquinas del Tiempo para tu Hogar.">Tiny Time Machines for Your Home.</p>
+    <div class="hp-footer-logo-col">
+      <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
+      <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices." data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
     </div>
     <div>
-      <h3 data-en="Showroom" data-es="Exposición">Showroom</h3>
+      <h3 data-en="The Collection" data-es="La Colección">The Collection</h3>
       <ul>
-        <li><a href="#" data-en="Living Room" data-es="Sala de Estar">Living Room</a></li>
-        <li><a href="#" data-en="Kitchen + Dining" data-es="Cocina + Comedor">Kitchen + Dining</a></li>
-        <li><a href="#" data-en="Office" data-es="Oficina">Office</a></li>
-        <li><a href="#" data-en="Back Patio" data-es="Patio Trasero">Back Patio</a></li>
+        <li><a href="#collection" data-en="Chairs &amp; Seating" data-es="Sillas y Asientos">Chairs &amp; Seating</a></li>
+        <li><a href="#collection" data-en="Bamboo Dining Sets" data-es="Juegos de Comedor">Bamboo Dining Sets</a></li>
+        <li><a href="#collection" data-en="Consoles &amp; Étagères" data-es="Consolas y Estantes">Consoles &amp; Estantes</a></li>
+        <li><a href="#showroom" data-en="Austin Showroom" data-es="Exposición en Austin">Austin Showroom</a></li>
       </ul>
     </div>
     <div>
-      <h3 data-en="Atomic Finds" data-es="Atomic Finds">Atomic Finds</h3>
+      <h3 data-en="About Us" data-es="Nosotros">About Us</h3>
       <ul>
+        <li><a href="#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
         <li><a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
         <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
-        <li><a href="#" data-en="The Provenance Passport" data-es="El Pasaporte de Procedencia">The Provenance Passport</a></li>
       </ul>
     </div>
     <div>
-      <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+      <h3 data-en="Get In Touch" data-es="Contacto">Get In Touch</h3>
       <ul>
         <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a></li>
         <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</a></li>
         <li><a href="mailto:atomicfindsatx@gmail.com">atomicfindsatx@gmail.com</a></li>
-        <li data-en="Austin, Texas" data-es="Austin, Texas">Austin, Texas</li>
+        <li>Phone: 865-244-8130</li>
+        <li data-en="Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX" data-es="Mar &ndash; Sáb, 10am &ndash; 6pm &middot; Austin, TX">Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX</li>
       </ul>
     </div>
   </div>
-  <div class="hp-footer__bottom" style="display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;">
-    <span>&copy; 2026 Atomic Finds ATX &middot; Austin, Texas</span>
+  <div class="hp-footer__bottom">
+    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed by Anthony &middot; Made with love in Austin, TX</span>
     <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
       <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a> &middot;
       <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
       <a href="accessibility-statement.html" data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</a>
     </span>
-    <span data-en="Named weaves are credited to their craft traditions." data-es="Los tejidos nombrados se acreditan a sus tradiciones artesanales.">Named weaves are credited to their craft traditions.</span>
   </div>
 </footer>
 
@@ -830,27 +778,26 @@ nav.addEventListener('click', function (e) {
   }
 });
 
-// Expandable Provenance Passport logic
-document.querySelectorAll('.hp-find__toggle-btn').forEach(function (btn) {
+// Expandable Card Details logic
+document.querySelectorAll('.hp-card-toggle-btn').forEach(function (btn) {
   btn.addEventListener('click', function () {
     var isExpanded = btn.getAttribute('aria-expanded') === 'true';
     var targetId = btn.getAttribute('aria-controls');
-    var passport = document.getElementById(targetId);
+    var wrapper = document.getElementById(targetId);
 
     btn.setAttribute('aria-expanded', !isExpanded);
-    passport.classList.toggle('is-expanded', !isExpanded);
-    passport.setAttribute('aria-hidden', isExpanded);
+    wrapper.classList.toggle('is-expanded', !isExpanded);
+    wrapper.setAttribute('aria-hidden', isExpanded);
 
-    // Update button text for bilingual translation support
     var lang = document.documentElement.getAttribute('lang') || 'en';
     if (!isExpanded) {
-      btn.setAttribute('data-en', 'Close Passport');
-      btn.setAttribute('data-es', 'Cerrar Pasaporte');
-      btn.textContent = lang === 'es' ? 'Cerrar Pasaporte' : 'Close Passport';
+      btn.setAttribute('data-en', 'Close Details');
+      btn.setAttribute('data-es', 'Cerrar Detalles');
+      btn.textContent = lang === 'es' ? 'Cerrar Detalles' : 'Close Details';
     } else {
-      btn.setAttribute('data-en', 'View Passport');
-      btn.setAttribute('data-es', 'Ver Pasaporte');
-      btn.textContent = lang === 'es' ? 'Ver Pasaporte' : 'View Passport';
+      btn.setAttribute('data-en', 'View Details & Provenance');
+      btn.setAttribute('data-es', 'Ver Detalles y Procedencia');
+      btn.textContent = lang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
     }
   });
 });
@@ -866,7 +813,6 @@ if (langToggle) {
     langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
     langToggle.setAttribute('aria-label', nextLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés');
 
-    // Find and update all components with data-en/data-es
     document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
       var text = el.getAttribute('data-' + nextLang);
       var svg = el.querySelector('svg');
@@ -876,19 +822,18 @@ if (langToggle) {
       }
     });
 
-    // Sync current toggle buttons text according to expansion states
-    document.querySelectorAll('.hp-find__toggle-btn').forEach(function (btn) {
+    document.querySelectorAll('.hp-card-toggle-btn').forEach(function (btn) {
       var isExpanded = btn.getAttribute('aria-expanded') === 'true';
       if (isExpanded) {
-        btn.textContent = nextLang === 'es' ? 'Cerrar Pasaporte' : 'Close Passport';
+        btn.textContent = nextLang === 'es' ? 'Cerrar Detalles' : 'Close Details';
       } else {
-        btn.textContent = nextLang === 'es' ? 'Ver Pasaporte' : 'View Passport';
+        btn.textContent = nextLang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
       }
     });
   });
 }
 
-// Gentle fade/slide-up on scroll with a 50ms stagger step between siblings
+// Gentle scroll reveal
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var items = document.querySelectorAll('.hp-reveal');
 if (reduce || !('IntersectionObserver' in window)) {
@@ -911,12 +856,12 @@ if (reduce || !('IntersectionObserver' in window)) {
         intersectedQueue.forEach(function (el, index) {
           setTimeout(function () {
             el.classList.add('is-in');
-          }, index * 50);
+          }, index * 40);
         });
         intersectedQueue = [];
       }, 20);
     }
-  }, { rootMargin: '0px 0px -8% 0px' });
+  }, { rootMargin: '0px 0px -5% 0px' });
 
   items.forEach(function (el) { io.observe(el); });
 }
