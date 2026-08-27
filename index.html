@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
+<title>Atomic Finds ATX — Far-out finds, down-to-earth prices</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,18 +12,22 @@
 document.documentElement.classList.add('js');</script>
 <style>
 /* ==========================================================================
-   Homepage — one responsive page covering desktop, tablet and mobile.
-
-   Section order follows the sitemap:
-     00 Header · 01 Hero · 02 Our Story · 03 Featured Collection ·
-     04 Meet Nacho · 05 Visit Our Showroom · 06 Instagram ·
-     07 Testimonials · 08 Footer
+   Homepage — Atomic Finds ATX
    ========================================================================== */
 
 html, body { overflow-x: clip; }
-body { background: var(--af-surface); }
 
-.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); }
+/* Global Subtle Botanical Background Pattern (5-8% opacity) */
+body {
+  background-color: var(--af-surface);
+  background-image: url("design-system/assets/textures/botanical_pattern.jpg");
+  background-size: 480px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); position: relative; }
 .hp-sec__head { margin-bottom: clamp(2rem, 5vw, 3rem); }
 .hp-sec__head--center { text-align: center; }
 .hp-sec__head h2 { margin-bottom: var(--af-space-2); }
@@ -41,7 +45,7 @@ body { background: var(--af-surface); }
 
 .hp-header {
   position: sticky; top: 0; z-index: 30;
-  background: color-mix(in srgb, var(--af-surface) 94%, transparent);
+  background: color-mix(in srgb, var(--af-surface) 95%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--af-hairline);
 }
@@ -93,7 +97,7 @@ body { background: var(--af-surface); }
 }
 .hp-hero h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); }
 .hp-hero__eyebrow { display: flex; align-items: center; justify-content: center; gap: var(--af-space-2); margin-bottom: var(--af-space-2); }
-.hp-hero__sub { font-size: var(--af-text-xl); color: var(--af-ink-soft); margin-bottom: var(--af-space-5); }
+.hp-hero__sub { font-size: var(--af-text-xl); color: var(--af-ink-soft); margin-bottom: var(--af-space-5); max-width: 48rem; margin-inline: auto; }
 .hp-hero__social { display: flex; gap: var(--af-space-4); justify-content: center; margin-top: var(--af-space-4); font-size: var(--af-text-sm); font-weight: 600; }
 .hp-hero__social a { color: var(--af-ink-soft); text-decoration: none; }
 .hp-hero__social a:hover { color: var(--af-orange-btn); }
@@ -104,17 +108,29 @@ body { background: var(--af-surface); }
   box-shadow: 6px 6px 0 var(--af-ink); display: block;
 }
 
-/* --- Values Marquee ------------------------------------------------------ */
-.hp-values {
+/* --- Animated Marquee Strip ---------------------------------------------- */
+.hp-marquee {
   background: var(--af-mustard); color: var(--af-ink);
   border-block: 2px solid var(--af-ink);
-  padding: var(--af-space-3) var(--af-space-4);
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: var(--af-space-4); font-size: var(--af-text-sm); font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.875rem 0; overflow: hidden;
+  position: relative; width: 100%;
+}
+.hp-marquee__track {
+  display: flex; gap: var(--af-space-5); width: max-content;
+  animation: hp-marquee-scroll 35s linear infinite;
+  will-change: transform;
+}
+.hp-marquee__content {
+  display: flex; align-items: center; gap: var(--af-space-4);
+  font-size: var(--af-text-sm); font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+}
+@keyframes hp-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* --- 02 Our Story / Founder Section -------------------------------------- */
+/* --- 02 Our Story / Meet Jennyfer ---------------------------------------- */
 .hp-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
 .hp-split__media img {
   width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
@@ -122,24 +138,68 @@ body { background: var(--af-surface); }
   box-shadow: 5px 5px 0 var(--af-ink); display: block;
 }
 
-/* --- 03 Featured Collection (Stacked Cards) ------------------------------ */
-.hp-featured-list { display: flex; flex-direction: column; gap: var(--af-space-6); }
-
-.hp-find-card {
+/* --- Process Grid -------------------------------------------------------- */
+.hp-process-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--af-space-4); margin-top: var(--af-space-5);
+}
+.hp-process-card {
   background: var(--af-surface-raised);
   border: var(--af-border-width) solid var(--af-ink);
   border-radius: var(--af-radius-card);
+  padding: var(--af-space-4);
+  box-shadow: 4px 4px 0 var(--af-ink);
+}
+.hp-process-card h3 { font-size: var(--af-text-base); color: var(--af-olive-teal); margin-bottom: var(--af-space-2); }
+.hp-process-card p { font-size: var(--af-text-sm); color: var(--af-ink); margin: 0; line-height: 1.5; }
+
+/* --- Curators Grid ------------------------------------------------------- */
+.hp-curators-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--af-space-4); margin-top: var(--af-space-5);
+}
+.hp-curator-card {
+  background: var(--af-cream);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  padding: var(--af-space-4); text-align: center;
+  box-shadow: 4px 4px 0 var(--af-ink);
+}
+.hp-curator-card h3 { font-family: var(--af-font-display); font-size: var(--af-text-xl); color: var(--af-olive-teal); margin: 0 0 var(--af-space-1); }
+.hp-curator-card .hp-curator-tag { font-size: var(--af-text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--af-orange-deep); margin-bottom: var(--af-space-3); display: block; }
+.hp-curator-card p { font-size: var(--af-text-sm); color: var(--af-ink); line-height: 1.5; margin-bottom: var(--af-space-3); }
+.hp-curator-quote { font-style: italic; font-size: var(--af-text-xs); color: var(--af-ink-soft); border-top: 1px dashed var(--af-hairline); padding-top: var(--af-space-2); }
+
+/* --- 03 Featured Collection (Stacked Cards with Botanical Pattern) ------- */
+.hp-featured-list { display: flex; flex-direction: column; gap: var(--af-space-6); }
+
+.hp-find-card {
+  position: relative; isolation: isolate;
+  background-color: var(--af-cream);
+  background-image: url("design-system/assets/textures/botanical_pattern.jpg");
+  background-size: 380px;
+  background-repeat: repeat;
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
   box-shadow: 6px 6px 0 var(--af-ink);
-  padding: var(--af-space-5);
-  display: grid;
-  grid-template-columns: minmax(280px, 420px) 1fr;
-  gap: var(--af-space-6);
-  align-items: center;
+  padding: var(--af-space-4);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .hp-find-card:hover {
   transform: translateY(-2px);
   box-shadow: 8px 8px 0 var(--af-ink);
+}
+
+/* Mat overlay framing inside card */
+.hp-find-card__mat {
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: calc(var(--af-radius-card) - 6px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
 }
 
 .hp-find-card__media {
@@ -310,7 +370,7 @@ body { background: var(--af-surface); }
   .hp-nav.is-open .af-btn { justify-content: center; }
   .hp-burger { display: block; }
   .hp-split { grid-template-columns: 1fr; }
-  .hp-find-card { grid-template-columns: 1fr; gap: var(--af-space-4); }
+  .hp-find-card__mat { grid-template-columns: 1fr; gap: var(--af-space-4); }
   .hp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -318,17 +378,15 @@ body { background: var(--af-surface); }
   .hp-logo__word { height: 1.7rem; }
   .hp-logo__mark { height: 2.25rem; }
   .hp-feed { grid-template-columns: repeat(2, 1fr); }
-  .hp-values { gap: var(--af-space-2); }
-  .hp-values span { font-size: var(--af-text-xs); }
 }
 </style>
 </head>
 <body>
 
 <!-- ============================ 00 HEADER ============================ -->
-<div class="hp-announce" data-en="New vintage finds every week &middot; Free local pickup in Austin, TX" data-es="Nuevos hallazgos vintage cada semana &middot; Recogida local gratuita en Austin, TX">
+<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
   <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span>New vintage finds every week &middot; Free local pickup in Austin, TX</span>
+  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
 </div>
 
 <header class="hp-header">
@@ -336,16 +394,17 @@ body { background: var(--af-surface); }
     <a class="hp-logo" href="#top">
       <img class="hp-logo__mark" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX" width="88" height="88">
       <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX" width="240" height="67">
-      <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
+      <span class="hp-logo__tag" data-en="Far-out finds, down-to-earth prices" data-es="Hallazgos increíbles, precios accesibles">Far-out finds, down-to-earth prices</span>
     </a>
     <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
       <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
       <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
     </div>
     <nav class="hp-nav" id="hp-nav">
-      <a href="#collection" data-en="Collection" data-es="Colección">Collection</a>
-      <a href="#story" data-en="Story" data-es="Historia">Story</a>
-      <a href="#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
+      <a href="#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
+      <a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
+      <a href="#process" data-en="How We Deliver" data-es="Cómo Entregamos">How We Deliver</a>
+      <a href="#curators" data-en="Curators" data-es="Curadores">Curators</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
       <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
     </nav>
@@ -359,10 +418,12 @@ body { background: var(--af-surface); }
   <div class="hp-hero__inner">
     <p class="hp-hero__eyebrow hp-reveal">
       <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span class="af-label" data-en="Austin's Curated Mid-Century Rattan &amp; Vintage Finds" data-es="Selección Mid-Century Rattan y Hallazgos Vintage de Austin">Austin's Curated Mid-Century Rattan &amp; Vintage Finds</span>
+      <span class="af-label" data-en="Vintage, Written in the Stars" data-es="Vintage, Escrito en las Estrellas">Vintage, Written in the Stars</span>
     </p>
-    <h1 class="hp-reveal" data-en="Tiny Time Machines" data-es="Pequeñas Máquinas">Tiny Time <span style="white-space:nowrap">Machines<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="20" height="32"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
-    <p class="hp-hero__sub hp-reveal" data-en="for Your Home" data-es="del Tiempo para tu Hogar">for Your Home</p>
+    <h1 class="hp-reveal" data-en="Far-Out Finds" data-es="Hallazgos Increíbles">Far-Out <span style="white-space:nowrap">Finds<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="20" height="32"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
+    <p class="hp-hero__sub hp-reveal" data-en="Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last." data-es="Explora auténtico rattán y bambú de los años 70, restaurado en Austin para una nueva generación. Diseño eterno, construido para durar.">
+      Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last.
+    </p>
     <div class="hp-reveal">
       <a href="#collection" class="af-btn af-btn--primary" data-en="Shop the Collection" data-es="Comprar la Colección">
         Shop the Collection
@@ -376,30 +437,47 @@ body { background: var(--af-surface); }
   </div>
 
   <div class="hp-hero__media hp-reveal">
-    <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a vintage rattan coffee table in a sunlit Austin living room" width="1200" height="798" fetchpriority="high" decoding="async">
+    <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798" fetchpriority="high" decoding="async">
   </div>
 </section>
 
-<!-- ============================ VALUES =============================== -->
-<div class="hp-values">
-  <span data-en="Handpicked Mid-Century Rattan" data-es="Rattán Mid-Century Seleccionado">Handpicked Mid-Century Rattan</span>
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span data-en="Timeless Austin Charm" data-es="Encanto Eterno de Austin">Timeless Austin Charm</span>
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span data-en="Local Austin Delivery &amp; Pickup" data-es="Entrega y Recogida Local en Austin">Local Austin Delivery &amp; Pickup</span>
+<!-- ==================== ANIMATED MARQUEE STRIP ======================= -->
+<div class="hp-marquee" aria-label="Brand highlights">
+  <div class="hp-marquee__track">
+    <div class="hp-marquee__content">
+      <span>Authentic 1970s Rattan &amp; Bamboo</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Hand-Restored by Jennyfer in Austin</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>White-Glove Local Austin Delivery</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Far-out finds, down-to-earth prices</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    </div>
+    <div class="hp-marquee__content" aria-hidden="true">
+      <span>Authentic 1970s Rattan &amp; Bamboo</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Hand-Restored by Jennyfer in Austin</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>White-Glove Local Austin Delivery</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <span>Far-out finds, down-to-earth prices</span>
+      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    </div>
+  </div>
 </div>
 
 <!-- ========================== 02 OUR STORY =========================== -->
 <section class="hp-sec af-container" id="story">
   <div class="hp-split">
     <div class="hp-reveal">
-      <span class="af-label" data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
-      <h2 style="margin-top:var(--af-space-2)" data-en="Curated with passion in Austin, Texas" data-es="Curado con pasión en Austin, Texas">Curated with passion in Austin, Texas</h2>
-      <p data-en="Founded in Austin by Anthony, Atomic Finds ATX is built on a love for mid-century modern rattan, bamboo, and wicker design. Every piece is hand-selected from estate sales and local treasures across Central Texas, restored with care, and prepared for a new life in your home." data-es="Fundado en Austin por Anthony, Atomic Finds ATX se basa en el amor por el diseño mid-century de rattán, bambú y mimbre. Cada pieza es seleccionada a mano en ventas de casas y tesoros locales de Central Texas, restaurada con cuidado y preparada para una nueva vida en tu hogar.">
-        Founded in Austin by Anthony, Atomic Finds ATX is built on a love for mid-century modern rattan, bamboo, and wicker design. Every piece is hand-selected from estate sales and local treasures across Central Texas, restored with care, and prepared for a new life in your home.
+      <span class="af-label" data-en="Meet Jennyfer &amp; Our Story" data-es="Conoce a Jennyfer y Nuestra Historia">Meet Jennyfer &amp; Our Story</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Restored by Hand for the Modern Home" data-es="Restaurado a Mano para el Hogar Moderno">Restored by Hand for the Modern Home</h2>
+      <p data-en="Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life." data-es="Atomic Finds ATX es una operación de una sola mujer, de principio a fin. Jennyfer busca cada pieza ella misma y luego restaura cada una a mano. Su ojo es todo el negocio: un instinto para las piezas que vale la pena salvar.">
+        Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life.
       </p>
-      <p data-en="We only bring home rattan and bamboo that has earned it: sound joints, honest vintage wear, and silhouettes nobody manufactures today. Shop dog Nacho inspects every delivery to ensure maximum comfort and presence." data-es="Solo traemos a casa rattán y bambú que se lo ha ganado: uniones firmes, desgaste vintage honesto y siluetas que ya nadie fabrica hoy. Nuestro perro Nacho inspecciona cada entrega para garantizar el máximo confort.">
-        We only bring home rattan and bamboo that has earned it: sound joints, honest vintage wear, and silhouettes nobody manufactures today. Shop dog Nacho inspects every delivery to ensure maximum comfort and presence.
+      <p data-en="No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor." data-es="Sin almacenes, sin producción en masa: solo Jennyfer, un taller y un amor genuino por la artesanía de mediados de siglo. Cada pieza es seleccionada a mano en ventas de casas y colecciones privadas de Austin.">
+        No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor.
       </p>
       <a href="#collection" class="af-btn af-btn--secondary" data-en="Explore the collection" data-es="Explorar la colección">Explore the collection</a>
     </div>
@@ -409,134 +487,227 @@ body { background: var(--af-surface); }
   </div>
 </section>
 
+<!-- ===================== HOW WE DELIVER (PROCESS) ==================== -->
+<section class="hp-sec af-container" id="process" style="border-top: 2px dashed var(--af-hairline);">
+  <div class="hp-sec__head hp-sec__head--center hp-reveal">
+    <span class="af-label" data-en="The Process" data-es="El Proceso">The Process</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="How We Deliver" data-es="Cómo Entregamos">How We Deliver</h2>
+    <p data-en="From Austin estate sales straight to your living room &mdash; handled with white-glove care." data-es="Desde las ventas de casas en Austin directamente a tu sala &mdash; tratado con cuidado especial.">From Austin estate sales straight to your living room &mdash; handled with white-glove care.</p>
+  </div>
+
+  <div class="hp-process-grid hp-reveal">
+    <div class="hp-process-card">
+      <span class="af-tag" style="margin-bottom:var(--af-space-2)">Step 01</span>
+      <h3 data-en="Browse &amp; Select" data-es="Buscar y Seleccionar">Browse &amp; Select</h3>
+      <p data-en="Every piece in the collection is hand-picked by Jennyfer from Austin estate sales, markets, and private collections. What you see is what exists &mdash; no warehouse stock." data-es="Cada pieza de la colección es seleccionada a mano por Jennyfer en ventas de casas y mercados de Austin. Lo que ves es lo que existe.">
+        Every piece in the collection is hand-picked by Jennyfer from Austin estate sales, markets, and private collections. What you see is what exists &mdash; no warehouse stock.
+      </p>
+    </div>
+    <div class="hp-process-card">
+      <span class="af-tag" style="margin-bottom:var(--af-space-2)">Step 02</span>
+      <h3 data-en="Restored with Care" data-es="Restaurado con Cuidado">Restored with Care</h3>
+      <p data-en="Each item is cleaned, oiled, photographed in natural light, and prepared with archival care. Rattan is fragile; we treat it like the heirloom it is." data-es="Cada artículo se limpia, se aceita, se fotografía con luz natural y se prepara con cuidado de archivo. Trata el rattán como una reliquia.">
+        Each item is cleaned, oiled, photographed in natural light, and prepared with archival care. Rattan is fragile; we treat it like the heirloom it is.
+      </p>
+    </div>
+    <div class="hp-process-card">
+      <span class="af-tag" style="margin-bottom:var(--af-space-2)">Step 03</span>
+      <h3 data-en="Local Austin Delivery" data-es="Entrega Local en Austin">Local Austin Delivery</h3>
+      <p data-en="Delivered within the greater Austin metro &mdash; typically within 3&ndash;5 days. Carried inside, placed where you want it, and packaging taken away." data-es="Entregado en el área metropolitana de Austin, normalmente en 3 a 5 días. Se lleva al interior, se coloca donde quieras y se retira el embalaje.">
+        Delivered within the greater Austin metro &mdash; typically within 3&ndash;5 days. Carried inside, placed where you want it, and packaging taken away.
+      </p>
+    </div>
+    <div class="hp-process-card">
+      <span class="af-tag" style="margin-bottom:var(--af-space-2)">Step 04</span>
+      <h3 data-en="100% Satisfaction" data-es="100% Satisfacción">100% Satisfaction</h3>
+      <p data-en="Every piece is backed by Jennyfer. If something arrives damaged or isn't as described, she'll make it right. No friction, no fine print." data-es="Cada pieza está respaldada por Jennyfer. Si algo llega dañado o no es como se describe, ella lo solucionará.">
+        Every piece is backed by Jennyfer. If something arrives damaged or isn't as described, she'll make it right. No friction, no fine print.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== 03 FEATURED COLLECTION ====================== -->
 <section class="hp-sec af-container" id="collection">
   <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="Curated Vintage Finds" data-es="Hallazgos Vintage Curados">Curated Vintage Finds</span>
+    <span class="af-label" data-en="Curated Vintage Collection" data-es="Colección Vintage Curada">Curated Vintage Collection</span>
     <h2 style="margin-top:var(--af-space-2)" data-en="Featured Collection" data-es="Colección Destacada">Featured Collection</h2>
     <p data-en="Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin." data-es="Piezas mid-century de rattán, bambú y tejido seleccionadas a mano listas para adoptar en Austin.">Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin.</p>
   </div>
 
   <div class="hp-featured-list">
-    <!-- Featured Card 1: Sunny -->
-    <article class="hp-find-card hp-reveal">
-      <div class="hp-find-card__media">
-        <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a 1970s vintage rattan coffee table" width="1200" height="798" loading="lazy" decoding="async">
-      </div>
-      <div class="hp-find-card__content">
-        <div class="hp-find-card__header">
-          <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table" data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974</h3>
-          <span class="hp-find-card__price">$485</span>
+    <!-- Featured Card 1: Rattan Lounge Chair (Sunny) -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Sunny.jpg" alt="Sunny, a 1970s vintage rattan coffee table" width="1200" height="798" loading="lazy" decoding="async">
         </div>
-        <div style="margin-bottom: var(--af-space-3);">
-          <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-          <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
-        </div>
-        <p class="hp-find-card__desc" data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing." data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas.">
-          A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing.
-        </p>
-        <div class="hp-find-card__actions">
-          <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-sunny" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
-        </div>
-        
-        <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
-          <div class="hp-find-card__details">
-            <div class="hp-find-card__specs-grid">
-              <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
-              <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp; Origin</strong><span data-en="Solihiya &middot; Philippines" data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
-              <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage Wear</span></div>
-              <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or $30 Local Delivery" data-es="Recogida Gratis o $30 Entrega Local">Free Pickup or $30 Local Delivery</span></div>
-            </div>
-            <div class="hp-find-card__quote">
-              <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Nacho" data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Nacho">
-                &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Nacho
-              </p>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table" data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974</h3>
+            <span class="hp-find-card__price">$485</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer." data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas y un marco resistente. Restaurada a mano por Jennyfer.">
+            A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-sunny" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp; Origin</strong><span data-en="Solihiya &middot; Philippines" data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage Wear</span></div>
+                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or Local White-Glove Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or Local White-Glove Delivery</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- Featured Card 2: Flora -->
-    <article class="hp-find-card hp-reveal">
-      <div class="hp-find-card__media">
-        <img src="design-system/assets/product-photos/Flora.jpg" alt="Flora, a 4-piece vintage bamboo dining set" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="hp-find-card__content">
-        <div class="hp-find-card__header">
-          <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Dining Set" data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978</h3>
-          <span class="hp-find-card__price">$640</span>
+    <!-- Featured Card 2: Flora Dining Set -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Flora.jpg" alt="Flora, a 4-piece 1970s bamboo dining set" width="1200" height="800" loading="lazy" decoding="async">
         </div>
-        <div style="margin-bottom: var(--af-space-3);">
-          <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-          <span class="af-tag" data-en="Bamboo &amp; Rattan" data-es="Bambú y Rattán">Bamboo &amp; Rattan</span>
-        </div>
-        <p class="hp-find-card__desc" data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored with original organic textures preserved." data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado.">
-          A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored with original organic textures preserved.
-        </p>
-        <div class="hp-find-card__actions">
-          <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-flora" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
-        </div>
-        
-        <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
-          <div class="hp-find-card__details">
-            <div class="hp-find-card__specs-grid">
-              <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
-              <div class="hp-spec-item"><strong data-en="Chairs" data-es="Sillas">Chairs</strong><span data-en="4 Barrel Armchairs Included" data-es="4 Sillas de Barril Incluidas">4 Barrel Armchairs Included</span></div>
-              <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored &amp; Oiled</span></div>
-              <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or $35 Local Delivery" data-es="Recogida Gratis o $35 Entrega Local">Free Pickup or $35 Local Delivery</span></div>
-            </div>
-            <div class="hp-find-card__quote">
-              <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Nacho" data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Nacho">
-                &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Nacho
-              </p>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Bamboo Dining Set" data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978</h3>
+            <span class="hp-find-card__price">$640</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved." data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado por Jennyfer.">
+            A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-flora" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Procedencia</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Chairs Included" data-es="Sillas Incluidas">Chairs Included</strong><span data-en="4 Barrel Armchairs" data-es="4 Sillas de Barril">4 Barrel Armchairs</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored &amp; Oiled</span></div>
+                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or White-Glove Local Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or White-Glove Local Delivery</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </article>
 
-    <!-- Featured Card 3: Agnes -->
-    <article class="hp-find-card hp-reveal">
-      <div class="hp-find-card__media">
-        <img src="design-system/assets/product-photos/Product 2.jpg" alt="Agnes, a mid-century woven rattan console table" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="hp-find-card__content">
-        <div class="hp-find-card__header">
-          <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Console Table" data-es="Agnes &middot; Mesa Consola c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972</h3>
-          <span class="hp-find-card__price">$385</span>
+    <!-- Featured Card 3: Agnes Console Table -->
+    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
+      <div class="hp-find-card__mat">
+        <div class="hp-find-card__media">
+          <img src="design-system/assets/product-photos/Product 2.jpg" alt="Agnes, a mid-century woven rattan console table" width="1200" height="800" loading="lazy" decoding="async">
         </div>
-        <div style="margin-bottom: var(--af-space-3);">
-          <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-          <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
-        </div>
-        <p class="hp-find-card__desc" data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy." data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero excepcionalmente resistente.">
-          A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy.
-        </p>
-        <div class="hp-find-card__actions">
-          <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-          <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-agnes" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
-        </div>
-        
-        <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
-          <div class="hp-find-card__details">
-            <div class="hp-find-card__specs-grid">
-              <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
-              <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
-              <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage Condition</span></div>
-              <div class="hp-spec-item"><strong data-en="Found" data-es="Encontrado">Found</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park, Austin</span></div>
-            </div>
-            <div class="hp-find-card__quote">
-              <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Nacho" data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Nacho">
-                &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Nacho
-              </p>
+        <div class="hp-find-card__content">
+          <div class="hp-find-card__header">
+            <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Woven Console" data-es="Agnes &middot; Consola Tejida c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972</h3>
+            <span class="hp-find-card__price">$385</span>
+          </div>
+          <div style="margin-bottom: var(--af-space-3);">
+            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+            <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
+          </div>
+          <p class="hp-find-card__desc" data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale." data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero extremadamente resistente. Obtenida en Hyde Park.">
+            A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale.
+          </p>
+          <div class="hp-find-card__actions">
+            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
+            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-agnes" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Procedencia</button>
+          </div>
+          
+          <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
+            <div class="hp-find-card__details">
+              <div class="hp-find-card__specs-grid">
+                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
+                <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
+                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage Condition</span></div>
+                <div class="hp-spec-item"><strong data-en="Found Location" data-es="Lugar Encontrado">Found Location</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park, Austin</span></div>
+              </div>
+              <div class="hp-find-card__quote">
+                <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Milo">
+                  &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ========================== THE CURATORS ========================== -->
+<section class="hp-sec af-container" id="curators" style="border-top: 2px dashed var(--af-hairline);">
+  <div class="hp-sec__head hp-sec__head--center hp-reveal">
+    <span class="af-label" data-en="Meet the Mascots" data-es="Conoce a las Mascotas">Meet the Mascots</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="The Curators" data-es="Los Curadores">The Curators</h2>
+    <p data-en="Four distinct tastes guiding every vintage find in our shop." data-es="Cuatro gustos distintos que guían cada hallazgo vintage en nuestra tienda.">Four distinct tastes guiding every vintage find in our shop.</p>
+  </div>
+
+  <div class="hp-curators-grid hp-reveal">
+    <div class="hp-curator-card">
+      <h3>Daisy</h3>
+      <span class="hp-curator-tag" data-en="The Laid-Back Tastemaker" data-es="La Creadora de Tendencias">The Laid-Back Tastemaker</span>
+      <p data-en="Curates lounge-worthy hero pieces &mdash; peacock chairs, loungers, anything with presence and comfort." data-es="Selecciona piezas principales para descansar: sillas pavo real, tumbonas, cualquier cosa con presencia y comodidad.">
+        Curates lounge-worthy hero pieces &mdash; peacock chairs, loungers, anything with presence and comfort.
+      </p>
+      <div class="hp-curator-quote">&ldquo;If it makes you exhale, it's the one.&rdquo;</div>
+    </div>
+
+    <div class="hp-curator-card">
+      <h3>Milo</h3>
+      <span class="hp-curator-tag" data-en="The Detail Nerd" data-es="El Experto en Detalles">The Detail Nerd</span>
+      <p data-en="Curates craftsmanship-first finds &mdash; solid construction, quality materials, honest restorations with a story." data-es="Selecciona hallazgos donde la artesanía es lo primero: construcción sólida, materiales de calidad, restauraciones honestas.">
+        Curates craftsmanship-first finds &mdash; solid construction, quality materials, honest restorations with a story.
+      </p>
+      <div class="hp-curator-quote">&ldquo;Hand-woven rattan, restored joints, built to outlast us both. I checked.&rdquo;</div>
+    </div>
+
+    <div class="hp-curator-card">
+      <h3>Tatiana</h3>
+      <span class="hp-curator-tag" data-en="The Bold One" data-es="La Audaz">The Bold One</span>
+      <p data-en="Curates sculptural showstoppers &mdash; high-drama silhouettes and pieces with serious character." data-es="Selecciona piezas escultóricas espectaculares: siluetas de alto impacto y objetos con verdadero carácter.">
+        Curates sculptural showstoppers &mdash; high-drama silhouettes and pieces with serious character.
+      </p>
+      <div class="hp-curator-quote">&ldquo;Play it safe? In this economy? No.&rdquo;</div>
+    </div>
+
+    <div class="hp-curator-card">
+      <h3>Malibu</h3>
+      <span class="hp-curator-tag" data-en="The Host With the Most" data-es="El Anfitrión Perfecto">The Host With the Most</span>
+      <p data-en="Curates entertaining &amp; social pieces &mdash; bar carts, dining sets, seating built for company." data-es="Selecciona piezas sociales y para recibir visitas: carritos de bar, juegos de comedor, asientos hechos para compartir.">
+        Curates entertaining &amp; social pieces &mdash; bar carts, dining sets, seating built for company.
+      </p>
+      <div class="hp-curator-quote">&ldquo;Picture it: friends, this cart, golden hour. You're welcome.&rdquo;</div>
+    </div>
   </div>
 </section>
 
@@ -602,8 +773,8 @@ body { background: var(--af-surface); }
     <div class="hp-reveal">
       <span class="af-label" data-en="Follow Along" data-es="Síguenos">Follow Along</span>
       <h2 style="margin-top:var(--af-space-2)" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</h2>
-      <p data-en="New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations." data-es="Los nuevos hallazgos llegan primero a Instagram, directamente desde ventas de casas locales en Austin, con Nacho supervisando. Síguenos para alertas de inventario y restauraciones.">
-        New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations.
+      <p data-en="New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations." data-es="Los nuevos hallazgos llegan primero a Instagram, directamente desde ventas de casas locales en Austin, con Jennyfer y Nacho supervisando. Síguenos para alertas de inventario.">
+        New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations.
       </p>
       <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="af-btn af-btn--primary" data-en="Follow on Instagram" data-es="Seguir en Instagram">Follow on Instagram</a>
     </div>
@@ -613,8 +784,9 @@ body { background: var(--af-surface); }
 <!-- ========================= 07 TESTIMONIALS ========================= -->
 <section class="hp-sec af-container">
   <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="Facebook Marketplace Reviews" data-es="Reseñas de Facebook Marketplace">Facebook Marketplace Reviews</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Loved by Austin Buyers" data-es="Amado por Compradores en Austin">Loved by Austin Buyers</h2>
+    <span class="af-label" data-en="Customer Reviews" data-es="Reseñas de Clientes">Customer Reviews</span>
+    <h2 style="margin-top:var(--af-space-2)" data-en="What Austin Is Saying" data-es="Lo que Dice Austin">What Austin Is Saying</h2>
+    <p data-en="Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)" data-es="Jennyfer Gomez &middot; 5.0 &#9733; (81 valoraciones &middot; Altamente Calificado)">Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)</p>
   </div>
 
   <div class="hp-slider" tabindex="0" role="region" aria-label="Customer testimonials, scrollable" data-en="Customer testimonials, scrollable" data-es="Testimonios de clientes, desplazable">
@@ -626,8 +798,8 @@ body { background: var(--af-surface); }
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;Anthony found us the exact 1970s rattan coffee table we'd been searching for. Delivered right to our 78704 living room!&rdquo;</blockquote>
-      <cite>&mdash; Sarah K., East Austin &middot; Verified Buyer</cite>
+      <blockquote>&ldquo;Jennyfer and her husband are awesome! Wonderful sellers and wonderful people. We live nearby and they even went out of their way to deliver the table so I didn't have to get a U-Haul. Thank you so much!&rdquo;</blockquote>
+      <cite>&mdash; Esteban &middot; July 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
     </figure>
 
     <figure class="hp-quote hp-reveal">
@@ -638,8 +810,8 @@ body { background: var(--af-surface); }
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;Top-quality mid-century pieces, super responsive communication, and Nacho is the best assistant ever. 10/10 recommendation.&rdquo;</blockquote>
-      <cite>&mdash; Marcus T., Hyde Park &middot; Verified Buyer</cite>
+      <blockquote>&ldquo;It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly.&rdquo;</blockquote>
+      <cite>&mdash; Amanda &middot; May 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
     </figure>
 
     <figure class="hp-quote hp-reveal">
@@ -650,8 +822,8 @@ body { background: var(--af-surface); }
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
         <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
       </div>
-      <blockquote>&ldquo;The bamboo dining set arrived immaculate and restored. Atomic Finds is the real deal for vintage in Austin.&rdquo;</blockquote>
-      <cite>&mdash; Dani K., South Congress &middot; Verified Buyer</cite>
+      <blockquote>&ldquo;Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I got!! I will most likely be back &gt;:)&rdquo;</blockquote>
+      <cite>&mdash; Brittney &middot; April 2026 (Item Description &middot; Communication)</cite>
     </figure>
   </div>
 </section>
@@ -675,43 +847,43 @@ body { background: var(--af-surface); }
   <div class="hp-footer__inner">
     <div class="hp-footer-logo-col">
       <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" width="160" height="160" loading="lazy" decoding="async">
-      <p style="margin-top:var(--af-space-2)" data-en="Tiny Time Machines for Your Home." data-es="Pequeñas Máquinas del Tiempo para tu Hogar.">Tiny Time Machines for Your Home.</p>
+      <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices." data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
     </div>
     <div>
-      <h3 data-en="Collection" data-es="Colección">Collection</h3>
+      <h3 data-en="The Collection" data-es="La Colección">The Collection</h3>
       <ul>
-        <li><a href="#collection" data-en="Living Room Rattan" data-es="Rattán de Sala">Living Room Rattan</a></li>
-        <li><a href="#collection" data-en="Dining &amp; Seating" data-es="Comedor y Sillas">Dining &amp; Seating</a></li>
-        <li><a href="#collection" data-en="Consoles &amp; Shelves" data-es="Consolas y Estantes">Consoles &amp; Shelves</a></li>
-        <li><a href="#showroom" data-en="Showroom Showcase" data-es="Exposición">Showroom Showcase</a></li>
+        <li><a href="#collection" data-en="Chairs &amp; Seating" data-es="Sillas y Asientos">Chairs &amp; Seating</a></li>
+        <li><a href="#collection" data-en="Bamboo Dining Sets" data-es="Juegos de Comedor">Bamboo Dining Sets</a></li>
+        <li><a href="#collection" data-en="Consoles &amp; Étagères" data-es="Consolas y Estantes">Consoles &amp; Étagères</a></li>
+        <li><a href="#showroom" data-en="Austin Showroom" data-es="Exposición en Austin">Austin Showroom</a></li>
       </ul>
     </div>
     <div>
-      <h3 data-en="Atomic Finds" data-es="Atomic Finds">Atomic Finds</h3>
+      <h3 data-en="About Us" data-es="Nosotros">About Us</h3>
       <ul>
-        <li><a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
-        <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
-        <li><a href="#collection" data-en="Provenance Passport" data-es="Pasaporte de Procedencia">Provenance Passport</a></li>
+        <li><a href="#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
+        <li><a href="#process" data-en="How We Source" data-es="Cómo Seleccionamos">How We Source</a></li>
+        <li><a href="#curators" data-en="Meet the Mascots" data-es="Mascotas y Curadores">Meet the Mascots</a></li>
       </ul>
     </div>
     <div>
-      <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+      <h3 data-en="Get In Touch" data-es="Contacto">Get In Touch</h3>
       <ul>
         <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a></li>
         <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</a></li>
         <li><a href="mailto:atomicfindsatx@gmail.com">atomicfindsatx@gmail.com</a></li>
-        <li data-en="Austin, Texas" data-es="Austin, Texas">Austin, Texas</li>
+        <li>Phone: 865-244-8130</li>
+        <li data-en="Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX" data-es="Mar &ndash; Sáb, 10am &ndash; 6pm &middot; Austin, TX">Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX</li>
       </ul>
     </div>
   </div>
   <div class="hp-footer__bottom">
-    <span>&copy; 2026 Atomic Finds ATX &middot; Austin, Texas</span>
+    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed by Anthony &middot; Made with love in Austin, TX</span>
     <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
       <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a> &middot;
       <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
       <a href="accessibility-statement.html" data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</a>
     </span>
-    <span data-en="Named weaves are credited to their craft traditions." data-es="Los tejidos nombrados se acreditan a sus tradiciones artesanales.">Named weaves are credited to their craft traditions.</span>
   </div>
 </footer>
 
