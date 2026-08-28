@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact &amp; Delivery Inquiries — Atomic Finds ATX</title>
+<meta name="description" content="Get in touch with Jennyfer at Atomic Finds ATX in Austin, TX for product inquiries, item holds, and local white-glove delivery quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system/styles.css">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+html, body { overflow-x: clip; }
+body { background: var(--af-surface); }
+
+.hp-announce {
+  background: var(--af-olive-teal); color: var(--af-cream);
+  text-align: center; padding: var(--af-space-2) var(--af-space-4);
+  font-size: var(--af-text-sm); letter-spacing: 0.04em;
+  display: flex; align-items: center; justify-content: center; gap: var(--af-space-2);
+}
+.hp-announce .af-sparkle { color: var(--af-mustard); }
+
+.hp-header {
+  position: sticky; top: 0; z-index: 30;
+  background: color-mix(in srgb, var(--af-surface) 95%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--af-hairline);
+}
+.hp-header__inner {
+  display: flex; align-items: center; gap: var(--af-space-4);
+  max-width: var(--af-container); margin-inline: auto;
+  padding: var(--af-space-2) var(--af-space-3);
+}
+.hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; flex: none; }
+.hp-logo__word { height: 3.4rem; width: auto; }
+.hp-logo__tag {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  text-transform: none; letter-spacing: 0.02em;
+  color: var(--af-olive-teal); padding-left: var(--af-space-3); margin-left: var(--af-space-2);
+  border-left: 2px solid var(--af-orange); line-height: 1.2; white-space: nowrap;
+}
+.hp-nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); align-items: center; }
+.hp-nav a {
+  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--af-ink); text-decoration: none; white-space: nowrap;
+}
+.hp-nav a:hover { color: var(--af-orange-btn); text-decoration: none; }
+.hp-nav a.af-btn,
+.hp-nav a.af-btn:hover { color: var(--af-btn-ink); }
+.hp-burger {
+  display: none; margin-left: auto;
+  background: var(--af-cream); color: var(--af-ink);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: 12px; padding: 0.4rem 0.75rem; cursor: pointer;
+  font: inherit; font-size: var(--af-text-sm); font-weight: 600;
+}
+.hp-lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 999px; background: var(--af-cream); color: var(--af-ink);
+  border: 1.5px solid var(--af-ink); cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hp-lang-toggle:hover { background: var(--af-mustard); color: var(--af-ink); }
+
+/* Contact Section Layout */
+.contact-sec { padding-block: clamp(3rem, 6vw, 5rem); }
+.contact-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 5vw, 3.5rem); align-items: start;
+  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-3);
+}
+
+.contact-card {
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  box-shadow: 6px 6px 0 var(--af-ink);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+.contact-card h2 { margin-bottom: var(--af-space-2); color: var(--af-olive-teal); }
+
+.af-form { display: flex; flex-direction: column; gap: var(--af-space-3); margin-top: var(--af-space-4); }
+.af-form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.af-form-group label { font-size: var(--af-text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--af-ink-soft); }
+.af-form-group input,
+.af-form-group select,
+.af-form-group textarea {
+  padding: 0.75rem 1rem; font: inherit; font-size: var(--af-text-base); color: var(--af-ink);
+  background: var(--af-cream); border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-sm); transition: border-color 0.2s ease;
+}
+.af-form-group input:focus,
+.af-form-group select:focus,
+.af-form-group textarea:focus {
+  outline: 2px solid var(--af-orange); outline-offset: 2px;
+}
+
+.contact-info-card {
+  background: var(--af-cream);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  box-shadow: 6px 6px 0 var(--af-ink);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+.contact-info-list { list-style: none; padding: 0; margin: var(--af-space-4) 0 0; display: flex; flex-direction: column; gap: var(--af-space-3); }
+.contact-info-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: var(--af-text-base); }
+.contact-info-item svg { color: var(--af-orange-btn); flex: none; margin-top: 0.2rem; }
+
+.hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6); margin-top: clamp(3rem, 6vw, 5rem); }
+.hp-footer a { color: var(--af-cream); text-decoration: none; }
+.hp-footer__inner {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-3);
+}
+.hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); margin-bottom: var(--af-space-3); }
+.hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
+.hp-footer-logo-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.hp-footer__monogram { width: 140px; height: auto; display: block; margin-bottom: var(--af-space-2); }
+.hp-footer__bottom {
+  max-width: var(--af-container); margin: clamp(2rem, 5vw, 3rem) auto 0;
+  padding: var(--af-space-4) var(--af-space-3) 0;
+  border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
+  display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;
+  font-size: var(--af-text-sm);
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .hp-nav { display: none; }
+  .hp-nav.is-open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--af-surface); border-bottom: 2px solid var(--af-hairline);
+    padding: var(--af-space-4) var(--af-space-5); gap: var(--af-space-4);
+  }
+  .hp-burger { display: block; }
+}
+</style>
+</head>
+<body>
+
+<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
+</div>
+
+<header class="hp-header">
+  <div class="hp-header__inner">
+    <a class="hp-logo" href="index.html">
+      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX" width="240" height="67">
+      <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
+      <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
+      <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
+    </div>
+    <nav class="hp-nav" id="hp-nav">
+      <a href="index.html#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
+      <a href="index.html#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
+      <a href="index.html#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
+      <a href="contact.html" style="color:var(--af-orange-btn)" data-en="Contact" data-es="Contacto">Contact</a>
+      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+    </nav>
+  </div>
+</header>
+
+<main class="contact-sec">
+  <div class="contact-grid">
+    <!-- Contact Form Card -->
+    <div class="contact-card">
+      <span class="af-label" data-en="Get In Touch" data-es="Ponte en Contacto">Get In Touch</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Send a Message or Request Delivery" data-es="Envía un Mensaje o Solicita Entrega">Send a Message or Request Delivery</h2>
+      <p data-en="Have a question about a piece, want to place a hold, or need a local Austin delivery quote? Fill out the form below and Jennyfer will get right back to you." data-es="¿Tienes alguna pregunta sobre una pieza o necesitas una cotización de entrega en Austin? Completa el siguiente formulario.">
+        Have a question about a piece, want to place a hold, or need a local Austin delivery quote? Fill out the form below and Jennyfer will get right back to you.
+      </p>
+
+      <form class="af-form">
+        <div class="af-form-group">
+          <label for="c-name" data-en="Your Full Name" data-es="Tu Nombre Completo">Your Full Name</label>
+          <input type="text" id="c-name" placeholder="Jane Smith" required>
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-email" data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
+          <input type="email" id="c-email" placeholder="jane@example.com" required>
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-phone" data-en="Phone Number (Optional)" data-es="Teléfono (Opcional)">Phone Number (Optional)</label>
+          <input type="tel" id="c-phone" placeholder="(512) 555-0199">
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-type" data-en="Inquiry Type" data-es="Tipo de Consulta">Inquiry Type</label>
+          <select id="c-type">
+            <option value="question" data-en="General Question" data-es="Pregunta General">General Question</option>
+            <option value="hold" data-en="Product Inquiry / 24-Hour Hold Request" data-es="Consulta de Producto / Apartado">Product Inquiry / 24-Hour Hold Request</option>
+            <option value="delivery" data-en="Local Austin Delivery Quote" data-es="Cotización de Entrega Local en Austin">Local Austin Delivery Quote</option>
+            <option value="sourcing" data-en="Custom Vintage Sourcing Tip" data-es="Búsqueda Vintage Personalizada">Custom Vintage Sourcing Tip</option>
+          </select>
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-product" data-en="Select Piece / Find" data-es="Seleccionar Pieza">Select Piece / Find</label>
+          <select id="c-product">
+            <option value="sunny">Sunny &middot; 1974 Rattan Coffee Table ($485)</option>
+            <option value="flora">Flora &middot; 1978 Bamboo 4-Chair Dining Set ($640)</option>
+            <option value="agnes">Agnes &middot; 1972 Woven Console Table ($385)</option>
+            <option value="ramona">Ramona &middot; Split-Bamboo Arched Étagère</option>
+            <option value="other">Other / Custom Piece Inquiry</option>
+          </select>
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-delivery" data-en="Delivery Preference" data-es="Preferencia de Entrega">Delivery Preference</label>
+          <select id="c-delivery">
+            <option value="pickup" data-en="South Austin Local Pickup (Free)" data-es="Recogida en South Austin (Gratis)">South Austin Local Pickup (Free)</option>
+            <option value="curbside" data-en="Curbside Austin Metro Delivery" data-es="Entrega Local a Pie de Calle en Austin">Curbside Austin Metro Delivery</option>
+            <option value="white-glove" data-en="White-Glove In-Home Placement" data-es="Entrega Guante Blanco en Casa">White-Glove In-Home Placement</option>
+          </select>
+        </div>
+
+        <div class="af-form-group">
+          <label for="c-msg" data-en="Message / Details" data-es="Mensaje / Detalles">Message / Details</label>
+          <textarea id="c-msg" rows="4" placeholder="Tell us what you're looking for, ask about a specific piece, or share your Austin zip code for delivery..." required></textarea>
+        </div>
+
+        <button type="submit" class="af-btn af-btn--primary" style="margin-top:var(--af-space-2);" data-en="Send Message to Jennyfer" data-es="Enviar Mensaje a Jennyfer">
+          Send Message to Jennyfer
+          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Contact Info Sidebar -->
+    <div class="contact-info-card">
+      <span class="af-label" data-en="Direct Contact" data-es="Contacto Directo">Direct Contact</span>
+      <h3 style="margin-top:var(--af-space-2); color:var(--af-olive-teal);" data-en="Atomic Finds ATX Studio" data-es="Estudio Atomic Finds ATX">Atomic Finds ATX Studio</h3>
+      <p data-en="Hand-restored vintage rattan &amp; bamboo in Austin, Texas. Sourced with love, inspected by Nacho." data-es="Rattán y bambú vintage restaurado a mano en Austin, Texas.">
+        Hand-restored vintage rattan &amp; bamboo in Austin, Texas. Sourced with love, inspected by Nacho.
+      </p>
+
+      <ul class="contact-info-list">
+        <li class="contact-info-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span><strong>Phone:</strong> 865-244-8130</span>
+        </li>
+        <li class="contact-info-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span><strong>Email:</strong> <a href="mailto:atomicfindsatx@gmail.com" style="color:var(--af-orange-btn); text-decoration:none;">atomicfindsatx@gmail.com</a></span>
+        </li>
+        <li class="contact-info-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span data-en="Hours: Tue &ndash; Sat, 10am &ndash; 6pm" data-es="Horario: Mar &ndash; Sáb, 10am &ndash; 6pm"><strong>Hours:</strong> Tue &ndash; Sat, 10am &ndash; 6pm</span>
+        </li>
+        <li class="contact-info-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span data-en="Pickup Location: South Austin, TX (78704 / 78745)" data-es="Lugar de Recogida: South Austin, TX"><strong>Pickup:</strong> South Austin, TX (Arranged upon purchase)</span>
+        </li>
+      </ul>
+
+      <div style="margin-top:var(--af-space-4); padding-top:var(--af-space-3); border-top:1px dashed var(--af-hairline);">
+        <strong style="font-size:var(--af-text-xs); text-transform:uppercase; letter-spacing:0.08em; color:var(--af-ink-soft);" data-en="Active Channels" data-es="Canales Activos">Active Channels</strong>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+          <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="Instagram" data-es="Instagram">Instagram</a>
+          <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="Facebook Marketplace" data-es="Marketplace">Marketplace</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="hp-footer">
+  <div class="hp-footer__inner">
+    <div class="hp-footer-logo-col">
+      <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
+      <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices." data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
+    </div>
+    <div>
+      <h3 data-en="The Collection" data-es="La Colección">The Collection</h3>
+      <ul>
+        <li><a href="index.html#collection" data-en="Chairs &amp; Seating" data-es="Sillas y Asientos">Chairs &amp; Seating</a></li>
+        <li><a href="index.html#collection" data-en="Bamboo Dining Sets" data-es="Juegos de Comedor">Bamboo Dining Sets</a></li>
+        <li><a href="index.html#collection" data-en="Consoles &amp; Étagères" data-es="Consolas y Estantes">Consoles &amp; Estantes</a></li>
+        <li><a href="index.html#showroom" data-en="Austin Showroom" data-es="Exposición en Austin">Austin Showroom</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-en="About Us" data-es="Nosotros">About Us</h3>
+      <ul>
+        <li><a href="index.html#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
+        <li><a href="index.html#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
+        <li><a href="index.html#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
+        <li><a href="contact.html" data-en="Inquiries &amp; Delivery" data-es="Consultas y Envíos">Inquiries &amp; Delivery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-en="The Dispatch Newsletter" data-es="Boletín El Despacho">The Dispatch Newsletter</h3>
+      <p style="font-size:var(--af-text-xs); color:var(--af-cream); line-height:1.4;" data-en="Get first look at new finds, restock days, and local Austin estate sale updates." data-es="Sé el primero en ver los nuevos hallazgos y novedades en Austin.">Get first look at new finds &amp; restock updates.</p>
+      <form onsubmit="return false" style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.75rem;">
+        <label class="af-label" for="footer-email-c" style="position:absolute;left:-9999px" data-en="Email address" data-es="Dirección de correo electrónico">Email address</label>
+        <input id="footer-email-c" type="email" placeholder="you@example.com" autocomplete="email" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--af-cream); background:rgba(255,255,255,0.1); color:var(--af-cream); font-size:var(--af-text-xs);">
+        <button type="submit" class="af-btn af-btn--primary af-btn--sm" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="hp-footer__bottom">
+    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed &amp; Developed by <a href="https://digitalallies.net" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; font-weight:600;">Digital Allies</a> &middot; Made with love in Austin, TX</span>
+    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
+      <a href="contact.html" data-en="Contact Us" data-es="Contacto">Contact Us</a> &middot;
+      <a href="design-system/index.html" data-en="Design System" data-es="Sistema de Diseño">Design System</a> &middot;
+      <a href="sitemap.html" data-en="Sitemap" data-es="Mapa del Sitio">Sitemap</a> &middot;
+      <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a> &middot;
+      <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
+      <a href="accessibility-statement.html" data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+var burger = document.querySelector('.hp-burger');
+var nav = document.getElementById('hp-nav');
+burger.addEventListener('click', function () {
+  var open = nav.classList.toggle('is-open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+
+var langToggle = document.querySelector('.hp-lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', function () {
+    var currentLang = document.documentElement.getAttribute('lang') || 'en';
+    var nextLang = currentLang === 'en' ? 'es' : 'en';
+
+    document.documentElement.setAttribute('lang', nextLang);
+    langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
+    langToggle.setAttribute('aria-label', nextLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés');
+
+    document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
+      var text = el.getAttribute('data-' + nextLang);
+      var svg = el.querySelector('svg');
+      el.textContent = text;
+      if (svg) el.appendChild(svg);
+    });
+  });
+}
+
+// Prefill form from URL query parameters
+(function prefillForm() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var product = urlParams.get('product');
+  if (product) {
+    var productSelect = document.getElementById('c-product');
+    var typeSelect = document.getElementById('c-type');
+    if (productSelect) {
+      productSelect.value = product;
+    }
+    if (typeSelect) {
+      typeSelect.value = 'hold';
+    }
+    
+    // Scroll to form smoothly
+    setTimeout(function () {
+      var form = document.querySelector('.af-form');
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+  }
+})();
+
+// Mailto submission handler
+var contactForm = document.querySelector('.af-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    var name = document.getElementById('c-name').value;
+    var email = document.getElementById('c-email').value;
+    var phone = document.getElementById('c-phone').value;
+    
+    var typeSelect = document.getElementById('c-type');
+    var typeText = typeSelect.options[typeSelect.selectedIndex].text;
+    
+    var productSelect = document.getElementById('c-product');
+    var productText = productSelect.options[productSelect.selectedIndex].text;
+    
+    var deliverySelect = document.getElementById('c-delivery');
+    var deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text;
+    
+    var message = document.getElementById('c-msg').value;
+    
+    var subject = 'Atomic Finds ATX Inquiry: ' + typeText + ' - ' + name;
+    var body = 'Hi Jennyfer,\n\nI have an inquiry from the website. Here are the details:\n\n' +
+               'Name: ' + name + '\n' +
+               'Email: ' + email + '\n' +
+               'Phone: ' + (phone || 'Not provided') + '\n' +
+               'Inquiry Type: ' + typeText + '\n' +
+               'Selected Piece: ' + productText + '\n' +
+               'Delivery Preference: ' + deliveryText + '\n\n' +
+               'Message/Details:\n' + message + '\n\n' +
+               'Thank you!';
+
+    var mailtoUrl = 'mailto:atomicfindsatx@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    
+    // Open user's email client
+    window.location.href = mailtoUrl;
+    
+    alert('Opening your email client to send the message to Jennyfer. If it does not open, please copy the details and send directly to: atomicfindsatx@gmail.com');
+  });
+}
+</script>
+</body>
+</html>
