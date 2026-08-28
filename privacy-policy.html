@@ -4,106 +4,173 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Atomic Finds ATX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design-system/styles.css">
 <style>
-  body { background: var(--af-surface); }
-  .legal-sec { padding-block: var(--af-space-6); max-width: 48rem; margin-inline: auto; }
+  html, body { overflow-x: clip; max-width: 100vw; width: 100%; box-sizing: border-box; }
+  body { background: var(--af-surface); margin: 0; padding: 0; }
+  
   .hp-announce {
     background: var(--af-olive-teal); color: var(--af-cream);
     text-align: center; padding: var(--af-space-2) var(--af-space-4);
     font-size: var(--af-text-sm); letter-spacing: 0.04em;
+    display: flex; align-items: center; justify-content: center; gap: var(--af-space-2);
   }
+  
   .hp-header {
-    background: color-mix(in srgb, var(--af-surface) 94%, transparent);
-    backdrop-filter: blur(6px);
-    border-bottom: 2px solid var(--af-hairline);
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--af-surface) 95%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 2px solid var(--af-hairline);
   }
   .hp-header__inner {
     display: flex; align-items: center; justify-content: space-between;
     max-width: var(--af-container); margin-inline: auto;
-    padding: var(--af-space-3) var(--af-space-5);
+    padding: var(--af-space-3) var(--af-space-5); gap: var(--af-space-4);
   }
   .hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; }
-  .hp-logo__mark { height: 2.75rem; width: auto; }
   .hp-logo__word { height: 2.1rem; width: auto; }
   .hp-logo__tag {
-    font-size: var(--af-text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+    font-size: var(--af-text-xs); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--af-ink-soft); border-left: 2px solid var(--af-hairline);
     padding-left: var(--af-space-3); margin-left: var(--af-space-1);
   }
-  .hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: var(--af-space-6) 0; }
+  .hp-lang-toggle {
+    background: var(--af-surface-raised); border: 2px solid var(--af-ink);
+    border-radius: var(--af-radius-sm); font-size: var(--af-text-xs); font-weight: 700;
+    padding: 0.25rem 0.5rem; cursor: pointer; color: var(--af-ink);
+  }
+  .hp-burger {
+    display: none; background: var(--af-surface-raised); border: 2px solid var(--af-ink);
+    border-radius: var(--af-radius-sm); font-size: var(--af-text-xs); font-weight: 700;
+    padding: 0.25rem 0.5rem; cursor: pointer; color: var(--af-ink);
+  }
+  .hp-nav { display: flex; gap: clamp(1rem, 2vw, 1.5rem); align-items: center; }
+  .hp-nav a { font-size: var(--af-text-sm); font-weight: 600; text-transform: uppercase; color: var(--af-ink); text-decoration: none; }
+  .hp-nav a:hover { color: var(--af-orange-btn); }
+
+  .legal-sec { padding-block: clamp(3rem, 6vw, 5rem); max-width: 48rem; margin-inline: auto; padding-inline: var(--af-space-5); }
+  .legal-sec h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--af-space-2); }
+  .legal-sec h2 { color: var(--af-olive-teal); margin-top: var(--af-space-6); font-size: var(--af-text-xl); }
+  .legal-sec p, .legal-sec li { color: var(--af-ink); line-height: 1.6; font-size: var(--af-text-base); }
+
+  .hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6); margin-top: var(--af-space-8); }
   .hp-footer a { color: var(--af-cream); }
   .hp-footer__inner {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
-    gap: var(--af-space-4);
+    gap: clamp(1.5rem, 4vw, 2.5rem);
     max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
   }
-  .hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); }
+  .hp-footer-logo-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .hp-footer__monogram { width: 140px; height: auto; display: block; margin-bottom: var(--af-space-2); }
+  .hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); margin-bottom: var(--af-space-3); }
   .hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
   .hp-footer__bottom {
-    max-width: var(--af-container); margin: var(--af-space-5) auto 0;
+    max-width: var(--af-container); margin: clamp(2rem, 5vw, 3rem) auto 0;
     padding: var(--af-space-4) var(--af-space-5) 0;
     border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
-    display: flex; flex-wrap: wrap; gap: var(--af-space-3);
-    justify-content: space-between; font-size: var(--af-text-sm);
+    display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;
+    font-size: var(--af-text-sm);
   }
-  .legal-content h2 { color: var(--af-olive-teal); margin-top: var(--af-space-4); }
-  .legal-content p, .legal-content li { color: var(--af-ink-soft); line-height: var(--af-leading-body); }
+
+  @media (max-width: 1080px) { .hp-logo__tag { display: none; } }
+  @media (max-width: 900px) {
+    .hp-nav { display: none; }
+    .hp-nav.is-open {
+      display: flex; flex-direction: column; align-items: stretch;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--af-surface); border-bottom: 2px solid var(--af-hairline);
+      padding: var(--af-space-4) var(--af-space-5); gap: var(--af-space-4);
+    }
+    .hp-burger { display: block; }
+  }
 </style>
 </head>
 <body>
 
-<!-- Announcement -->
-<div class="hp-announce" data-en="New finds every week &middot; Free local pickup in Austin" data-es="Nuevos hallazgos cada semana &middot; Recogida local gratuita en Austin">
-  New finds every week &middot; Free local pickup in Austin
+<!-- Announcement Bar -->
+<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
 </div>
 
 <!-- Header -->
 <header class="hp-header">
   <div class="hp-header__inner">
     <a class="hp-logo" href="index.html">
-      <img class="hp-logo__mark" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Logo">
-      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="">
+      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX" width="240" height="67">
       <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home" data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
     </a>
-    <a href="index.html" class="af-btn af-btn--secondary af-btn--sm" data-en="Back to Home" data-es="Volver al Inicio">Back to Home</a>
+    <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
+      <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
+      <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
+    </div>
+    <nav class="hp-nav" id="hp-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#collection">Shop Collection</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="design-system/index.html">Design System</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
 <!-- Legal Content -->
-<main class="legal-sec af-container legal-content">
+<main class="legal-sec">
   <h1 data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</h1>
   <p data-en="Last Updated: August 2026" data-es="Última actualización: Agosto 2026">Last Updated: August 2026</p>
 
-  <h2 data-en="1. Information We Collect" data-es="1. Información que recopilamos">1. Information We Collect</h2>
-  <p data-en="We collect information you directly provide us, such as your email address when you sign up for 'The Dispatch' newsletter, and your phone or email details when booking a showroom visit." data-es="Recopilamos la información que nos proporciona directamente, como su dirección de correo electrónico cuando se registra en el boletín 'El Despacho', y sus datos de teléfono o correo electrónico al reservar una visita a la sala de exposición.">We collect information you directly provide us, such as your email address when you sign up for 'The Dispatch' newsletter, and your phone or email details when booking a showroom visit.</p>
+  <h2 data-en="1. Information We Collect" data-es="1. Información que Recopilamos">1. Information We Collect</h2>
+  <p data-en="Atomic Finds ATX respects your privacy. We only collect basic contact information (such as your name, email address, phone number, and delivery zip code) when you voluntarily submit an inquiry form or sign up for The Dispatch newsletter." data-es="Atomic Finds ATX respeta su privacidad. Solo recopilamos información de contacto básica cuando envía voluntariamente un formulario de consulta o se registra en el boletín.">Atomic Finds ATX respects your privacy. We only collect basic contact information (such as your name, email address, phone number, and delivery zip code) when you voluntarily submit an inquiry form or sign up for The Dispatch newsletter.</p>
 
-  <h2 data-en="2. How We Use Information" data-es="2. Cómo utilizamos la información">2. How We Use Information</h2>
-  <p data-en="We use your contact information to send you newsletter updates, process holds or claims, and manage showroom appointments. We do not sell or lease your personal information to third parties." data-es="Utilizamos su información de contacto para enviarle actualizaciones del boletín, procesar reservas o reclamos y gestionar citas en la sala de exposición. No vendemos ni alquilamos su información personal a terceros.">We use your contact information to send you newsletter updates, process holds or claims, and manage showroom appointments. We do not sell or lease your personal information to third parties.</p>
+  <h2 data-en="2. How We Use Your Information" data-es="2. Cómo Utilizamos su Información">2. How We Use Your Information</h2>
+  <p data-en="Your information is used strictly to coordinate furniture adoptions, schedule Austin local pickups/deliveries, respond to item inquiries, and dispatch weekly restock alerts. We NEVER sell or rent your personal data to third parties." data-es="Su información se utiliza strictly para coordinar adopciones de muebles, programar recogidas/entregas en Austin y responder a sus consultas. NUNCA vendemos ni alquilamos sus datos personales.">Your information is used strictly to coordinate furniture adoptions, schedule Austin local pickups/deliveries, respond to item inquiries, and dispatch weekly restock alerts. We NEVER sell or rent your personal data to third parties.</p>
 
-  <h2 data-en="3. Your Choice" data-es="3. Sus opciones">3. Your Choice</h2>
-  <p data-en="You may unsubscribe from 'The Dispatch' at any time by clicking the unsubscribe link at the bottom of our emails or contacting atomicfindsatx@gmail.com." data-es="Puede cancelar su suscripción a 'El Despacho' en cualquier momento haciendo clic en el enlace para cancelar la suscripción en la parte inferior de nuestros correos electrónicos o comunicándose con atomicfindsatx@gmail.com.">You may unsubscribe from 'The Dispatch' at any time by clicking the unsubscribe link at the bottom of our emails or contacting atomicfindsatx@gmail.com.</p>
+  <h2 data-en="3. Newsletter &amp; Unsubscribing" data-es="3. Boletín y Cancelación de Suscripción">3. Newsletter &amp; Unsubscribing</h2>
+  <p data-en="If you sign up for The Dispatch, you will receive one email per week featuring newly landed 1970s rattan and bamboo finds. You may unsubscribe at any time using the link at the bottom of any email or by contacting atomicfindsatx@gmail.com." data-es="Si se suscribe a El Despacho, recibirá un correo electrónico por semana con nuevos hallazgos. Puede cancelar su suscripción en cualquier momento.">If you sign up for The Dispatch, you will receive one email per week featuring newly landed 1970s rattan and bamboo finds. You may unsubscribe at any time using the link at the bottom of any email or by contacting atomicfindsatx@gmail.com.</p>
 </main>
 
 <!-- Footer -->
 <footer class="hp-footer">
   <div class="hp-footer__inner">
-    <div>
-      <h3>Atomic Finds</h3>
-      <p data-en="Tiny Time Machines for Your Home." data-es="Pequeñas Máquinas del Tiempo para tu Hogar.">Tiny Time Machines for Your Home.</p>
+    <div class="hp-footer-logo-col">
+      <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
+      <p style="margin-top:var(--af-space-2)">Tiny Time Machines for Your Home.</p>
     </div>
     <div>
-      <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+      <h3>The Collection</h3>
       <ul>
+        <li><a href="index.html#collection">Chairs &amp; Seating</a></li>
+        <li><a href="index.html#collection">Bamboo Dining Sets</a></li>
+        <li><a href="index.html#collection">Consoles &amp; Étagères</a></li>
+        <li><a href="index.html#showroom">Austin Showroom</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Design &amp; Legal</h3>
+      <ul>
+        <li><a href="design-system/index.html">Design System</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="accessibility-statement.html">Accessibility Statement</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Get In Touch</h3>
+      <ul>
+        <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank">Facebook Marketplace</a></li>
+        <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank">@atomicfindsatx</a></li>
         <li><a href="mailto:atomicfindsatx@gmail.com">atomicfindsatx@gmail.com</a></li>
-        <li>Austin, Texas</li>
+        <li>Phone: 865-244-8130</li>
       </ul>
     </div>
   </div>
   <div class="hp-footer__bottom">
-    <span>&copy; 2026 Atomic Finds ATX &middot; Austin, Texas</span>
-    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap;">
+    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed by Anthony &middot; Made with love in Austin, TX</span>
+    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
+      <a href="design-system/index.html">Design System</a> &middot;
+      <a href="sitemap.html">Sitemap</a> &middot;
       <a href="terms-of-service.html">Terms of Service</a> &middot;
       <a href="privacy-policy.html">Privacy Policy</a> &middot;
       <a href="accessibility-statement.html">Accessibility Statement</a>
@@ -111,5 +178,27 @@
   </div>
 </footer>
 
+<script>
+var burger = document.querySelector('.hp-burger');
+var nav = document.querySelector('.hp-nav');
+if (burger && nav) {
+  burger.addEventListener('click', function () {
+    var isOpen = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+}
+var langToggle = document.querySelector('.hp-lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', function () {
+    var currentLang = document.documentElement.getAttribute('lang') || 'en';
+    var nextLang = currentLang === 'en' ? 'es' : 'en';
+    document.documentElement.setAttribute('lang', nextLang);
+    langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
+    document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + nextLang);
+    });
+  });
+}
+</script>
 </body>
 </html>

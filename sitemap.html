@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terms of Service — Atomic Finds ATX</title>
+<title>Atomic Finds ATX — Site Map &amp; Visual Index</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
 <style>
   html, body { overflow-x: clip; max-width: 100vw; width: 100%; box-sizing: border-box; }
   body { background: var(--af-surface); margin: 0; padding: 0; }
-  
+
   .hp-announce {
     background: var(--af-olive-teal); color: var(--af-cream);
     text-align: center; padding: var(--af-space-2) var(--af-space-4);
     font-size: var(--af-text-sm); letter-spacing: 0.04em;
     display: flex; align-items: center; justify-content: center; gap: var(--af-space-2);
   }
-  
+
   .hp-header {
     position: sticky; top: 0; z-index: 50;
     background: color-mix(in srgb, var(--af-surface) 95%, transparent);
@@ -50,10 +50,32 @@
   .hp-nav a { font-size: var(--af-text-sm); font-weight: 600; text-transform: uppercase; color: var(--af-ink); text-decoration: none; }
   .hp-nav a:hover { color: var(--af-orange-btn); }
 
-  .legal-sec { padding-block: clamp(3rem, 6vw, 5rem); max-width: 48rem; margin-inline: auto; padding-inline: var(--af-space-5); }
-  .legal-sec h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--af-space-2); }
-  .legal-sec h2 { color: var(--af-olive-teal); margin-top: var(--af-space-6); font-size: var(--af-text-xl); }
-  .legal-sec p, .legal-sec li { color: var(--af-ink); line-height: 1.6; font-size: var(--af-text-base); }
+  .sm-hero { padding: clamp(3rem, 6vw, 5rem) var(--af-space-5) clamp(2rem, 4vw, 3rem); text-align: center; }
+  .sm-hero h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); margin-bottom: var(--af-space-2); font-size: clamp(2rem, 5vw, 3.5rem); }
+  .sm-hero p { font-size: var(--af-text-lg); color: var(--af-ink-soft); max-width: 44rem; margin-inline: auto; }
+
+  .sm-sec { padding-bottom: clamp(3rem, 6vw, 5rem); }
+  .sm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--af-space-5); }
+  
+  .sm-card {
+    background: var(--af-surface-raised);
+    border: var(--af-border-width) solid var(--af-ink);
+    border-radius: var(--af-radius-card);
+    padding: var(--af-space-5);
+    box-shadow: 5px 5px 0 var(--af-ink);
+    display: flex; flex-direction: column;
+  }
+  .sm-card h2 { font-family: var(--af-font-display); color: var(--af-olive-teal); font-size: var(--af-text-xl); margin-bottom: var(--af-space-3); }
+  .sm-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--af-space-2); }
+  .sm-card li a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--af-space-2) var(--af-space-3);
+    border-radius: var(--af-radius-sm);
+    color: var(--af-ink); text-decoration: none; font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+  }
+  .sm-card li a:hover { background: var(--af-cream); color: var(--af-orange-btn); }
+  .sm-card li a span.badge { font-size: var(--af-text-xs); font-weight: 700; color: var(--af-ink-soft); }
 
   .hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6); margin-top: var(--af-space-8); }
   .hp-footer a { color: var(--af-cream); }
@@ -91,8 +113,8 @@
 
 <!-- Announcement Bar -->
 <div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
+  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <span>Atomic Finds ATX &middot; Official Site Map &amp; Resource Index</span>
 </div>
 
 <!-- Header -->
@@ -116,23 +138,72 @@
   </div>
 </header>
 
-<!-- Legal Content -->
-<main class="legal-sec">
-  <h1 data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</h1>
-  <p data-en="Last Updated: August 2026" data-es="Última actualización: Agosto 2026">Last Updated: August 2026</p>
+<!-- Hero -->
+<section class="sm-hero">
+  <span class="af-label">Navigation &amp; Directory</span>
+  <h1>Site Map</h1>
+  <p>Explore all public pages, living design system documentation, legal policies, and store resources for Atomic Finds ATX.</p>
+</section>
 
-  <h2 data-en="1. Introduction" data-es="1. Introducción">1. Introduction</h2>
-  <p data-en="Welcome to Atomic Finds ATX. By using our website, claiming pieces, or scheduling showroom visits, you agree to comply with and be bound by the following terms and conditions." data-es="Bienvenido a Atomic Finds ATX. Al utilizar nuestro sitio web, reclamar piezas o programar visitas a la sala de exposición, acepta cumplir y estar sujeto a los siguientes términos y condiciones.">Welcome to Atomic Finds ATX. By using our website, claiming pieces, or scheduling showroom visits, you agree to comply with and be bound by the following terms and conditions.</p>
+<!-- Main Grid -->
+<section class="sm-sec af-container">
+  <div class="sm-grid">
 
-  <h2 data-en="2. Adoptions &amp; Hold Policy" data-es="2. Adopciones y política de reserva">2. Adoptions &amp; Hold Policy</h2>
-  <p data-en="Every vintage rattan or bamboo piece we discover is sold as an adoption. Since these are unique historical finds, all items are sold on a first-come, first-served basis. We can hold a piece for up to 24 hours once a deposit or full payment is completed." data-es="Cada pieza vintage de rattán o bambú que descubrimos se vende como una adopción. Dado que se trata de hallazgos históricos únicos, todos los artículos se venden por orden de llegada. Podemos retener una pieza hasta por 24 horas una vez que se complete un depósito o el pago total.">Every vintage rattan or bamboo piece we discover is sold as an adoption. Since these are unique historical finds, all items are sold on a first-come, first-served basis. We can hold a piece for up to 24 hours once a deposit or full payment is completed.</p>
+    <!-- Card 1: Main Site Pages -->
+    <div class="sm-card">
+      <h2>Main Site Pages</h2>
+      <ul>
+        <li><a href="index.html#top"><span>Homepage</span> <span class="badge">index.html</span></a></li>
+        <li><a href="index.html#collection"><span>Curated Collection</span> <span class="badge">#collection</span></a></li>
+        <li><a href="index.html#story"><span>Our Story &amp; Meet Jennyfer</span> <span class="badge">#story</span></a></li>
+        <li><a href="index.html#nacho"><span>Meet Nacho (Chief Curiosity Officer)</span> <span class="badge">#nacho</span></a></li>
+        <li><a href="index.html#showroom"><span>Austin Showroom Showcase</span> <span class="badge">#showroom</span></a></li>
+        <li><a href="index.html#instagram"><span>Instagram Restock Feed</span> <span class="badge">#instagram</span></a></li>
+        <li><a href="index.html#faq"><span>Frequently Asked Questions</span> <span class="badge">#faq</span></a></li>
+        <li><a href="index.html#contact"><span>The Dispatch (Newsletter Signup)</span> <span class="badge">#contact</span></a></li>
+      </ul>
+    </div>
 
-  <h2 data-en="3. Local Pickup &amp; Delivery" data-es="3. Recogida local y entrega">3. Local Pickup &amp; Delivery</h2>
-  <p data-en="Local pickup is arranged in South Austin, Texas upon purchase. Curbside drop-off is available around the greater Austin metro area for a small fee depending on distance and item size." data-es="La recogida local se organiza en South Austin, Texas al comprar. La entrega local en la acera está disponible en el área metropolitana de Austin por una pequeña tarifa.">Local pickup is arranged in South Austin, Texas upon purchase. Curbside drop-off is available around the greater Austin metro area for a small fee depending on distance and item size.</p>
+    <!-- Card 2: Living Design System -->
+    <div class="sm-card">
+      <h2>Design System Showcase</h2>
+      <ul>
+        <li><a href="design-system/index.html"><span>Living Design System Index</span> <span class="badge">design-system/</span></a></li>
+        <li><a href="design-system/index.html#rules"><span>10 Canonical Brand Rules</span> <span class="badge">#rules</span></a></li>
+        <li><a href="design-system/index.html#tokens"><span>Color Tokens &amp; Contrast Ratios</span> <span class="badge">#tokens</span></a></li>
+        <li><a href="design-system/index.html#logos"><span>Official Logos &amp; Linocut Icons</span> <span class="badge">#logos</span></a></li>
+        <li><a href="design-system/index.html#motifs"><span>Motifs, Solihiya &amp; Rubber Stamps</span> <span class="badge">#motifs</span></a></li>
+        <li><a href="design-system/index.html#components"><span>UI Component Library</span> <span class="badge">#components</span></a></li>
+        <li><a href="design-system/index.html#templates"><span>Physical &amp; Digital Templates</span> <span class="badge">#templates</span></a></li>
+        <li><a href="design-system/index.html#concepts"><span>Brand Concepts &amp; Guide Pages</span> <span class="badge">#concepts</span></a></li>
+        <li><a href="design-system/index.html#voice"><span>Voice, Tone &amp; AI Agent Skill</span> <span class="badge">#voice</span></a></li>
+      </ul>
+    </div>
 
-  <h2 data-en="4. Restorations &amp; Care" data-es="4. Restauración y cuidado">4. Restorations &amp; Care</h2>
-  <p data-en="All products represent restored vintage bamboo and rattan structures. While we inspect every piece under the supervision of Nacho (Chief Curiosity Officer &amp; Good Boy), these items carry natural retro character, wear, and history. We recommend indoor care and avoiding prolonged direct sun exposure to guarantee their preservation for another fifty years." data-es="Todos los productos representan estructuras vintage de bambú y rattán restauradas. Aunque inspeccionamos cada pieza bajo la supervisión de Nacho, estos artículos conllevan carácter retro natural. Recomendamos el cuidado en interiores y evitar la exposición solar directa prolongada.">All products represent restored vintage bamboo and rattan structures. While we inspect every piece under the supervision of Nacho (Chief Curiosity Officer &amp; Good Boy), these items carry natural retro character, wear, and history. We recommend indoor care and avoiding prolonged direct sun exposure to guarantee their preservation for another fifty years.</p>
-</main>
+    <!-- Card 3: Legal & Store Policies -->
+    <div class="sm-card">
+      <h2>Legal &amp; Store Policies</h2>
+      <ul>
+        <li><a href="terms-of-service.html"><span>Terms of Service</span> <span class="badge">terms-of-service.html</span></a></li>
+        <li><a href="privacy-policy.html"><span>Privacy Policy</span> <span class="badge">privacy-policy.html</span></a></li>
+        <li><a href="accessibility-statement.html"><span>Accessibility Statement</span> <span class="badge">accessibility-statement.html</span></a></li>
+        <li><a href="sitemap.html"><span>Official Site Map</span> <span class="badge">sitemap.html</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Card 4: Storefront & Social Channels -->
+    <div class="sm-card">
+      <h2>Storefront &amp; Channels</h2>
+      <ul>
+        <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener"><span>Facebook Marketplace Shop</span> <span class="badge">External</span></a></li>
+        <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener"><span>Instagram (@atomicfindsatx)</span> <span class="badge">External</span></a></li>
+        <li><a href="mailto:atomicfindsatx@gmail.com"><span>Email Support (atomicfindsatx@gmail.com)</span> <span class="badge">Direct</span></a></li>
+        <li><a href="tel:865-244-8130"><span>Phone (865-244-8130)</span> <span class="badge">Call/Text</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
 
 <!-- Footer -->
 <footer class="hp-footer">
