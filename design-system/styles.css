@@ -12,8 +12,18 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
   background: var(--af-surface);
   color: var(--af-text);
   font-family: var(--af-font-body);
@@ -38,8 +48,8 @@ h3 { font-size: var(--af-text-xl); color: var(--af-avocado); }
 
 p { margin: 0 0 var(--af-space-4); max-width: var(--af-measure); }
 
-a { color: var(--af-orange); text-decoration-thickness: 2px; text-underline-offset: 3px; }
-a:hover { color: var(--af-ink); }
+a { color: var(--af-orange); text-decoration: none; }
+a:hover { color: var(--af-ink); text-decoration: none; }
 
 /* One visible focus treatment everywhere — 2px Burnt Orange offset by 4px. */
 :where(a, button, [tabindex], input, select, textarea):focus-visible {
@@ -129,16 +139,18 @@ a:hover { color: var(--af-ink); }
   background-size: 380px;
 }
 
-/* --- MISSING ASSET placeholder ------------------------------------------
-   The rattan / Solihiya cane weave is one of the five named elements in the
-   brand guide's Visual Language row, and there is NO weave asset in this
-   system. There was an SVG lattice here that approximated one; it has been
-   removed because a hand-drawn line-art stand-in is not the texture — the
-   weave is a photographic/illustrated craft sample, and faking it misrepresents
-   an attributed tradition.
+/* Palma Ginkgo pattern for section variation. */
+.af-pattern--ginkgo {
+  background-image: url("assets/textures/002_pattern-palma-ginkgopng_8PHXU1Cb.png");
+  background-size: 460px;
+}
 
-   Anything that needs the weave uses this placeholder until the real artwork
-   is supplied, so the gap stays visible instead of silently shipping.        */
+/* Trailing greenery pattern for story section. */
+.af-pattern--trailing {
+  background-image: url("assets/textures/001_pattern-trailing-greenerypng_3NOuhLIc.png");
+  background-size: 460px;
+}
+
 .af-asset-missing {
   display: flex;
   align-items: center;
@@ -157,24 +169,17 @@ a:hover { color: var(--af-ink); }
   border-radius: var(--af-radius-sm);
 }
 
-/* Tone-on-tone: drop a pattern to a whisper so text sits on top of it.
-
-   MULTIPLY, not just opacity. The pattern tiles ship with their own near-white
-   ground, so fading them alone washes the artwork out while still leaving pale
-   plates you can read. Multiplying makes that ground a no-op — only the leaf
-   ink darkens the cream — and opacity then controls ink strength cleanly.
-
-   This is deliberately very low: the pattern should register as texture in the
-   cream, not as leaves you can identify at a glance. If you can name the
-   plants without leaning in, it is too strong.
-
-   Measured: the tile's ink averages rgb(50,83,58) and its leaves are FILLED,
-   not outlined — so broad areas shift, not just hairlines. At 0.03 the darkest
-   ink moves cream by ~5 levels, which sits about at the threshold of
-   perception. Raising this past ~0.05 makes the leaves legible again.        */
+/* Tone-on-tone: drop a pattern to a whisper (3% opacity) spanning full 100vw width. */
 .af-pattern--ghost {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
   opacity: 0.03;
   mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 /* --- The three pattern ROLES ---------------------------------------------
@@ -193,31 +198,31 @@ a:hover { color: var(--af-ink); }
 
 /* (c) Card-as-frame — the pattern IS the card ground and the piece sits on a
    cream mat inside it, so the pattern frames the furniture instead of
-   covering it. The inner mat is mandatory; that is the whole point of the
-   role, and a photo stretched edge-to-edge here breaks it. */
-.af-pattern-frame { padding: var(--af-space-5); border-radius: var(--af-radius-card); }
-.af-pattern-frame > * {
-  background: var(--af-surface);
-  border-radius: var(--af-radius-sm);
-  padding: var(--af-space-3);
-  display: block;
+   competing with it. */
+.af-pattern-frame {
+  position: relative; isolation: isolate;
+  padding: var(--af-space-4);
+  border-radius: var(--af-radius-card);
+  border: var(--af-border-width) solid var(--af-ink);
 }
-.af-pattern-frame img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.af-pattern-frame__mat {
+  background: var(--af-cream);
+  padding: var(--af-space-5);
+  border-radius: calc(var(--af-radius-card) - 4px);
+  border: var(--af-border-width) solid var(--af-ink);
+}
 
-/* --- Layout helpers ------------------------------------------------------ */
-
+/* --- Utility container --------------------------------------------------- */
 .af-container {
+  width: 100%;
   max-width: var(--af-container);
   margin-inline: auto;
   padding-inline: var(--af-space-5);
 }
 
-.af-stack > * + * { margin-top: var(--af-space-4); }
-.af-row { display: flex; gap: var(--af-space-3); align-items: center; flex-wrap: wrap; }
-
-/* Dashed rule — the "form to fill in" divider from the record-card language. */
-.af-rule-dashed {
-  border: 0;
-  border-top: 2px dashed var(--af-hairline);
-  margin: var(--af-space-5) 0;
+.af-grid {
+  display: grid;
+  gap: var(--af-space-5);
 }
+.af-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.af-grid--3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
