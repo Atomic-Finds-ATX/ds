@@ -1,870 +1,2658 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atomic Finds ATX — Far-out finds, down-to-earth prices</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="design-system/styles.css">
-<script>/* Set before first paint so revealed content never flashes. */
-document.documentElement.classList.add('js');</script>
-<style>
-/* ==========================================================================
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="design-system/styles.css">
+  <script>/* Set before first paint so revealed content never flashes. */
+    document.documentElement.classList.add('js');</script>
+  <style>
+    /* ==========================================================================
    Homepage — Atomic Finds ATX (Design System Aligned)
    ========================================================================== */
 
-html, body { overflow-x: clip; }
-body { background: var(--af-surface); }
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
 
-.hp-sec { padding-block: clamp(3rem, 8vw, 6rem); position: relative; }
-.hp-sec__head { margin-bottom: clamp(2rem, 5vw, 3rem); }
-.hp-sec__head--center { text-align: center; }
-.hp-sec__head h2 { margin-bottom: var(--af-space-2); }
-.hp-sec__head p { color: var(--af-ink-soft); margin-bottom: 0; }
-.hp-sec__head--center p { margin-inline: auto; }
+    body {
+      background: var(--af-surface);
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+    }
 
-/* --- 00 Header ----------------------------------------------------------- */
-.hp-announce {
-  background: var(--af-olive-teal); color: var(--af-cream);
-  text-align: center; padding: var(--af-space-2) var(--af-space-4);
-  font-size: var(--af-text-sm); letter-spacing: 0.04em;
-  display: flex; align-items: center; justify-content: center; gap: var(--af-space-2);
-}
-.hp-announce .af-sparkle { color: var(--af-mustard); }
+    .hp-sec {
+      padding-block: clamp(3rem, 8vw, 6rem);
+      position: relative;
+      overflow: hidden;
+    }
 
-.hp-header {
-  position: sticky; top: 0; z-index: 30;
-  background: color-mix(in srgb, var(--af-surface) 95%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--af-hairline);
-}
-.hp-header__inner {
-  display: flex; align-items: center; gap: var(--af-space-4);
-  max-width: var(--af-container); margin-inline: auto;
-  padding: var(--af-space-3) var(--af-space-5);
-}
-.hp-logo { display: flex; align-items: center; gap: var(--af-space-3); text-decoration: none; flex: none; }
-.hp-logo__word { height: 2.2rem; width: auto; }
-.hp-logo__tag {
-  font-size: var(--af-text-xs); letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--af-ink-soft); padding-left: var(--af-space-2); margin-left: var(--af-space-1);
-}
-.hp-nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); margin-left: auto; align-items: center; }
-.hp-nav a {
-  font-size: var(--af-text-sm); font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--af-ink); text-decoration: none; white-space: nowrap;
-}
-.hp-nav a:hover { color: var(--af-orange-btn); }
-.hp-nav a.af-btn,
-.hp-nav a.af-btn:hover { color: var(--af-btn-ink); }
-.hp-burger {
-  display: none; margin-left: auto;
-  background: var(--af-cream); color: var(--af-ink);
-  border: var(--af-border-width) solid var(--af-ink);
-  border-radius: 12px; padding: 0.4rem 0.75rem; cursor: pointer;
-  font: inherit; font-size: var(--af-text-sm); font-weight: 600;
-}
+    .hp-sec__head {
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
 
-/* Compact Language Switcher Toggle */
-.hp-lang-toggle {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  border-radius: 999px; background: var(--af-cream); color: var(--af-ink);
-  border: 1.5px solid var(--af-ink); cursor: pointer;
-  transition: all 0.2s ease;
-}
-.hp-lang-toggle:hover { background: var(--af-mustard); color: var(--af-ink); }
+    .hp-sec__head--center {
+      text-align: center;
+    }
 
-/* --- 01 Hero ------------------------------------------------------------- */
-.hp-hero {
-  position: relative; isolation: isolate; background: var(--af-cream); overflow: hidden;
-  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
-}
-.hp-hero__inner {
-  max-width: 60rem; margin-inline: auto; text-align: center;
-  padding: clamp(3rem, 6vw, 5rem) var(--af-space-5) clamp(1.5rem, 3vw, 2.5rem);
-}
-.hp-hero h1 { font-family: var(--af-font-display); color: var(--af-olive-teal); }
-.hp-hero__eyebrow { display: flex; align-items: center; justify-content: center; gap: var(--af-space-2); margin-bottom: var(--af-space-2); }
-.hp-hero__sub { font-size: var(--af-text-xl); color: var(--af-ink-soft); margin-bottom: var(--af-space-5); max-width: 48rem; margin-inline: auto; }
-.hp-hero__social { display: flex; gap: var(--af-space-4); justify-content: center; margin-top: var(--af-space-4); font-size: var(--af-text-sm); font-weight: 600; }
-.hp-hero__social a { color: var(--af-ink-soft); text-decoration: none; }
-.hp-hero__social a:hover { color: var(--af-orange-btn); }
-.hp-hero__media { max-width: 68rem; margin: var(--af-space-4) auto 0; padding-inline: var(--af-space-5); }
-.hp-hero__media img {
-  width: 100%; height: auto; max-height: 480px; object-fit: cover;
-  border-radius: var(--af-radius-card); border: var(--af-border-width) solid var(--af-ink);
-  box-shadow: none; /* NO DROP SHADOW ON HERO IMAGE ACCORDING TO DESIGN SYSTEM RULES */
-  display: block;
-}
+    .hp-sec__head h2 {
+      margin-bottom: var(--af-space-2);
+    }
 
-/* --- Animated Yellow Marquee Ribbon -------------------------------------- */
-.hp-marquee {
-  background: var(--af-mustard); color: var(--af-ink);
-  border-block: 2px solid var(--af-ink);
-  padding: 0.875rem 0; overflow: hidden;
-  position: relative; width: 100%;
-}
-.hp-marquee__track {
-  display: flex; gap: var(--af-space-5); width: max-content;
-  animation: hp-marquee-scroll 35s linear infinite;
-  will-change: transform;
-}
-.hp-marquee__content {
-  display: flex; align-items: center; gap: var(--af-space-4);
-  font-size: var(--af-text-sm); font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
-}
-@keyframes hp-marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+    .hp-sec__head p {
+      color: var(--af-ink-soft);
+      margin-bottom: 0;
+    }
 
-/* --- 02 Our Story / Meet Jennyfer ---------------------------------------- */
-.hp-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-.hp-split__media img {
-  width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
-  border-radius: var(--af-radius-card); border: var(--af-border-width) solid var(--af-ink);
-  box-shadow: 5px 5px 0 var(--af-ink); display: block;
-}
+    .hp-sec__head--center p {
+      margin-inline: auto;
+    }
 
-/* --- 03 Featured Collection (Stacked Cards with Botanical Pattern) ------- */
-.hp-featured-list { display: flex; flex-direction: column; gap: var(--af-space-6); }
+    /* --- 00 Header ----------------------------------------------------------- */
+    .hp-announce {
+      background: var(--af-olive-teal);
+      color: var(--af-cream);
+      text-align: center;
+      padding: var(--af-space-2) var(--af-space-4);
+      font-size: var(--af-text-sm);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--af-space-2);
+    }
 
-.hp-find-card {
-  position: relative; isolation: isolate;
-  background-color: var(--af-cream);
-  background-image: url("design-system/assets/textures/botanical_pattern.png");
-  background-size: 380px;
-  background-repeat: repeat;
-  border: var(--af-border-width) solid var(--af-ink);
-  border-radius: var(--af-radius-card);
-  box-shadow: 6px 6px 0 var(--af-ink);
-  padding: var(--af-space-4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hp-find-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 8px 8px 0 var(--af-ink);
-}
+    .hp-announce .af-sparkle {
+      color: var(--af-mustard);
+    }
 
-/* Inner Cream Mat Plate */
-.hp-find-card__mat {
-  background: var(--af-surface-raised);
-  border: var(--af-border-width) solid var(--af-ink);
-  border-radius: calc(var(--af-radius-card) - 6px);
-  padding: clamp(1.25rem, 3vw, 2rem);
-  display: grid;
-  grid-template-columns: minmax(280px, 400px) 1fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  align-items: center;
-}
+    .hp-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--af-surface) 95%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--af-hairline);
+    }
 
-.hp-find-card__media {
-  background: var(--af-surface-sunk);
-  padding: var(--af-space-3);
-  border-radius: var(--af-radius-sm);
-  border: var(--af-border-width) solid var(--af-ink);
-  display: flex; align-items: center; justify-content: center;
-}
-.hp-find-card__media img {
-  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
-  border-radius: 6px; display: block;
-}
+    .hp-header__inner {
+      display: flex;
+      align-items: center;
+      gap: var(--af-space-4);
+      max-width: var(--af-container);
+      margin-inline: auto;
+      padding: var(--af-space-2) var(--af-space-3);
+    }
 
-.hp-find-card__content { display: flex; flex-direction: column; height: 100%; }
-.hp-find-card__header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--af-space-2); margin-bottom: var(--af-space-2); }
-.hp-find-card__title { font-family: var(--af-font-display); font-size: var(--af-text-2xl); color: var(--af-olive-teal); margin: 0; }
-.hp-find-card__price { font-size: var(--af-text-xl); font-weight: 700; color: var(--af-orange-btn); margin: 0; }
-.hp-find-card__desc { font-size: var(--af-text-base); color: var(--af-ink); line-height: 1.6; margin-bottom: var(--af-space-4); }
+    .hp-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--af-space-3);
+      text-decoration: none;
+      flex: none;
+    }
 
-.hp-find-card__actions { display: flex; flex-wrap: wrap; gap: var(--af-space-3); align-items: center; margin-top: auto; }
+    .hp-logo__word {
+      height: 3.4rem;
+      width: auto;
+    }
 
-/* Smooth expandable details animation */
-.hp-find-card__details-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  overflow: hidden;
-  grid-column: 1 / -1;
-  width: 100%;
-}
-.hp-find-card__details-wrapper.is-expanded {
-  grid-template-rows: 1fr;
-}
-.hp-find-card__details {
-  min-height: 0;
-  padding-top: var(--af-space-4);
-  border-top: 2px dashed var(--af-hairline);
-  margin-top: var(--af-space-4);
-}
-.hp-find-card__specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--af-space-3);
-  margin-bottom: var(--af-space-3);
-}
-.hp-spec-item { font-size: var(--af-text-sm); }
-.hp-spec-item strong { display: block; font-size: var(--af-text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--af-ink-soft); }
+    .hp-logo__tag {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      text-transform: none;
+      letter-spacing: 0.02em;
+      color: var(--af-olive-teal);
+      padding-left: var(--af-space-3);
+      margin-left: var(--af-space-2);
+      border-left: 2px solid var(--af-orange);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
 
-.hp-find-card__quote {
-  padding: var(--af-space-3) 0 0;
-  border-top: 1px dashed var(--af-hairline);
-  margin-top: var(--af-space-3);
-  font-style: italic; font-size: var(--af-text-sm); color: var(--af-orange-deep);
-}
+    .hp-nav {
+      display: flex;
+      gap: clamp(1rem, 2vw, 1.75rem);
+      align-items: center;
+    }
 
-/* --- 04 Meet Nacho (Centered & Animated) -------------------------------- */
-.hp-nacho { background: var(--af-cream); border-block: 2px solid var(--af-hairline); }
-.hp-nacho__inner {
-  max-width: 46rem; margin-inline: auto; text-align: center;
-  padding: clamp(3rem, 7vw, 5rem) var(--af-space-5);
-}
-.hp-nacho__portrait {
-  width: clamp(9rem, 20vw, 12rem); aspect-ratio: 1; object-fit: cover;
-  border-radius: 50%; border: var(--af-border-heavy) solid var(--af-avocado-deep);
-  margin-bottom: var(--af-space-4); display: block; margin-inline: auto;
-  animation: hp-nacho-float 4s ease-in-out infinite;
-}
-@keyframes hp-nacho-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7px) rotate(2deg); }
-}
+    .hp-nav a {
+      font-size: var(--af-text-sm);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--af-ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-/* --- 05 Fullwidth Photo Gallery --------------------------------------- */
-.hp-gallery-sec { padding-block: clamp(3rem, 6vw, 5rem); }
-.hp-gallery-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--af-space-3);
-  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
-}
-.hp-gallery-item {
-  position: relative; overflow: hidden; border-radius: var(--af-radius-card);
-  border: var(--af-border-width) solid var(--af-ink); aspect-ratio: 4 / 3;
-}
-.hp-gallery-item img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.4s ease;
-}
-.hp-gallery-item:hover img { transform: scale(1.04); }
+    .hp-nav a:hover {
+      color: var(--af-orange-btn);
+      text-decoration: none;
+    }
 
-/* --- 06 Instagram Feed --------------------------------------------------- */
-.hp-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--af-space-3); }
-.hp-feed-item {
-  position: relative; display: block; overflow: hidden; border-radius: var(--af-radius-card);
-  border: var(--af-border-width) solid var(--af-ink); aspect-ratio: 1;
-}
-.hp-feed-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
-.hp-feed-item:hover img { transform: scale(1.05); }
+    .hp-nav a.af-btn,
+    .hp-nav a.af-btn:hover {
+      color: var(--af-btn-ink);
+    }
 
-/* --- 07 Testimonials ----------------------------------------------------- */
-.hp-slider {
-  display: grid; grid-auto-flow: column;
-  grid-auto-columns: minmax(min(22rem, 85vw), 1fr);
-  gap: var(--af-space-5);
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  padding-bottom: var(--af-space-4); scrollbar-width: thin;
-}
-.hp-quote {
-  scroll-snap-align: center; text-align: center;
-  background: var(--af-surface-raised);
-  border: var(--af-border-width) solid var(--af-ink);
-  border-radius: var(--af-radius-card);
-  padding: var(--af-space-6) var(--af-space-5);
-  box-shadow: 4px 4px 0 var(--af-ink);
-}
-.hp-stars { display: flex; justify-content: center; gap: 4px; margin-bottom: var(--af-space-3); }
-.hp-stars .af-sparkle { color: var(--af-mustard); height: 1.1rem; width: 0.7rem; }
-.hp-quote blockquote { margin: 0 0 var(--af-space-3); font-size: var(--af-text-lg); line-height: 1.5; }
-.hp-quote cite { font-style: normal; font-size: var(--af-text-sm); font-weight: 600; color: var(--af-ink-soft); }
+    .hp-burger {
+      display: none;
+      margin-left: auto;
+      background: var(--af-cream);
+      color: var(--af-ink);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: 12px;
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: var(--af-text-sm);
+      font-weight: 600;
+    }
 
-/* --- Signup Form --------------------------------------------------------- */
-.hp-signup form {
-  display: flex; flex-wrap: wrap; gap: var(--af-space-3); justify-content: center;
-  margin-top: var(--af-space-5);
-}
-.hp-signup input {
-  flex: 1 1 18rem; max-width: 22rem; padding: 0.75rem 1rem;
-  font: inherit; color: var(--af-ink);
-  background: var(--af-surface-raised);
-  border: var(--af-border-width) solid var(--af-ink);
-  border-radius: 12px;
-}
+    /* Compact Language Switcher Toggle */
+    .hp-lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: var(--af-cream);
+      color: var(--af-ink);
+      border: 1.5px solid var(--af-ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-/* --- 08 Footer ----------------------------------------------------------- */
-.hp-footer { background: var(--af-olive-teal); color: var(--af-cream); padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6); }
-.hp-footer a { color: var(--af-cream); }
-.hp-footer__inner {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  max-width: var(--af-container); margin-inline: auto; padding-inline: var(--af-space-5);
-}
-.hp-footer h3 { color: var(--af-cream); font-size: var(--af-text-base); margin-bottom: var(--af-space-3); }
-.hp-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--af-space-2); }
-.hp-footer-logo-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
-.hp-footer__monogram { width: 140px; height: auto; display: block; margin-bottom: var(--af-space-2); }
+    .hp-lang-toggle:hover {
+      background: var(--af-mustard);
+      color: var(--af-ink);
+    }
 
-.hp-footer__bottom {
-  max-width: var(--af-container); margin: clamp(2rem, 5vw, 3rem) auto 0;
-  padding: var(--af-space-4) var(--af-space-5) 0;
-  border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
-  display: flex; flex-direction: column; gap: var(--af-space-2); align-items: center; text-align: center;
-  font-size: var(--af-text-sm);
-}
+    /* --- 01 Hero ------------------------------------------------------------- */
+    .hp-hero {
+      position: relative;
+      isolation: isolate;
+      background: var(--af-cream);
+      overflow: hidden;
+      padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    }
 
-/* --- Scroll reveal ------------------------------------------------------- */
-.js .hp-reveal { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--af-ease), transform 500ms var(--af-ease); }
-.js .hp-reveal.is-in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .js .hp-reveal { opacity: 1; transform: none; transition: none; }
-  .hp-nacho__portrait { animation: none; }
-}
+    .hp-hero__inner {
+      max-width: 64rem;
+      margin-inline: auto;
+      text-align: center;
+      padding: clamp(2.5rem, 5vw, 4rem) var(--af-space-3) clamp(1.5rem, 3vw, 2.5rem);
+    }
 
-/* --- Responsive Layout Adjustments --------------------------------------- */
-@media (max-width: 1080px) { .hp-logo__tag { display: none; } }
+    .hp-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--af-space-2);
+      margin-bottom: var(--af-space-4);
+      margin-inline: auto;
+      padding: 0.5rem 1.5rem;
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-pill);
+      box-shadow: 3px 3px 0 var(--af-ink);
+    }
 
-@media (max-width: 900px) {
-  .hp-nav { display: none; }
-  .hp-nav.is-open {
-    display: flex; flex-direction: column; align-items: stretch;
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--af-surface); border-bottom: 2px solid var(--af-hairline);
-    padding: var(--af-space-4) var(--af-space-5); gap: var(--af-space-4);
-  }
-  .hp-nav.is-open .af-btn { justify-content: center; }
-  .hp-burger { display: block; }
-  .hp-split { grid-template-columns: 1fr; }
-  .hp-find-card__mat { grid-template-columns: 1fr; gap: var(--af-space-4); }
-  .hp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
+    .hp-hero__eyebrow .af-label {
+      color: var(--af-olive-teal);
+      font-weight: 700;
+    }
 
-@media (max-width: 560px) {
-  .hp-logo__word { height: 1.8rem; }
-  .hp-feed { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+    .hp-hero__title {
+      margin-bottom: var(--af-space-4);
+      text-align: center;
+    }
+
+    .hp-hero__script {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+      font-weight: 400;
+      color: var(--af-olive-teal);
+      line-height: 1.15;
+    }
+
+    .hp-hero__sub {
+      font-size: var(--af-text-xl);
+      color: var(--af-ink-soft);
+      margin-bottom: var(--af-space-5);
+      max-width: 48rem;
+      margin-inline: auto;
+    }
+
+    .hp-hero__social {
+      display: flex;
+      gap: var(--af-space-3);
+      justify-content: center;
+      margin-top: var(--af-space-4);
+      flex-wrap: wrap;
+    }
+
+    .hp-hero__social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-pill);
+      box-shadow: 3px 3px 0 var(--af-ink);
+      color: var(--af-orange-btn);
+      font-size: var(--af-text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .hp-hero__social-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 5px 5px 0 var(--af-ink);
+      background: var(--af-cream);
+      color: var(--af-orange-deep);
+      text-decoration: none;
+    }
+
+    .hp-hero__media {
+      max-width: 68rem;
+      margin: var(--af-space-4) auto 0;
+      padding-inline: var(--af-space-3);
+    }
+
+    .hp-hero__media img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: var(--af-radius-card);
+      border: var(--af-border-width) solid var(--af-ink);
+      box-shadow: none;
+      display: block;
+    }
+
+    /* --- Animated Yellow Marquee Ribbon -------------------------------------- */
+    .hp-marquee {
+      background: var(--af-mustard);
+      color: var(--af-ink);
+      border-block: 2px solid var(--af-ink);
+      padding: 0.875rem 0;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .hp-marquee__track {
+      display: flex;
+      gap: var(--af-space-5);
+      width: max-content;
+      animation: hp-marquee-scroll 35s linear infinite;
+      will-change: transform;
+    }
+
+    .hp-marquee__content {
+      display: flex;
+      align-items: center;
+      gap: var(--af-space-4);
+      font-size: var(--af-text-sm);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes hp-marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* --- 02 Our Story / Meet Jennyfer ---------------------------------------- */
+    .hp-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: stretch;
+    }
+
+    .hp-split__media {
+      display: flex;
+      height: 100%;
+    }
+
+    .hp-split__media img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+      border-radius: var(--af-radius-card);
+      border: var(--af-border-width) solid var(--af-ink);
+      box-shadow: 6px 6px 0 var(--af-ink);
+      display: block;
+    }
+
+    /* --- 03 Featured Collection (Stacked Cards with Botanical Pattern) ------- */
+    .hp-featured-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--af-space-5);
+    }
+
+    .hp-find-card {
+      position: relative;
+      isolation: isolate;
+      background-color: #FAF1DF;
+      background-image: url("design-system/assets/textures/botanical-pattern.png");
+      background-size: 340px;
+      background-repeat: repeat;
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-card);
+      box-shadow: 6px 6px 0 var(--af-ink);
+      padding: clamp(0.625rem, 1.5vw, 1rem);
+      /* Tight frame perimeter */
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hp-find-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 8px 8px 0 var(--af-ink);
+    }
+
+    /* Inner Opaque White Mat Plate */
+    .hp-find-card__mat {
+      background: #FFFFFF !important;
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: calc(var(--af-radius-card) - 4px);
+      padding: clamp(1rem, 2vw, 1.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.25rem, 3vw, 2rem);
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hp-find-card__media {
+      background: var(--af-surface-sunk);
+      padding: var(--af-space-2);
+      border-radius: var(--af-radius-sm);
+      border: var(--af-border-width) solid var(--af-ink);
+      height: clamp(280px, 45vw, 480px);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* Carousel CSS rules */
+    .hp-find-card__carousel-track {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hp-find-card__carousel-track img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex: 0 0 100%;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .hp-find-card__carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--af-cream);
+      color: var(--af-ink);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 2px 2px 0 var(--af-ink);
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+    }
+
+    .hp-find-card__carousel-btn:hover {
+      background: var(--af-mustard);
+      transform: translateY(-50%) translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--af-ink);
+    }
+
+    .hp-find-card__carousel-btn:active {
+      transform: translateY(-50%) translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--af-ink);
+    }
+
+    .hp-find-card__carousel-btn--prev {
+      left: 16px;
+    }
+
+    .hp-find-card__carousel-btn--next {
+      right: 16px;
+    }
+
+    .hp-find-card__carousel-indicators {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 6px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    .hp-find-card__carousel-indicators span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hp-find-card__carousel-indicators span.active {
+      background: var(--af-orange);
+      transform: scale(1.2);
+    }
+
+    .hp-find-card__content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .hp-find-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--af-space-2);
+      margin-bottom: var(--af-space-1);
+    }
+
+    .hp-find-card__title {
+      font-family: var(--af-font-display);
+      font-size: var(--af-text-2xl);
+      color: var(--af-olive-teal);
+      margin: 0;
+    }
+
+    .hp-find-card__price {
+      font-size: var(--af-text-xl);
+      font-weight: 700;
+      color: var(--af-orange-btn);
+      margin: 0;
+    }
+
+    .hp-find-card__desc {
+      font-size: var(--af-text-base);
+      color: var(--af-ink);
+      line-height: 1.5;
+      margin-bottom: var(--af-space-3);
+    }
+
+    .hp-find-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--af-space-2);
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    /* Smooth expandable details animation */
+    .hp-find-card__details-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      overflow: hidden;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .hp-find-card__details-wrapper.is-expanded {
+      grid-template-rows: 1fr;
+    }
+
+    .hp-find-card__details {
+      min-height: 0;
+      padding-top: var(--af-space-4);
+      border-top: 2px dashed var(--af-hairline);
+      margin-top: var(--af-space-4);
+    }
+
+    .hp-find-card__specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--af-space-3);
+      margin-bottom: var(--af-space-3);
+    }
+
+    .hp-spec-item {
+      font-size: var(--af-text-sm);
+    }
+
+    .hp-spec-item strong {
+      display: block;
+      font-size: var(--af-text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--af-ink-soft);
+    }
+
+    .hp-find-card__quote {
+      padding: var(--af-space-3) 0 0;
+      border-top: 1px dashed var(--af-hairline);
+      margin-top: var(--af-space-3);
+      font-style: italic;
+      font-size: var(--af-text-sm);
+      color: var(--af-orange-deep);
+    }
+
+    /* --- 04 Meet Nacho (Wide & Prominent Stage) ----------------------------- */
+    .hp-nacho {
+      background: var(--af-cream);
+      border-block: 2px solid var(--af-hairline);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hp-nacho__inner {
+      max-width: var(--af-container);
+      margin-inline: auto;
+      text-align: center;
+      padding: clamp(3.5rem, 8vw, 6rem) var(--af-space-4);
+      position: relative;
+    }
+
+    .hp-nacho__stage {
+      position: relative;
+      display: inline-block;
+      padding: 1.5rem 3rem;
+      margin-bottom: var(--af-space-4);
+      max-width: 100%;
+    }
+
+    .hp-nacho__portrait {
+      width: auto;
+      max-width: 100%;
+      height: clamp(260px, 35vw, 360px);
+      object-fit: contain;
+      display: block;
+      margin-inline: auto;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      filter: drop-shadow(5px 5px 0 var(--af-ink));
+      transform-origin: bottom center;
+      transition: transform 0.4s var(--af-ease);
+    }
+
+    .hp-nacho__stage:hover .hp-nacho__portrait {
+      transform: scale(1.04) rotate(-1deg);
+    }
+
+    /* Floating Motifs Around Nacho */
+    .hp-nacho-motif {
+      position: absolute;
+      pointer-events: none;
+      z-index: 5;
+      animation: hp-motif-twinkle 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes hp-motif-twinkle {
+      0% {
+        transform: scale(0.85) rotate(0deg) translateY(0);
+        opacity: 0.75;
+      }
+
+      50% {
+        transform: scale(1.18) rotate(15deg) translateY(-8px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.9) rotate(-12deg) translateY(4px);
+        opacity: 0.8;
+      }
+    }
+
+    /* --- 05 Showroom Gallery Viewports with Expandable Product Info ------------ */
+    .hp-showroom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: var(--af-space-4);
+      max-width: var(--af-container);
+      margin-inline: auto;
+      padding-inline: var(--af-space-3);
+    }
+
+    .hp-showroom-card {
+      position: relative;
+      isolation: isolate;
+      background-color: #FAF1DF;
+      background-image: url("design-system/assets/textures/watercolor-style-background-001.png");
+      background-size: cover;
+      background-position: center;
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-card);
+      box-shadow: 5px 5px 0 var(--af-ink);
+      padding: 0.625rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hp-showroom-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 7px 7px 0 var(--af-ink);
+    }
+
+    .hp-showroom-card__mat {
+      background: #FFFFFF !important;
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: calc(var(--af-radius-card) - 4px);
+      padding: 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .hp-showroom-card__img-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--af-radius-sm);
+      border: var(--af-border-width) solid var(--af-ink);
+      aspect-ratio: 4 / 3;
+    }
+
+    .hp-showroom-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .hp-showroom-card:hover .hp-showroom-card__img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .hp-showroom-card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hp-showroom-card__name {
+      font-family: var(--af-font-display);
+      font-size: var(--af-text-base);
+      color: var(--af-olive-teal);
+      margin: 0;
+    }
+
+    .hp-showroom-card__era {
+      font-size: var(--af-text-xs);
+      font-weight: 700;
+      color: var(--af-orange-btn);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- 06 Atomic Social Media Feed Cards ----------------------------------- */
+    .hp-social-feed {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--af-space-3);
+      width: 100%;
+    }
+
+    .hp-social-card {
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-card);
+      box-shadow: 4px 4px 0 var(--af-ink);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--af-ink);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hp-social-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 6px 6px 0 var(--af-ink);
+      text-decoration: none;
+      color: var(--af-ink);
+    }
+
+    .hp-social-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.625rem 0.875rem;
+      border-bottom: 1px solid var(--af-hairline);
+      background: var(--af-cream);
+    }
+
+    .hp-social-card__user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hp-social-card__avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--af-ink);
+      background: var(--af-mustard);
+    }
+
+    .hp-social-card__handle {
+      font-size: var(--af-text-xs);
+      font-weight: 700;
+      color: var(--af-ink);
+    }
+
+    .hp-social-card__badge {
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.5rem;
+      background: var(--af-orange-btn);
+      color: var(--af-btn-ink);
+      border-radius: 999px;
+    }
+
+    .hp-social-card__media {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-block: 1px solid var(--af-hairline);
+    }
+
+    .hp-social-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .hp-social-card:hover .hp-social-card__media img {
+      transform: scale(1.04);
+    }
+
+    .hp-social-card__body {
+      padding: 0.75rem 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: var(--af-surface-raised);
+    }
+
+    .hp-social-card__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--af-orange-btn);
+      font-size: var(--af-text-xs);
+      font-weight: 700;
+    }
+
+    .hp-social-card__caption {
+      font-size: var(--af-text-xs);
+      line-height: 1.45;
+      color: var(--af-ink);
+    }
+
+    .hp-social-card__tag {
+      color: var(--af-olive-teal);
+      font-weight: 600;
+    }
+
+    /* --- 07 Testimonials — Continuous Marquee & Compact Square Cards ---------- */
+    .hp-reviews-marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding-block: var(--af-space-4);
+    }
+
+    .hp-reviews-track {
+      display: flex;
+      gap: var(--af-space-5);
+      width: max-content;
+      animation: hp-reviews-scroll 32s linear infinite;
+      will-change: transform;
+    }
+
+    .hp-reviews-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes hp-reviews-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .hp-quote-card {
+      width: 270px;
+      height: 270px;
+      padding: var(--af-space-4);
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-card);
+      box-shadow: 4px 4px 0 var(--af-ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      cursor: pointer;
+      flex: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .hp-quote-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 6px 6px 0 var(--af-ink);
+      background: var(--af-cream);
+    }
+
+    .hp-quote-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--af-olive-teal);
+      color: var(--af-cream);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--af-ink);
+      margin-bottom: var(--af-space-1);
+    }
+
+    .hp-stars {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: var(--af-space-2);
+    }
+
+    .hp-stars .af-sparkle {
+      color: var(--af-mustard);
+      height: 1.1rem;
+      width: 0.7rem;
+    }
+
+    .hp-quote-card blockquote {
+      font-size: var(--af-text-sm);
+      line-height: 1.4;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .hp-quote-card cite {
+      font-style: normal;
+      font-size: var(--af-text-xs);
+      font-weight: 700;
+      color: var(--af-ink-soft);
+    }
+
+    /* Review Modal Overlay */
+    .hp-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(43, 46, 20, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--af-space-4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .hp-modal-overlay.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .hp-modal-card {
+      background: var(--af-surface-raised);
+      border: var(--af-border-heavy) solid var(--af-ink);
+      border-radius: var(--af-radius-lg);
+      padding: var(--af-space-6);
+      max-width: 32rem;
+      width: 100%;
+      box-shadow: 8px 8px 0 var(--af-ink);
+      text-align: center;
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
+    }
+
+    .hp-modal-overlay.is-active .hp-modal-card {
+      transform: scale(1);
+    }
+
+    /* --- 08 FAQ Accordion ---------------------------------------------------- */
+    .hp-faq-list {
+      max-width: 48rem;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--af-space-3);
+    }
+
+    .hp-faq-item {
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: var(--af-radius-card);
+      box-shadow: 4px 4px 0 var(--af-ink);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hp-faq-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 6px 6px 0 var(--af-ink);
+    }
+
+    .hp-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: var(--af-space-4) var(--af-space-5);
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--af-space-3);
+      color: var(--af-olive-teal);
+      font-weight: 700;
+      font-size: var(--af-text-base);
+    }
+
+    .hp-faq-trigger:hover {
+      color: var(--af-orange-btn);
+    }
+
+    .hp-faq-icon {
+      font-size: 1.25rem;
+      transition: transform 0.3s ease;
+      font-weight: 700;
+      color: var(--af-orange-btn);
+    }
+
+    .hp-faq-item.is-open .hp-faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .hp-faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease, visibility 0.35s ease;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    .hp-faq-item.is-open .hp-faq-content {
+      grid-template-rows: 1fr;
+      visibility: visible;
+    }
+
+    .hp-faq-body {
+      min-height: 0;
+      overflow: hidden;
+      padding: 0 var(--af-space-5) var(--af-space-4);
+      font-size: var(--af-text-sm);
+      line-height: 1.6;
+      color: var(--af-ink);
+      border-top: 1px dashed var(--af-hairline);
+      margin-top: 0;
+      padding-top: var(--af-space-3);
+    }
+
+    /* --- Signup Form --------------------------------------------------------- */
+    .hp-signup form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--af-space-3);
+      justify-content: center;
+      margin-top: var(--af-space-5);
+    }
+
+    .hp-signup input {
+      flex: 1 1 18rem;
+      max-width: 22rem;
+      padding: 0.75rem 1rem;
+      font: inherit;
+      color: var(--af-ink);
+      background: var(--af-surface-raised);
+      border: var(--af-border-width) solid var(--af-ink);
+      border-radius: 12px;
+    }
+
+    /* --- 08 Footer ----------------------------------------------------------- */
+    .hp-footer {
+      background: var(--af-olive-teal);
+      color: var(--af-cream);
+      padding: clamp(3rem, 6vw, 5rem) 0 var(--af-space-6);
+    }
+
+    .hp-footer a {
+      color: var(--af-cream);
+    }
+
+    .hp-footer__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      max-width: var(--af-container);
+      margin-inline: auto;
+      padding-inline: var(--af-space-5);
+    }
+
+    .hp-footer h3 {
+      color: var(--af-cream);
+      font-size: var(--af-text-base);
+      margin-bottom: var(--af-space-3);
+    }
+
+    .hp-footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--af-space-2);
+    }
+
+    .hp-footer-logo-col {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hp-footer__monogram {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin-bottom: var(--af-space-2);
+    }
+
+    .hp-footer__bottom {
+      max-width: var(--af-container);
+      margin: clamp(2rem, 5vw, 3rem) auto 0;
+      padding: var(--af-space-4) var(--af-space-5) 0;
+      border-top: 1px solid color-mix(in srgb, var(--af-cream) 30%, transparent);
+      display: flex;
+      flex-direction: column;
+      gap: var(--af-space-2);
+      align-items: center;
+      text-align: center;
+      font-size: var(--af-text-sm);
+    }
+
+    /* --- Scroll reveal ------------------------------------------------------- */
+    .js .hp-reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 500ms var(--af-ease), transform 500ms var(--af-ease);
+    }
+
+    .js .hp-reveal.is-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .hp-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .hp-nacho__portrait {
+        animation: none;
+      }
+    }
+
+    /* --- Responsive Layout Adjustments --------------------------------------- */
+    @media (max-width: 1080px) {
+      .hp-logo__tag {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hp-nav {
+        display: none;
+      }
+
+      .hp-nav.is-open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--af-surface);
+        border-bottom: 2px solid var(--af-hairline);
+        padding: var(--af-space-4) var(--af-space-5);
+        gap: var(--af-space-4);
+      }
+
+      .hp-nav.is-open .af-btn {
+        justify-content: center;
+      }
+
+      .hp-burger {
+        display: block;
+      }
+
+      .hp-split {
+        grid-template-columns: 1fr;
+      }
+
+      .hp-find-card__mat {
+        gap: var(--af-space-4);
+      }
+
+      .hp-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hp-logo__word {
+        height: 1.8rem;
+      }
+
+      .hp-feed {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ============================ 00 HEADER ============================ -->
-<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
-  <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
-</div>
-
-<header class="hp-header">
-  <div class="hp-header__inner">
-    <a class="hp-logo" href="#top">
-      <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX" width="240" height="67">
-      <span class="hp-logo__tag" data-en="Far-out finds, down-to-earth prices" data-es="Hallazgos increíbles, precios accesibles">Far-out finds, down-to-earth prices</span>
-    </a>
-    <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
-      <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
-      <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu" data-es="Menú">Menu</button>
-    </div>
-    <nav class="hp-nav" id="hp-nav">
-      <a href="#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
-      <a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
-      <a href="#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
-      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
-    </nav>
+  <!-- ============================ 00 HEADER ============================ -->
+  <div class="hp-announce"
+    data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX"
+    data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
+    <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19">
+      <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+    </svg>
+    <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin,
+      TX</span>
   </div>
-</header>
 
-<!-- ===================== 01 HERO ==================== -->
-<section class="hp-hero" id="top">
-  <div class="af-pattern af-pattern--botanical af-pattern--ghost" style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
-
-  <div class="hp-hero__inner">
-    <p class="hp-hero__eyebrow hp-reveal">
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span class="af-label" data-en="Vintage, Written in the Stars" data-es="Vintage, Escrito en las Estrellas">Vintage, Written in the Stars</span>
-    </p>
-    <h1 class="hp-reveal" data-en="Far-Out Finds" data-es="Hallazgos Increíbles">Far-Out <span style="white-space:nowrap">Finds<svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="20" height="32"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg></span></h1>
-    <p class="hp-hero__sub hp-reveal" data-en="Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last." data-es="Explora auténtico rattán y bambú de los años 70, restaurado en Austin para una nueva generación. Diseño eterno, construido para durar.">
-      Explore authentic 1970s rattan and bamboo, restored in Austin for a new generation. Timeless design, built to last.
-    </p>
-    <div class="hp-reveal">
-      <a href="#collection" class="af-btn af-btn--primary" data-en="Shop the Collection" data-es="Comprar la Colección">
-        Shop the Collection
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+  <header class="hp-header">
+    <div class="hp-header__inner">
+      <a class="hp-logo" href="#top">
+        <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX"
+          width="240" height="67">
+        <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home"
+          data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
       </a>
+      <div style="display: flex; align-items: center; gap: var(--af-space-2); margin-left: auto;">
+        <button class="hp-lang-toggle" aria-label="Switch language to Spanish">ES</button>
+        <button class="hp-burger" aria-expanded="false" aria-controls="hp-nav" data-en="Menu"
+          data-es="Menú">Menu</button>
+      </div>
+      <nav class="hp-nav" id="hp-nav">
+        <a href="#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
+        <a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
+        <a href="#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
+        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+        <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
+          target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace"
+          data-es="Mercado">Marketplace</a>
+      </nav>
     </div>
-    <div class="hp-hero__social hp-reveal">
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" data-en="Instagram" data-es="Instagram">Instagram</a>
-      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a>
-    </div>
-  </div>
+  </header>
 
-  <div class="hp-hero__media hp-reveal">
-    <img src="design-system/assets/product-photos/Sunny.png" alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798" fetchpriority="high" decoding="async">
-  </div>
-</section>
+  <!-- ===================== 01 HERO ==================== -->
+  <section class="hp-hero" id="top">
+    <div class="af-pattern af-pattern--botanical af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
 
-<!-- ==================== ANIMATED MARQUEE RIBBON ======================= -->
-<div class="hp-marquee" aria-label="Brand highlights">
-  <div class="hp-marquee__track">
-    <div class="hp-marquee__content">
-      <span>Authentic 1970s Rattan &amp; Bamboo</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>Hand-Restored by Jennyfer in Austin</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>White-Glove Local Austin Delivery</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>Far-out finds, down-to-earth prices</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-    </div>
-    <div class="hp-marquee__content" aria-hidden="true">
-      <span>Authentic 1970s Rattan &amp; Bamboo</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>Hand-Restored by Jennyfer in Austin</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>White-Glove Local Austin Delivery</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-      <span>Far-out finds, down-to-earth prices</span>
-      <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-    </div>
-  </div>
-</div>
-
-<!-- ========================== 02 OUR STORY =========================== -->
-<section class="hp-sec af-container" id="story">
-  <div class="hp-split">
-    <div class="hp-reveal">
-      <span class="af-label" data-en="Meet Jennyfer &amp; Our Story" data-es="Conoce a Jennyfer y Nuestra Historia">Meet Jennyfer &amp; Our Story</span>
-      <h2 style="margin-top:var(--af-space-2)" data-en="Restored by Hand for the Modern Home" data-es="Restaurado a Mano para el Hogar Moderno">Restored by Hand for the Modern Home</h2>
-      <p data-en="Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life." data-es="Atomic Finds ATX es una operación de una sola mujer, de principio a fin. Jennyfer busca cada pieza ella misma y luego restaura cada una a mano. Su ojo es todo el negocio: un instinto para las piezas que vale la pena salvar.">
-        Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life.
+    <div class="hp-hero__inner">
+      <div class="hp-hero__eyebrow hp-reveal">
+        <svg class="af-sparkle af-sparkle--twinkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          width="14" height="22">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span class="af-label" data-en="Hand-Restored Vintage Rattan &amp; Bamboo &middot; Austin, TX"
+          data-es="Rattán y Bambú Vintage Restaurado a Mano &middot; Austin, TX">Hand-Restored Vintage Rattan &amp;
+          Bamboo &middot; Austin, TX</span>
+      </div>
+      <h1 class="hp-hero__title hp-reveal">
+        <span class="hp-hero__script" data-en="Tiny Time Machines for Your Home"
+          data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home <svg
+            class="af-sparkle af-sparkle--twinkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="20"
+            height="32" style="display:inline-block; vertical-align:middle; color:var(--af-mustard);">
+            <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+          </svg></span>
+      </h1>
+      <p class="hp-hero__sub hp-reveal"
+        data-en="Every piece is hand-picked and restored by Jennyfer in Austin. Authentic 1970s rattan &amp; bamboo brought back to life for modern spaces."
+        data-es="Cada pieza es seleccionada y restaurada a mano por Jennyfer en Austin. Auténtico rattán y bambú de los años 70 devuelto a la vida.">
+        Every piece is hand-picked and restored by Jennyfer in Austin. Authentic 1970s rattan &amp; bamboo brought back
+        to life for modern spaces.
       </p>
-      <p data-en="No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor." data-es="Sin almacenes, sin producción en masa: solo Jennyfer, un taller y un amor genuino por la artesanía de mediados de siglo. Cada pieza es seleccionada a mano en ventas de casas y colecciones privadas de Austin.">
-        No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor.
-      </p>
-      <a href="#collection" class="af-btn af-btn--secondary" data-en="Explore the collection" data-es="Explorar la colección">Explore the collection</a>
+      <div class="hp-reveal">
+        <a href="#collection" class="af-btn af-btn--primary" data-en="Shop the Collection"
+          data-es="Comprar la Colección">
+          Shop the Collection
+          <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="14" height="22">
+            <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+          </svg>
+        </a>
+      </div>
+      <div class="hp-hero__social hp-reveal">
+        <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" aria-label="Instagram"
+          class="hp-hero__social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span data-en="Instagram" data-es="Instagram">Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
+          target="_blank" rel="noopener" aria-label="Facebook Marketplace" class="hp-hero__social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.77 5.6c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 3h-2.33v6.8c4.56-.93 8-4.96 8-9.8z" />
+          </svg>
+          <span data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</span>
+        </a>
+      </div>
     </div>
-    <div class="hp-split__media hp-reveal">
-      <img src="design-system/assets/product-photos/Product 7.png" alt="A styled Austin showroom corner with a vintage rattan console" width="1200" height="800" loading="lazy" decoding="async">
+
+    <div class="hp-hero__media hp-reveal">
+      <img src="design-system/assets/product-photos/sunny.png"
+        alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798"
+        fetchpriority="high" decoding="async">
+    </div>
+  </section>
+
+  <!-- ==================== ANIMATED MARQUEE RIBBON ======================= -->
+  <div class="hp-marquee" aria-label="Brand highlights">
+    <div class="hp-marquee__track">
+      <div class="hp-marquee__content">
+        <span>Authentic 1970s Rattan &amp; Bamboo</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>Hand-Restored by Jennyfer in Austin</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>White-Glove Local Austin Delivery</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>Far-out finds, down-to-earth prices</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+      </div>
+      <div class="hp-marquee__content" aria-hidden="true">
+        <span>Authentic 1970s Rattan &amp; Bamboo</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>Hand-Restored by Jennyfer in Austin</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>White-Glove Local Austin Delivery</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <span>Far-out finds, down-to-earth prices</span>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- ===================== 03 FEATURED COLLECTION ====================== -->
-<section class="hp-sec af-container" id="collection">
-  <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="Curated Vintage Collection" data-es="Colección Vintage Curada">Curated Vintage Collection</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Featured Collection" data-es="Colección Destacada">Featured Collection</h2>
-    <p data-en="Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin." data-es="Piezas mid-century de rattán, bambú y tejido seleccionadas a mano listas para adoptar en Austin.">Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin.</p>
-  </div>
+  <!-- ========================== 02 OUR STORY =========================== -->
+  <section class="hp-sec af-container" id="story" style="position:relative; isolation:isolate;">
+    <div class="af-pattern af-pattern--trailing af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+    <div class="hp-split">
+      <div class="hp-reveal">
+        <span class="af-label" data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
+        <h2 style="margin-top:var(--af-space-2)" data-en="Restored by Hand for the Modern Home"
+          data-es="Restaurado a Mano para el Hogar Moderno">Restored by Hand for the Modern Home</h2>
+        <p data-en="Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the patience to bring 1970s rattan and bamboo back to life."
+          data-es="Atomic Finds ATX es una operación de una sola mujer, de principio a fin. Jennyfer busca cada pieza ella misma y luego restaura cada una a mano. Su ojo es todo el negocio: un instinto para las piezas que vale la pena salvar.">
+          Atomic Finds ATX is a one-woman operation, start to finish. Jennyfer sources every piece herself, then
+          restores each one by hand. Her eye is the whole business: an instinct for the pieces worth saving, and the
+          patience to bring 1970s rattan and bamboo back to life.
+        </p>
+        <p data-en="No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought back to life before it ever reaches the shop floor."
+          data-es="Sin almacenes, sin producción en masa: solo Jennyfer, un taller y un amor genuino por la artesanía de mediados de siglo. Cada pieza es seleccionada a mano en ventas de casas y colecciones privadas de Austin.">
+          No warehouses, no mass production — just Jennyfer, a workshop, and a genuine love for mid-century
+          craftsmanship. Every piece is hand-picked from Austin estate sales, auctions, and private collections, brought
+          back to life before it ever reaches the shop floor.
+        </p>
+        <a href="#collection" class="af-btn af-btn--secondary" data-en="Explore the collection"
+          data-es="Explorar la colección">Explore the collection</a>
+      </div>
+      <div class="hp-split__media hp-reveal">
+        <img src="design-system/assets/product-photos/product-7.png"
+          alt="A styled Austin showroom corner with a vintage rattan console" width="1200" height="800" loading="lazy"
+          decoding="async">
+      </div>
+    </div>
+  </section>
 
-  <div class="hp-featured-list">
-    <!-- Featured Card 1: Sunny -->
-    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find-card__mat">
-        <div class="hp-find-card__media">
-          <img src="design-system/assets/product-photos/Sunny.png" alt="Sunny, a 1970s vintage rattan coffee table" width="1200" height="798" loading="lazy" decoding="async">
-        </div>
-        <div class="hp-find-card__content">
-          <div class="hp-find-card__header">
-            <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table" data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974</h3>
-            <span class="hp-find-card__price">$485</span>
+  <!-- ===================== 03 FEATURED COLLECTION ====================== -->
+  <section class="hp-sec af-container" id="collection" style="position:relative; isolation:isolate;">
+    <div class="af-pattern af-pattern--sparkle af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+    <div class="hp-sec__head hp-sec__head--center hp-reveal">
+      <span class="af-label" data-en="Curated Vintage Collection" data-es="Colección Vintage Curada">Curated Vintage
+        Collection</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Featured Collection" data-es="Colección Destacada">Featured
+        Collection</h2>
+      <p data-en="Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin."
+        data-es="Piezas mid-century de rattán, bambú y tejido seleccionadas a mano listas para adoptar en Austin.">
+        Handpicked mid-century rattan, bamboo, and woven pieces ready for adoption in Austin.</p>
+    </div>
+
+    <div class="hp-featured-list">
+      <!-- Featured Card 1: Sunny -->
+      <article class="hp-find-card hp-reveal">
+        <div class="hp-find-card__mat">
+          <div class="hp-find-card__media">
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
+              aria-label="Previous image">&lt;</button>
+            <div class="hp-find-card__carousel-track">
+              <img src="design-system/assets/product-photos/sunny.png"
+                alt="Sunny, a 1970s vintage rattan coffee table - View 1" width="1200" height="798" loading="lazy"
+                decoding="async">
+              <img src="design-system/assets/product-photos/product-2.png" alt="Sunny coffee table details - View 2"
+                width="1200" height="798" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/product-5.png" alt="Sunny coffee table styling - View 3"
+                width="1200" height="798" loading="lazy" decoding="async">
+            </div>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
+              aria-label="Next image">&gt;</button>
+            <div class="hp-find-card__carousel-indicators">
+              <span class="active" data-slide="0"></span>
+              <span data-slide="1"></span>
+              <span data-slide="2"></span>
+            </div>
           </div>
-          <div style="margin-bottom: var(--af-space-3);">
-            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-            <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
-          </div>
-          <p class="hp-find-card__desc" data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer." data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas y un marco resistente. Restaurada a mano por Jennyfer.">
-            A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer.
-          </p>
-          <div class="hp-find-card__actions">
-            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-sunny" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
-          </div>
-          
-          <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
-            <div class="hp-find-card__details">
-              <div class="hp-find-card__specs-grid">
-                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
-                <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp; Origin</strong><span data-en="Solihiya &middot; Philippines" data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
-                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage Wear</span></div>
-                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or Local White-Glove Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or Local White-Glove Delivery</span></div>
-              </div>
-              <div class="hp-find-card__quote">
-                <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Milo">
-                  &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo
-                </p>
+          <div class="hp-find-card__content">
+            <div class="hp-find-card__header">
+              <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table"
+                data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974
+              </h3>
+              <span class="hp-find-card__price">$485</span>
+            </div>
+            <div style="margin-bottom: var(--af-space-3);">
+              <span class="af-tag af-tag--available" data-en="Available in Austin"
+                data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
+            </div>
+            <p class="hp-find-card__desc"
+              data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer."
+              data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas y un marco resistente. Restaurada a mano por Jennyfer.">
+              A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower
+              shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer.
+            </p>
+            <div class="hp-find-card__actions">
+              <a href="contact.html?product=sunny" class="af-btn af-btn--primary af-btn--sm" data-en="Interested?"
+                data-es="¿Interesado?">Interested?</a>
+              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
+                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
+                data-es="Ver en Marketplace">View on Marketplace</a>
+              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
+                aria-controls="details-sunny" data-en="View Details &amp; Provenance"
+                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+            </div>
+
+            <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
+              <div class="hp-find-card__details">
+                <div class="hp-find-card__specs-grid">
+                  <div class="hp-spec-item"><strong data-en="Dimensions"
+                      data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
+                  <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp;
+                      Origin</strong><span data-en="Solihiya &middot; Philippines"
+                      data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
+                      data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage
+                      Wear</span></div>
+                  <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin
+                      Delivery</strong><span data-en="Free Pickup or Local White-Glove Delivery"
+                      data-es="Recogida Gratis o Entrega Local">Free Pickup or Local White-Glove Delivery</span></div>
+                </div>
+                <div class="hp-find-card__quote">
+                  <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo"
+                    data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Milo">
+                    &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and
+                    stability checks.&rdquo; &mdash; Inspector Milo
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <!-- Featured Card 2: Flora Dining Set -->
-    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find-card__mat">
-        <div class="hp-find-card__media">
-          <img src="design-system/assets/product-photos/Flora.png" alt="Flora, a 4-piece 1970s bamboo dining set" width="1200" height="800" loading="lazy" decoding="async">
-        </div>
-        <div class="hp-find-card__content">
-          <div class="hp-find-card__header">
-            <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Bamboo Dining Set" data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978</h3>
-            <span class="hp-find-card__price">$640</span>
+      <!-- Featured Card 2: Flora Dining Set -->
+      <article class="hp-find-card hp-reveal">
+        <div class="hp-find-card__mat">
+          <div class="hp-find-card__media">
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
+              aria-label="Previous image">&lt;</button>
+            <div class="hp-find-card__carousel-track">
+              <img src="design-system/assets/product-photos/flora.png"
+                alt="Flora, a 4-piece 1970s bamboo dining set - View 1" width="1200" height="800" loading="lazy"
+                decoding="async">
+              <img src="design-system/assets/product-photos/product-1.png" alt="Flora bamboo chair details - View 2"
+                width="1200" height="800" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/product-8.png" alt="Flora dining set context - View 3"
+                width="1200" height="800" loading="lazy" decoding="async">
+            </div>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
+              aria-label="Next image">&gt;</button>
+            <div class="hp-find-card__carousel-indicators">
+              <span class="active" data-slide="0"></span>
+              <span data-slide="1"></span>
+              <span data-slide="2"></span>
+            </div>
           </div>
-          <div style="margin-bottom: var(--af-space-3);">
-            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-            <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
-          </div>
-          <p class="hp-find-card__desc" data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved." data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado por Jennyfer.">
-            A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved.
-          </p>
-          <div class="hp-find-card__actions">
-            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-flora" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
-          </div>
-          
-          <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
-            <div class="hp-find-card__details">
-              <div class="hp-find-card__specs-grid">
-                <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
-                <div class="hp-spec-item"><strong data-en="Chairs Included" data-es="Sillas Incluidas">Chairs Included</strong><span data-en="4 Barrel Armchairs" data-es="4 Sillas de Barril">4 Barrel Armchairs</span></div>
-                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored &amp; Oiled</span></div>
-                <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin Delivery</strong><span data-en="Free Pickup or White-Glove Local Delivery" data-es="Recogida Gratis o Entrega Local">Free Pickup or White-Glove Local Delivery</span></div>
-              </div>
-              <div class="hp-find-card__quote">
-                <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Milo">
-                  &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo
-                </p>
+          <div class="hp-find-card__content">
+            <div class="hp-find-card__header">
+              <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Bamboo Dining Set"
+                data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978
+              </h3>
+              <span class="hp-find-card__price">$640</span>
+            </div>
+            <div style="margin-bottom: var(--af-space-3);">
+              <span class="af-tag af-tag--available" data-en="Available in Austin"
+                data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
+            </div>
+            <p class="hp-find-card__desc"
+              data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved."
+              data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado por Jennyfer.">
+              A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned,
+              oiled, and restored by Jennyfer with original organic textures preserved.
+            </p>
+            <div class="hp-find-card__actions">
+              <a href="contact.html?product=flora" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt me!"
+                data-es="¡Adóptame!">Adopt me!</a>
+              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
+                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
+                data-es="Ver en Marketplace">View on Marketplace</a>
+              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
+                aria-controls="details-flora" data-en="View Details &amp; Provenance"
+                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+            </div>
+
+            <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
+              <div class="hp-find-card__details">
+                <div class="hp-find-card__specs-grid">
+                  <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table
+                      Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
+                  <div class="hp-spec-item"><strong data-en="Chairs Included" data-es="Sillas Incluidas">Chairs
+                      Included</strong><span data-en="4 Barrel Armchairs" data-es="4 Sillas de Barril">4 Barrel
+                      Armchairs</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
+                      data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored
+                      &amp; Oiled</span></div>
+                  <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin
+                      Delivery</strong><span data-en="Free Pickup or White-Glove Local Delivery"
+                      data-es="Recogida Gratis o Entrega Local">Free Pickup or White-Glove Local Delivery</span></div>
+                </div>
+                <div class="hp-find-card__quote">
+                  <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo"
+                    data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Milo">
+                    &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship
+                    throughout.&rdquo; &mdash; Inspector Milo
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <!-- Featured Card 3: Agnes Console Table -->
-    <article class="hp-find-card af-pattern af-pattern--botanical hp-reveal">
-      <div class="hp-find-card__mat">
-        <div class="hp-find-card__media">
-          <img src="design-system/assets/product-photos/Product 2.png" alt="Agnes, a mid-century woven rattan console table" width="1200" height="800" loading="lazy" decoding="async">
-        </div>
-        <div class="hp-find-card__content">
-          <div class="hp-find-card__header">
-            <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Woven Console" data-es="Agnes &middot; Consola Tejida c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972</h3>
-            <span class="hp-find-card__price">$385</span>
+      <!-- Featured Card 3: Agnes Console Table -->
+      <article class="hp-find-card hp-reveal">
+        <div class="hp-find-card__mat">
+          <div class="hp-find-card__media">
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
+              aria-label="Previous image">&lt;</button>
+            <div class="hp-find-card__carousel-track">
+              <img src="design-system/assets/product-photos/product-2.png"
+                alt="Agnes, a mid-century woven rattan console table - View 1" width="1200" height="800" loading="lazy"
+                decoding="async">
+              <img src="design-system/assets/product-photos/product-7.png" alt="Agnes console table context - View 2"
+                width="1200" height="800" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/product-4.png" alt="Agnes lattice details - View 3"
+                width="1200" height="800" loading="lazy" decoding="async">
+            </div>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
+              aria-label="Next image">&gt;</button>
+            <div class="hp-find-card__carousel-indicators">
+              <span class="active" data-slide="0"></span>
+              <span data-slide="1"></span>
+              <span data-slide="2"></span>
+            </div>
           </div>
-          <div style="margin-bottom: var(--af-space-3);">
-            <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
-            <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
-          </div>
-          <p class="hp-find-card__desc" data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale." data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero extremadamente resistente. Obtenida en Hyde Park.">
-            A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale.
-          </p>
-          <div class="hp-find-card__actions">
-            <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt on Marketplace" data-es="Adoptar en Marketplace">Adopt on Marketplace</a>
-            <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-agnes" data-en="View Details &amp; Provenance" data-es="Ver Detalles y Procedencia">View Details &amp; Procedencia</button>
-          </div>
-          
-          <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
-            <div class="hp-find-card__details">
-              <div class="hp-find-card__specs-grid">
-                <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
-                <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
-                <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage Condition</span></div>
-                <div class="hp-spec-item"><strong data-en="Found Location" data-es="Lugar Encontrado">Found Location</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park, Austin</span></div>
-              </div>
-              <div class="hp-find-card__quote">
-                <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo" data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Milo">
-                  &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo
-                </p>
+          <div class="hp-find-card__content">
+            <div class="hp-find-card__header">
+              <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Woven Console"
+                data-es="Agnes &middot; Consola Tejida c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972
+              </h3>
+              <span class="hp-find-card__price">$385</span>
+            </div>
+            <div style="margin-bottom: var(--af-space-3);">
+              <span class="af-tag af-tag--available" data-en="Available in Austin"
+                data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
+            </div>
+            <p class="hp-find-card__desc"
+              data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale."
+              data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero extremadamente resistente. Obtenida en Hyde Park.">
+              A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf.
+              Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale.
+            </p>
+            <div class="hp-find-card__actions">
+              <a href="contact.html?product=agnes" class="af-btn af-btn--primary af-btn--sm"
+                data-en="Contact for purchase" data-es="Contactar para comprar">Contact for purchase</a>
+              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
+                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
+                data-es="Ver en Marketplace">View on Marketplace</a>
+              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
+                aria-controls="details-agnes" data-en="View Details &amp; Provenance"
+                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+            </div>
+
+            <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
+              <div class="hp-find-card__details">
+                <div class="hp-find-card__specs-grid">
+                  <div class="hp-spec-item"><strong data-en="Dimensions"
+                      data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
+                  <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span
+                      data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
+                      data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage
+                      Condition</span></div>
+                  <div class="hp-spec-item"><strong data-en="Found Location" data-es="Lugar Encontrado">Found
+                      Location</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park,
+                      Austin</span></div>
+                </div>
+                <div class="hp-find-card__quote">
+                  <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo"
+                    data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Milo">
+                    &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================== 04 MEET NACHO ========================== -->
+  <section class="hp-nacho" id="nacho" style="position:relative; isolation:isolate;">
+    <div class="af-pattern af-pattern--ginkgo af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+    <div class="hp-nacho__inner hp-reveal">
+      <div class="hp-nacho__stage">
+        <!-- 12 Floating Sparkles & Starbursts -->
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="top:-15px; left:-15px; color:var(--af-mustard); width:28px; height:44px; animation-delay:0s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="top:10px; right:-20px; color:var(--af-orange); width:36px; height:36px; animation-delay:0.6s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="top:90px; left:-25px; color:var(--af-orange-deep); width:22px; height:35px; animation-delay:1.2s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="top:110px; right:-25px; color:var(--af-avocado-deep); width:28px; height:28px; animation-delay:0.3s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="bottom:25px; left:-20px; color:var(--af-olive-teal); width:30px; height:48px; animation-delay:1.8s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="bottom:20px; right:-20px; color:var(--af-mustard); width:40px; height:40px; animation-delay:0.9s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="top:-25px; left:25px; color:var(--af-orange); width:20px; height:32px; animation-delay:1.4s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="top:-25px; right:25px; color:var(--af-mustard); width:32px; height:32px; animation-delay:0.2s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="top:150px; left:-25px; color:var(--af-mustard); width:32px; height:51px; animation-delay:2.1s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="top:165px; right:-25px; color:var(--af-orange-deep); width:34px; height:34px; animation-delay:1.6s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+        <svg class="af-sparkle hp-nacho-motif" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"
+          style="bottom:-15px; right:15px; color:var(--af-avocado); width:24px; height:38px; animation-delay:0.7s;">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-starburst hp-nacho-motif" viewBox="0 0 64 64" aria-hidden="true"
+          style="bottom:-20px; left:15px; color:var(--af-orange); width:26px; height:26px; animation-delay:1.1s;">
+          <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path
+              d="M32 32 V6 M32 32 V58 M32 32 H6 M32 32 H58 M32 32 L50.4 13.6 M32 32 L13.6 50.4 M32 32 L50.4 50.4 M32 32 L13.6 13.6" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="32" cy="6" r="3.4" />
+            <circle cx="32" cy="58" r="3.4" />
+            <circle cx="6" cy="32" r="3.4" />
+            <circle cx="58" cy="32" r="3.4" />
+            <circle cx="50.4" cy="13.6" r="2.6" />
+            <circle cx="13.6" cy="50.4" r="2.6" />
+            <circle cx="50.4" cy="50.4" r="2.6" />
+            <circle cx="13.6" cy="13.6" r="2.6" />
+            <circle cx="32" cy="32" r="5" />
+          </g>
+        </svg>
+
+        <img class="hp-nacho__portrait" src="design-system/assets/characters/nacho-rattan-hat.png"
+          alt="Nacho the cat wearing a straw hat" width="280" height="280" loading="lazy" decoding="async">
       </div>
-    </article>
-  </div>
-</section>
-
-<!-- ========================== 04 MEET NACHO ========================== -->
-<section class="hp-nacho" id="nacho">
-  <div class="hp-nacho__inner hp-reveal">
-    <img class="hp-nacho__portrait" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho wearing a straw hat" width="208" height="208" loading="lazy" decoding="async">
-    <span class="af-label" data-en="Chief Curiosity Officer &amp; Find Inspector" data-es="Director de Curiosidad e Inspector de Hallazgos">Chief Curiosity Officer &amp; Find Inspector</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Hi, I'm Nacho" data-es="Hola, soy Nacho">Hi, I&rsquo;m Nacho</h2>
-    <p data-en="I sniff every piece before it leaves for its new home. If a chair or table doesn't have good character and solid joints, it doesn't make the cut. My nap schedule is aggressive and my inspection standards are high." data-es="Husmeo cada pieza antes de que salga hacia su nuevo hogar. Si una silla o mesa no tiene buen carácter y uniones sólidas, no pasa la prueba. Mi horario de siesta es agresivo y mis estándares de inspección son altos.">
-      I sniff every piece before it leaves for its new home. If a chair or table doesn&rsquo;t have good character and solid joints, it doesn&rsquo;t make the cut. My nap schedule is aggressive and my inspection standards are high.
-    </p>
-  </div>
-</section>
-
-<!-- ===================== 05 FULLWIDTH PHOTO GALLERY ======================= -->
-<section class="hp-gallery-sec" id="showroom">
-  <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="Austin Showroom Showcase" data-es="Exposición en Austin">Austin Showroom Showcase</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Styled In Real Austin Homes" data-es="Estilizado en Hogares de Austin">Styled In Real Austin Homes</h2>
-    <p data-en="Explore how vintage rattan and bamboo bring natural warmth to modern spaces." data-es="Explora cómo el rattán y el bambú vintage aportan calidez natural a espacios modernos.">Explore how vintage rattan and bamboo bring natural warmth to modern spaces.</p>
-  </div>
-
-  <div class="hp-gallery-grid hp-reveal">
-    <div class="hp-gallery-item">
-      <img src="design-system/assets/product-photos/Product 7.png" alt="Vintage rattan console styled in Austin home" width="1200" height="800" loading="lazy" decoding="async">
-    </div>
-    <div class="hp-gallery-item">
-      <img src="design-system/assets/product-photos/Product 5.png" alt="Rattan lounge seating area" width="1200" height="800" loading="lazy" decoding="async">
-    </div>
-    <div class="hp-gallery-item">
-      <img src="design-system/assets/product-photos/Amelia 2.png" alt="Arched rattan shelf with plants" width="1200" height="800" loading="lazy" decoding="async">
-    </div>
-    <div class="hp-gallery-item">
-      <img src="design-system/assets/product-photos/Product 2.png" alt="Woven rattan coffee table corner" width="1200" height="800" loading="lazy" decoding="async">
-    </div>
-  </div>
-</section>
-
-<!-- ========================== 06 INSTAGRAM =========================== -->
-<section class="hp-sec af-container" id="instagram">
-  <div class="hp-split">
-    <div class="hp-feed hp-reveal">
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Ramona 2.png" alt="Instagram post - Ramona shelf" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Product 1.png" alt="Instagram post - Rattan armchair" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Amelia 3.png" alt="Instagram post - Amelia étagère" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Product 6.png" alt="Instagram post - Woven side table" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Ramona 5.png" alt="Instagram post - Bamboo shelf detail" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-feed-item">
-        <img src="design-system/assets/product-photos/Product 3.png" alt="Instagram post - Rattan chair" width="400" height="400" loading="lazy" decoding="async">
-      </a>
-    </div>
-    <div class="hp-reveal">
-      <span class="af-label" data-en="Follow Along" data-es="Síguenos">Follow Along</span>
-      <h2 style="margin-top:var(--af-space-2)" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</h2>
-      <p data-en="New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations." data-es="Los nuevos hallazgos llegan primero a Instagram, directamente desde ventas de casas locales en Austin, con Jennyfer y Nacho supervisando. Síguenos para alertas de inventario.">
-        New finds land on Instagram first &mdash; usually straight from local Austin estate sales, with Jennyfer and Nacho supervising every pickup. Follow for restock alerts and behind-the-scenes restorations.
+      <span class="af-label" data-en="Chief Curiosity Officer &amp; Good Boy"
+        data-es="Director de Curiosidad y Buen Chico">Chief Curiosity Officer &amp; Good Boy</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Hi, I'm Nacho" data-es="Hola, soy Nacho">Hi, I&rsquo;m Nacho
+      </h2>
+      <p data-en="I sniff every piece before it leaves for its new home. If a chair or table doesn't have good character and solid joints, it doesn't make the cut. My nap schedule is aggressive and my inspection standards are high."
+        data-es="Husmeo cada pieza antes de que salga hacia su nuevo hogar. Si una silla o mesa no tiene buen carácter y uniones sólidas, no pasa la prueba. Mi horario de siesta es agresivo y mis estándares de inspección son altos.">
+        I sniff every piece before it leaves for its new home. If a chair or table doesn&rsquo;t have good character and
+        solid joints, it doesn&rsquo;t make the cut. My nap schedule is aggressive and my inspection standards are high.
       </p>
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="af-btn af-btn--primary" data-en="Follow on Instagram" data-es="Seguir en Instagram">Follow on Instagram</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========================= 07 TESTIMONIALS ========================= -->
-<section class="hp-sec af-container">
-  <div class="hp-sec__head hp-sec__head--center hp-reveal">
-    <span class="af-label" data-en="Customer Reviews" data-es="Reseñas de Clientes">Customer Reviews</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="What Austin Is Saying" data-es="Lo que Dice Austin">What Austin Is Saying</h2>
-    <p data-en="Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)" data-es="Jennyfer Gomez &middot; 5.0 &#9733; (81 valoraciones &middot; Altamente Calificado)">Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)</p>
-  </div>
+  <!-- ===================== 05 FULLWIDTH PHOTO GALLERY ======================= -->
+  <section class="hp-gallery-sec" id="showroom" style="position:relative; isolation:isolate;">
+    <div class="af-pattern af-pattern--botanical af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+    <div class="hp-sec__head hp-sec__head--center hp-reveal">
+      <span class="af-label" data-en="Austin Showroom Showcase" data-es="Exposición en Austin">Austin Showroom
+        Showcase</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Styled In Real Austin Homes"
+        data-es="Estilizado en Hogares de Austin">Styled In Real Austin Homes</h2>
+      <p data-en="Explore how vintage rattan and bamboo bring natural warmth to modern spaces."
+        data-es="Explora cómo el rattán y el bambú vintage aportan calidez natural a espacios modernos.">Explore how
+        vintage rattan and bamboo bring natural warmth to modern spaces.</p>
+    </div>
 
-  <div class="hp-slider" tabindex="0" role="region" aria-label="Customer testimonials, scrollable" data-en="Customer testimonials, scrollable" data-es="Testimonios de clientes, desplazable">
-    <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    <div class="hp-showroom-grid hp-reveal">
+      <!-- Viewport Card 1 -->
+      <div class="hp-showroom-card">
+        <div class="hp-showroom-card__mat">
+          <div class="hp-showroom-card__img-wrap">
+            <img src="design-system/assets/product-photos/product-7.png"
+              alt="Vintage rattan console styled in Austin home" width="1200" height="800" loading="lazy"
+              decoding="async">
+          </div>
+          <div class="hp-showroom-card__meta">
+            <h3 class="hp-showroom-card__name">Agnes Console</h3>
+            <span class="hp-showroom-card__era">c. 1972 &middot; Restored</span>
+          </div>
+        </div>
       </div>
-      <blockquote>&ldquo;Jennyfer and her husband are awesome! Wonderful sellers and wonderful people. We live nearby and they even went out of their way to deliver the table so I didn't have to get a U-Haul. Thank you so much!&rdquo;</blockquote>
-      <cite>&mdash; Esteban &middot; July 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
-    </figure>
 
-    <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <!-- Viewport Card 2 -->
+      <div class="hp-showroom-card">
+        <div class="hp-showroom-card__mat">
+          <div class="hp-showroom-card__img-wrap">
+            <img src="design-system/assets/product-photos/product-5.png" alt="Rattan lounge seating area" width="1200"
+              height="800" loading="lazy" decoding="async">
+          </div>
+          <div class="hp-showroom-card__meta">
+            <h3 class="hp-showroom-card__name">Boho Seating Nook</h3>
+            <span class="hp-showroom-card__era">c. 1968 &middot; Solihiya</span>
+          </div>
+        </div>
       </div>
-      <blockquote>&ldquo;It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly.&rdquo;</blockquote>
-      <cite>&mdash; Amanda &middot; May 2026 (Punctuality &middot; Communication &middot; Pricing)</cite>
-    </figure>
 
-    <figure class="hp-quote hp-reveal">
-      <div class="hp-stars" role="img" aria-label="Rated 5 out of 5">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+      <!-- Viewport Card 3 -->
+      <div class="hp-showroom-card">
+        <div class="hp-showroom-card__mat">
+          <div class="hp-showroom-card__img-wrap">
+            <img src="design-system/assets/product-photos/amelia-2.png" alt="Arched rattan shelf with plants"
+              width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+          <div class="hp-showroom-card__meta">
+            <h3 class="hp-showroom-card__name">Amelia Étagère</h3>
+            <span class="hp-showroom-card__era">c. 1976 &middot; Split Bamboo</span>
+          </div>
+        </div>
       </div>
-      <blockquote>&ldquo;Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I got!! I will most likely be back &gt;:)&rdquo;</blockquote>
-      <cite>&mdash; Brittney &middot; April 2026 (Item Description &middot; Communication)</cite>
-    </figure>
-  </div>
-</section>
 
-<!-- ============================ SIGNUP =============================== -->
-<section class="hp-sec af-container hp-signup" id="contact">
-  <div class="hp-sec__head hp-sec__head--center hp-reveal" style="margin-bottom:0">
-    <span class="af-label" data-en="The Dispatch" data-es="El Despacho">The Dispatch</span>
-    <h2 style="margin-top:var(--af-space-2)" data-en="Get first look at new finds" data-es="Sé el primero en ver los nuevos hallazgos">Get first look at new finds</h2>
-    <p data-en="One note a week. New arrivals, restock days, and local Austin estate sale updates." data-es="Una nota por semana. Nuevas llegadas, días de inventario y novedades en Austin.">One note a week. New arrivals, restock days, and local Austin estate sale updates.</p>
-    <form onsubmit="return false">
-      <label class="af-label" for="hp-email" style="position:absolute;left:-9999px" data-en="Email address" data-es="Dirección de correo electrónico">Email address</label>
-      <input id="hp-email" type="email" placeholder="you@example.com" autocomplete="email">
-      <button type="submit" class="af-btn af-btn--primary" data-en="Sign me up" data-es="Registrarme">Sign me up</button>
-    </form>
-  </div>
-</section>
-
-<!-- ============================ 08 FOOTER ============================ -->
-<footer class="hp-footer">
-  <div class="hp-footer__inner">
-    <div class="hp-footer-logo-col">
-      <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png" alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
-      <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices." data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
+      <!-- Viewport Card 4 -->
+      <div class="hp-showroom-card">
+        <div class="hp-showroom-card__mat">
+          <div class="hp-showroom-card__img-wrap">
+            <img src="design-system/assets/product-photos/product-2.png" alt="Woven rattan coffee table corner"
+              width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+          <div class="hp-showroom-card__meta">
+            <h3 class="hp-showroom-card__name">Sunny Low-Table</h3>
+            <span class="hp-showroom-card__era">c. 1974 &middot; Cane Weave</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3 data-en="The Collection" data-es="La Colección">The Collection</h3>
-      <ul>
-        <li><a href="#collection" data-en="Chairs &amp; Seating" data-es="Sillas y Asientos">Chairs &amp; Seating</a></li>
-        <li><a href="#collection" data-en="Bamboo Dining Sets" data-es="Juegos de Comedor">Bamboo Dining Sets</a></li>
-        <li><a href="#collection" data-en="Consoles &amp; Étagères" data-es="Consolas y Estantes">Consoles &amp; Estantes</a></li>
-        <li><a href="#showroom" data-en="Austin Showroom" data-es="Exposición en Austin">Austin Showroom</a></li>
-      </ul>
+  </section>
+
+  <!-- ========================== 06 INSTAGRAM =========================== -->
+  <section class="hp-sec af-container" id="instagram" style="position:relative; isolation:isolate;">
+    <div class="af-pattern af-pattern--atomic af-pattern--ghost"
+      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+    <div class="hp-sec__head hp-sec__head--center hp-reveal">
+      <span class="af-label" data-en="Live Social Drops" data-es="Lanzamientos En Vivo">Live Social Drops</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Connected to @atomicfindsatx"
+        data-es="Conectado a @atomicfindsatx">Connected to @atomicfindsatx</h2>
+      <p data-en="Fresh vintage rattan drops, estate sale claims, and restoration updates from Austin, TX."
+        data-es="Nuevos lanzamientos de rattán vintage y actualizaciones en vivo desde Austin, TX.">Fresh vintage rattan
+        drops, estate sale claims, and restoration updates from Austin, TX.</p>
     </div>
-    <div>
-      <h3 data-en="About Us" data-es="Nosotros">About Us</h3>
-      <ul>
-        <li><a href="#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
-        <li><a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
-        <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
-      </ul>
+
+    <div class="hp-social-feed hp-reveal">
+      <!-- Social Card 1 -->
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
+        <div class="hp-social-card__head">
+          <div class="hp-social-card__user">
+            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
+            <span class="hp-social-card__handle">@atomicfindsatx</span>
+          </div>
+          <span class="hp-social-card__badge">Live Drop</span>
+        </div>
+        <div class="hp-social-card__media">
+          <img src="design-system/assets/product-photos/ramona-5.png" alt="Ramona shelf drop" width="400" height="400"
+            loading="lazy" decoding="async">
+        </div>
+        <div class="hp-social-card__body">
+          <div class="hp-social-card__actions">
+            <span>&hearts; 184 likes</span> &bull; <span>View post</span>
+          </div>
+          <div class="hp-social-card__caption">
+            Restored 1970s split-bamboo Ramona shelf claimed in South Austin! <span
+              class="hp-social-card__tag">#AtomicFindsATX</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Social Card 2 -->
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
+        <div class="hp-social-card__head">
+          <div class="hp-social-card__user">
+            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
+            <span class="hp-social-card__handle">@atomicfindsatx</span>
+          </div>
+          <span class="hp-social-card__badge">Restoration</span>
+        </div>
+        <div class="hp-social-card__media">
+          <img src="design-system/assets/product-photos/product-1.png" alt="Rattan armchair drop" width="400"
+            height="400" loading="lazy" decoding="async">
+        </div>
+        <div class="hp-social-card__body">
+          <div class="hp-social-card__actions">
+            <span>&hearts; 219 likes</span> &bull; <span>View post</span>
+          </div>
+          <div class="hp-social-card__caption">
+            Original 1968 rattan barrel chair cleaned, oiled &amp; Nacho-inspected. <span
+              class="hp-social-card__tag">#AustinVintage</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Social Card 3 -->
+      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
+        <div class="hp-social-card__head">
+          <div class="hp-social-card__user">
+            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
+            <span class="hp-social-card__handle">@atomicfindsatx</span>
+          </div>
+          <span class="hp-social-card__badge">Estate Find</span>
+        </div>
+        <div class="hp-social-card__media">
+          <img src="design-system/assets/product-photos/amelia-2.png" alt="Amelia étagère drop" width="400" height="400"
+            loading="lazy" decoding="async">
+        </div>
+        <div class="hp-social-card__body">
+          <div class="hp-social-card__actions">
+            <span>&hearts; 305 likes</span> &bull; <span>View post</span>
+          </div>
+          <div class="hp-social-card__caption">
+            Amelia arched étagère sourced straight from a Hyde Park estate sale. <span
+              class="hp-social-card__tag">#MidCenturyHome</span>
+          </div>
+        </div>
+      </a>
     </div>
-    <div>
-      <h3 data-en="Get In Touch" data-es="Contacto">Get In Touch</h3>
-      <ul>
-        <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" data-en="Facebook Marketplace" data-es="Facebook Marketplace">Facebook Marketplace</a></li>
-        <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" data-en="@atomicfindsatx" data-es="@atomicfindsatx">@atomicfindsatx</a></li>
-        <li><a href="mailto:atomicfindsatx@gmail.com">atomicfindsatx@gmail.com</a></li>
-        <li>Phone: 865-244-8130</li>
-        <li data-en="Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX" data-es="Mar &ndash; Sáb, 10am &ndash; 6pm &middot; Austin, TX">Tue &ndash; Sat, 10am &ndash; 6pm &middot; Austin, TX</li>
-      </ul>
+  </section>
+
+  <!-- ========================= 07 TESTIMONIALS ========================= -->
+  <section class="hp-sec af-container" style="overflow:hidden">
+    <div class="hp-sec__head hp-sec__head--center hp-reveal">
+      <span class="af-label" data-en="Customer Reviews" data-es="Reseñas de Clientes">Customer Reviews</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="What Austin Is Saying" data-es="Lo que Dice Austin">What Austin
+        Is Saying</h2>
+      <p data-en="Jennyfer Gomez &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)"
+        data-es="Jennyfer Gomez &middot; 5.0 &#9733; (81 valoraciones &middot; Altamente Calificado)">Jennyfer Gomez
+        &middot; 5.0 &#9733; (81 ratings &middot; Highly Rated)</p>
+    </div>
+
+    <div class="hp-reviews-marquee">
+      <div class="hp-reviews-track">
+        <!-- 1. Kyle -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Kyle', 'Verified Buyer', 'Punctuality &middot; Communication', 'Quick to respond and friendly! Product was exactly as described.')">
+          <div class="hp-quote-avatar" style="background:var(--af-orange); color:var(--af-cream);">K</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;Quick to respond and friendly! Product was exactly as described.&rdquo;</blockquote>
+          <cite>&mdash; Kyle &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 2. Butler -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Butler', 'Verified Buyer', 'Punctuality &middot; Service', 'Very nice seller :)')">
+          <div class="hp-quote-avatar" style="background:var(--af-avocado-deep); color:var(--af-cream);">B</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;Very nice seller :)&rdquo;</blockquote>
+          <cite>&mdash; Butler &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 3. Amanda -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Amanda', 'Verified Buyer', 'Punctuality &middot; Communication &middot; Pricing', 'It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly.')">
+          <div class="hp-quote-avatar" style="background:var(--af-olive-teal); color:var(--af-cream);">A</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;It was great doing business with Jennyfer. The barcart is exactly as described! Fast to
+            respond and friendly.&rdquo;</blockquote>
+          <cite>&mdash; Amanda &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 4. Brittney -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Brittney', 'Verified Buyer', 'Item Description &middot; Communication', 'Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I got!! I will most likely be back >:)')">
+          <div class="hp-quote-avatar" style="background:var(--af-mustard); color:var(--af-ink);">B</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;Very kind and friendly!! Absolutely loved buying from her and I am OBSESSED with the set I
+            got!!&rdquo;</blockquote>
+          <cite>&mdash; Brittney &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 5. McKenzie -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('McKenzie', 'Verified Buyer', 'Quality &middot; Service', 'Wonderful, perfect, amazing, and great in every way! MY CHAIRS ARE SO FREAKING CUTE')">
+          <div class="hp-quote-avatar" style="background:var(--af-pink); color:var(--af-ink);">M</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;Wonderful, perfect, amazing, and great in every way! MY CHAIRS ARE SO FREAKING CUTE&rdquo;
+          </blockquote>
+          <cite>&mdash; McKenzie &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 6. Desiree -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Desiree', 'Verified Buyer', 'Pricing &middot; Pickup', 'Great item for a wonderful price and very easy to communicate and pickup')">
+          <div class="hp-quote-avatar" style="background:var(--af-orange-deep); color:var(--af-cream);">D</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;Great item for a wonderful price and very easy to communicate and pickup&rdquo;
+          </blockquote>
+          <cite>&mdash; Desiree &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- 7. Meg -->
+        <article class="hp-quote-card"
+          onclick="openReviewModal('Meg', 'Verified Buyer', 'Pricing &middot; Negotiation', 'My experience with Jennyfer was great! She was very fair in pricing + negotiation, plus she made the pickup process very easy.')">
+          <div class="hp-quote-avatar" style="background:var(--af-avocado); color:var(--af-cream);">M</div>
+          <div class="hp-stars" role="img" aria-label="5 stars">
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+            <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg>
+          </div>
+          <blockquote>&ldquo;My experience with Jennyfer was great! She was very fair in pricing + negotiation.&rdquo;
+          </blockquote>
+          <cite>&mdash; Meg &middot; Verified Buyer</cite>
+        </article>
+
+        <!-- DUPLICATE TRACK FOR CONTINUOUS INFINITE SCROLL -->
+        <article class="hp-quote-card" aria-hidden="true"
+          onclick="openReviewModal('Kyle', 'Verified Buyer', 'Punctuality &middot; Communication', 'Quick to respond and friendly! Product was exactly as described.')">
+          <div class="hp-quote-avatar" style="background:var(--af-orange); color:var(--af-cream);">K</div>
+          <div class="hp-stars"><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg></div>
+          <blockquote>&ldquo;Quick to respond and friendly! Product was exactly as described.&rdquo;</blockquote>
+          <cite>&mdash; Kyle &middot; Verified Buyer</cite>
+        </article>
+
+        <article class="hp-quote-card" aria-hidden="true"
+          onclick="openReviewModal('Amanda', 'Verified Buyer', 'Punctuality &middot; Communication &middot; Pricing', 'It was great doing business with Jennyfer. The barcart is exactly as described! She was fast to respond and very friendly.')">
+          <div class="hp-quote-avatar" style="background:var(--af-olive-teal); color:var(--af-cream);">A</div>
+          <div class="hp-stars"><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg><svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="12" height="19">
+              <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+            </svg></div>
+          <blockquote>&ldquo;It was great doing business with Jennyfer. The barcart is exactly as described! Fast to
+            respond and friendly.&rdquo;</blockquote>
+          <cite>&mdash; Amanda &middot; Verified Buyer</cite>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 08 FREQUENTLY ASKED QUESTIONS ========================= -->
+  <section class="hp-sec af-container" id="faq">
+    <div class="hp-sec__head hp-sec__head--center hp-reveal">
+      <span class="af-label" data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Frequently Asked
+        Questions</span>
+      <h2 style="margin-top:var(--af-space-2)" data-en="Everything You Need to Know"
+        data-es="Todo lo que Necesitas Saber">Everything You Need to Know</h2>
+      <p data-en="Pickup logistics, Austin delivery, vintage condition standards, and holds."
+        data-es="Logística de recogida, entrega en Austin, estándares de condición vintage y apartados.">Pickup
+        logistics, Austin delivery, vintage condition standards, and holds.</p>
+    </div>
+
+    <div class="hp-faq-list hp-reveal">
+      <!-- FAQ 1 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>Where are you located and how does pickup work?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            We are based in South Austin, Texas! Local pickup is arranged upon purchase—we'll coordinate a convenient
+            time window with you directly.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>Do you offer delivery in the Austin area?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            Local curbside drop-off is available around the greater Austin metro area for a small fee depending on
+            distance and item size. Reach out with your zip code for a quick quote!
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>What era and styles do you specialize in?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            We hunt down vibrant 1960s and 1970s vintage treasures—focusing heavily on bent rattan, sculptural bamboo,
+            boho accent seating, and retro statement pieces.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>What condition are the vintage items in?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            All our pieces are authentic vintage, meaning they carry genuine retro character and history. We inspect and
+            clean every find, noting any distinct vintage wear or patina directly in the listing.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>Can I place an item on hold?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            Due to high demand on vintage drops, items are sold on a first-confirmed basis. We can hold a piece for up
+            to 24 hours once a deposit or full payment is completed.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>Where can I see new drops and current listings?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            Follow us on Instagram (<a href="https://www.instagram.com/atomicfindsatx/" target="_blank"
+              style="color:var(--af-orange-btn); text-decoration:none;">@atomicfindsatx</a>) for previews and story
+            claims, or browse active listings directly on Facebook Marketplace under Jennyfer Gomez.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 7 -->
+      <div class="hp-faq-item">
+        <button class="hp-faq-trigger" aria-expanded="false">
+          <span>What is your return and refund policy?</span>
+          <span class="hp-faq-icon">+</span>
+        </button>
+        <div class="hp-faq-content">
+          <div class="hp-faq-body">
+            Because items are unique vintage finds, all sales are generally final once picked up or delivered. However,
+            if an unexpected issue arises that wasn't noted, reach out immediately and we’ll make it right.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Details Modal Overlay -->
+  <div class="hp-modal-overlay" id="review-modal" onclick="closeReviewModal(event)">
+    <div class="hp-modal-card" onclick="event.stopPropagation()">
+      <div class="hp-quote-avatar" id="modal-avatar"
+        style="margin-inline:auto; width:56px; height:56px; font-size:1.4rem;">E</div>
+      <div class="hp-stars" style="margin-block:var(--af-space-2)">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="16" height="25">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="16" height="25">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="16" height="25">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="16" height="25">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" width="16" height="25">
+          <path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z" />
+        </svg>
+      </div>
+      <blockquote id="modal-quote"
+        style="font-size:var(--af-text-base); line-height:1.6; margin-bottom:var(--af-space-4); color:var(--af-ink);">
+        &ldquo;&rdquo;</blockquote>
+      <p id="modal-author" style="font-weight:700; color:var(--af-olive-teal); margin-bottom:var(--af-space-1);"></p>
+      <p id="modal-tags"
+        style="font-size:var(--af-text-xs); color:var(--af-ink-soft); margin-bottom:var(--af-space-5);"></p>
+      <button class="af-btn af-btn--secondary af-btn--sm" onclick="closeReviewModal()">Close Review</button>
     </div>
   </div>
-  <div class="hp-footer__bottom">
-    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed by Anthony &middot; Made with love in Austin, TX</span>
-    <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
-      <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a> &middot;
-      <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a> &middot;
-      <a href="accessibility-statement.html" data-en="Accessibility Statement" data-es="Declaración de Accesibilidad">Accessibility Statement</a>
-    </span>
-  </div>
-</footer>
 
-<script>
-// Mobile navigation toggle
-var burger = document.querySelector('.hp-burger');
-var nav = document.getElementById('hp-nav');
-burger.addEventListener('click', function () {
-  var open = nav.classList.toggle('is-open');
-  burger.setAttribute('aria-expanded', String(open));
-});
-nav.addEventListener('click', function (e) {
-  if (e.target.tagName === 'A') {
-    nav.classList.remove('is-open');
-    burger.setAttribute('aria-expanded', 'false');
-  }
-});
 
-// Expandable Card Details logic
-document.querySelectorAll('.hp-card-toggle-btn').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var isExpanded = btn.getAttribute('aria-expanded') === 'true';
-    var targetId = btn.getAttribute('aria-controls');
-    var wrapper = document.getElementById(targetId);
 
-    btn.setAttribute('aria-expanded', !isExpanded);
-    wrapper.classList.toggle('is-expanded', !isExpanded);
-    wrapper.setAttribute('aria-hidden', isExpanded);
+  <!-- ============================ 08 FOOTER ============================ -->
+  <footer class="hp-footer">
+    <div class="hp-footer__inner">
+      <div class="hp-footer-logo-col">
+        <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png"
+          alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
+        <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices."
+          data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
+      </div>
+      <div>
+        <h3 data-en="The Collection" data-es="La Colección">The Collection</h3>
+        <ul>
+          <li><a href="#collection" data-en="Chairs &amp; Seating" data-es="Sillas y Asientos">Chairs &amp; Seating</a>
+          </li>
+          <li><a href="#collection" data-en="Bamboo Dining Sets" data-es="Juegos de Comedor">Bamboo Dining Sets</a></li>
+          <li><a href="#collection" data-en="Consoles &amp; Étagères" data-es="Consolas y Estantes">Consoles &amp;
+              Estantes</a></li>
+          <li><a href="#showroom" data-en="Austin Showroom" data-es="Exposición en Austin">Austin Showroom</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-en="About Us" data-es="Nosotros">About Us</h3>
+        <ul>
+          <li><a href="#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
+          <li><a href="#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
+          <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
+          <li><a href="contact.html" data-en="Inquiries &amp; Delivery" data-es="Consultas y Envíos">Inquiries &amp;
+              Delivery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-en="The Dispatch Newsletter" data-es="Boletín El Despacho">The Dispatch Newsletter</h3>
+        <p style="font-size:var(--af-text-xs); color:var(--af-cream); line-height:1.4;"
+          data-en="Get first look at new finds, restock days, and local Austin estate sale updates."
+          data-es="Sé el primero en ver los nuevos hallazgos y novedades en Austin.">Get first look at new finds &amp;
+          restock updates.</p>
+        <form onsubmit="return false" style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.75rem;">
+          <label class="af-label" for="footer-email" style="position:absolute;left:-9999px" data-en="Email address"
+            data-es="Dirección de correo electrónico">Email address</label>
+          <input id="footer-email" type="email" placeholder="you@example.com" autocomplete="email"
+            style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--af-cream); background:rgba(255,255,255,0.1); color:var(--af-cream); font-size:var(--af-text-xs);">
+          <button type="submit" class="af-btn af-btn--primary af-btn--sm" data-en="Subscribe"
+            data-es="Suscribirse">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="hp-footer__bottom">
+      <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed &amp; Developed by
+        <a href="https://digitalallies.net" target="_blank" rel="noopener"
+          style="text-decoration:none; color:inherit; font-weight:600;">Digital Allies</a> &middot; Made with love in
+        Austin, TX</span>
+      <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
+        <a href="contact.html" data-en="Contact Us" data-es="Contacto">Contact Us</a> &middot;
+        <a href="design-system/index.html" data-en="Design System" data-es="Sistema de Diseño">Design System</a>
+        &middot;
+        <a href="sitemap.html" data-en="Sitemap" data-es="Mapa del Sitio">Sitemap</a> &middot;
+        <a href="terms-of-service.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+        &middot;
+        <a href="privacy-policy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
+        &middot;
+        <a href="accessibility-statement.html" data-en="Accessibility Statement"
+          data-es="Declaración de Accesibilidad">Accessibility Statement</a>
+      </span>
+    </div>
+  </footer>
 
-    var lang = document.documentElement.getAttribute('lang') || 'en';
-    if (!isExpanded) {
-      btn.setAttribute('data-en', 'Close Details');
-      btn.setAttribute('data-es', 'Cerrar Detalles');
-      btn.textContent = lang === 'es' ? 'Cerrar Detalles' : 'Close Details';
-    } else {
-      btn.setAttribute('data-en', 'View Details & Provenance');
-      btn.setAttribute('data-es', 'Ver Detalles y Procedencia');
-      btn.textContent = lang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
-    }
-  });
-});
-
-// Client-side language switcher
-var langToggle = document.querySelector('.hp-lang-toggle');
-if (langToggle) {
-  langToggle.addEventListener('click', function () {
-    var currentLang = document.documentElement.getAttribute('lang') || 'en';
-    var nextLang = currentLang === 'en' ? 'es' : 'en';
-
-    document.documentElement.setAttribute('lang', nextLang);
-    langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
-    langToggle.setAttribute('aria-label', nextLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés');
-
-    document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
-      var text = el.getAttribute('data-' + nextLang);
-      var svg = el.querySelector('svg');
-      el.textContent = text;
-      if (svg) {
-        el.appendChild(svg);
+  <script>
+    // Mobile navigation toggle
+    var burger = document.querySelector('.hp-burger');
+    var nav = document.getElementById('hp-nav');
+    burger.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
       }
     });
 
+    // Expandable Card Details logic
     document.querySelectorAll('.hp-card-toggle-btn').forEach(function (btn) {
-      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) {
-        btn.textContent = nextLang === 'es' ? 'Cerrar Detalles' : 'Close Details';
-      } else {
-        btn.textContent = nextLang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
-      }
-    });
-  });
-}
+      btn.addEventListener('click', function () {
+        var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        var targetId = btn.getAttribute('aria-controls');
+        var wrapper = document.getElementById(targetId);
 
-// Gentle scroll reveal
-var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var items = document.querySelectorAll('.hp-reveal');
-if (reduce || !('IntersectionObserver' in window)) {
-  items.forEach(function (el) { el.classList.add('is-in'); });
-} else {
-  var intersectedQueue = [];
-  var intersectTimeout = null;
+        btn.setAttribute('aria-expanded', !isExpanded);
+        wrapper.classList.toggle('is-expanded', !isExpanded);
+        wrapper.setAttribute('aria-hidden', isExpanded);
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        intersectedQueue.push(e.target);
-        io.unobserve(e.target);
-      }
+        var lang = document.documentElement.getAttribute('lang') || 'en';
+        if (!isExpanded) {
+          btn.setAttribute('data-en', 'Close Details');
+          btn.setAttribute('data-es', 'Cerrar Detalles');
+          btn.textContent = lang === 'es' ? 'Cerrar Detalles' : 'Close Details';
+        } else {
+          btn.setAttribute('data-en', 'View Details & Provenance');
+          btn.setAttribute('data-es', 'Ver Detalles y Procedencia');
+          btn.textContent = lang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
+        }
+      });
     });
 
-    if (intersectedQueue.length > 0) {
-      if (intersectTimeout) clearTimeout(intersectTimeout);
-      intersectTimeout = setTimeout(function () {
-        intersectedQueue.forEach(function (el, index) {
-          setTimeout(function () {
-            el.classList.add('is-in');
-          }, index * 40);
+    // Client-side language switcher
+    var langToggle = document.querySelector('.hp-lang-toggle');
+    if (langToggle) {
+      langToggle.addEventListener('click', function () {
+        var currentLang = document.documentElement.getAttribute('lang') || 'en';
+        var nextLang = currentLang === 'en' ? 'es' : 'en';
+
+        document.documentElement.setAttribute('lang', nextLang);
+        langToggle.textContent = nextLang === 'en' ? 'ES' : 'EN';
+        langToggle.setAttribute('aria-label', nextLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés');
+
+        document.querySelectorAll('[data-en][data-es]').forEach(function (el) {
+          var text = el.getAttribute('data-' + nextLang);
+          var svg = el.querySelector('svg');
+          el.textContent = text;
+          if (svg) {
+            el.appendChild(svg);
+          }
         });
-        intersectedQueue = [];
-      }, 20);
-    }
-  }, { rootMargin: '0px 0px -5% 0px' });
 
-  items.forEach(function (el) { io.observe(el); });
-}
-</script>
+        document.querySelectorAll('.hp-card-toggle-btn').forEach(function (btn) {
+          var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          if (isExpanded) {
+            btn.textContent = nextLang === 'es' ? 'Cerrar Detalles' : 'Close Details';
+          } else {
+            btn.textContent = nextLang === 'es' ? 'Ver Detalles y Procedencia' : 'View Details & Provenance';
+          }
+        });
+      });
+    }
+
+    // Gentle scroll reveal
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.hp-reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+    } else {
+      var intersectedQueue = [];
+      var intersectTimeout = null;
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            intersectedQueue.push(e.target);
+            io.unobserve(e.target);
+          }
+        });
+
+        if (intersectedQueue.length > 0) {
+          if (intersectTimeout) clearTimeout(intersectTimeout);
+          intersectTimeout = setTimeout(function () {
+            intersectedQueue.forEach(function (el, index) {
+              setTimeout(function () {
+                el.classList.add('is-in');
+              }, index * 40);
+            });
+            intersectedQueue = [];
+          }, 20);
+        }
+      }, { rootMargin: '0px 0px -5% 0px' });
+
+      items.forEach(function (el) { io.observe(el); });
+    }
+
+    // Review modal script
+    function openReviewModal(author, date, tags, quote) {
+      var modal = document.getElementById('review-modal');
+      if (!modal) return;
+      document.getElementById('modal-avatar').textContent = author.charAt(0).toUpperCase();
+      document.getElementById('modal-quote').innerHTML = '&ldquo;' + quote + '&rdquo;';
+      document.getElementById('modal-author').textContent = author + ' \u00B7 ' + date;
+      document.getElementById('modal-tags').innerHTML = tags;
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReviewModal(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      var modal = document.getElementById('review-modal');
+      if (!modal) return;
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+
+    // FAQ accordion script
+    document.querySelectorAll('.hp-faq-trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var item = trigger.closest('.hp-faq-item');
+        var isOpen = item.classList.contains('is-open');
+        var isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.hp-faq-item').forEach(function (i) {
+          i.classList.remove('is-open');
+          var trg = i.querySelector('.hp-faq-trigger');
+          if (trg) trg.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Product Image Carousels logic
+    document.querySelectorAll('.hp-find-card__media').forEach(function (carousel) {
+      var track = carousel.querySelector('.hp-find-card__carousel-track');
+      if (!track) return;
+      var slides = Array.prototype.slice.call(track.querySelectorAll('img'));
+      var slidesCount = slides.length;
+      var prevBtn = carousel.querySelector('.hp-find-card__carousel-btn--prev');
+      var nextBtn = carousel.querySelector('.hp-find-card__carousel-btn--next');
+      var indicators = Array.prototype.slice.call(carousel.querySelectorAll('.hp-find-card__carousel-indicators span'));
+      var currentIndex = 0;
+
+      function updateCarousel(index) {
+        currentIndex = (index + slidesCount) % slidesCount;
+        track.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+        indicators.forEach(function (dot, i) {
+          if (i === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function () {
+          updateCarousel(currentIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+          updateCarousel(currentIndex + 1);
+        });
+      }
+
+      indicators.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+          updateCarousel(i);
+        });
+      });
+    });
+
+    // Interactive Nacho Stage Animation (Mouse reactive floating starbursts)
+    (function () {
+      var nachoStage = document.querySelector('.hp-nacho__stage');
+      if (!nachoStage) return;
+      var motifs = Array.prototype.slice.call(nachoStage.querySelectorAll('.hp-nacho-motif'));
+
+      var motifsData = [];
+      motifs.forEach(function (motif) {
+        motifsData.push({
+          el: motif,
+          speedX: (Math.random() - 0.5) * 24,
+          speedY: (Math.random() - 0.5) * 24
+        });
+      });
+
+      nachoStage.addEventListener('mousemove', function (e) {
+        var rect = nachoStage.getBoundingClientRect();
+        var mouseX = e.clientX - rect.left - rect.width / 2;
+        var mouseY = e.clientY - rect.top - rect.height / 2;
+
+        motifsData.forEach(function (data) {
+          var dx = (mouseX / (rect.width / 2)) * data.speedX;
+          var dy = (mouseY / (rect.height / 2)) * data.speedY;
+
+          data.el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(1.15)';
+          data.el.style.opacity = '1';
+        });
+      });
+
+      nachoStage.addEventListener('mouseleave', function () {
+        motifsData.forEach(function (data) {
+          data.el.style.transform = 'translate(0, 0) scale(1)';
+          data.el.style.opacity = '0.85';
+        });
+      });
+    })();
+  </script>
 </body>
+
 </html>
