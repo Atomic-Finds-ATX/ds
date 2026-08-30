@@ -7,7 +7,7 @@
   <title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="design-system/styles.css">
   <script>/* Set before first paint so revealed content never flashes. */
@@ -361,18 +361,20 @@
       gap: var(--af-space-5);
     }
 
+    /* Pattern role (c) — card-as-frame. The frame is a THIN border of pattern;
+       the pattern scale drops with the card so it never becomes a wide stripe
+       down each edge on a narrow screen. */
     .hp-find-card {
       position: relative;
       isolation: isolate;
       background-color: #FAF1DF;
-      background-image: url("design-system/assets/textures/botanical-pattern.png");
-      background-size: 340px;
+      background-image: url("design-system/assets/textures/pattern-botanical-cream.png");
+      background-size: clamp(120px, 34vw, 340px);
       background-repeat: repeat;
       border: var(--af-border-width) solid var(--af-ink);
       border-radius: var(--af-radius-card);
       box-shadow: 6px 6px 0 var(--af-ink);
-      padding: clamp(0.625rem, 1.5vw, 1rem);
-      /* Tight frame perimeter */
+      padding: clamp(0.375rem, 1.2vw, 1rem);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -382,25 +384,31 @@
     }
 
     /* Inner Opaque White Mat Plate */
+    /* GRID, not flex: rows are declared, so the media row can be given the
+       space and the text rows only take what they need. The old flex column
+       with a 2rem gap was what made the card so tall. */
     .hp-find-card__mat {
       background: #FFFFFF !important;
       border: var(--af-border-width) solid var(--af-ink);
       border-radius: calc(var(--af-radius-card) - 4px);
-      padding: clamp(1rem, 2vw, 1.5rem);
-      display: flex;
-      flex-direction: column;
-      gap: clamp(1.25rem, 3vw, 2rem);
-      align-items: stretch;
+      padding: clamp(0.625rem, 1.6vw, 1.5rem);
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: clamp(0.75rem, 1.8vw, 1.25rem);
       position: relative;
       z-index: 2;
     }
 
+    /* The photo is the point of the card, so it gets a fixed 4:3 block rather
+       than a viewport-height guess, and the inner padding drops on small
+       screens where every pixel of width matters. */
     .hp-find-card__media {
       background: var(--af-surface-sunk);
-      padding: var(--af-space-2);
+      padding: clamp(0.25rem, 0.8vw, 0.5rem);
       border-radius: var(--af-radius-sm);
       border: var(--af-border-width) solid var(--af-ink);
-      height: clamp(280px, 45vw, 480px);
+      aspect-ratio: 4 / 3;
+      height: auto;
       position: relative;
       overflow: hidden;
       width: 100%;
@@ -492,10 +500,18 @@
       transform: scale(1.2);
     }
 
-    .hp-find-card__content {
+    .hp-find-card__tags {
       display: flex;
-      flex-direction: column;
-      height: 100%;
+      flex-wrap: wrap;
+      gap: var(--af-space-1);
+    }
+    .hp-find-card__tags .af-tag { font-size: var(--af-text-xs); padding: 0.25rem 0.6rem; }
+
+    .hp-find-card__content {
+      display: grid;
+      grid-template-rows: auto;
+      gap: var(--af-space-2);
+      align-content: start;
     }
 
     .hp-find-card__header {
@@ -521,22 +537,38 @@
       margin: 0;
     }
 
+    /* COMPACT BY DEFAULT: the description is clamped to two lines so the card
+       stays short; expanding the card releases it. This is what makes the
+       expander worth having — previously the full text was always visible. */
     .hp-find-card__desc {
-      font-size: var(--af-text-base);
+      font-size: var(--af-text-sm);
       color: var(--af-ink);
       line-height: 1.5;
-      margin-bottom: var(--af-space-3);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+    .hp-find-card.is-open .hp-find-card__desc {
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+      overflow: visible;
     }
 
+    /* Auto-fit grid: buttons share the row evenly and wrap to full width only
+       when they genuinely cannot fit — no margin-top:auto pushing them to the
+       bottom of an over-tall card. */
     .hp-find-card__actions {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
       gap: var(--af-space-2);
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: auto;
+      align-items: stretch;
       width: 100%;
+      margin: 0;
     }
+    .hp-find-card__actions .af-btn { justify-content: center; text-align: center; }
 
     /* Smooth expandable details animation */
     .hp-find-card__details-wrapper {
@@ -588,6 +620,66 @@
     }
 
     /* --- 04 Meet Nacho (Wide & Prominent Stage) ----------------------------- */
+
+    /* ---------- Our Story figure — the peacock console -------------------
+       Runs full width above the copy. The 5 MB animation is NOT in the markup:
+       it is fetched only on first hover (see the script), so the page costs
+       0.28 MB unless someone actually asks for motion. */
+    .hp-story-figure {
+      position: relative;
+      margin: 0 0 clamp(2rem, 4vw, 3rem);
+      border-radius: var(--af-radius-lg);
+      overflow: hidden;
+      background: var(--af-cream);
+    }
+    .hp-story-figure img {
+      display: block;
+      width: 100%;
+      height: auto;              /* full size, natural 5:6 — never cropped */
+      border-radius: var(--af-radius-lg);
+    }
+    /* The motion layer is stacked over the still and cross-fades in. */
+    .hp-story-figure__motion {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.45s var(--af-ease);
+      pointer-events: none;
+      border-radius: var(--af-radius-lg);
+    }
+    .hp-story-figure.is-playing .hp-story-figure__motion { opacity: 1; }
+
+    .hp-story-figure__hint {
+      position: absolute;
+      right: var(--af-space-3);
+      bottom: var(--af-space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--af-space-2);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--af-surface) 88%, transparent);
+      border: 2px solid var(--af-ink);
+      font-size: var(--af-text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--af-ink);
+      transition: opacity 0.3s var(--af-ease);
+    }
+    .hp-story-figure__hint .af-sparkle { color: var(--af-mustard); height: 1em; width: 0.625em; }
+    .hp-story-figure.is-playing .hp-story-figure__hint { opacity: 0; }
+
+    .hp-story-copy { max-width: 60rem; }
+
+    /* Touch devices have no hover, so the hint would be a lie. */
+    @media (hover: none) {
+      .hp-story-figure__hint { display: none; }
+    }
+
     .hp-nacho {
       background: var(--af-cream);
       border-block: 2px solid var(--af-hairline);
@@ -603,39 +695,86 @@
       position: relative;
     }
 
+    /* Wide stage: Nacho is a landscape photo (3077x2237), so he is sized by
+       WIDTH and allowed to run nearly the full column. The old height-driven
+       sizing capped him around 500px and read as a small portrait. */
     .hp-nacho__stage {
       position: relative;
-      display: inline-block;
-      padding: 1.5rem 3rem;
-      margin-bottom: var(--af-space-4);
-      max-width: 100%;
+      display: block;
+      width: min(100%, 940px);
+      margin: 0 auto var(--af-space-5);
+      padding: clamp(1.5rem, 4vw, 3rem);
     }
 
     .hp-nacho__portrait {
-      width: auto;
-      max-width: 100%;
-      height: clamp(260px, 35vw, 360px);
-      object-fit: contain;
+      width: 100%;
+      height: auto;
       display: block;
-      margin-inline: auto;
       border-radius: 0;
       border: none;
       box-shadow: none;
       filter: drop-shadow(5px 5px 0 var(--af-ink));
-      transform-origin: bottom center;
-      transition: transform 0.4s var(--af-ease);
+      transform-origin: center bottom;
+      /* Reveal start state — he lifts and resolves as the section arrives. */
+      opacity: 0;
+      transform: translateY(26px) scale(0.965);
+      transition: opacity 900ms var(--af-ease), transform 900ms var(--af-ease);
+    }
+    .hp-nacho.is-revealed .hp-nacho__portrait {
+      opacity: 1;
+      transform: none;
     }
 
-    .hp-nacho__stage:hover .hp-nacho__portrait {
-      transform: scale(1.04) rotate(-1deg);
+    .hp-nacho.is-revealed .hp-nacho__stage:hover .hp-nacho__portrait {
+      transform: scale(1.02);
     }
 
     /* Floating Motifs Around Nacho */
+    /* The stars do the revealing: they start small and invisible, scale up in
+       a stagger as the section enters, and only once settled do they pick up
+       the idle twinkle. The stagger is what makes it read as a reveal rather
+       than a fade. */
     .hp-nacho-motif {
       position: absolute;
       pointer-events: none;
       z-index: 5;
+      opacity: 0;
+      transform: scale(0.25);
+      animation: none;
+      transition: opacity 700ms var(--af-ease), transform 700ms cubic-bezier(0.2, 1.3, 0.4, 1);
+    }
+    .hp-nacho.is-revealed .hp-nacho-motif {
+      opacity: 1;
+      transform: scale(1);
       animation: hp-motif-twinkle 4s ease-in-out infinite alternate;
+      /* Twinkle only starts after this motif has finished arriving. */
+      animation-delay: 1.1s;
+    }
+    /* Staggered arrival — 12 motifs, 70ms apart. */
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(1)  { transition-delay: 120ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(2)  { transition-delay: 190ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(3)  { transition-delay: 260ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(4)  { transition-delay: 330ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(5)  { transition-delay: 400ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(6)  { transition-delay: 470ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(7)  { transition-delay: 540ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(8)  { transition-delay: 610ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(9)  { transition-delay: 680ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(10) { transition-delay: 750ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(11) { transition-delay: 820ms; }
+    .hp-nacho.is-revealed .hp-nacho-motif:nth-of-type(12) { transition-delay: 890ms; }
+
+    /* Mouse proximity: a motif brightens and nudges when pointed at. */
+    .hp-nacho__stage:hover .hp-nacho-motif { filter: brightness(1.12); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hp-nacho__portrait,
+      .hp-nacho-motif {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        animation: none;
+      }
     }
 
     @keyframes hp-motif-twinkle {
@@ -669,7 +808,9 @@
       position: relative;
       isolation: isolate;
       background-color: #FAF1DF;
-      background-image: url("design-system/assets/textures/watercolor-style-background-001.png");
+      /* TODO(asset-missing): watercolor-style-background-001.png is not in the
+         repo. The cream fill above carries the card on its own; supply the file
+         as textures/texture-watercolor-wash.png to restore the wash. */
       background-size: cover;
       background-position: center;
       border: var(--af-border-width) solid var(--af-ink);
@@ -1250,7 +1391,7 @@
   <header class="hp-header">
     <div class="hp-header__inner">
       <a class="hp-logo" href="#top">
-        <img class="hp-logo__word" src="design-system/assets/logos/wordmark-stacked.png" alt="Atomic Finds ATX"
+        <img class="hp-logo__word" src="design-system/assets/logos/logo-wordmark-stacked.png" alt="Atomic Finds ATX"
           width="240" height="67">
         <span class="hp-logo__tag" data-en="Tiny Time Machines for Your Home"
           data-es="Pequeñas Máquinas del Tiempo para tu Hogar">Tiny Time Machines for Your Home</span>
@@ -1275,7 +1416,7 @@
   <!-- ===================== 01 HERO ==================== -->
   <section class="hp-hero" id="top">
     <div class="af-pattern af-pattern--botanical af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+      style="background-color:transparent" role="presentation"></div>
 
     <div class="hp-hero__inner">
       <div class="hp-hero__eyebrow hp-reveal">
@@ -1384,8 +1525,20 @@
   <!-- ========================== 02 OUR STORY =========================== -->
   <section class="hp-sec af-container" id="story" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--trailing af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
-    <div class="hp-split">
+      style="background-color:transparent" role="presentation"></div>
+    <figure class="hp-story-figure hp-reveal"
+      data-motion-webm="design-system/assets/product-photos/story-peacock-animated.webm"
+      data-motion-mp4="design-system/assets/product-photos/story-peacock-animated.mp4">
+      <img class="hp-story-figure__still" src="design-system/assets/product-photos/story-peacock.webp"
+        alt="A restored bamboo console against a terracotta wall, framed peacock print above, ferns either side"
+        width="1400" height="1669" loading="lazy" decoding="async">
+      <figcaption class="hp-story-figure__hint" aria-hidden="true">
+        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+        <span data-en="Hover to bring it to life" data-es="Pasa el cursor para animarlo">Hover to bring it to life</span>
+      </figcaption>
+    </figure>
+
+    <div class="hp-story-copy">
       <div class="hp-reveal">
         <span class="af-label" data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
         <h2 style="margin-top:var(--af-space-2)" data-en="Restored by Hand for the Modern Home"
@@ -1405,18 +1558,13 @@
         <a href="#collection" class="af-btn af-btn--secondary" data-en="Explore the collection"
           data-es="Explorar la colección">Explore the collection</a>
       </div>
-      <div class="hp-split__media hp-reveal">
-        <img src="design-system/assets/product-photos/product-7.png"
-          alt="A styled Austin showroom corner with a vintage rattan console" width="1200" height="800" loading="lazy"
-          decoding="async">
-      </div>
     </div>
   </section>
 
   <!-- ===================== 03 FEATURED COLLECTION ====================== -->
   <section class="hp-sec af-container" id="collection" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--sparkle af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+      style="background-color:transparent" role="presentation"></div>
     <div class="hp-sec__head hp-sec__head--center hp-reveal">
       <span class="af-label" data-en="Curated Vintage Collection" data-es="Colección Vintage Curada">Curated Vintage
         Collection</span>
@@ -1458,7 +1606,7 @@
               </h3>
               <span class="hp-find-card__price">$485</span>
             </div>
-            <div style="margin-bottom: var(--af-space-3);">
+            <div class="hp-find-card__tags">
               <span class="af-tag af-tag--available" data-en="Available in Austin"
                 data-es="Disponible en Austin">Available in Austin</span>
               <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
@@ -1520,8 +1668,9 @@
                 decoding="async">
               <img src="design-system/assets/product-photos/product-1.png" alt="Flora bamboo chair details - View 2"
                 width="1200" height="800" loading="lazy" decoding="async">
-              <img src="design-system/assets/product-photos/product-8.png" alt="Flora dining set context - View 3"
-                width="1200" height="800" loading="lazy" decoding="async">
+              <!-- TODO(asset-missing): a third Flora view (product-8.png) was referenced but
+                   never existed. Slide removed rather than substituted with another piece's
+                   photo — drop the real image in and restore this slide. -->
             </div>
             <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
               aria-label="Next image">&gt;</button>
@@ -1538,7 +1687,7 @@
               </h3>
               <span class="hp-find-card__price">$640</span>
             </div>
-            <div style="margin-bottom: var(--af-space-3);">
+            <div class="hp-find-card__tags">
               <span class="af-tag af-tag--available" data-en="Available in Austin"
                 data-es="Disponible en Austin">Available in Austin</span>
               <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
@@ -1618,7 +1767,7 @@
               </h3>
               <span class="hp-find-card__price">$385</span>
             </div>
-            <div style="margin-bottom: var(--af-space-3);">
+            <div class="hp-find-card__tags">
               <span class="af-tag af-tag--available" data-en="Available in Austin"
                 data-es="Disponible en Austin">Available in Austin</span>
               <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
@@ -1671,7 +1820,7 @@
   <!-- ========================== 04 MEET NACHO ========================== -->
   <section class="hp-nacho" id="nacho" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--ginkgo af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+      style="background-color:transparent" role="presentation"></div>
     <div class="hp-nacho__inner hp-reveal">
       <div class="hp-nacho__stage">
         <!-- 12 Floating Sparkles & Starbursts -->
@@ -1826,7 +1975,7 @@
   <!-- ===================== 05 FULLWIDTH PHOTO GALLERY ======================= -->
   <section class="hp-gallery-sec" id="showroom" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--botanical af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+      style="background-color:transparent" role="presentation"></div>
     <div class="hp-sec__head hp-sec__head--center hp-reveal">
       <span class="af-label" data-en="Austin Showroom Showcase" data-es="Exposición en Austin">Austin Showroom
         Showcase</span>
@@ -1900,7 +2049,7 @@
   <!-- ========================== 06 INSTAGRAM =========================== -->
   <section class="hp-sec af-container" id="instagram" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--atomic af-pattern--ghost"
-      style="position:absolute; inset:0; z-index:-1; background-color:transparent" role="presentation"></div>
+      style="background-color:transparent" role="presentation"></div>
     <div class="hp-sec__head hp-sec__head--center hp-reveal">
       <span class="af-label" data-en="Live Social Drops" data-es="Lanzamientos En Vivo">Live Social Drops</span>
       <h2 style="margin-top:var(--af-space-2)" data-en="Connected to @atomicfindsatx"
@@ -2371,7 +2520,7 @@
   <footer class="hp-footer">
     <div class="hp-footer__inner">
       <div class="hp-footer-logo-col">
-        <img class="hp-footer__monogram" src="design-system/assets/logos/monogram-roundel.png"
+        <img class="hp-footer__monogram" src="design-system/assets/logos/logo-monogram-roundel.png"
           alt="Atomic Finds ATX Monogram" width="140" height="140" loading="lazy" decoding="async">
         <p style="margin-top:var(--af-space-2)" data-en="Far-out finds, down-to-earth prices."
           data-es="Hallazgos increíbles, precios accesibles.">Far-out finds, down-to-earth prices.</p>
@@ -2395,6 +2544,21 @@
           <li><a href="#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
           <li><a href="contact.html" data-en="Inquiries &amp; Delivery" data-es="Consultas y Envíos">Inquiries &amp;
               Delivery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-en="Find Us" data-es="Encuéntranos">Find Us</h3>
+        <ul>
+          <li><a href="mailto:atomicfindsatx@gmail.com">atomicfindsatx@gmail.com</a></li>
+          <li><a href="tel:+18652448130">865-244-8130</a></li>
+          <li><a href="https://www.instagram.com/atomicfindsatx/" target="_blank"
+              rel="noopener">Instagram &mdash; @atomicfindsatx</a></li>
+          <li><a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&amp;mibextid=6ojiHh"
+              target="_blank" rel="noopener" data-en="Facebook Marketplace"
+              data-es="Facebook Marketplace">Facebook Marketplace</a></li>
+          <li data-en="Austin, Texas &middot; By appointment, Tue&ndash;Sat 10am&ndash;6pm"
+            data-es="Austin, Texas &middot; Con cita previa, mar&ndash;s&aacute;b 10am&ndash;6pm">Austin, Texas
+            &middot; By appointment, Tue&ndash;Sat 10am&ndash;6pm</li>
         </ul>
       </div>
       <div>
@@ -2434,6 +2598,73 @@
   </footer>
 
   <script>
+    // --- Our Story figure: load the motion clip ONLY on first hover -------
+    // A <video> rather than an animated image: this clip is a slow ambient
+    // drift, which video codecs compress to a fraction of an animated GIF or
+    // WebP of the same length. preload="none" plus on-demand creation means a
+    // visitor who never hovers downloads nothing.
+    (function () {
+      var fig = document.querySelector('.hp-story-figure');
+      if (!fig) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!window.matchMedia('(hover: hover)').matches) return;
+
+      var vid = null;
+
+      function build() {
+        vid = document.createElement('video');
+        vid.className = 'hp-story-figure__motion';
+        vid.muted = true;          // required for autoplay-without-gesture
+        vid.loop = true;
+        vid.playsInline = true;
+        vid.preload = 'none';
+        vid.setAttribute('aria-hidden', 'true');
+        vid.tabIndex = -1;
+        [['data-motion-webm', 'video/webm'], ['data-motion-mp4', 'video/mp4']].forEach(function (pair) {
+          var src = fig.getAttribute(pair[0]);
+          if (!src) return;
+          var el = document.createElement('source');
+          el.src = src; el.type = pair[1];
+          vid.appendChild(el);
+        });
+        vid.addEventListener('playing', function () { fig.classList.add('is-playing'); });
+        fig.appendChild(vid);
+      }
+
+      function play() {
+        if (!vid) build();
+        var r = vid.play();
+        if (r && r.catch) r.catch(function () { /* autoplay refused — leave the still */ });
+      }
+      function stop() {
+        fig.classList.remove('is-playing');
+        if (vid) vid.pause();
+      }
+
+      fig.addEventListener('mouseenter', play);
+      fig.addEventListener('mouseleave', stop);
+      fig.tabIndex = 0;
+      fig.addEventListener('focus', play);
+      fig.addEventListener('blur', stop);
+    })();
+
+    // --- Meet Nacho: staggered star reveal on scroll -----------------------
+    (function () {
+      var nacho = document.querySelector('.hp-nacho');
+      if (!nacho) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          !('IntersectionObserver' in window)) {
+        nacho.classList.add('is-revealed');
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.25 });
+      io.observe(nacho);
+    })();
+
     // Mobile navigation toggle
     var burger = document.querySelector('.hp-burger');
     var nav = document.getElementById('hp-nav');
@@ -2456,6 +2687,8 @@
         var wrapper = document.getElementById(targetId);
 
         btn.setAttribute('aria-expanded', !isExpanded);
+        var card = btn.closest('.hp-find-card');
+        if (card) card.classList.toggle('is-open', !isExpanded);
         wrapper.classList.toggle('is-expanded', !isExpanded);
         wrapper.setAttribute('aria-hidden', isExpanded);
 

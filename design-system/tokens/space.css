@@ -45,7 +45,12 @@
 
   /* --- Layout ---------------------------------------------------------- */
   --af-measure:   66ch;   /* max body line length */
-  --af-container: 1180px;
+  --af-container: 1280px;  /* was 1180 — too tight for desktop at 1425 */
+
+  /* --- Pattern ---------------------------------------------------------
+     Ghost pattern strength: the one dial deciding whether a section reads
+     calm or busy. Applies to every .af-pattern--ghost background. */
+  --af-pattern-ghost: 0.07;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,4 +59,5 @@
     --af-duration:      1ms;
     --af-duration-slow: 1ms;
   }
+
 }

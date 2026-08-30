@@ -1,5 +1,11 @@
-.DS_Store
+
+# (and don't get served by GitHub Pages). Use git-lfs if these must be tracked.
+# Full-resolution masters — local only.
+# Kept out of git so a 44MB GIF + 21MB PNG don't enter history permanently
+# Never referenced by any page; the web versions live in product-photos/.
 *.DS_Store
-.vscode/
+.DS_Store
 .idea/
+.vscode/
+design-system/assets/_masters/
 node_modules/

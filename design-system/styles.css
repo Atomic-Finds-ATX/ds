@@ -33,13 +33,25 @@ body {
 }
 
 /* Display headings are Mamba. Keep to three levels per composition. */
-h1, h2, h3, .af-display {
+/* H1 + H2 are Mamba. h3 is NOT — it is the subhead level and takes Pacifico
+   (see the locked hierarchy in tokens/typography.css). */
+h1, h2, .af-display {
   font-family: var(--af-font-display);
   font-weight: 400;
   line-height: var(--af-leading-tight);
   letter-spacing: var(--af-tracking-display);
   color: var(--af-olive-teal); /* #2E5D4E (Olive/Teal) */
   margin: 0 0 var(--af-space-4);
+}
+
+/* Subheading level — Pacifico. Kept short by design: a script face is hard to
+   read at length, so this never carries body copy. */
+h3, .af-subhead {
+  font-family: var(--af-font-script);
+  font-weight: 400;
+  line-height: var(--af-leading-snug);
+  color: var(--af-olive-teal);
+  margin: 0 0 var(--af-space-3);
 }
 
 h1 { font-size: var(--af-text-3xl); color: var(--af-avocado); /* #6B7A32 (Avocado) */ }
@@ -121,33 +133,39 @@ a:hover { color: var(--af-ink); text-decoration: none; }
 
 .af-pattern { background-color: var(--af-cream); background-repeat: repeat; }
 
-/* Botanical — the workhorse. Sage line-art on cream, straight from the guide. */
+/* Botanical — the workhorse. Uses the TRANSPARENT green line-art: laid over
+   cream at --af-pattern-ghost it reads as soft sage. The cream-ground version
+   (pattern-botanical-cream.png) cannot be faded the same way, because its
+   background is baked into the image — that one is for card frames. */
 .af-pattern--botanical {
-  background-image: url("assets/textures/botanical_pattern.png");
+  background-image: url("assets/textures/pattern-botanical-green.png");
   background-size: 460px;
 }
 
 /* Atomic starbursts scattered on cream — for playful/celebratory surfaces. */
 .af-pattern--atomic {
-  background-image: url("assets/textures/atomic_pattern.png");
+  background-image: url("assets/textures/pattern-atomic.png");
   background-size: 380px;
 }
 
 /* Sparkle field — the lightest of the three; good behind large type. */
 .af-pattern--sparkle {
-  background-image: url("assets/textures/sparkle_pattern.png");
+  background-image: url("assets/textures/pattern-sparkle.png");
   background-size: 380px;
 }
 
-/* Palma Ginkgo pattern for section variation. */
+/* Palma Ginkgo pattern for section variation.
+   TODO(asset-missing): 002_pattern-palma-ginkgo…png is not in the repo. Left
+   unset deliberately rather than substituted with another pattern — supply the
+   file as textures/pattern-palma-ginkgo.png and restore the rule. */
 .af-pattern--ginkgo {
-  background-image: url("assets/textures/002_pattern-palma-ginkgopng_8PHXU1Cb.png");
   background-size: 460px;
 }
 
-/* Trailing greenery pattern for story section. */
+/* Trailing greenery pattern for story section.
+   TODO(asset-missing): 001_pattern-trailing-greenery…png is not in the repo.
+   Supply as textures/pattern-trailing-greenery.png and restore the rule. */
 .af-pattern--trailing {
-  background-image: url("assets/textures/001_pattern-trailing-greenerypng_3NOuhLIc.png");
   background-size: 460px;
 }
 
@@ -177,7 +195,7 @@ a:hover { color: var(--af-ink); text-decoration: none; }
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
-  opacity: 0.03;
+  opacity: var(--af-pattern-ghost);
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -213,11 +231,14 @@ a:hover { color: var(--af-ink); text-decoration: none; }
 }
 
 /* --- Utility container --------------------------------------------------- */
+/* Fluid gutter. A flat --af-space-5 (48px) took 96px out of a 375px screen —
+   a quarter of the viewport — which is what left mobile cards so narrow, and
+   on desktop it squeezed the wider elements. 16px on phones, 48px on desktop. */
 .af-container {
   width: 100%;
   max-width: var(--af-container);
   margin-inline: auto;
-  padding-inline: var(--af-space-5);
+  padding-inline: clamp(1rem, 3vw, 3rem);
 }
 
 .af-grid {
