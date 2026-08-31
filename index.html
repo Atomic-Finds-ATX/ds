@@ -1361,6 +1361,10 @@
       .hp-gallery-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .hp-social-feed {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 560px) {
@@ -1370,6 +1374,10 @@
 
       .hp-feed {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hp-social-feed {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1474,7 +1482,7 @@
     </div>
 
     <div class="hp-hero__media hp-reveal">
-      <img src="design-system/assets/product-photos/sunny.png"
+      <img src="design-system/assets/product-photos/Sunny.png"
         alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798"
         fetchpriority="high" decoding="async">
     </div>
@@ -1583,7 +1591,7 @@
             <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
               aria-label="Previous image">&lt;</button>
             <div class="hp-find-card__carousel-track">
-              <img src="design-system/assets/product-photos/sunny.png"
+              <img src="design-system/assets/product-photos/Sunny.png"
                 alt="Sunny, a 1970s vintage rattan coffee table - View 1" width="1200" height="798" loading="lazy"
                 decoding="async">
               <img src="design-system/assets/product-photos/product-2.png" alt="Sunny coffee table details - View 2"
@@ -1663,7 +1671,7 @@
             <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
               aria-label="Previous image">&lt;</button>
             <div class="hp-find-card__carousel-track">
-              <img src="design-system/assets/product-photos/flora.png"
+              <img src="design-system/assets/product-photos/Flora.png"
                 alt="Flora, a 4-piece 1970s bamboo dining set - View 1" width="1200" height="800" loading="lazy"
                 decoding="async">
               <img src="design-system/assets/product-photos/product-1.png" alt="Flora bamboo chair details - View 2"
@@ -2047,6 +2055,20 @@
   </section>
 
   <!-- ========================== 06 INSTAGRAM =========================== -->
+  <!-- TODO(social-feed): This section is static, hand-authored copy, not a live Instagram
+       connection — Instagram is unreachable from this environment, so it can't be scraped or
+       embedded automatically here. To keep it current, either (a) periodically swap in real
+       post photos/captions/like-counts by hand, or (b) wire up a live embed via Meta's Graph
+       API or a third-party widget (SnapWidget, Elfsight, Behold, etc.), which requires the
+       account owner to generate API credentials this session has no access to.
+       TODO(asset-mismatch): the fallback images below (and elsewhere in this file) reuse
+       generic product-N.png filler photos with captions that don't match their contents
+       (e.g. product-1.png is a rattan mirror over a console, captioned "Rattan armchair drop"
+       here and "Flora bamboo chair details" on the Flora card; product-2.png is a tall etagere
+       shelf, captioned as a coffee table on the Sunny and Agnes cards; product-4.png is a
+       bamboo ladder shelf, captioned as console/lattice details; product-5.png is a set of
+       arched bookshelves, captioned as coffee table styling / lounge seating). Needs a real
+       photo-to-product matchup pass before these captions can be trusted. -->
   <section class="hp-sec af-container" id="instagram" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--atomic af-pattern--ghost"
       style="background-color:transparent" role="presentation"></div>
