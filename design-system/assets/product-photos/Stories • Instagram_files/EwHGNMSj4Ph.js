@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("PolarisChannelsRoot.entrypoint",["JSResourceForInteraction","PolarisChannelsRootQuery$Parameters"],(function(t,n,r,o,a,i,l){"use strict";var e={getPreloadProps:function(t){return{queries:{queryRef:{parameters:r("PolarisChannelsRootQuery$Parameters"),variables:{first:3,params:{initial_login_request:!1}}}}}},root:r("JSResourceForInteraction")("PolarisChannelsRoot.react").__setRef("PolarisChannelsRoot.entrypoint")};l.default=e}),98);
