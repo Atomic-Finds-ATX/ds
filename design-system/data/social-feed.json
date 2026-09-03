@@ -1,0 +1,57 @@
+{
+ "_README": [
+  "Social feed data for the homepage. This is the ONLY file to edit to refresh the feed.",
+  "Every entry must carry a real Instagram permalink \u2014 never the profile URL.",
+  "No engagement numbers: we cannot verify likes or comments, so we do not display them.",
+  "When the Instagram Graph API is wired up, a scheduled job overwrites `posts` here",
+  "and the markup does not change."
+ ],
+ "updated": "2026-09-01",
+ "profile": "https://www.instagram.com/atomicfindsatx/",
+ "highlights": {
+  "atomic_homes": {
+   "title": "Atomic Homes",
+   "note": "Instagram HIGHLIGHT reel, not a feed.",
+   "url": null,
+   "_todo": "Needs the real highlight URL (instagram.com/stories/highlights/<id>/). Falls back to the profile until supplied."
+  }
+ },
+ "posts": [
+  {
+   "permalink": "https://www.instagram.com/p/Dcotmv3Gn-I/",
+   "shortcode": "Dcotmv3Gn-I",
+   "piece": "Maple",
+   "sku": "0001",
+   "photo": "design-system/assets/product-photos/maple-0001-1.png",
+   "caption": "Curved wood, two little table levels + a working lamp hiding behind a maple leaf screen; the leaves glow when lit. Unique 1950s\u2026",
+   "kind": "post"
+  },
+  {
+   "permalink": "https://www.instagram.com/p/DcY2B28EQ0Q/",
+   "shortcode": "DcY2B28EQ0Q",
+   "piece": "Orbit",
+   "sku": "0004",
+   "photo": "design-system/assets/product-photos/orbit-0004-1.png",
+   "caption": "Vintage Space Age acrylic bubble chair with a brass pedestal base \u2014 one of those pieces you almost never see in person.",
+   "kind": "post"
+  },
+  {
+   "permalink": "https://www.instagram.com/p/DcheKzGDP6O/",
+   "shortcode": "DcheKzGDP6O",
+   "piece": "Bianca",
+   "sku": "0000",
+   "photo": "design-system/assets/product-photos/bianca-0000-1.png",
+   "caption": "Vintage Gardner faux-bamboo mirror with warm wood tones. Tall, bamboo-framed wall mirror.",
+   "kind": "post"
+  },
+  {
+   "permalink": "https://www.instagram.com/p/DcegsW7P9KU/",
+   "shortcode": "DcegsW7P9KU",
+   "piece": null,
+   "sku": null,
+   "photo": null,
+   "caption": "New from the Atomic Finds workshop.",
+   "kind": "post"
+  }
+ ]
+}

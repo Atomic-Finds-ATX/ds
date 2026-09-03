@@ -237,7 +237,7 @@
         <span class="af-label">Script</span>
         <p class="af-script" style="font-size:var(--af-text-xl); margin:var(--af-space-3) 0">Tiny Time Machines</p>
         <p class="doc-note"><strong>Pacifico.</strong> Two uses only: the tagline, and character voice
-          (Nacho's asides, curator quotes). Never a heading, never a paragraph.</p>
+          (Nacho's asides, short pull quotes). Never a heading, never a paragraph.</p>
       </div>
       <div class="doc-panel">
         <span class="af-label">Body</span>
@@ -299,7 +299,8 @@
           <span class="af-label">Hero headline sits here</span>
         </div>
         <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(a) Hero background.</strong>
-          Botanical, tone-on-tone and dropped to a whisper. Text keeps full contrast on top.</p>
+          The atomic pattern, tone-on-tone and dropped to a whisper at 7% via <code>--af-pattern-ghost</code>.
+          Text keeps full contrast on top.</p>
       </div>
       <div>
         <div class="doc-texture-demo" style="background:var(--af-cream); display:flex; flex-direction:column; justify-content:space-between">
@@ -308,11 +309,11 @@
           <div class="af-asset-missing af-pattern-rule">Weave sample needed</div>
         </div>
         <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(b) Border / divider.</strong>
-          A thin band of one pattern marking a featured section &mdash; botanical above; the weave role below is awaiting its asset.</p>
+          A thin band of one pattern marking a featured section.</p>
       </div>
       <div>
         <div class="doc-texture-demo af-pattern af-pattern--botanical af-pattern-frame" style="background-size:150px">
-          <img src="assets/product-photos/ramona-1.png" alt="Ramona framed by the botanical pattern">
+          <img src="assets/product-photos/betty-0003-1.png" alt="A piece framed by its material pattern">
         </div>
         <p class="doc-note" style="margin-top:var(--af-space-3)"><strong>(c) Card-as-frame.</strong>
           Pattern is the card ground; the piece sits on a cream mat so the pattern frames it.
@@ -330,6 +331,46 @@
   <!-- ================= COMPONENTS ================= -->
   <section class="doc-sec">
     <div class="af-eyebrow"><span class="af-label">Components</span></div>
+    <h2>Heritage library</h2>
+    <p class="doc-note">A product card's backdrop is the piece's own <strong>material</strong>, pulled from
+      <code>assets/heritage-library/</code>. Rattan gets rattan, bamboo gets bamboo. The backdrop is always the quiet
+      <strong>pattern</strong>, never the bold weave &mdash; the weave would compete with the furniture. The weave
+      appears only as a small swatch beside its origin credit. Full rules in
+      <code>assets/documents/atomic-finds-heritage-pattern-spec.md</code>.</p>
+
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <figure style="margin:0">
+        <div style="background-image:url('assets/heritage-library/heritage-library-rattan-weave/rattan-leaf-pattern.png');
+          background-size:200px; border:2px solid var(--af-ink); border-radius:var(--af-radius-card); height:150px"></div>
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)"><strong>Rattan</strong> &mdash; cane, wicker.
+          <code>rattan-leaf-pattern</code> / <code>rattan-vine-pattern</code></figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div style="background-image:url('assets/heritage-library/heritage-library-cane-webbing/bamboo-pattern.png');
+          background-size:200px; border:2px solid var(--af-ink); border-radius:var(--af-radius-card); height:150px"></div>
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)"><strong>Bamboo</strong> &mdash; the
+          cane-webbing family. <code>bamboo-pattern</code></figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div style="background-image:url('assets/heritage-library/heritage-library-palma-weave/palma-pattern.png');
+          background-size:200px; border:2px solid var(--af-ink); border-radius:var(--af-radius-card); height:150px"></div>
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)"><strong>Palma</strong> &mdash; palm frond,
+          petate. <code>palma-pattern</code></figcaption>
+      </figure>
+    </div>
+
+    <p class="doc-note" style="margin-top:var(--af-space-4)">A piece with <strong>no weave material</strong> &mdash;
+      wood, formica, acrylic, glass &mdash; takes plain cream and shows no weave swatch. It makes no craft claim it
+      cannot support. Never borrow another material's pattern to fill the gap.</p>
+
+    <div class="af-row" style="gap:var(--af-space-4); margin-top:var(--af-space-5); align-items:center">
+      <img src="assets/heritage-library/heritage-library-rattan-weave/weave-solihiya.png" alt="Solihiya weave swatch"
+        style="width:64px;height:64px;object-fit:cover;border-radius:6px;border:2px solid var(--af-ink)"
+        loading="lazy" decoding="async">
+      <span class="af-label" style="color:var(--af-olive-teal)">Solihiya weave &middot; Philippines</span>
+      <span class="doc-note" style="margin:0">&larr; swatch and credit always travel together.</span>
+    </div>
+
     <h2>Buttons &amp; tags</h2>
 
     <div class="doc-grid doc-grid--2" style="margin-top:var(--af-space-5)">
@@ -359,24 +400,25 @@
     </div>
 
     <h3 style="margin-top:var(--af-space-7)">Inspection stamp</h3>
-    <p class="doc-note">The Inspection Team's sign-off — deadpan, mock-bureaucratic, single-colour like real
-      rubber-stamp ink. A supporting cameo: small, and never the lead visual.</p>
-    <div class="af-row" style="gap:var(--af-space-7); margin-top:var(--af-space-5); padding:var(--af-space-5) 0">
-      <div class="af-stamp">
-        <span class="af-stamp__team">Atomic Inspection Team</span>
-        <span class="af-stamp__verdict">Passed</span>
-        <span class="af-stamp__curator">Insp. Milo</span>
-      </div>
-      <div class="af-stamp af-stamp--orange" style="transform:rotate(6deg)">
-        <span class="af-stamp__team">Approved for</span>
-        <span class="af-stamp__verdict">Time Travel</span>
-        <span class="af-stamp__curator">Insp. Daisy</span>
-      </div>
-      <div class="af-stamp af-stamp--flat" style="--af-stamp-color:var(--af-avocado-deep)">
-        <span class="af-stamp__team">Found Across</span>
-        <span class="af-stamp__verdict">Time + Space</span>
-        <span class="af-stamp__curator">Austin, TX</span>
-      </div>
+    <p class="doc-note">The supplied artwork in <code>assets/stamps/</code>. Each has a transparent ground, so it
+      stamps onto cream, a photograph or a patterned card without carrying a plate with it. Flat always — never add
+      blur or a drop shadow. A supporting cameo: small, and never the lead visual.</p>
+    <div class="doc-grid doc-grid--3" style="margin-top:var(--af-space-5)">
+      <figure style="margin:0; text-align:center">
+        <img src="assets/stamps/stamp-atomic-inspection.png" alt="Atomic Inspection — Tested and Approved"
+          style="width:160px; height:auto" loading="lazy" decoding="async">
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)">Primary certification.</figcaption>
+      </figure>
+      <figure style="margin:0; text-align:center">
+        <img src="assets/stamps/stamp-curated.png" alt="Curated"
+          style="width:160px; height:auto" loading="lazy" decoding="async">
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)">Selection stamp.</figcaption>
+      </figure>
+      <figure style="margin:0; text-align:center">
+        <img src="assets/stamps/stamp-verified.png" alt="Verified"
+          style="width:160px; height:auto" loading="lazy" decoding="async">
+        <figcaption class="doc-note" style="margin-top:var(--af-space-2)">Authenticity stamp.</figcaption>
+      </figure>
     </div>
 
     <h3 style="margin-top:var(--af-space-7)">Product card</h3>
@@ -386,7 +428,7 @@
 
       <article class="af-product">
         <div class="af-product__media">
-          <img src="assets/product-photos/ramona-4.png" alt="Ramona — vintage rattan peacock chair">
+          <img src="assets/product-photos/maple-0001-1.png" alt="Ramona — vintage rattan peacock chair">
           <span class="af-tag af-tag--available af-product__status">Available</span>
         </div>
         <div class="af-product__body">
@@ -408,7 +450,7 @@
 
       <article class="af-product">
         <div class="af-product__media">
-          <img src="assets/product-photos/flora.png" alt="Flora — vintage bamboo cabinet">
+          <img src="assets/product-photos/dottie-0002-1.png" alt="Flora — vintage bamboo cabinet">
           <span class="af-tag af-tag--sold af-product__status">Sold</span>
         </div>
         <div class="af-product__body">
@@ -497,11 +539,8 @@
         </dl>
 
         <div style="display:flex; justify-content:center; margin-top:var(--af-space-6)">
-          <div class="af-stamp" style="width:7rem;height:7rem">
-            <span class="af-stamp__team">Atomic Inspection Team</span>
-            <span class="af-stamp__verdict">Passed</span>
-            <span class="af-stamp__curator">Insp. Milo</span>
-          </div>
+          <img src="assets/stamps/stamp-atomic-inspection.png" alt="Atomic Inspection — Tested and Approved"
+            style="width:7rem;height:auto" loading="lazy" decoding="async">
         </div>
 
         <p class="af-record__closing">This tiny time machine has found a new home.</p>

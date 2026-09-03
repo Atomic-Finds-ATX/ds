@@ -367,10 +367,9 @@
     .hp-find-card {
       position: relative;
       isolation: isolate;
-      background-color: #FAF1DF;
-      background-image: url("design-system/assets/textures/pattern-botanical-cream.png");
-      background-size: clamp(120px, 34vw, 340px);
-      background-repeat: repeat;
+      /* Ground is set per-card, inline, from the piece's own material family —
+         see assets/documents/atomic-finds-heritage-pattern-spec.md. A piece with
+         no weave material gets plain cream rather than a borrowed pattern. */
       border: var(--af-border-width) solid var(--af-ink);
       border-radius: var(--af-radius-card);
       box-shadow: 6px 6px 0 var(--af-ink);
@@ -540,6 +539,29 @@
     /* COMPACT BY DEFAULT: the description is clamped to two lines so the card
        stays short; expanding the card releases it. This is what makes the
        expander worth having — previously the full text was always visible. */
+    /* Provenance: the weave swatch appears ONLY on pieces that are actually
+       woven, and always carries its origin credit. */
+    .hp-find-card__origin {
+      display: flex;
+      align-items: center;
+      gap: var(--af-space-2);
+      padding: 0.4rem 0;
+    }
+    .hp-find-card__swatch {
+      width: 46px;
+      height: 46px;
+      flex: none;
+      object-fit: cover;
+      border-radius: 6px;
+      border: var(--af-border-width) solid var(--af-ink);
+    }
+    .hp-find-card__credit {
+      font-size: var(--af-text-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--af-olive-teal);
+    }
+
     .hp-find-card__desc {
       font-size: var(--af-text-sm);
       color: var(--af-ink);
@@ -638,47 +660,8 @@
       height: auto;              /* full size, natural 5:6 — never cropped */
       border-radius: var(--af-radius-lg);
     }
-    /* The motion layer is stacked over the still and cross-fades in. */
-    .hp-story-figure__motion {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.45s var(--af-ease);
-      pointer-events: none;
-      border-radius: var(--af-radius-lg);
-    }
-    .hp-story-figure.is-playing .hp-story-figure__motion { opacity: 1; }
-
-    .hp-story-figure__hint {
-      position: absolute;
-      right: var(--af-space-3);
-      bottom: var(--af-space-3);
-      display: flex;
-      align-items: center;
-      gap: var(--af-space-2);
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--af-surface) 88%, transparent);
-      border: 2px solid var(--af-ink);
-      font-size: var(--af-text-xs);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--af-ink);
-      transition: opacity 0.3s var(--af-ease);
-    }
-    .hp-story-figure__hint .af-sparkle { color: var(--af-mustard); height: 1em; width: 0.625em; }
-    .hp-story-figure.is-playing .hp-story-figure__hint { opacity: 0; }
-
     .hp-story-copy { max-width: 60rem; }
 
-    /* Touch devices have no hover, so the hint would be a lie. */
-    @media (hover: none) {
-      .hp-story-figure__hint { display: none; }
-    }
 
     .hp-nacho {
       background: var(--af-cream);
@@ -1474,8 +1457,8 @@
     </div>
 
     <div class="hp-hero__media hp-reveal">
-      <img src="design-system/assets/product-photos/sunny.png"
-        alt="Sunny, a vintage 1970s rattan coffee table in a sunlit Austin living room" width="1200" height="798"
+      <img src="design-system/assets/product-photos/wood-bench-0013-1.png"
+        alt="A restored vintage piece from the Atomic Finds collection" width="1200" height="798"
         fetchpriority="high" decoding="async">
     </div>
   </section>
@@ -1526,16 +1509,10 @@
   <section class="hp-sec af-container" id="story" style="position:relative; isolation:isolate;">
     <div class="af-pattern af-pattern--trailing af-pattern--ghost"
       style="background-color:transparent" role="presentation"></div>
-    <figure class="hp-story-figure hp-reveal"
-      data-motion-webm="design-system/assets/product-photos/story-peacock-animated.webm"
-      data-motion-mp4="design-system/assets/product-photos/story-peacock-animated.mp4">
+    <figure class="hp-story-figure hp-reveal">
       <img class="hp-story-figure__still" src="design-system/assets/product-photos/story-peacock.webp"
         alt="A restored bamboo console against a terracotta wall, framed peacock print above, ferns either side"
         width="1400" height="1669" loading="lazy" decoding="async">
-      <figcaption class="hp-story-figure__hint" aria-hidden="true">
-        <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span data-en="Hover to bring it to life" data-es="Pasa el cursor para animarlo">Hover to bring it to life</span>
-      </figcaption>
     </figure>
 
     <div class="hp-story-copy">
@@ -1576,244 +1553,157 @@
     </div>
 
     <div class="hp-featured-list">
-      <!-- Featured Card 1: Sunny -->
-      <article class="hp-find-card hp-reveal">
+      
+      
+      <article class="hp-find-card hp-reveal" data-sku="0020" data-material="rattan" style="background-color:#FAF1DF; background-image:url("design-system/assets/heritage-library/heritage-library-rattan-weave/rattan-leaf-pattern.png"); background-size:clamp(120px,30vw,300px); background-repeat:repeat;">
         <div class="hp-find-card__mat">
           <div class="hp-find-card__media">
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
-              aria-label="Previous image">&lt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev" aria-label="Previous image">&lt;</button>
             <div class="hp-find-card__carousel-track">
-              <img src="design-system/assets/product-photos/sunny.png"
-                alt="Sunny, a 1970s vintage rattan coffee table - View 1" width="1200" height="798" loading="lazy"
-                decoding="async">
-              <img src="design-system/assets/product-photos/product-2.png" alt="Sunny coffee table details - View 2"
-                width="1200" height="798" loading="lazy" decoding="async">
-              <img src="design-system/assets/product-photos/product-5.png" alt="Sunny coffee table styling - View 3"
-                width="1200" height="798" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/ramona-0020-1.png" alt="Ramona, Vintage Rattan Wicker Bookshelf / Bookcase 72&quot; — view 1" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/ramona-0020-2.png" alt="Ramona, Vintage Rattan Wicker Bookshelf / Bookcase 72&quot; — view 2" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/ramona-0020-3.png" alt="Ramona, Vintage Rattan Wicker Bookshelf / Bookcase 72&quot; — view 3" width="1200" height="900" loading="lazy" decoding="async">
             </div>
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
-              aria-label="Next image">&gt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next" aria-label="Next image">&gt;</button>
             <div class="hp-find-card__carousel-indicators">
-              <span class="active" data-slide="0"></span>
-              <span data-slide="1"></span>
-              <span data-slide="2"></span>
+                <span class="active" data-slide="0"></span>
+                <span data-slide="1"></span>
+                <span data-slide="2"></span>
             </div>
           </div>
           <div class="hp-find-card__content">
             <div class="hp-find-card__header">
-              <h3 class="hp-find-card__title" data-en="Sunny &middot; c. 1974 Coffee Table"
-                data-es="Sunny &middot; Mesa de Centro c. 1974">Sunny <span aria-hidden="true">&middot;</span> c. 1974
-              </h3>
-              <span class="hp-find-card__price">$485</span>
+              <h3 class="hp-find-card__title">Ramona</h3>
+              <span class="hp-find-card__price">$595</span>
             </div>
             <div class="hp-find-card__tags">
-              <span class="af-tag af-tag--available" data-en="Available in Austin"
-                data-es="Disponible en Austin">Available in Austin</span>
-              <span class="af-tag" data-en="Mid-Century Rattan" data-es="Rattán Mid-Century">Mid-Century Rattan</span>
+              <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag">Rattan</span>
             </div>
-            <p class="hp-find-card__desc"
-              data-en="A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer."
-              data-es="Una impresionante mesa de centro de rattán curvo de los años 70 con una pátina dorada cálida. Cuenta con un estante inferior tejido para libros o revistas y un marco resistente. Restaurada a mano por Jennyfer.">
-              A stunning 1970s curved rattan coffee table with a warm golden patina. Features a tight woven cane lower
-              shelf for books or magazines and sturdy steam-bent rattan framing. Hand-restored by Jennyfer.
-            </p>
+            <div class="hp-find-card__origin">
+              <img class="hp-find-card__swatch" src="design-system/assets/heritage-library/heritage-library-rattan-weave/weave-solihiya.png" alt="Solihiya weave · Philippines" loading="lazy" decoding="async">
+              <span class="hp-find-card__credit">Solihiya weave · Philippines</span>
+            </div>
+            <p class="hp-find-card__desc">Meet Ramona - six feet of woven rattan drama. Rare vintage rattan and wicker bookshelf with a dramatic arched silhouette, intricate woven lattice sides, and four spacious shelves…</p>
             <div class="hp-find-card__actions">
-              <a href="contact.html?product=sunny" class="af-btn af-btn--primary af-btn--sm" data-en="Interested?"
-                data-es="¿Interesado?">Interested?</a>
-              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
-                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
-                data-es="Ver en Marketplace">View on Marketplace</a>
-              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
-                aria-controls="details-sunny" data-en="View Details &amp; Provenance"
-                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+              <a href="https://www.facebook.com/marketplace/item/1799017487769189/" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt Ramona $595" data-es="Adoptar Ramona">Adopt Ramona $595</a>
+              <a href="contact.html?sku=0020&amp;piece=Ramona" class="af-btn af-btn--secondary af-btn--sm" data-en="Inquire" data-es="Consultar">Inquire</a>
+              <button class="af-btn af-btn--ghost af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-0020" data-en="Details &amp; Provenance" data-es="Detalles">Details &amp; Provenance</button>
             </div>
-
-            <div class="hp-find-card__details-wrapper" id="details-sunny" aria-hidden="true">
+            <div class="hp-find-card__details-wrapper" id="details-0020" aria-hidden="true">
               <div class="hp-find-card__details">
                 <div class="hp-find-card__specs-grid">
-                  <div class="hp-spec-item"><strong data-en="Dimensions"
-                      data-es="Dimensiones">Dimensions</strong><span>44"W &times; 22"D &times; 17"H</span></div>
-                  <div class="hp-spec-item"><strong data-en="Weave &amp; Origin" data-es="Tejido y Origen">Weave &amp;
-                      Origin</strong><span data-en="Solihiya &middot; Philippines"
-                      data-es="Solihiya &middot; Filipinas">Solihiya &middot; Philippines</span></div>
-                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
-                      data-en="Excellent Vintage Wear" data-es="Excelente Desgaste Vintage">Excellent Vintage
-                      Wear</span></div>
-                  <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin
-                      Delivery</strong><span data-en="Free Pickup or Local White-Glove Delivery"
-                      data-es="Recogida Gratis o Entrega Local">Free Pickup or Local White-Glove Delivery</span></div>
+                  <div class="hp-spec-item"><strong>SKU</strong><span>0020</span></div>
+                  <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>72&quot;H x 30&quot;W x 15&quot;D</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span>Used - Good</span></div>
+                  <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span>Solihiya weave · Philippines</span></div>
+                  <div class="hp-spec-item"><strong data-en="Sourced via" data-es="Origen">Sourced via</strong><span>Facebook Marketplace</span></div>
                 </div>
-                <div class="hp-find-card__quote">
-                  <p data-en="&ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and stability checks.&rdquo; &mdash; Inspector Milo"
-                    data-es="&ldquo;Sunny tiene una silueta baja perfecta para una sala de estar soleada. Pasó todas las inspecciones.&rdquo; &mdash; Inspector Milo">
-                    &ldquo;Sunny has a low-slung silhouette perfect for a sunlit living room. Passed all nap and
-                    stability checks.&rdquo; &mdash; Inspector Milo
-                  </p>
-                </div>
+                <div class="hp-find-card__quote">Meet Ramona - six feet of woven rattan drama. Rare vintage rattan and wicker bookshelf with a dramatic arched silhouette, intricate woven lattice sides, and four spacious shelves. Beautiful vintage condition with age-appropriate character; localized wear and some loss to rattan wrapping around lower frame and feet - review photos closely.</div>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Featured Card 2: Flora Dining Set -->
-      <article class="hp-find-card hp-reveal">
+      <article class="hp-find-card hp-reveal" data-sku="0039" data-material="bamboo" style="background-color:#FAF1DF; background-image:url("design-system/assets/heritage-library/heritage-library-cane-webbing/bamboo-pattern.png"); background-size:clamp(120px,30vw,300px); background-repeat:repeat;">
         <div class="hp-find-card__mat">
           <div class="hp-find-card__media">
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
-              aria-label="Previous image">&lt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev" aria-label="Previous image">&lt;</button>
             <div class="hp-find-card__carousel-track">
-              <img src="design-system/assets/product-photos/flora.png"
-                alt="Flora, a 4-piece 1970s bamboo dining set - View 1" width="1200" height="800" loading="lazy"
-                decoding="async">
-              <img src="design-system/assets/product-photos/product-1.png" alt="Flora bamboo chair details - View 2"
-                width="1200" height="800" loading="lazy" decoding="async">
-              <!-- TODO(asset-missing): a third Flora view (product-8.png) was referenced but
-                   never existed. Slide removed rather than substituted with another piece's
-                   photo — drop the real image in and restore this slide. -->
+              <img src="design-system/assets/product-photos/bistro-set-0039-1.png" alt="Bistro Set, Vintage Bamboo &amp; Wicker Bistro Set | Coastal Boho | 2 Chairs + Glass Table — view 1" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/bistro-set-0039-2.png" alt="Bistro Set, Vintage Bamboo &amp; Wicker Bistro Set | Coastal Boho | 2 Chairs + Glass Table — view 2" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/bistro-set-0039-3.png" alt="Bistro Set, Vintage Bamboo &amp; Wicker Bistro Set | Coastal Boho | 2 Chairs + Glass Table — view 3" width="1200" height="900" loading="lazy" decoding="async">
             </div>
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
-              aria-label="Next image">&gt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next" aria-label="Next image">&gt;</button>
             <div class="hp-find-card__carousel-indicators">
-              <span class="active" data-slide="0"></span>
-              <span data-slide="1"></span>
-              <span data-slide="2"></span>
+                <span class="active" data-slide="0"></span>
+                <span data-slide="1"></span>
+                <span data-slide="2"></span>
             </div>
           </div>
           <div class="hp-find-card__content">
             <div class="hp-find-card__header">
-              <h3 class="hp-find-card__title" data-en="Flora &middot; c. 1978 Bamboo Dining Set"
-                data-es="Flora &middot; Juego de Comedor c. 1978">Flora <span aria-hidden="true">&middot;</span> c. 1978
-              </h3>
-              <span class="hp-find-card__price">$640</span>
+              <h3 class="hp-find-card__title">Bistro Set</h3>
+              <span class="hp-find-card__price">$250</span>
             </div>
             <div class="hp-find-card__tags">
-              <span class="af-tag af-tag--available" data-en="Available in Austin"
-                data-es="Disponible en Austin">Available in Austin</span>
-              <span class="af-tag" data-en="Bamboo &amp; Wicker" data-es="Bambú y Mimbre">Bamboo &amp; Wicker</span>
+              <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag af-tag--era">1960s</span>
+              <span class="af-tag">Bamboo</span>
             </div>
-            <p class="hp-find-card__desc"
-              data-en="A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned, oiled, and restored by Jennyfer with original organic textures preserved."
-              data-es="Un clásico juego de comedor de bambú de los años 70 que incluye mesa con cubierta de vidrio y cuatro sillas de barril tejidas. Limpiado, aceitado y restaurado por Jennyfer.">
-              A classic 1970s split-bamboo dining set including a glass-top table and four woven barrel chairs. Cleaned,
-              oiled, and restored by Jennyfer with original organic textures preserved.
-            </p>
+            <div class="hp-find-card__origin">
+              <img class="hp-find-card__swatch" src="design-system/assets/heritage-library/heritage-library-cane-webbing/cane-webbing-weave.png" alt="Cane webbing · Austin-curated" loading="lazy" decoding="async">
+              <span class="hp-find-card__credit">Cane webbing · Austin-curated</span>
+            </div>
+            <p class="hp-find-card__desc">Beautiful vintage bamboo and wicker bistro set with two sculptural bamboo fan-back chairs and a woven wicker glass-top table. Iconic 1960s-80s style. 2 vintage bamboo chairs, wicker…</p>
             <div class="hp-find-card__actions">
-              <a href="contact.html?product=flora" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt me!"
-                data-es="¡Adóptame!">Adopt me!</a>
-              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
-                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
-                data-es="Ver en Marketplace">View on Marketplace</a>
-              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
-                aria-controls="details-flora" data-en="View Details &amp; Provenance"
-                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+              <a href="https://www.facebook.com/marketplace/item/1469009178414890/" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt Bistro Set $250" data-es="Adoptar Bistro Set">Adopt Bistro Set $250</a>
+              <a href="contact.html?sku=0039&amp;piece=Bistro Set" class="af-btn af-btn--secondary af-btn--sm" data-en="Inquire" data-es="Consultar">Inquire</a>
+              <button class="af-btn af-btn--ghost af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-0039" data-en="Details &amp; Provenance" data-es="Detalles">Details &amp; Provenance</button>
             </div>
-
-            <div class="hp-find-card__details-wrapper" id="details-flora" aria-hidden="true">
+            <div class="hp-find-card__details-wrapper" id="details-0039" aria-hidden="true">
               <div class="hp-find-card__details">
                 <div class="hp-find-card__specs-grid">
-                  <div class="hp-spec-item"><strong data-en="Table Dimensions" data-es="Dimensiones Mesa">Table
-                      Dimensions</strong><span>42" Diameter &times; 29"H</span></div>
-                  <div class="hp-spec-item"><strong data-en="Chairs Included" data-es="Sillas Incluidas">Chairs
-                      Included</strong><span data-en="4 Barrel Armchairs" data-es="4 Sillas de Barril">4 Barrel
-                      Armchairs</span></div>
-                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
-                      data-en="Fully Restored &amp; Oiled" data-es="Totalmente Restaurado y Aceitado">Fully Restored
-                      &amp; Oiled</span></div>
-                  <div class="hp-spec-item"><strong data-en="Austin Delivery" data-es="Entrega en Austin">Austin
-                      Delivery</strong><span data-en="Free Pickup or White-Glove Local Delivery"
-                      data-es="Recogida Gratis o Entrega Local">Free Pickup or White-Glove Local Delivery</span></div>
+                  <div class="hp-spec-item"><strong>SKU</strong><span>0039</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span>Used - Good</span></div>
+                  <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span>Cane webbing · Austin-curated</span></div>
+                  <div class="hp-spec-item"><strong data-en="Sourced via" data-es="Origen">Sourced via</strong><span>Facebook Marketplace</span></div>
                 </div>
-                <div class="hp-find-card__quote">
-                  <p data-en="&ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship throughout.&rdquo; &mdash; Inspector Milo"
-                    data-es="&ldquo;Flora tiene cincuenta años más en ella. Paneles tejidos a mano y artesanía honesta.&rdquo; &mdash; Inspector Milo">
-                    &ldquo;Flora has fifty more years in her. Hand-woven panels and honest craftsmanship
-                    throughout.&rdquo; &mdash; Inspector Milo
-                  </p>
-                </div>
+                <div class="hp-find-card__quote">Beautiful vintage bamboo and wicker bistro set with two sculptural bamboo fan-back chairs and a woven wicker glass-top table. Iconic 1960s-80s style. 2 vintage bamboo chairs, wicker pedestal table, textured glass top, fresh neutral upholstered cushions. Excellent vintage condition, no structural issues. Deposits hold items for 12 hours, non-refundable after.</div>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Featured Card 3: Agnes Console Table -->
-      <article class="hp-find-card hp-reveal">
+      <article class="hp-find-card hp-reveal" data-sku="0002" data-material="none" style="background-color:#FAF1DF;">
         <div class="hp-find-card__mat">
           <div class="hp-find-card__media">
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev"
-              aria-label="Previous image">&lt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--prev" aria-label="Previous image">&lt;</button>
             <div class="hp-find-card__carousel-track">
-              <img src="design-system/assets/product-photos/product-2.png"
-                alt="Agnes, a mid-century woven rattan console table - View 1" width="1200" height="800" loading="lazy"
-                decoding="async">
-              <img src="design-system/assets/product-photos/product-7.png" alt="Agnes console table context - View 2"
-                width="1200" height="800" loading="lazy" decoding="async">
-              <img src="design-system/assets/product-photos/product-4.png" alt="Agnes lattice details - View 3"
-                width="1200" height="800" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/dottie-0002-1.png" alt="Dottie, Vintage Mid Century Modern Drop Leaf Dining Table MCM — view 1" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/dottie-0002-2.png" alt="Dottie, Vintage Mid Century Modern Drop Leaf Dining Table MCM — view 2" width="1200" height="900" loading="lazy" decoding="async">
+              <img src="design-system/assets/product-photos/dottie-0002-3.png" alt="Dottie, Vintage Mid Century Modern Drop Leaf Dining Table MCM — view 3" width="1200" height="900" loading="lazy" decoding="async">
             </div>
-            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next"
-              aria-label="Next image">&gt;</button>
+            <button class="hp-find-card__carousel-btn hp-find-card__carousel-btn--next" aria-label="Next image">&gt;</button>
             <div class="hp-find-card__carousel-indicators">
-              <span class="active" data-slide="0"></span>
-              <span data-slide="1"></span>
-              <span data-slide="2"></span>
+                <span class="active" data-slide="0"></span>
+                <span data-slide="1"></span>
+                <span data-slide="2"></span>
             </div>
           </div>
           <div class="hp-find-card__content">
             <div class="hp-find-card__header">
-              <h3 class="hp-find-card__title" data-en="Agnes &middot; c. 1972 Woven Console"
-                data-es="Agnes &middot; Consola Tejida c. 1972">Agnes <span aria-hidden="true">&middot;</span> c. 1972
-              </h3>
-              <span class="hp-find-card__price">$385</span>
+              <h3 class="hp-find-card__title">Dottie</h3>
+              <span class="hp-find-card__price">$525</span>
             </div>
             <div class="hp-find-card__tags">
-              <span class="af-tag af-tag--available" data-en="Available in Austin"
-                data-es="Disponible en Austin">Available in Austin</span>
-              <span class="af-tag" data-en="Woven Rattan" data-es="Rattán Tejido">Woven Rattan</span>
+              <span class="af-tag af-tag--available" data-en="Available in Austin" data-es="Disponible en Austin">Available in Austin</span>
+              <span class="af-tag">Mid-Century</span>
             </div>
-            <p class="hp-find-card__desc"
-              data-en="A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf. Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale."
-              data-es="Una versátil mesa consola de entrada o sofá con intrincados lados de celosía y un estante de exhibición inferior. Ligera pero extremadamente resistente. Obtenida en Hyde Park.">
-              A versatile entry or sofa console table featuring intricate lattice sides and a lower display shelf.
-              Lightweight yet exceptionally sturdy. Hand-sourced from a Hyde Park estate sale.
-            </p>
+            <p class="hp-find-card__desc">Small footprint, big atomic energy. Vintage mid century drop leaf dining table with a warm woodgrain top, tapered legs + brass tone details. Both sides fold down when you need a little…</p>
             <div class="hp-find-card__actions">
-              <a href="contact.html?product=agnes" class="af-btn af-btn--primary af-btn--sm"
-                data-en="Contact for purchase" data-es="Contactar para comprar">Contact for purchase</a>
-              <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh"
-                target="_blank" rel="noopener" class="af-btn af-btn--secondary af-btn--sm" data-en="View on Marketplace"
-                data-es="Ver en Marketplace">View on Marketplace</a>
-              <button class="af-btn af-btn--secondary af-btn--sm hp-card-toggle-btn" aria-expanded="false"
-                aria-controls="details-agnes" data-en="View Details &amp; Provenance"
-                data-es="Ver Detalles y Procedencia">View Details &amp; Provenance</button>
+              <a href="https://www.facebook.com/marketplace/item/1787489942387784/" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Adopt Dottie $525" data-es="Adoptar Dottie">Adopt Dottie $525</a>
+              <a href="contact.html?sku=0002&amp;piece=Dottie" class="af-btn af-btn--secondary af-btn--sm" data-en="Inquire" data-es="Consultar">Inquire</a>
+              <button class="af-btn af-btn--ghost af-btn--sm hp-card-toggle-btn" aria-expanded="false" aria-controls="details-0002" data-en="Details &amp; Provenance" data-es="Detalles">Details &amp; Provenance</button>
             </div>
-
-            <div class="hp-find-card__details-wrapper" id="details-agnes" aria-hidden="true">
+            <div class="hp-find-card__details-wrapper" id="details-0002" aria-hidden="true">
               <div class="hp-find-card__details">
                 <div class="hp-find-card__specs-grid">
-                  <div class="hp-spec-item"><strong data-en="Dimensions"
-                      data-es="Dimensiones">Dimensions</strong><span>48"W &times; 16"D &times; 30"H</span></div>
-                  <div class="hp-spec-item"><strong data-en="Weave" data-es="Tejido">Weave</strong><span
-                      data-en="Split Cane Lattice" data-es="Celosía de Caña">Split Cane Lattice</span></div>
-                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span
-                      data-en="Very Good Vintage Condition" data-es="Muy Buena Condición Vintage">Very Good Vintage
-                      Condition</span></div>
-                  <div class="hp-spec-item"><strong data-en="Found Location" data-es="Lugar Encontrado">Found
-                      Location</strong><span data-en="Hyde Park, Austin" data-es="Hyde Park, Austin">Hyde Park,
-                      Austin</span></div>
+                  <div class="hp-spec-item"><strong>SKU</strong><span>0002</span></div>
+                  <div class="hp-spec-item"><strong data-en="Dimensions" data-es="Dimensiones">Dimensions</strong><span>39&quot;L x 29.5&quot;W x 29&quot;H</span></div>
+                  <div class="hp-spec-item"><strong data-en="Condition" data-es="Condición">Condition</strong><span>Used - Good</span></div>
+                  <div class="hp-spec-item"><strong data-en="Sourced via" data-es="Origen">Sourced via</strong><span>Facebook Marketplace</span></div>
                 </div>
-                <div class="hp-find-card__quote">
-                  <p data-en="&ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo"
-                    data-es="&ldquo;Agnes agrega calidez instantánea a una entrada o sala de estar.&rdquo; &mdash; Inspector Milo">
-                    &ldquo;Agnes adds instant warmth to an entryway or living room layout.&rdquo; &mdash; Inspector Milo
-                  </p>
-                </div>
+                <div class="hp-find-card__quote">Meet Dottie. Small footprint, big atomic energy. Vintage mid century drop leaf dining table with a warm woodgrain top, tapered legs + brass tone details. Both sides fold down when you need a little extra room to roam. Extension leaf is not included. Good vintage condition with age appropriate wear.</div>
               </div>
             </div>
           </div>
         </div>
       </article>
+    
+    
     </div>
   </section>
 
@@ -1991,7 +1881,7 @@
       <div class="hp-showroom-card">
         <div class="hp-showroom-card__mat">
           <div class="hp-showroom-card__img-wrap">
-            <img src="design-system/assets/product-photos/product-7.png"
+            <img src="design-system/assets/product-photos/peacock-chair-0010-1.png"
               alt="Vintage rattan console styled in Austin home" width="1200" height="800" loading="lazy"
               decoding="async">
           </div>
@@ -2006,7 +1896,7 @@
       <div class="hp-showroom-card">
         <div class="hp-showroom-card__mat">
           <div class="hp-showroom-card__img-wrap">
-            <img src="design-system/assets/product-photos/product-5.png" alt="Rattan lounge seating area" width="1200"
+            <img src="design-system/assets/product-photos/daphne-0009-1.png" alt="Rattan lounge seating area" width="1200"
               height="800" loading="lazy" decoding="async">
           </div>
           <div class="hp-showroom-card__meta">
@@ -2020,7 +1910,7 @@
       <div class="hp-showroom-card">
         <div class="hp-showroom-card__mat">
           <div class="hp-showroom-card__img-wrap">
-            <img src="design-system/assets/product-photos/amelia-2.png" alt="Arched rattan shelf with plants"
+            <img src="design-system/assets/product-photos/rattan-tv-stand-0006-1.png" alt="Arched rattan shelf with plants"
               width="1200" height="800" loading="lazy" decoding="async">
           </div>
           <div class="hp-showroom-card__meta">
@@ -2034,7 +1924,7 @@
       <div class="hp-showroom-card">
         <div class="hp-showroom-card__mat">
           <div class="hp-showroom-card__img-wrap">
-            <img src="design-system/assets/product-photos/product-2.png" alt="Woven rattan coffee table corner"
+            <img src="design-system/assets/product-photos/ramona-0008-1.png" alt="Woven rattan coffee table corner"
               width="1200" height="800" loading="lazy" decoding="async">
           </div>
           <div class="hp-showroom-card__meta">
@@ -2060,77 +1950,9 @@
     </div>
 
     <div class="hp-social-feed hp-reveal">
-      <!-- Social Card 1 -->
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
-        <div class="hp-social-card__head">
-          <div class="hp-social-card__user">
-            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
-            <span class="hp-social-card__handle">@atomicfindsatx</span>
-          </div>
-          <span class="hp-social-card__badge">Live Drop</span>
-        </div>
-        <div class="hp-social-card__media">
-          <img src="design-system/assets/product-photos/ramona-5.png" alt="Ramona shelf drop" width="400" height="400"
-            loading="lazy" decoding="async">
-        </div>
-        <div class="hp-social-card__body">
-          <div class="hp-social-card__actions">
-            <span>&hearts; 184 likes</span> &bull; <span>View post</span>
-          </div>
-          <div class="hp-social-card__caption">
-            Restored 1970s split-bamboo Ramona shelf claimed in South Austin! <span
-              class="hp-social-card__tag">#AtomicFindsATX</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Social Card 2 -->
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
-        <div class="hp-social-card__head">
-          <div class="hp-social-card__user">
-            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
-            <span class="hp-social-card__handle">@atomicfindsatx</span>
-          </div>
-          <span class="hp-social-card__badge">Restoration</span>
-        </div>
-        <div class="hp-social-card__media">
-          <img src="design-system/assets/product-photos/product-1.png" alt="Rattan armchair drop" width="400"
-            height="400" loading="lazy" decoding="async">
-        </div>
-        <div class="hp-social-card__body">
-          <div class="hp-social-card__actions">
-            <span>&hearts; 219 likes</span> &bull; <span>View post</span>
-          </div>
-          <div class="hp-social-card__caption">
-            Original 1968 rattan barrel chair cleaned, oiled &amp; Nacho-inspected. <span
-              class="hp-social-card__tag">#AustinVintage</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Social Card 3 -->
-      <a href="https://www.instagram.com/atomicfindsatx/" target="_blank" rel="noopener" class="hp-social-card">
-        <div class="hp-social-card__head">
-          <div class="hp-social-card__user">
-            <img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="Nacho">
-            <span class="hp-social-card__handle">@atomicfindsatx</span>
-          </div>
-          <span class="hp-social-card__badge">Estate Find</span>
-        </div>
-        <div class="hp-social-card__media">
-          <img src="design-system/assets/product-photos/amelia-2.png" alt="Amelia étagère drop" width="400" height="400"
-            loading="lazy" decoding="async">
-        </div>
-        <div class="hp-social-card__body">
-          <div class="hp-social-card__actions">
-            <span>&hearts; 305 likes</span> &bull; <span>View post</span>
-          </div>
-          <div class="hp-social-card__caption">
-            Amelia arched étagère sourced straight from a Hyde Park estate sale. <span
-              class="hp-social-card__tag">#MidCenturyHome</span>
-          </div>
-        </div>
-      </a>
+      <!-- Rendered from design-system/data/social-feed.json — edit that file to
+           refresh the feed. Every card links to its own post permalink. -->
+    
     </div>
   </section>
 
@@ -2598,55 +2420,6 @@
   </footer>
 
   <script>
-    // --- Our Story figure: load the motion clip ONLY on first hover -------
-    // A <video> rather than an animated image: this clip is a slow ambient
-    // drift, which video codecs compress to a fraction of an animated GIF or
-    // WebP of the same length. preload="none" plus on-demand creation means a
-    // visitor who never hovers downloads nothing.
-    (function () {
-      var fig = document.querySelector('.hp-story-figure');
-      if (!fig) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (!window.matchMedia('(hover: hover)').matches) return;
-
-      var vid = null;
-
-      function build() {
-        vid = document.createElement('video');
-        vid.className = 'hp-story-figure__motion';
-        vid.muted = true;          // required for autoplay-without-gesture
-        vid.loop = true;
-        vid.playsInline = true;
-        vid.preload = 'none';
-        vid.setAttribute('aria-hidden', 'true');
-        vid.tabIndex = -1;
-        [['data-motion-webm', 'video/webm'], ['data-motion-mp4', 'video/mp4']].forEach(function (pair) {
-          var src = fig.getAttribute(pair[0]);
-          if (!src) return;
-          var el = document.createElement('source');
-          el.src = src; el.type = pair[1];
-          vid.appendChild(el);
-        });
-        vid.addEventListener('playing', function () { fig.classList.add('is-playing'); });
-        fig.appendChild(vid);
-      }
-
-      function play() {
-        if (!vid) build();
-        var r = vid.play();
-        if (r && r.catch) r.catch(function () { /* autoplay refused — leave the still */ });
-      }
-      function stop() {
-        fig.classList.remove('is-playing');
-        if (vid) vid.pause();
-      }
-
-      fig.addEventListener('mouseenter', play);
-      fig.addEventListener('mouseleave', stop);
-      fig.tabIndex = 0;
-      fig.addEventListener('focus', play);
-      fig.addEventListener('blur', stop);
-    })();
 
     // --- Meet Nacho: staggered star reveal on scroll -----------------------
     (function () {
@@ -2663,6 +2436,75 @@
         });
       }, { threshold: 0.25 });
       io.observe(nacho);
+    })();
+
+    // --- Social feed: rendered from design-system/data/social-feed.json --------
+    // The feed is DATA, not markup. To refresh it, edit that one file (or let a
+    // scheduled job overwrite it once the Instagram Graph API is wired up) —
+    // nothing here changes. Every card links to its own post permalink, never
+    // to the profile. No engagement counts are shown: we cannot verify likes,
+    // so inventing them would be worse than omitting them.
+    (function () {
+      var wrap = document.querySelector('.hp-social-feed');
+      if (!wrap) return;
+
+      function esc(t) {
+        var d = document.createElement('div');
+        d.textContent = t == null ? '' : String(t);
+        return d.innerHTML;
+      }
+
+      function card(post) {
+        var a = document.createElement('a');
+        a.className = 'hp-social-card';
+        a.href = post.permalink;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.setAttribute('aria-label',
+          post.piece ? ('View the Instagram post for ' + post.piece) : 'View this Instagram post');
+
+        var media = post.photo
+          ? '<div class="hp-social-card__media"><img src="' + esc(post.photo) + '" alt="' +
+            esc(post.piece ? post.piece + ' on Instagram' : 'Atomic Finds on Instagram') +
+            '" width="400" height="400" loading="lazy" decoding="async"></div>'
+          : '<div class="hp-social-card__media af-asset-missing">Photo pending</div>';
+
+        a.innerHTML =
+          '<div class="hp-social-card__head">' +
+            '<div class="hp-social-card__user">' +
+              '<img class="hp-social-card__avatar" src="design-system/assets/characters/nacho-rattan-hat.png" alt="">' +
+              '<span class="hp-social-card__handle">@atomicfindsatx</span>' +
+            '</div>' +
+            (post.piece ? '<span class="hp-social-card__badge">' + esc(post.piece) + '</span>' : '') +
+          '</div>' +
+          media +
+          '<div class="hp-social-card__body">' +
+            '<div class="hp-social-card__caption">' + esc(post.caption) + '</div>' +
+            '<div class="hp-social-card__actions"><span>View on Instagram &rarr;</span></div>' +
+          '</div>';
+        return a;
+      }
+
+      fetch('design-system/data/social-feed.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (doc) {
+          if (!doc || !doc.posts || !doc.posts.length) return;
+          var frag = document.createDocumentFragment();
+          doc.posts.slice(0, 5).forEach(function (post) {
+            if (post.permalink) frag.appendChild(card(post));
+          });
+          wrap.appendChild(frag);
+
+          // Point any Atomic Homes link at the real highlight when we have it.
+          var hl = doc.highlights && doc.highlights.atomic_homes;
+          if (hl) {
+            document.querySelectorAll('[data-atomic-homes]').forEach(function (el) {
+              el.href = hl.url || doc.profile;
+              if (!hl.url) el.setAttribute('data-placeholder-link', 'true');
+            });
+          }
+        })
+        .catch(function () { /* served from file:// or offline — section stays empty */ });
     })();
 
     // Mobile navigation toggle

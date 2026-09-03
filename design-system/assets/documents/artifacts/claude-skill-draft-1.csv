@@ -1,0 +1,8 @@
+"Step","Jenny does","Assistant does"
+"1. Start an item","Uploads photos; writes a simple note or chosen name","Identifies that this is a new-item intake and asks only essential follow-ups"
+"2. Name it","Gives a name, or asks for 3–5 options","Suggests short, non-invented item nicknames; does not claim unverified material, era, maker, or condition"
+"3. Supply facts","Provides price, dimensions, condition, collection/category, and any known details","Flags missing launch-critical fields and turns her notes into usable listing language"
+"4. Assign inventory identity","Approves the item nickname","Looks up the next available SKU from the actual active inventory register—never guesses"
+"5. Prepare photos","Confirms which photo is primary","Produces a proposed PNG filename plan, such as bamboo-side-table-0050-1.png , bamboo-side-table-0050-2.png"
+"6. Create listing draft","Reviews one concise summary","Generates title, description, alt text, tags, category, photo order, and draft status"
+"7. Publish later","Says “approve website draft”","Only then creates or updates the actual CMS draft; publishing is a separate explicit confirmation"

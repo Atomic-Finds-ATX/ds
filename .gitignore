@@ -5,6 +5,7 @@
 # Never referenced by any page; the web versions live in product-photos/.
 *.DS_Store
 .DS_Store
+.claude/launch.json
 .idea/
 .vscode/
 design-system/assets/_masters/

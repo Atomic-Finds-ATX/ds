@@ -133,12 +133,13 @@ a:hover { color: var(--af-ink); text-decoration: none; }
 
 .af-pattern { background-color: var(--af-cream); background-repeat: repeat; }
 
-/* Botanical — the workhorse. Uses the TRANSPARENT green line-art: laid over
-   cream at --af-pattern-ghost it reads as soft sage. The cream-ground version
-   (pattern-botanical-cream.png) cannot be faded the same way, because its
-   background is baked into the image — that one is for card frames. */
-.af-pattern--botanical {
-  background-image: url("assets/textures/pattern-botanical-green.png");
+/* Section ground — the workhorse. The botanical patterns were retired from
+   textures/; pattern-atomic.png replaces them. Cream ground with scattered
+   starbursts, so at --af-pattern-ghost it reads as a faint warm texture.
+   `--botanical` is kept as an alias so existing markup keeps working. */
+.af-pattern--botanical,
+.af-pattern--atomic-ground {
+  background-image: url("assets/textures/pattern-atomic.png");
   background-size: 460px;
 }
 
