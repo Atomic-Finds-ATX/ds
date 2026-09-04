@@ -1,0 +1,6 @@
+# Atomic Finds ATX — Phase 1 pilot site.
+# This is a work-in-progress preview, not the public storefront. It should not
+# appear in search results. Remove this file (and the noindex meta tags in the
+# HTML) when the site is ready to be found.
+User-agent: *
+Disallow: /
