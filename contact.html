@@ -6,8 +6,8 @@
        (and robots.txt) at launch. -->
   <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact &amp; Delivery Inquiries — Atomic Finds ATX</title>
-<meta name="description" content="Get in touch with Jennyfer at Atomic Finds ATX in Austin, TX for product inquiries, item holds, and local white-glove delivery quotes.">
+<title>Contact — Atomic Finds ATX · Austin, TX</title>
+<meta name="description" content="Get in touch with Jennyfer at Atomic Finds ATX in Austin, TX for vintage furniture inquiries, piece availability, and local Austin pickup coordination.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,7 +29,14 @@ body { background: var(--af-surface); }
   position: sticky; top: 0; z-index: 30;
   background: color-mix(in srgb, var(--af-surface) 95%, transparent);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--af-hairline);
+  transition: background 300ms var(--af-ease), box-shadow 300ms var(--af-ease);
+}
+.hp-header.is-scrolled {
+  background: rgba(243, 230, 206, 0.96);
+  box-shadow: 0 4px 20px rgba(28, 20, 16, 0.08);
+  border-bottom-color: var(--af-ink);
 }
 .hp-header__inner {
   display: flex; align-items: center; gap: var(--af-space-4);
@@ -148,9 +155,9 @@ body { background: var(--af-surface); }
 </head>
 <body>
 
-<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida local gratuita y entrega en 3&ndash;5 días en Austin, TX">
+<div class="hp-announce" data-en="Far-out finds, down-to-earth prices &middot; Austin pickup by appointment &middot; Austin, TX" data-es="Hallazgos increíbles, precios accesibles &middot; Recogida en Austin con cita previa &middot; Austin, TX">
   <svg class="af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true" width="12" height="19"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-  <span>Far-out finds, down-to-earth prices &middot; Free local pickup &amp; 3&ndash;5 day delivery in Austin, TX</span>
+  <span>Far-out finds, down-to-earth prices &middot; Austin pickup by appointment &middot; Austin, TX</span>
 </div>
 
 <header class="hp-header">
@@ -166,9 +173,11 @@ body { background: var(--af-surface); }
     <nav class="hp-nav" id="hp-nav">
       <a href="index.html#collection" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
       <a href="index.html#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a>
-      <a href="index.html#showroom" data-en="Showroom" data-es="Exposición">Showroom</a>
+      <a href="index.html#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a>
+      <a href="index.html#showroom" data-en="Atomic Homes" data-es="Hogares Atomic">Atomic Homes</a>
+      <a href="index.html#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
       <a href="contact.html" style="color:var(--af-orange-btn)" data-en="Contact" data-es="Contacto">Contact</a>
-      <a href="https://www.facebook.com/marketplace/profile/100050731036665/?ref=permalink&mibextid=6ojiHh" target="_blank" rel="noopener" class="af-btn af-btn--primary af-btn--sm" data-en="Marketplace" data-es="Mercado">Marketplace</a>
+      <a href="index.html#collection" class="af-btn af-btn--primary af-btn--sm" data-en="Shop Collection" data-es="Ver Colección">Shop Collection</a>
     </nav>
   </div>
 </header>
@@ -178,9 +187,9 @@ body { background: var(--af-surface); }
     <!-- Contact Form Card -->
     <div class="contact-card">
       <span class="af-label" data-en="Get In Touch" data-es="Ponte en Contacto">Get In Touch</span>
-      <h2 style="margin-top:var(--af-space-2)" data-en="Send a Message or Request Delivery" data-es="Envía un Mensaje o Solicita Entrega">Send a Message or Request Delivery</h2>
-      <p data-en="Have a question about a piece, want to place a hold, or need a local Austin delivery quote? Fill out the form below and Jennyfer will get right back to you." data-es="¿Tienes alguna pregunta sobre una pieza o necesitas una cotización de entrega en Austin? Completa el siguiente formulario.">
-        Have a question about a piece, want to place a hold, or need a local Austin delivery quote? Fill out the form below and Jennyfer will get right back to you.
+      <h2 style="margin-top:var(--af-space-2)" data-en="Send a Message to Jennyfer" data-es="Envía un Mensaje a Jennyfer">Send a Message to Jennyfer</h2>
+      <p data-en="Have a question about a piece, want to place a hold, or coordinate local Austin pickup? Fill out the form below and Jennyfer will get right back to you." data-es="¿Tienes alguna pregunta sobre una pieza o deseas coordinar la recogida en Austin? Completa el siguiente formulario.">
+        Have a question about a piece, want to place a hold, or coordinate local Austin pickup? Fill out the form below and Jennyfer will get right back to you.
       </p>
 
       <form class="af-form">
@@ -204,8 +213,8 @@ body { background: var(--af-surface); }
           <select id="c-type">
             <option value="question" data-en="General Question" data-es="Pregunta General">General Question</option>
             <option value="hold" data-en="Product Inquiry / 24-Hour Hold Request" data-es="Consulta de Producto / Apartado">Product Inquiry / 24-Hour Hold Request</option>
-            <option value="delivery" data-en="Local Austin Delivery Quote" data-es="Cotización de Entrega Local en Austin">Local Austin Delivery Quote</option>
-            <option value="sourcing" data-en="Custom Vintage Sourcing Tip" data-es="Búsqueda Vintage Personalizada">Custom Vintage Sourcing Tip</option>
+            <option value="pickup" data-en="Austin Pickup Coordination" data-es="Coordinación de Recogida en Austin">Austin Pickup Coordination</option>
+            <option value="sourcing" data-en="Custom Vintage Sourcing Inquiry" data-es="Búsqueda Vintage Personalizada">Custom Vintage Sourcing Inquiry</option>
           </select>
         </div>
 
@@ -221,17 +230,18 @@ body { background: var(--af-surface); }
         </div>
 
         <div class="af-form-group">
-          <label for="c-delivery" data-en="Delivery Preference" data-es="Preferencia de Entrega">Delivery Preference</label>
-          <select id="c-delivery">
-            <option value="pickup" data-en="South Austin Local Pickup (Free)" data-es="Recogida en South Austin (Gratis)">South Austin Local Pickup (Free)</option>
-            <option value="curbside" data-en="Curbside Austin Metro Delivery" data-es="Entrega Local a Pie de Calle en Austin">Curbside Austin Metro Delivery</option>
-            <option value="white-glove" data-en="White-Glove In-Home Placement" data-es="Entrega Guante Blanco en Casa">White-Glove In-Home Placement</option>
+          <label for="c-pickup" data-en="Pickup &amp; Timeline Preference" data-es="Preferencia de Recogida y Horario">Pickup &amp; Timeline Preference</label>
+          <select id="c-pickup">
+            <option value="standard" data-en="Austin Pickup by Appointment (Standard)" data-es="Recogida en Austin con Cita Previa">Austin Pickup by Appointment (Standard)</option>
+            <option value="weekend" data-en="Weekend Pickup by Arrangement" data-es="Recogida de Fin de Semana por Acuerdo">Weekend Pickup by Arrangement</option>
+            <option value="weekday" data-en="Weekday Pickup by Arrangement" data-es="Recogida entre Semana por Acuerdo">Weekday Pickup by Arrangement</option>
+            <option value="exploring" data-en="Just Inquiring / Exploring Finds" data-es="Solo Consultando / Explorando">Just Inquiring / Exploring Finds</option>
           </select>
         </div>
 
         <div class="af-form-group">
           <label for="c-msg" data-en="Message / Details" data-es="Mensaje / Detalles">Message / Details</label>
-          <textarea id="c-msg" rows="4" placeholder="Tell us what you're looking for, ask about a specific piece, or share your Austin zip code for delivery..." required></textarea>
+          <textarea id="c-msg" rows="4" placeholder="Tell us what you're looking for, ask about a specific piece, or coordinate pickup details..." required></textarea>
         </div>
 
         <button type="submit" class="af-btn af-btn--primary" style="margin-top:var(--af-space-2);" data-en="Send Message to Jennyfer" data-es="Enviar Mensaje a Jennyfer">
@@ -244,9 +254,9 @@ body { background: var(--af-surface); }
     <!-- Contact Info Sidebar -->
     <div class="contact-info-card">
       <span class="af-label" data-en="Direct Contact" data-es="Contacto Directo">Direct Contact</span>
-      <h3 style="margin-top:var(--af-space-2); color:var(--af-olive-teal);" data-en="Atomic Finds ATX Studio" data-es="Estudio Atomic Finds ATX">Atomic Finds ATX Studio</h3>
-      <p data-en="Hand-restored vintage rattan &amp; bamboo in Austin, Texas. Sourced with love, inspected by Nacho." data-es="Rattán y bambú vintage restaurado a mano en Austin, Texas.">
-        Hand-restored vintage rattan &amp; bamboo in Austin, Texas. Sourced with love, inspected by Nacho.
+      <h3 style="margin-top:var(--af-space-2); color:var(--af-olive-teal);" data-en="Atomic Finds ATX" data-es="Atomic Finds ATX">Atomic Finds ATX</h3>
+      <p data-en="Curated 1960s &amp; 1970s vintage furniture and décor in Austin, Texas. Sourced with love, inspected by Nacho." data-es="Muebles y decoración vintage de los años 60 y 70 en Austin, Texas.">
+        Curated 1960s &amp; 1970s vintage furniture and décor in Austin, Texas. Sourced with love, inspected by Nacho.
       </p>
 
       <ul class="contact-info-list">
@@ -300,7 +310,7 @@ body { background: var(--af-surface); }
         <li><a href="index.html#story" data-en="Meet Jennyfer" data-es="Conoce a Jennyfer">Meet Jennyfer</a></li>
         <li><a href="index.html#story" data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
         <li><a href="index.html#nacho" data-en="Meet Nacho" data-es="Conoce a Nacho">Meet Nacho</a></li>
-        <li><a href="contact.html" data-en="Inquiries &amp; Delivery" data-es="Consultas y Envíos">Inquiries &amp; Delivery</a></li>
+        <li><a href="contact.html" data-en="Inquiries &amp; Pickup" data-es="Consultas y Recogida">Inquiries &amp; Pickup</a></li>
       </ul>
     </div>
     <div>
@@ -314,7 +324,7 @@ body { background: var(--af-surface); }
     </div>
   </div>
   <div class="hp-footer__bottom">
-    <span>&copy; 2026 Atomic Finds ATX &middot; Curated and restored by Jennyfer &middot; Designed &amp; Developed by <a href="https://digitalallies.net" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; font-weight:600;">Digital Allies</a> &middot; Made with love in Austin, TX</span>
+    <span>&copy; 2026 Atomic Finds ATX &middot; Curated by Jennyfer &middot; Designed &amp; Developed by <a href="https://digitalallies.net" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; font-weight:600;">Digital Allies</a> &middot; Made with love in Austin, TX</span>
     <span style="display: flex; gap: var(--af-space-2); flex-wrap: wrap; justify-content: center;">
       <a href="contact.html" data-en="Contact Us" data-es="Contacto">Contact Us</a> &middot;
       <a href="design-system/index.html" data-en="Design System" data-es="Sistema de Diseño">Design System</a> &middot;
@@ -327,6 +337,21 @@ body { background: var(--af-surface); }
 </footer>
 
 <script>
+// Header elevation on scroll
+(function () {
+  var header = document.querySelector('.hp-header');
+  if (!header) return;
+  var onScroll = function () {
+    if (window.scrollY > 30) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
 var burger = document.querySelector('.hp-burger');
 var nav = document.getElementById('hp-nav');
 burger.addEventListener('click', function () {
@@ -393,8 +418,8 @@ if (contactForm) {
     var productSelect = document.getElementById('c-product');
     var productText = productSelect.options[productSelect.selectedIndex].text;
     
-    var deliverySelect = document.getElementById('c-delivery');
-    var deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text;
+    var pickupSelect = document.getElementById('c-pickup');
+    var pickupText = pickupSelect ? pickupSelect.options[pickupSelect.selectedIndex].text : '';
     
     var message = document.getElementById('c-msg').value;
     
@@ -405,7 +430,7 @@ if (contactForm) {
                'Phone: ' + (phone || 'Not provided') + '\n' +
                'Inquiry Type: ' + typeText + '\n' +
                'Selected Piece: ' + productText + '\n' +
-               'Delivery Preference: ' + deliveryText + '\n\n' +
+               'Pickup Preference: ' + pickupText + '\n\n' +
                'Message/Details:\n' + message + '\n\n' +
                'Thank you!';
 

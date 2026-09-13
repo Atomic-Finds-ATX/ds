@@ -1,6 +1,12 @@
 # Atomic Finds ATX — Heritage Pattern Spec
 
-**Last updated: September 1, 2026**
+**Last updated: September 6, 2026**
+
+Per-SKU weave naming lives in the inventory sheet's "Weave Pattern" column —
+that column is the source of truth for which name a specific piece gets. See
+`atomic-finds-atx-weave-pattern-spec-sheet-DRAFT-2026-09-06.md` for the
+per-SKU findings and `atomic-finds-atx-weave-pattern-image-gen-spec-DRAFT-2026-09-06.md`
+for the asset prompts.
 
 How to pick the right heritage asset for a product card, an origin badge, or a
 provenance block. Written because the library holds five *different kinds* of
@@ -24,15 +30,16 @@ rattan weave.
 
 ## 1. The three families
 
-| Family | Folder | Craft name on the card | Origin | Use for |
-|---|---|---|---|---|
-| **Rattan** | `heritage-library-rattan-weave/` | Solihiya Weave | Philippines | rattan, cane, wicker |
-| **Bamboo** | `heritage-library-cane-webbing/` | Cane Webbing | Austin-curated | bamboo, split bamboo |
-| **Palma** | `heritage-library-palma-weave/` | Palma Weave | Mexico | palm frond, petate reed |
+| Family (folder) | Craft names that actually appear inside it, per real photos | Origin | Use for |
+|---|---|---|---|
+| **Rattan** (`heritage-library-rattan-weave/`) | Open Rattan Lattice (most common) · Solihiya Weave (only #0008, #0043 — verified) · Coiled Basket Wicker · Wrapped Reed Drum · Sunburst Wrap | Philippines (Solihiya only) | rattan, cane, wicker |
+| **Bamboo** (`heritage-library-cane-webbing/`) | Cane Webbing (verified: #0012, #0021, #0041) · Tight Wicker Sheet | Austin-curated | bamboo, split bamboo |
+| **Palma** (`heritage-library-palma-weave/`) | Palma Weave — **zero real matches to date**, family stays defined but unused | Mexico | palm frond, petate reed (not yet sourced) |
 
-> **"Cane webbing" is the bamboo family.** The folder is named after the *weave
-> style*, not the material. If a piece is bamboo, it takes the cane-webbing
-> family — there is no separate bamboo folder and you should not create one.
+> **"Cane webbing" is the bamboo family's folder name**, not a name every
+> bamboo piece gets — only pieces whose photo shows the actual square-grid
+> cane weave carry that credit line. Check the inventory sheet's Weave
+> Pattern column per SKU before naming anything on a card.
 
 ---
 
@@ -114,15 +121,21 @@ construction* decides whether a weave is shown at all.
 
 ## 5. Attribution — non-negotiable
 
-Wherever a named weave appears it carries its origin credit:
+A named credit line is earned per piece, not assumed per family. Check the
+inventory sheet's Weave Pattern + confidence columns first, then use:
 
-- `Solihiya · Philippines`
-- `Cane Webbing · Austin-curated`
-- `Palma Weave · Mexico`
+- `Solihiya Weave` → credit `Solihiya · Philippines` — **only** on
+  [VERIFIED]/[LIKELY] Solihiya SKUs (currently #0008, #0043)
+- `Cane Webbing` → credit `Cane Webbing · Austin-curated` — only on confirmed
+  square-grid SKUs (currently #0012, #0021, #0041)
+- `Palma Weave` → credit `Palma Weave · Mexico` — unused, zero real matches
+- Everything else (Open Rattan Lattice, Tight Wicker Sheet, Coiled Basket
+  Wicker, Wrapped Reed Drum, Sunburst Wrap) gets its own plain descriptive
+  label — none of these are Solihiya or Cane Webbing.
 
-The weave is a real craft tradition. It is credited, never fused into the logo,
-and never presented as Atomic Finds IP. This is Rule 11's sibling and applies
-even when the weave is decorative.
+A named weave, once its use is verified, is credited, never fused into the
+logo, and never presented as Atomic Finds IP. This is Rule 11's sibling and
+applies even when the weave is decorative.
 
 ---
 
@@ -148,8 +161,9 @@ Flagged rather than silently worked around.
 4. **The rattan family has no `-plant` file.** Bamboo and palma both do. A
    rattan piece with no visible weave currently has to fall back to an accent.
 
-5. **No inventory item is palma.** Rattan 29, bamboo 3, wicker 2, palma 0.
-   The family is built and ready but unused today.
+5. **No inventory item is palma.** 7 distinct real weave patterns exist
+   across the rattan/bamboo pieces (see the spec sheet linked at the top of
+   this doc for the per-SKU breakdown). Palma stays at zero.
 
 ---
 

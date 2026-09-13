@@ -116,16 +116,21 @@ tokens. If a flat vector master ever supersedes these PNGs, re-sample and revisi
 
 - **Cream is the ground.** Most of the surface isn't colored — that's what keeps the palette from reading
   kitschy. Max two background colors per composition.
-- **Pink is a minor accent only.** Never a base, never a headline, never the overall impression.
+- **Pink can show up a bit more than a bare accent** — e.g. the badge color — while staying well
+  short of a base or headline color.
 - **One pattern per section, one role only** — (a) tone-on-tone hero background, (b) thin border/divider,
   or (c) card-as-frame. Never mix patterns or scales.
-- **Credit the weave.** The Solihiya weave is a real Filipino craft tradition: label it
-  *"Solihiya · Philippines"* wherever it appears as a named texture. It is never fused into the logo and
-  never presented as brand IP.
+- **Credit the weave that's actually on the piece.** Solihiya Weave,
+  Cane Webbing, Palma Weave, Open Rattan Lattice, Tight Wicker Sheet, Coiled
+  Basket Wicker, Wrapped Reed Drum, and Sunburst Wrap are the real named
+  textures in the catalog. Check the inventory sheet's Weave Pattern column
+  per SKU to pick the right one — see `atomic-finds-heritage-pattern-spec.md`
+  §5. Whichever name applies, it is never fused into the logo and never
+  presented as brand IP.
 - **Sparkle leads, starburst supports.** Both used sparingly; the starburst is never tiled.
 - **Max three type levels** in one composition.
-- **Nacho guides, the aliens cameo.** Nacho is the site's voice; the Inspection Team appears on stamps,
-  tags and cards. Never reverse that hierarchy.
+- **Nacho guides.** Nacho is the site's voice; the Inspection Team appears on stamps, tags and cards.
+  Never reverse that hierarchy.
 - **Every piece is named** — Orbit, Agnes, Ramona — and sold as an adoption, never as a SKU.
 - **No emoji in customer-facing copy.** The 🛸🪐👽 in the planning docs are internal markers only.
 - **Motion is warm and subtle**: fade/slide on scroll, 1px hover lift, slow sparkle twinkle. All of it
@@ -158,11 +163,10 @@ These need a decision from the brand owner rather than a guess from me:
    not invented here.
 3. **Illustrated Nacho.** Currently real photos plus the two illustration concepts. A single locked
    illustrated Nacho would firm up the product-card guide slot.
-4. **Body typeface.** Confirm Poppins or replace it.
-5. **The 7 logo concepts.** `Logos/Asset 1–3` are treated as the final suite here; `Logo Concepts/` is read
-   as exploration. Worth confirming that's right.
-6. **Dark mode** is not defined. The brand is a cream-ground system, and a dark variant would need real
-   design decisions (does cream become ink? does the palette shift?) rather than an inversion.
+4. **Body typeface.** Poppins is confirmed.
+5. **Logos.** There are 4 official logos (`Logos/Asset 1–4`). `Logo Concepts/` carries over from an
+   earlier design system and doesn't apply here.
+6. **Dark mode** is on hold for now.
 
 ## Not built
 

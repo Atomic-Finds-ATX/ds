@@ -1,57 +1,72 @@
 {
- "_README": [
-  "Social feed data for the homepage. This is the ONLY file to edit to refresh the feed.",
-  "Every entry must carry a real Instagram permalink \u2014 never the profile URL.",
-  "No engagement numbers: we cannot verify likes or comments, so we do not display them.",
-  "When the Instagram Graph API is wired up, a scheduled job overwrites `posts` here",
-  "and the markup does not change."
- ],
- "updated": "2026-09-01",
- "profile": "https://www.instagram.com/atomicfindsatx/",
- "highlights": {
-  "atomic_homes": {
-   "title": "Atomic Homes",
-   "note": "Instagram HIGHLIGHT reel, not a feed.",
-   "url": null,
-   "_todo": "Needs the real highlight URL (instagram.com/stories/highlights/<id>/). Falls back to the profile until supplied."
-  }
- },
- "posts": [
-  {
-   "permalink": "https://www.instagram.com/p/Dcotmv3Gn-I/",
-   "shortcode": "Dcotmv3Gn-I",
-   "piece": "Maple",
-   "sku": "0001",
-   "photo": "design-system/assets/product-photos/maple-0001-1.png",
-   "caption": "Curved wood, two little table levels + a working lamp hiding behind a maple leaf screen; the leaves glow when lit. Unique 1950s\u2026",
-   "kind": "post"
+  "_README": [
+    "Social feed data for the homepage hero social feed.",
+    "Contains the 6 active workshop drops and live permalinks.",
+    "No fabricated engagement metrics."
+  ],
+  "updated": "2026-09-13",
+  "profile": "https://www.instagram.com/atomicfindsatx/",
+  "highlights": {
+    "atomic_homes": {
+      "title": "Atomic Homes",
+      "note": "Instagram Highlight reel for real adopted finds in Austin homes.",
+      "url": "https://www.instagram.com/stories/highlights/18196336213354737/"
+    }
   },
-  {
-   "permalink": "https://www.instagram.com/p/DcY2B28EQ0Q/",
-   "shortcode": "DcY2B28EQ0Q",
-   "piece": "Orbit",
-   "sku": "0004",
-   "photo": "design-system/assets/product-photos/orbit-0004-1.png",
-   "caption": "Vintage Space Age acrylic bubble chair with a brass pedestal base \u2014 one of those pieces you almost never see in person.",
-   "kind": "post"
-  },
-  {
-   "permalink": "https://www.instagram.com/p/DcheKzGDP6O/",
-   "shortcode": "DcheKzGDP6O",
-   "piece": "Bianca",
-   "sku": "0000",
-   "photo": "design-system/assets/product-photos/bianca-0000-1.png",
-   "caption": "Vintage Gardner faux-bamboo mirror with warm wood tones. Tall, bamboo-framed wall mirror.",
-   "kind": "post"
-  },
-  {
-   "permalink": "https://www.instagram.com/p/DcegsW7P9KU/",
-   "shortcode": "DcegsW7P9KU",
-   "piece": null,
-   "sku": null,
-   "photo": null,
-   "caption": "New from the Atomic Finds workshop.",
-   "kind": "post"
-  }
- ]
+  "posts": [
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/1120601130662268/",
+      "piece": "Clementine",
+      "sku": "0019",
+      "pattern": "design-system/assets/textures/unassigned-botanical-pattern-01.svg",
+      "photo": "design-system/assets/product-photos/carmela-0046-1.png",
+      "caption": "Vintage bentwood and rattan circular side table with delicate wicker weaves and warm honey patina.",
+      "kind": "marketplace"
+    },
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/1385943783000077/",
+      "piece": "Salem",
+      "sku": "0007",
+      "pattern": "design-system/assets/textures/social-media-card-background-02.svg",
+      "photo": "design-system/assets/product-photos/ringo-0007-1.png",
+      "caption": "Low-profile 1970s woven wicker coffee table with sculptural round corners and rich organic texture.",
+      "kind": "marketplace"
+    },
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/1787489942387784/",
+      "piece": "Dottie",
+      "sku": "0002",
+      "pattern": "design-system/assets/textures/unassigned-botanical-pattern-02.svg",
+      "photo": "design-system/assets/product-photos/dottie-0002-1.png",
+      "caption": "Small footprint, big atomic energy. Mid-century drop leaf dining table with warm woodgrain top & tapered legs.",
+      "kind": "marketplace"
+    },
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/3271162179721985/",
+      "piece": "Tropitan",
+      "sku": "0038",
+      "pattern": "design-system/assets/textures/unassigned-botanical-pattern-03.svg",
+      "photo": "design-system/assets/product-photos/tropitan-dining-set-0038-1.png",
+      "caption": "Iconic vintage 5-piece rattan dining set with glass-top pedestal table and four open-lattice fanback chairs.",
+      "kind": "marketplace"
+    },
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/1576568503908164/",
+      "piece": "Maple",
+      "sku": "0001",
+      "pattern": "design-system/assets/textures/primary-pattern-cream-background.svg",
+      "photo": "design-system/assets/product-photos/maple-0001-1.png",
+      "caption": "Curved wood, two little table levels + a working lamp hiding behind a maple leaf screen; glowing when lit.",
+      "kind": "marketplace"
+    },
+    {
+      "permalink": "https://www.facebook.com/marketplace/item/1674455373651251/",
+      "piece": "Adam",
+      "sku": "0014",
+      "pattern": "design-system/assets/textures/unassigned-botanical-pattern-01.svg",
+      "photo": "design-system/assets/product-photos/adam-0014-1.png",
+      "caption": "Matching pair of 1970s bamboo and woven rattan nightstands with lower display shelf and clean lines.",
+      "kind": "marketplace"
+    }
+  ]
 }

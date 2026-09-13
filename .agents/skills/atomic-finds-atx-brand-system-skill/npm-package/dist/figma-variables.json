@@ -1,0 +1,727 @@
+{
+  "version": "1.0.0",
+  "name": "Atomic Finds ATX Design Tokens",
+  "collections": [
+    {
+      "name": "Atomic Finds / Colors",
+      "modes": [
+        {
+          "modeId": "mode:default",
+          "name": "Default"
+        }
+      ],
+      "defaultModeId": "mode:default",
+      "variables": [
+        {
+          "name": "palette/orange",
+          "resolvedType": "COLOR",
+          "description": "Burnt Orange — Dominant brand accent. Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.7843,
+              "g": 0.3137,
+              "b": 0.1176,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-orange)"
+          }
+        },
+        {
+          "name": "palette/avocado",
+          "resolvedType": "COLOR",
+          "description": "Avocado Green — Wordmark color and graphic accent. Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.4196,
+              "g": 0.4784,
+              "b": 0.1961,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-avocado)"
+          }
+        },
+        {
+          "name": "palette/oliveTeal",
+          "resolvedType": "COLOR",
+          "description": "Olive / Teal — Deepest brand green, used for focus and secondary buttons. Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.1804,
+              "g": 0.3647,
+              "b": 0.3059,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-olive-teal)"
+          }
+        },
+        {
+          "name": "palette/cream",
+          "resolvedType": "COLOR",
+          "description": "Warm Cream — Dominant base canvas (95% visual workspace). Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.9529,
+              "g": 0.902,
+              "b": 0.8078,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-cream)"
+          }
+        },
+        {
+          "name": "palette/mustard",
+          "resolvedType": "COLOR",
+          "description": "Mustard Yellow — Warm highlight for tags and badges. Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.8784,
+              "g": 0.6471,
+              "b": 0.149,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-mustard)"
+          }
+        },
+        {
+          "name": "palette/pink",
+          "resolvedType": "COLOR",
+          "description": "Pink — Minor accent only, never a base surface. Locked brand hex.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.8902,
+              "g": 0.6039,
+              "b": 0.6588,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-pink)"
+          }
+        },
+        {
+          "name": "accessible/orangeDeep",
+          "resolvedType": "COLOR",
+          "description": "Accessible Burnt Orange for text surfaces on cream (4.91:1 AA).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.7059,
+              "g": 0.2824,
+              "b": 0.1059,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-orange-deep)"
+          }
+        },
+        {
+          "name": "accessible/orangeBtn",
+          "resolvedType": "COLOR",
+          "description": "Accessible Burnt Orange for button label text on cream plates (4.89:1 AA).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.6588,
+              "g": 0.2627,
+              "b": 0.102,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-orange-btn)"
+          }
+        },
+        {
+          "name": "accessible/avocadoDeep",
+          "resolvedType": "COLOR",
+          "description": "Accessible Avocado Green for text surfaces on cream (4.52:1 AA) and cream on avocado (5.07:1 AA).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.3765,
+              "g": 0.4314,
+              "b": 0.1765,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-avocado-deep)"
+          }
+        },
+        {
+          "name": "surfaces/surface",
+          "resolvedType": "COLOR",
+          "description": "Page canvas ground (Warm Cream).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.9529,
+              "g": 0.902,
+              "b": 0.8078,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-surface)"
+          }
+        },
+        {
+          "name": "surfaces/surfaceSunk",
+          "resolvedType": "COLOR",
+          "description": "Slightly darker sunk cream for wells and card insets.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.898,
+              "g": 0.8392,
+              "b": 0.7216,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-surface-sunk)"
+          }
+        },
+        {
+          "name": "surfaces/surfaceRaised",
+          "resolvedType": "COLOR",
+          "description": "Lighter cream for elevated plates and card surfaces.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.9804,
+              "g": 0.9451,
+              "b": 0.8745,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-surface-raised)"
+          }
+        },
+        {
+          "name": "ink/ink",
+          "resolvedType": "COLOR",
+          "description": "Deep Olive ink — The brand's darkest tone (11.32:1 AAA on cream). No true black in the brand.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.1686,
+              "g": 0.1804,
+              "b": 0.0784,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-ink)"
+          }
+        },
+        {
+          "name": "ink/inkSoft",
+          "resolvedType": "COLOR",
+          "description": "Secondary copy / muted ink (5.31:1 AA on cream).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.3569,
+              "g": 0.3725,
+              "b": 0.2431,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-ink-soft)"
+          }
+        },
+        {
+          "name": "ink/hairline",
+          "resolvedType": "COLOR",
+          "description": "Dashed rules, card dividers, and subtle separators.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.8471,
+              "g": 0.7804,
+              "b": 0.651,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-hairline)"
+          }
+        },
+        {
+          "name": "status/available",
+          "resolvedType": "COLOR",
+          "description": "Available piece status badge (Avocado Deep).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.3765,
+              "g": 0.4314,
+              "b": 0.1765,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-available)"
+          }
+        },
+        {
+          "name": "status/sold",
+          "resolvedType": "COLOR",
+          "description": "Sold / Adopted piece status badge (Orange Deep).",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.7059,
+              "g": 0.2824,
+              "b": 0.1059,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-sold)"
+          }
+        },
+        {
+          "name": "semantic/text",
+          "resolvedType": "COLOR",
+          "description": "Primary text color.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.1686,
+              "g": 0.1804,
+              "b": 0.0784,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-text)"
+          }
+        },
+        {
+          "name": "semantic/textMuted",
+          "resolvedType": "COLOR",
+          "description": "Secondary / muted body text.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.3569,
+              "g": 0.3725,
+              "b": 0.2431,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-text-muted)"
+          }
+        },
+        {
+          "name": "semantic/textInvert",
+          "resolvedType": "COLOR",
+          "description": "Inverted text color for dark badge backgrounds.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.9529,
+              "g": 0.902,
+              "b": 0.8078,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-text-invert)"
+          }
+        },
+        {
+          "name": "semantic/border",
+          "resolvedType": "COLOR",
+          "description": "Standard border stroke color.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.1686,
+              "g": 0.1804,
+              "b": 0.0784,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-border)"
+          }
+        },
+        {
+          "name": "semantic/focus",
+          "resolvedType": "COLOR",
+          "description": "Keyboard and interactive focus ring color.",
+          "valuesByMode": {
+            "mode:default": {
+              "r": 0.1804,
+              "g": 0.3647,
+              "b": 0.3059,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "ALL_FILLS",
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-focus)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Atomic Finds / Spacing",
+      "modes": [
+        {
+          "modeId": "mode:default",
+          "name": "Default"
+        }
+      ],
+      "defaultModeId": "mode:default",
+      "variables": [
+        {
+          "name": "space1",
+          "resolvedType": "FLOAT",
+          "description": "8px — Compact gap, inner padding for pills and tags.",
+          "valuesByMode": {
+            "mode:default": 8
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space1)"
+          }
+        },
+        {
+          "name": "space2",
+          "resolvedType": "FLOAT",
+          "description": "16px — Standard base unit, button padding, tight stack.",
+          "valuesByMode": {
+            "mode:default": 16
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space2)"
+          }
+        },
+        {
+          "name": "space3",
+          "resolvedType": "FLOAT",
+          "description": "24px — Card padding, component gaps.",
+          "valuesByMode": {
+            "mode:default": 24
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space3)"
+          }
+        },
+        {
+          "name": "space4",
+          "resolvedType": "FLOAT",
+          "description": "32px — Section sub-groups, large component margins.",
+          "valuesByMode": {
+            "mode:default": 32
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space4)"
+          }
+        },
+        {
+          "name": "space5",
+          "resolvedType": "FLOAT",
+          "description": "48px — Medium section spacing, featured block margins.",
+          "valuesByMode": {
+            "mode:default": 48
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space5)"
+          }
+        },
+        {
+          "name": "space6",
+          "resolvedType": "FLOAT",
+          "description": "64px — Major section spacing on mobile / tablet.",
+          "valuesByMode": {
+            "mode:default": 64
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space6)"
+          }
+        },
+        {
+          "name": "space7",
+          "resolvedType": "FLOAT",
+          "description": "80px — Hero and showroom section gutters.",
+          "valuesByMode": {
+            "mode:default": 80
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space7)"
+          }
+        },
+        {
+          "name": "space8",
+          "resolvedType": "FLOAT",
+          "description": "120px — Generous section dividers.",
+          "valuesByMode": {
+            "mode:default": 120
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space8)"
+          }
+        },
+        {
+          "name": "space9",
+          "resolvedType": "FLOAT",
+          "description": "160px — Major page section gutters (cream breathing room).",
+          "valuesByMode": {
+            "mode:default": 160
+          },
+          "scopes": [
+            "GAP",
+            "AUTO_LAYOUT_PADDING"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-space9)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Atomic Finds / Radii",
+      "modes": [
+        {
+          "modeId": "mode:default",
+          "name": "Default"
+        }
+      ],
+      "defaultModeId": "mode:default",
+      "variables": [
+        {
+          "name": "sm",
+          "resolvedType": "FLOAT",
+          "description": "8px — Small elements and inner image corners.",
+          "valuesByMode": {
+            "mode:default": 8
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-radius-sm)"
+          }
+        },
+        {
+          "name": "button",
+          "resolvedType": "FLOAT",
+          "description": "12px — Button plate corner radius (squarer than pill).",
+          "valuesByMode": {
+            "mode:default": 12
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-radius-button)"
+          }
+        },
+        {
+          "name": "card",
+          "resolvedType": "FLOAT",
+          "description": "18px — Standard card container radius.",
+          "valuesByMode": {
+            "mode:default": 18
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-radius-card)"
+          }
+        },
+        {
+          "name": "lg",
+          "resolvedType": "FLOAT",
+          "description": "24px — Large modal or featured card container radius.",
+          "valuesByMode": {
+            "mode:default": 24
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-radius-lg)"
+          }
+        },
+        {
+          "name": "pill",
+          "resolvedType": "FLOAT",
+          "description": "999px — Tags, badges, and pill indicators.",
+          "valuesByMode": {
+            "mode:default": 999
+          },
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-radius-pill)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Atomic Finds / Border Width",
+      "modes": [
+        {
+          "modeId": "mode:default",
+          "name": "Default"
+        }
+      ],
+      "defaultModeId": "mode:default",
+      "variables": [
+        {
+          "name": "width",
+          "resolvedType": "FLOAT",
+          "description": "2px — Signature ink border outline.",
+          "valuesByMode": {
+            "mode:default": 2
+          },
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-border-width)"
+          }
+        },
+        {
+          "name": "heavy",
+          "resolvedType": "FLOAT",
+          "description": "3px — Heavy ink stamp and prominent frame outline.",
+          "valuesByMode": {
+            "mode:default": 3
+          },
+          "scopes": [
+            "STROKE_FLOAT"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--af-border-heavy)"
+          }
+        }
+      ]
+    }
+  ]
+}

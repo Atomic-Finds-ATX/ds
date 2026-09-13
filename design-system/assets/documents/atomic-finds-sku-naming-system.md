@@ -1,5 +1,7 @@
 # Atomic Finds ATX — File Naming System (Product Photos & AI-Generated Assets)
 
+**Canonical — merged 2026-09-06 with the Claude project's `atomic-finds-atx-sku-photo-rules` doc. Same content now lives in both places; update together.**
+
 **Last updated: August 31, 2026**
 *(Update this date each time the SKU range or naming rules below change.)*
 

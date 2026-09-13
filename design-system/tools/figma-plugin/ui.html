@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Atomic Finds ATX Design System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: #F3E6CE;
+      color: #2B2E14;
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.4;
+      user-select: none;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid #2B2E14;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .header-logo {
+      width: 38px;
+      height: 38px;
+      background-color: #C8501E;
+      color: #F3E6CE;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      border: 2px solid #2B2E14;
+      box-shadow: 2px 2px 0 #2B2E14;
+      flex-shrink: 0;
+    }
+    .header-title h1 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #2B2E14;
+    }
+    .header-title p {
+      font-size: 11px;
+      color: #5B5F3E;
+      font-style: italic;
+    }
+    
+    /* Master Action Banner */
+    .master-card {
+      background: #FAF1DF;
+      border: 2.5px solid #2B2E14;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 4px 4px 0 #2B2E14;
+    }
+    .master-btn {
+      width: 100%;
+      padding: 12px;
+      background: #C8501E;
+      border: 2px solid #2B2E14;
+      border-radius: 8px;
+      color: #F3E6CE;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 2px 2px 0 #2B2E14;
+      transition: all 0.12s ease;
+    }
+    .master-btn:hover {
+      background: #B4481B;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 #2B2E14;
+    }
+    .master-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 #2B2E14;
+    }
+
+    .btn-canvas {
+      width: 100%;
+      padding: 10px;
+      background: #2E5D4E;
+      border: 2px solid #2B2E14;
+      border-radius: 8px;
+      color: #F3E6CE;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 8px;
+      box-shadow: 2px 2px 0 #2B2E14;
+      transition: all 0.12s ease;
+    }
+    .btn-canvas:hover {
+      background: #22473C;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 #2B2E14;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 7px 2px;
+      background: #FAF1DF;
+      border: 2px solid #2B2E14;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #2B2E14;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      background: #606E2D;
+      color: #F3E6CE;
+      box-shadow: 2px 2px 0 #2B2E14;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+    .card {
+      background: #FAF1DF;
+      border: 2px solid #2B2E14;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 3px 3px 0 #2B2E14;
+    }
+    .card-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #2B2E14;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .badge {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #606E2D;
+      color: #FAF1DF;
+    }
+    .card-desc {
+      font-size: 11px;
+      color: #5B5F3E;
+      margin-bottom: 10px;
+    }
+    .btn-action {
+      width: 100%;
+      padding: 9px;
+      background: #F3E6CE;
+      border: 2px solid #A8431A;
+      border-radius: 8px;
+      color: #A8431A;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.12s ease;
+    }
+    .btn-action:hover {
+      background: #F7EEDA;
+      box-shadow: 2px 2px 0 #A8431A;
+      transform: translate(-1px, -1px);
+    }
+    .btn-action.btn-green {
+      border-color: #2E5D4E;
+      color: #2E5D4E;
+    }
+    .btn-action.btn-green:hover {
+      box-shadow: 2px 2px 0 #2E5D4E;
+    }
+    .color-swatches {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .swatch {
+      flex: 1;
+      height: 16px;
+      border-radius: 4px;
+      border: 1px solid #2B2E14;
+    }
+    
+    /* Console / Logs */
+    .console-box {
+      background: #2B2E14;
+      color: #F3E6CE;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-family: monospace;
+      font-size: 10px;
+      max-height: 85px;
+      overflow-y: auto;
+      border: 1.5px solid #5B5F3E;
+      margin-top: 6px;
+    }
+    .log-line {
+      margin-bottom: 3px;
+    }
+    .log-error {
+      color: #E39AA8;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 10px;
+      color: #5B5F3E;
+      border-top: 1px dashed #D8C7A6;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-logo">AF</div>
+    <div class="header-title">
+      <h1>Atomic Finds ATX</h1>
+      <p>Tiny Time Machines for Your Home</p>
+    </div>
+  </div>
+
+  <!-- Master Generate All Banner -->
+  <div class="master-card">
+    <button class="master-btn" id="btn-master" onclick="send('generate-all')">
+      ⚡ Generate All Resources (1-Click)
+    </button>
+    <button class="btn-canvas" onclick="send('canvas-kit')">
+      🖼️ Lay Out Full Design System on Canvas
+    </button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="selectTab(this, 'variables')">Variables</button>
+    <button class="tab-btn" onclick="selectTab(this, 'styles')">Styles</button>
+    <button class="tab-btn" onclick="selectTab(this, 'tokens')">Tokens Studio</button>
+  </div>
+
+  <!-- Panel: Variables -->
+  <div id="panel-variables" class="panel active">
+    <div class="card">
+      <div class="card-title">
+        <span>Figma Native Variables</span>
+        <span class="badge">Recommended</span>
+      </div>
+      <p class="card-desc">
+        Creates 4 Collections in your Figma document: <strong>Colors</strong> (Locked & Accessible), <strong>8px Spacing scale</strong>, <strong>Radii</strong>, and <strong>Border Widths</strong>.
+      </p>
+      <div class="color-swatches">
+        <div class="swatch" style="background:#C8501E" title="Orange"></div>
+        <div class="swatch" style="background:#6B7A32" title="Avocado"></div>
+        <div class="swatch" style="background:#2E5D4E" title="Olive/Teal"></div>
+        <div class="swatch" style="background:#F3E6CE" title="Cream"></div>
+        <div class="swatch" style="background:#E0A526" title="Mustard"></div>
+        <div class="swatch" style="background:#E39AA8" title="Pink"></div>
+      </div>
+      <div style="margin-top: 12px;">
+        <button class="btn-action" onclick="send('setup-variables')">
+          ⚡ Generate Figma Variables Only
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: Styles -->
+  <div id="panel-styles" class="panel">
+    <div class="card">
+      <div class="card-title">
+        <span>Figma Styles</span>
+      </div>
+      <p class="card-desc">
+        Creates <strong>Color Styles</strong>, <strong>Text Styles</strong> (Mamba Display H1/H2, Pacifico Script, Poppins Body), and <strong>0-blur Effect Styles</strong> (Stamp Shadows).
+      </p>
+      <button class="btn-action btn-green" onclick="send('setup-styles')">
+        🎨 Generate Color, Text & Effect Styles
+      </button>
+    </div>
+  </div>
+
+  <!-- Panel: Tokens Studio -->
+  <div id="panel-tokens" class="panel">
+    <div class="card">
+      <div class="card-title">
+        <span>Tokens Studio for Figma</span>
+      </div>
+      <p class="card-desc">
+        Load <code>dist/figma-tokens.json</code> directly in the Tokens Studio plugin or copy the NPM package name.
+      </p>
+      <button class="btn-action" onclick="copyNpmCmd()">
+        📋 Copy NPM Package Name
+      </button>
+    </div>
+  </div>
+
+  <!-- Live Status Console -->
+  <div style="font-size:11px; font-weight:700; color:#5B5F3E; margin-top:4px;">Status Console:</div>
+  <div class="console-box" id="console">
+    <div class="log-line">Ready. Click any button above to execute.</div>
+  </div>
+
+  <div class="footer">
+    Atomic Finds ATX Design System · v1.0.0 · Austin, TX
+  </div>
+
+  <script>
+    function selectTab(buttonEl, panelName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      buttonEl.classList.add('active');
+      const target = document.getElementById('panel-' + panelName);
+      if (target) {
+        target.classList.add('active');
+      }
+    }
+
+    function appendLog(msg, isError) {
+      const box = document.getElementById('console');
+      const line = document.createElement('div');
+      line.className = 'log-line' + (isError ? ' log-error' : '');
+      line.textContent = msg;
+      box.appendChild(line);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function send(type) {
+      appendLog('▶ Running: ' + type + '...');
+      parent.postMessage({ pluginMessage: { type } }, '*');
+    }
+
+    function copyNpmCmd() {
+      navigator.clipboard.writeText('@atomicfindsatx/design-system');
+      appendLog('✔ Copied package name to clipboard!');
+    }
+
+    window.onmessage = (event) => {
+      const msg = event.data && event.data.pluginMessage;
+      if (msg && msg.type === 'log') {
+        appendLog(msg.message, msg.isError);
+      }
+    };
+  </script>
+</body>
+</html>

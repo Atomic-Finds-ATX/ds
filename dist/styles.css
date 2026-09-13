@@ -1,0 +1,728 @@
+/* ==========================================================================
+   Atomic Finds ATX — Design Tokens
+   Auto-generated from canonical-tokens.json
+   ========================================================================== */
+
+:root {
+  /* --- Colors: Locked Brand Palette --- */
+  --af-orange: #C8501E;
+  --af-avocado: #6B7A32;
+  --af-olive-teal: #2E5D4E;
+  --af-cream: #F3E6CE;
+  --af-mustard: #E0A526;
+  --af-pink: #E39AA8;
+
+  /* --- Colors: Accessible Companions --- */
+  --af-orange-deep: #B4481B;
+  --af-orange-btn: #A8431A;
+  --af-avocado-deep: #606E2D;
+
+  /* --- Colors: Surfaces --- */
+  --af-surface: #F3E6CE;
+  --af-surface-sunk: #E5D6B8;
+  --af-surface-raised: #FAF1DF;
+
+  /* --- Colors: Ink --- */
+  --af-ink: #2B2E14;
+  --af-ink-soft: #5B5F3E;
+  --af-hairline: #D8C7A6;
+
+  /* --- Status --- */
+  --af-available: var(--af-avocado-deep);
+  --af-sold: var(--af-orange-deep);
+
+  /* --- Semantic Aliases --- */
+  --af-text: var(--af-ink);
+  --af-text-muted: var(--af-ink-soft);
+  --af-text-invert: var(--af-surface);
+  --af-border: var(--af-ink);
+  --af-focus: var(--af-olive-teal);
+
+  /* --- Spacing (8px Multiplier Grid) --- */
+  --af-space-1: 0.5rem; /* 8px */
+  --af-space-2: 1rem; /* 16px */
+  --af-space-3: 1.5rem; /* 24px */
+  --af-space-4: 2rem; /* 32px */
+  --af-space-5: 3rem; /* 48px */
+  --af-space-6: 4rem; /* 64px */
+  --af-space-7: 5rem; /* 80px */
+  --af-space-8: 7.5rem; /* 120px */
+  --af-space-9: 10rem; /* 160px */
+
+  /* --- Radius --- */
+  --af-radius-sm: 8px;
+  --af-radius-button: 12px;
+  --af-radius-card: 18px;
+  --af-radius-lg: 24px;
+  --af-radius-pill: 999px;
+
+  /* --- Borders --- */
+  --af-border-width: 2px;
+  --af-border-heavy: 3px;
+
+  /* --- Elevation / Natural & Colorful Fun Shadows --- */
+  --af-shadow-stamp-sm: 0 3px 8px -1px rgba(43, 46, 20, 0.10), 0 1px 3px 0 rgba(43, 46, 20, 0.06);
+  --af-shadow-stamp: 0 8px 20px -3px rgba(43, 46, 20, 0.12), 0 3px 6px -1px rgba(43, 46, 20, 0.07);
+  --af-shadow-stamp-lift: 0 14px 28px -4px rgba(43, 46, 20, 0.16), 0 5px 10px -2px rgba(43, 46, 20, 0.09);
+  --af-shadow-pink: 0 10px 25px -4px rgba(227, 154, 168, 0.48), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-pink-lift: 0 16px 34px -4px rgba(227, 154, 168, 0.62), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-green: 0 10px 25px -4px rgba(107, 122, 50, 0.42), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-green-lift: 0 16px 34px -4px rgba(107, 122, 50, 0.55), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-yellow: 0 10px 25px -4px rgba(224, 165, 38, 0.48), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-yellow-lift: 0 16px 34px -4px rgba(224, 165, 38, 0.62), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-orange: 0 10px 25px -4px rgba(200, 80, 30, 0.40), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-orange-lift: 0 16px 34px -4px rgba(200, 80, 30, 0.52), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+
+  /* --- Typography: Families --- */
+  --af-font-display: "Mamba", Cooper Black, Bookman Old Style, Georgia, serif;
+  --af-font-script: "Pacifico", Brush Script MT, cursive;
+  --af-font-body: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+
+  /* --- Typography: Scale --- */
+  --af-text-xs: 0.75rem;
+  --af-text-sm: 0.875rem;
+  --af-text-base: 1rem;
+  --af-text-lg: 1.25rem;
+  --af-text-xl: 1.75rem;
+  --af-text-2xl: clamp(2rem, 1.40rem + 2.6vw, 2.5rem);
+  --af-text-3xl: clamp(2.4rem, 1.50rem + 4.0vw, 3.5rem);
+  --af-text-4xl: clamp(3rem, 1.60rem + 6.4vw, 5rem);
+
+  /* --- Typography: Line Height --- */
+  --af-leading-tight: 1.05;
+  --af-leading-snug: 1.3;
+  --af-leading-body: 1.6;
+
+  /* --- Typography: Tracking --- */
+  --af-tracking-display: 0;
+  --af-tracking-label: 0.14em;
+  --af-tracking-stamp: 0.2em;
+
+  /* --- Motion --- */
+  --af-ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --af-duration-fast: 120ms;
+  --af-duration: 220ms;
+  --af-duration-slow: 420ms;
+
+  /* --- Layout --- */
+  --af-container: 1280px;
+  --af-measure: 66ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --af-duration-fast: 1ms;
+    --af-duration: 1ms;
+    --af-duration-slow: 1ms;
+  }
+}
+
+
+/* ==========================================================================
+   Atomic Finds ATX — Components
+   --------------------------------------------------------------------------
+   No component library was supplied with the brand materials, so this is a
+   small original set sized to the touchpoints the brand actually ships:
+   Button, Tag, InspectionStamp, ProductCard, CuratorCard, RecordCard.
+
+   Shared vocabulary across all of them:
+     · heavy ink outline (2–3px)
+     · flat offset stamp shadow, never blurred
+     · pills for interactive/label objects, 18–24px radius for cards
+     · dashed rules inside cards, like a form to fill in
+   ========================================================================== */
+
+/* ==========================================================================
+   Button — rounded rectangle (12px) with heavy ink/accent outline on cream plate.
+   Rest sits flat with 0 shadow.
+   Hover shifts up/left with a flat offset stamp shadow in matching theme color.
+   Active shifts down/right.
+   ========================================================================== */
+
+.af-btn {
+  --af-btn-ink: var(--af-orange-btn);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--af-space-2);
+  padding: var(--af-space-3) var(--af-space-5);
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-base);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--af-cream);
+  color: var(--af-btn-ink);
+  border: var(--af-border-width) solid var(--af-btn-ink);
+  border-radius: 12px;
+  box-shadow: none;
+  transition: background-color var(--af-duration-fast) var(--af-ease),
+              transform var(--af-duration-fast) var(--af-ease),
+              box-shadow var(--af-duration-fast) var(--af-ease),
+              color var(--af-duration-fast) var(--af-ease),
+              border-color var(--af-duration-fast) var(--af-ease);
+}
+
+/* Icons inherit the label colour — never set a fill on a button's sparkle. */
+.af-btn .af-sparkle,
+.af-btn .af-starburst { color: currentColor; }
+
+.af-btn:hover {
+  background: #FAF1DF;
+  color: var(--af-btn-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-btn-ink);
+  text-decoration: none;
+}
+
+.af-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-btn-ink);
+}
+
+/* Primary — burnt orange outline and label on cream plate with flat orange stamp shadow on hover */
+.af-btn--primary {
+  --af-btn-ink: var(--af-orange-btn);
+  background: var(--af-cream);
+  color: var(--af-orange-btn);
+  border-color: var(--af-orange-btn);
+  box-shadow: none;
+}
+.af-btn--primary:hover {
+  background: #FAF1DF;
+  border-color: var(--af-orange-btn);
+  color: var(--af-orange-btn);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-orange-btn);
+}
+.af-btn--primary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-orange-btn);
+}
+
+/* Secondary — brand green outline and label on cream plate with flat olive-teal stamp shadow on hover */
+.af-btn--secondary {
+  --af-btn-ink: var(--af-olive-teal);
+  background: var(--af-cream);
+  color: var(--af-olive-teal);
+  border-color: var(--af-olive-teal);
+  box-shadow: none;
+}
+.af-btn--secondary:hover {
+  background: #FAF1DF;
+  border-color: var(--af-olive-teal);
+  color: var(--af-olive-teal);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-olive-teal);
+}
+.af-btn--secondary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-olive-teal);
+}
+
+.af-btn--ghost {
+  --af-btn-ink: var(--af-ink-soft);
+  background: transparent;
+  color: var(--af-btn-ink);
+  border: var(--af-border-width) dashed var(--af-btn-ink);
+  box-shadow: none;
+}
+.af-btn--ghost:hover {
+  background: var(--af-cream);
+  color: var(--af-ink);
+  border-color: var(--af-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-ink);
+}
+.af-btn--ghost:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-ink);
+}
+
+.af-btn--sm { padding: var(--af-space-2) var(--af-space-4); font-size: var(--af-text-sm); }
+
+/* ==========================================================================
+   Tag — era / material / availability pill.
+   Mustard and pink take INK text (cream on them fails: 1.99 and 2.02).
+   ========================================================================== */
+
+.af-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--af-space-1);
+  padding: var(--af-space-1) var(--af-space-3);
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--af-tracking-label);
+  text-transform: uppercase;
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-pill);
+  background: var(--af-cream);
+  color: var(--af-ink);
+  white-space: nowrap;
+}
+
+.af-tag--era      { background: var(--af-mustard); color: var(--af-ink); }
+.af-tag--material { background: var(--af-cream);   color: var(--af-ink); }
+.af-tag--accent   { background: var(--af-pink);    color: var(--af-ink); }
+
+.af-tag--available { background: var(--af-available); color: var(--af-text-invert); }
+.af-tag--sold      { background: var(--af-sold);      color: var(--af-text-invert); }
+
+/* ==========================================================================
+   InspectionStamp — the Atomic Inspection Team's mock-bureaucratic sign-off.
+   Single-colour "ink" look, slight rotation so it reads as stamped by hand.
+   ========================================================================== */
+
+.af-stamp {
+  --af-stamp-color: var(--af-olive-teal);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 8.5rem; height: 8.5rem;
+  padding: var(--af-space-2);
+  text-align: center;
+  color: var(--af-stamp-color);
+  border: var(--af-border-heavy) solid currentColor;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px currentColor;
+  transform: rotate(-8deg);
+  background: transparent;
+}
+
+.af-stamp__team {
+  font-family: var(--af-font-body);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: var(--af-tracking-stamp);
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.af-stamp__verdict {
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-xl);
+  line-height: 1;
+}
+
+.af-stamp__curator {
+  font-family: var(--af-font-body);
+  font-size: 0.5rem;
+  letter-spacing: var(--af-tracking-label);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.af-stamp--orange { --af-stamp-color: var(--af-orange-deep); }
+.af-stamp--flat   { transform: none; }
+
+/* ==========================================================================
+   ProductCard — a named piece. Furniture is the hero: the photo gets the
+   most area, and the card chrome stays quiet around it.
+   ========================================================================== */
+
+.af-product {
+  display: flex;
+  flex-direction: column;
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  box-shadow: var(--af-shadow-stamp);
+  overflow: hidden;
+  transition: transform 0.25s var(--af-ease),
+              box-shadow 0.25s var(--af-ease);
+}
+
+.af-product:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--af-shadow-stamp-lift);
+}
+
+.af-product__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--af-cream);
+  border-bottom: var(--af-border-width) solid var(--af-ink);
+  overflow: hidden;
+}
+
+.af-product__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.af-product__status {
+  position: absolute;
+  top: var(--af-space-3);
+  left: var(--af-space-3);
+}
+
+.af-product__body { padding: var(--af-space-4); }
+
+.af-product__name {
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-xl);
+  line-height: var(--af-leading-tight);
+  color: var(--af-avocado-deep);
+  margin: 0 0 var(--af-space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--af-space-2);
+}
+
+.af-product__story {
+  font-size: var(--af-text-sm);
+  color: var(--af-ink-soft);
+  margin: var(--af-space-2) 0 var(--af-space-4);
+}
+
+.af-product__meta { display: flex; gap: var(--af-space-2); flex-wrap: wrap; }
+
+/* Nacho's aside — a small guide slot, never large enough to upstage the piece. */
+.af-product__nacho {
+  display: flex;
+  align-items: center;
+  gap: var(--af-space-3);
+  margin-top: var(--af-space-4);
+  padding-top: var(--af-space-3);
+  border-top: 2px dashed var(--af-hairline);
+}
+.af-product__nacho img { width: 2.5rem; height: 2.5rem; object-fit: contain; flex: none; }
+.af-product__nacho p {
+  margin: 0;
+  font-family: var(--af-font-script);
+  font-size: var(--af-text-sm);
+  color: var(--af-orange-deep);
+}
+
+/* ==========================================================================
+   OriginBadge — the provenance strip from the passport template: a named
+   craft texture flanked by the two plants of its region, with the tradition
+   credited underneath.
+
+   The attribution is structural, not decorative. The named weave always
+   carries its origin ("Solihiya weave · Philippines", "Cane webbing ·
+   Austin-curated") and its craft heritage line. It is never fused into the
+   logo and never presented as brand IP.
+   ========================================================================== */
+
+.af-origin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--af-space-2);
+  text-align: center;
+}
+
+.af-origin__specimens {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--af-space-3);
+  min-height: 5.25rem;
+}
+
+.af-origin__plant { width: 3.5rem; height: 3.5rem; object-fit: contain; opacity: 0.9; flex: none; }
+
+/* The weave swatch is the centrepiece — framed in orange, like a specimen
+   mounted on a card. */
+.af-origin__swatch {
+  width: 7.5rem; height: 5.25rem;
+  border: var(--af-border-width) solid var(--af-orange);
+  border-radius: var(--af-radius-sm);
+  overflow: hidden;
+  flex: none;
+}
+
+.af-origin__name {
+  font-family: var(--af-font-body);
+  font-weight: 600;
+  font-size: var(--af-text-base);
+  color: var(--af-olive-teal);
+  margin: 0;
+}
+
+.af-origin__heritage {
+  font-style: italic;
+  font-size: var(--af-text-sm);
+  color: var(--af-ink-soft);
+  margin: 0;
+}
+
+/* ==========================================================================
+   ShowroomNav — the four rooms. Each uses its illustrated icon from the
+   brand icon set rather than a generic UI glyph.
+   ========================================================================== */
+
+.af-showroom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--af-space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.af-showroom__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--af-space-2);
+  padding: var(--af-space-4) var(--af-space-3);
+  text-align: center;
+  text-decoration: none;
+  color: var(--af-ink);
+  background: var(--af-surface-raised);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-card);
+  transition: transform var(--af-duration) var(--af-ease),
+              box-shadow var(--af-duration) var(--af-ease);
+}
+
+.af-showroom__link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--af-shadow-stamp-sm);
+  color: var(--af-ink);
+}
+
+.af-showroom__icon { width: 4.5rem; height: 4.5rem; object-fit: contain; }
+
+.af-showroom__name {
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-base);
+  color: var(--af-avocado-deep);
+}
+
+/* ==========================================================================
+   RecordCard — the Time Traveler's Record. The brand's signature artifact:
+   collectible, ticket-stub, a form someone actually fills in by hand.
+   Same template every time; only the details swap.
+   ========================================================================== */
+
+.af-record {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 26rem;
+  padding: var(--af-space-5);
+  background: var(--af-surface-raised);
+  border: var(--af-border-heavy) solid var(--af-ink);
+  border-radius: var(--af-radius-lg);
+  box-shadow: var(--af-shadow-stamp);
+}
+
+.af-record__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--af-space-3);
+}
+
+.af-record__brand {
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-lg);
+  color: var(--af-avocado-deep);
+  line-height: var(--af-leading-tight);
+  margin: 0;
+}
+
+.af-record__tagline {
+  font-family: var(--af-font-script);
+  font-size: var(--af-text-sm);
+  color: var(--af-orange-deep);
+  margin: 2px 0 0;
+}
+
+.af-record__piece {
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-2xl);
+  color: var(--af-olive-teal);
+  line-height: var(--af-leading-tight);
+  margin: var(--af-space-5) 0 var(--af-space-2);
+}
+
+.af-record__found {
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-xs);
+  font-weight: 700;
+  letter-spacing: var(--af-tracking-stamp);
+  text-transform: uppercase;
+  color: var(--af-ink-soft);
+  margin: 0;
+}
+
+/* The fill-in fields. Dashed baselines, not boxes — it should look like a
+   document you write on, not a web form. */
+.af-record__fields {
+  margin: var(--af-space-5) 0 0;
+  display: grid;
+  gap: var(--af-space-3);
+}
+
+.af-record__field {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  align-items: end;
+  gap: var(--af-space-3);
+}
+
+/* On a narrow card the 9rem label column starves the value. Stack instead. */
+@container (max-width: 22rem) {
+  .af-record__field { grid-template-columns: 1fr; gap: var(--af-space-1); }
+}
+@media (max-width: 26rem) {
+  .af-record__field { grid-template-columns: 1fr; gap: var(--af-space-1); }
+}
+
+.af-record__field dt {
+  font-family: var(--af-font-body);
+  font-size: var(--af-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--af-tracking-label);
+  text-transform: uppercase;
+  color: var(--af-ink-soft);
+}
+
+.af-record__field dd {
+  margin: 0;
+  padding-bottom: 2px;
+  border-bottom: 2px dashed var(--af-hairline);
+  min-height: 1.4em;
+  font-size: var(--af-text-sm);
+}
+
+.af-record__closing {
+  margin: var(--af-space-5) 0 0;
+  font-family: var(--af-font-script);
+  font-size: var(--af-text-base);
+  color: var(--af-orange-deep);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Section eyebrow — sparkle-flanked label used above section headings.
+   ========================================================================== */
+
+.af-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--af-space-2);
+  margin-bottom: var(--af-space-3);
+}
+.af-eyebrow .af-sparkle { color: var(--af-orange); }
+
+/* ==========================================================================
+   Passport — the provenance-passport product template.
+
+   This is the brand's signature product artifact and the layout is fixed:
+   lived-in photo → piece name + era → sparkle/wordmark beside the credited
+   origin badge → one-line story → Nacho guide slot → motif band.
+   Same template every time; only the regional detail swaps.
+   ========================================================================== */
+
+.af-passport {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--af-space-5);
+  width: 100%;
+  max-width: 34rem;
+  padding: var(--af-space-5);
+  background: var(--af-surface);
+  border: var(--af-border-width) solid var(--af-ink);
+  border-radius: var(--af-radius-lg);
+}
+
+/* Furniture is the hero: the photo takes the largest single block on the card. */
+.af-passport__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--af-radius-card);
+}
+
+.af-passport__title {
+  /* Inline, not flex: a flex row lets "c. 1972" break to its own line and sit
+     out of alignment with the name. Inline text wraps as one phrase, and the
+     era is kept whole with a nowrap span in the markup. */
+  margin: 0;
+  text-align: center;
+  text-wrap: balance;
+  font-family: var(--af-font-display);
+  font-size: var(--af-text-2xl);
+  line-height: var(--af-leading-tight);
+  color: var(--af-avocado-deep);
+}
+.af-passport__title .af-sparkle {
+  height: 0.5em; width: 0.3125em;
+  vertical-align: 0.02em;
+  margin-left: 0.2em;
+}
+
+/* Sparkle + wordmark on the left, credited origin on the right, split by the
+   dotted rule the passport template uses. */
+.af-passport__provenance {
+  display: flex;
+  align-items: center;
+  gap: var(--af-space-5);
+}
+
+.af-passport__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--af-space-3);
+  flex: none;
+  padding-right: var(--af-space-5);
+  border-right: 2px dotted var(--af-orange);
+}
+
+.af-passport__mark .af-sparkle { height: 4.5rem; width: 2.8rem; }
+
+.af-passport__story {
+  margin: 0;
+  text-align: center;
+  font-size: var(--af-text-lg);
+  color: var(--af-ink);
+}
+
+.af-passport__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--af-space-4);
+}
+
+/* Nacho is the guide — a small, quiet slot, never the hero. */
+.af-passport__guide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem; height: 4rem;
+  flex: none;
+  border: var(--af-border-width) solid var(--af-avocado-deep);
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: var(--af-text-sm);
+  color: var(--af-avocado-deep);
+  background: var(--af-surface);
+}
+
+.af-passport__guide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Narrow passports stack the provenance split rather than squeezing it. */
+@container (max-width: 30rem) {
+  .af-passport__provenance { flex-direction: column; }
+  .af-passport__mark {
+    padding-right: 0;
+    padding-bottom: var(--af-space-4);
+    border-right: 0;
+    border-bottom: 2px dotted var(--af-orange);
+    width: 100%;
+  }
+}

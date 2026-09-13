@@ -28,13 +28,18 @@
   --af-border-width: 2px;
   --af-border-heavy: 3px;
 
-  /* --- Elevation -------------------------------------------------------
-     Flat offset "stamp" shadow — a solid ink block with NO blur. This is
-     deliberate: the brand is flat vector, so blurred drop shadows are
-     off-system. Do not add blur to these. */
+  /* --- Elevation ------------------------------------------------------- */
   --af-shadow-stamp:       4px 4px 0 var(--af-ink);
   --af-shadow-stamp-sm:    2px 2px 0 var(--af-ink);
   --af-shadow-stamp-lift:  6px 6px 0 var(--af-ink);
+  --af-shadow-pink:        0 10px 25px -4px rgba(227, 154, 168, 0.48), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-pink-lift:   0 16px 34px -4px rgba(227, 154, 168, 0.62), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-green:       0 10px 25px -4px rgba(107, 122, 50, 0.42), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-green-lift:  0 16px 34px -4px rgba(107, 122, 50, 0.55), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-yellow:      0 10px 25px -4px rgba(224, 165, 38, 0.48), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-yellow-lift: 0 16px 34px -4px rgba(224, 165, 38, 0.62), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
+  --af-shadow-orange:      0 10px 25px -4px rgba(200, 80, 30, 0.40), 0 4px 10px -2px rgba(43, 46, 20, 0.06);
+  --af-shadow-orange-lift: 0 16px 34px -4px rgba(200, 80, 30, 0.52), 0 6px 14px -2px rgba(43, 46, 20, 0.10);
 
   /* --- Motion ----------------------------------------------------------
      Subtle and warm, never flashy. Motion supports the furniture. */

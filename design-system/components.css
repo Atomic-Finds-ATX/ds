@@ -13,21 +13,17 @@
    ========================================================================== */
 
 /* ==========================================================================
-   Button — a beige plate with a coloured rule, matching label and matching
-   icon. It sits FLAT at rest; the offset shadow only appears on hover, so the
-   shadow reads as a response rather than as permanent chrome.
-
-   Corner radius is a soft 12px — squarer than the pills used for tags and
-   badges, so a button never reads as a tag.
-
-   Colour is carried entirely by --af-btn-ink, which drives rule, label, icon
-   and hover shadow together. A variant only sets that one value.
+   Button — rounded rectangle (12px) with heavy ink/accent outline on cream plate.
+   Rest sits flat with 0 shadow.
+   Hover shifts up/left with a flat offset stamp shadow in matching theme color.
+   Active shifts down/right.
    ========================================================================== */
 
 .af-btn {
   --af-btn-ink: var(--af-orange-btn);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--af-space-2);
   padding: var(--af-space-3) var(--af-space-5);
   font-family: var(--af-font-body);
@@ -41,9 +37,11 @@
   border: var(--af-border-width) solid var(--af-btn-ink);
   border-radius: 12px;
   box-shadow: none;
-  transition: background-color var(--af-duration) var(--af-ease),
+  transition: background-color var(--af-duration-fast) var(--af-ease),
               transform var(--af-duration-fast) var(--af-ease),
-              box-shadow var(--af-duration-fast) var(--af-ease);
+              box-shadow var(--af-duration-fast) var(--af-ease),
+              color var(--af-duration-fast) var(--af-ease),
+              border-color var(--af-duration-fast) var(--af-ease);
 }
 
 /* Icons inherit the label colour — never set a fill on a button's sparkle. */
@@ -51,31 +49,76 @@
 .af-btn .af-starburst { color: currentColor; }
 
 .af-btn:hover {
-  transform: translate(-1px, -1px);
+  background: #FAF1DF;
+  color: var(--af-btn-ink);
+  transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0 var(--af-btn-ink);
+  text-decoration: none;
 }
+
 .af-btn:active {
   transform: translate(1px, 1px);
   box-shadow: 2px 2px 0 var(--af-btn-ink);
 }
 
-/* Primary — burnt orange. Orange text on a cream plate needs a deeper step
-   than orange-DEEP, which is only 4.38:1 on cream and fails AA at label size.
-   --af-orange-btn measures 4.89 on cream and 5.22 on the hover tint. */
-.af-btn--primary { --af-btn-ink: var(--af-orange-btn); }
-.af-btn--primary:hover { background: #F7EEDA; }
+/* Primary — burnt orange outline and label on cream plate with flat orange stamp shadow on hover */
+.af-btn--primary {
+  --af-btn-ink: var(--af-orange-btn);
+  background: var(--af-cream);
+  color: var(--af-orange-btn);
+  border-color: var(--af-orange-btn);
+  box-shadow: none;
+}
+.af-btn--primary:hover {
+  background: #FAF1DF;
+  border-color: var(--af-orange-btn);
+  color: var(--af-orange-btn);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-orange-btn);
+}
+.af-btn--primary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-orange-btn);
+}
 
-/* Secondary — brand green. Olive/teal rather than avocado: 7.4:1 on cream
-   against avocado-deep's 4.5:1, so the two buttons feel equally solid. */
-.af-btn--secondary { --af-btn-ink: var(--af-olive-teal); }
-.af-btn--secondary:hover { background: #F7EEDA; }
+/* Secondary — brand green outline and label on cream plate with flat olive-teal stamp shadow on hover */
+.af-btn--secondary {
+  --af-btn-ink: var(--af-olive-teal);
+  background: var(--af-cream);
+  color: var(--af-olive-teal);
+  border-color: var(--af-olive-teal);
+  box-shadow: none;
+}
+.af-btn--secondary:hover {
+  background: #FAF1DF;
+  border-color: var(--af-olive-teal);
+  color: var(--af-olive-teal);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-olive-teal);
+}
+.af-btn--secondary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-olive-teal);
+}
 
 .af-btn--ghost {
   --af-btn-ink: var(--af-ink-soft);
   background: transparent;
-  border-style: dashed;
+  color: var(--af-btn-ink);
+  border: var(--af-border-width) dashed var(--af-btn-ink);
+  box-shadow: none;
 }
-.af-btn--ghost:hover { background: var(--af-cream); box-shadow: none; transform: none; }
+.af-btn--ghost:hover {
+  background: var(--af-cream);
+  color: var(--af-ink);
+  border-color: var(--af-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--af-ink);
+}
+.af-btn--ghost:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--af-ink);
+}
 
 .af-btn--sm { padding: var(--af-space-2) var(--af-space-4); font-size: var(--af-text-sm); }
 

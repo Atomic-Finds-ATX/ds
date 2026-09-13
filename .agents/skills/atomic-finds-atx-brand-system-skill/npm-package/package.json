@@ -1,0 +1,78 @@
+{
+  "name": "@atomicfindsatx/design-system",
+  "version": "1.0.0",
+  "description": "Atomic Finds ATX Design System — Design Tokens, Figma Variables, Tokens Studio sync, Figma Plugin, React components & CSS for Austin's vintage rattan brand.",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
+  "style": "dist/styles.css",
+  "bin": {
+    "atomic-finds-ds": "./bin/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js",
+      "default": "./tokens/tokens.json"
+    },
+    "./tokens/figma": "./tokens/figma-tokens.json",
+    "./tokens/figma-variables": "./tokens/figma-variables.json",
+    "./tokens/dtcg": "./tokens/tokens.json",
+    "./tokens/css": "./dist/tokens.css",
+    "./tokens/scss": "./dist/tokens.scss",
+    "./tokens/js": "./dist/tokens.js",
+    "./tailwind": "./dist/tailwind-preset.js",
+    "./react": {
+      "types": "./src/index.d.ts",
+      "import": "./src/components/index.js",
+      "default": "./src/components/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./figma-plugin": "./figma-plugin/manifest.json"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "figma-plugin",
+    "scripts",
+    "src",
+    "tokens",
+    "FIGMA.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build-tokens.js",
+    "sync-figma": "node scripts/sync-figma.js",
+    "export-figma": "node bin/cli.js export-figma",
+    "test": "node scripts/build-tokens.js"
+  },
+  "keywords": [
+    "design-system",
+    "figma",
+    "figma-tokens",
+    "figma-variables",
+    "tokens-studio",
+    "design-tokens",
+    "w3c-tokens",
+    "react",
+    "tailwind",
+    "vintage",
+    "atomic-finds-atx"
+  ],
+  "author": "Atomic Finds ATX",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
