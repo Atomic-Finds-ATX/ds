@@ -1626,56 +1626,82 @@
       padding-top: 0.5rem;
     }
 
-    /* --- Animated Logo Marquee ----------------------------------------------- */
+    /* --- Animated Logo Word Slot --------------------------------------------- */
+    /*
+      Concept: vertical clip container, one word visible at a time.
+      Track holds 4 words (ATOMIC / FINDS / ATX / ATOMIC duplicate).
+      Each word dwells ~80% of its slice, then slides straight up at a
+      constant speed — no acceleration anywhere in the cycle.
+      With a 18s loop: ~4.8 s visible, ~1.2 s slide per word.
+    */
     .hp-logo-marquee {
       background: var(--af-cream);
       border-block: 2px solid var(--af-ink);
-      overflow: hidden;
       width: 100%;
       margin-top: clamp(2rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3.5rem);
     }
 
-    .hp-logo-marquee__track {
+    /* Clip window: exactly one word tall */
+    .hp-word-slot {
+      overflow: hidden;
+      font-family: var(--af-font-display);
+      font-size: clamp(3rem, 10vw, 8rem);
+      line-height: 1;
+      height: 1em;
+    }
+
+    /* Vertical column of words; translateY scrolls them up one-by-one */
+    .hp-word-slot__track {
       display: flex;
-      width: max-content;
-      animation: hp-logo-marquee-scroll 32s linear infinite;
+      flex-direction: column;
+      animation: word-slot-cycle 18s linear infinite;
       will-change: transform;
     }
 
-    .hp-logo-marquee__track:hover {
-      animation-play-state: paused;
-    }
-
-    .hp-logo-marquee__unit {
-      display: inline-flex;
-      align-items: center;
-      gap: clamp(1.25rem, 3vw, 2.5rem);
-      padding: clamp(1.5rem, 3vw, 2.75rem) clamp(2rem, 4vw, 3.5rem);
-      white-space: nowrap;
-    }
-
-    .hp-logo-marquee__title {
-      font-family: var(--af-font-display);
-      font-size: clamp(3rem, 9vw, 7.5rem);
-      color: var(--af-olive-teal);
+    .hp-word-slot__word {
+      display: block;
+      height: 1em;
       line-height: 1;
-      letter-spacing: 0.02em;
+      text-align: center;
+      white-space: nowrap;
+      color: var(--af-olive-teal);
+    }
+
+    /*
+      4 words → track is 4em tall → each step = 25% of track height.
+      Segments (each word gets 1/3 of the 18 s cycle = 6 s):
+        0 %  – 26.67 % : ATOMIC rests  (translateY 0   → 0)
+        26.67% – 33.33%: slide to FINDS (translateY 0   → −25%)
+        33.33% – 60 %  : FINDS rests   (translateY −25% → −25%)
+        60 % – 66.67 % : slide to ATX  (translateY −25% → −50%)
+        66.67% – 93.33%: ATX rests     (translateY −50% → −50%)
+        93.33% – 100 % : slide to ATOMIC duplicate (seamless loop)
+    */
+    @keyframes word-slot-cycle {
+      0%      { transform: translateY(0); }
+      26.67%  { transform: translateY(0); }
+      33.33%  { transform: translateY(-25%); }
+      60%     { transform: translateY(-25%); }
+      66.67%  { transform: translateY(-50%); }
+      93.33%  { transform: translateY(-50%); }
+      100%    { transform: translateY(-75%); }
     }
 
     .hp-logo-marquee__gem {
       color: var(--af-orange);
       flex-shrink: 0;
-      width: clamp(28px, 5vw, 56px);
+      width: clamp(24px, 4vw, 48px);
       height: auto;
-    }
-
-    @keyframes hp-logo-marquee-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      align-self: center;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hp-logo-marquee__track { animation: none; }
+      .hp-word-slot__track { animation: none; }
     }
 
     /* --- Signup Form --------------------------------------------------------- */
@@ -3209,35 +3235,23 @@
     </div>
   </div>
 
-  <!-- ==================== ANIMATED LOGO MARQUEE ===================== -->
+  <!-- ==================== ANIMATED LOGO WORD SLOT ===================== -->
+  <!--
+    Word slot: ATOMIC → FINDS → ATX → loop (slow, constant speed).
+    Clip window is 1em tall; 4-word track scrolls up via translateY.
+    Duplicate ATOMIC at the end makes the loop seamless.
+  -->
   <section class="hp-logo-marquee" aria-label="Atomic Finds ATX">
-    <div class="hp-logo-marquee__track">
-      <div class="hp-logo-marquee__unit">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
-      </div>
-      <div class="hp-logo-marquee__unit">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
-      </div>
-      <div class="hp-logo-marquee__unit">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
-      </div>
-      <!-- Duplicate set — seamless infinite loop -->
-      <div class="hp-logo-marquee__unit" aria-hidden="true">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
-      </div>
-      <div class="hp-logo-marquee__unit" aria-hidden="true">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
-      </div>
-      <div class="hp-logo-marquee__unit" aria-hidden="true">
-        <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
-        <span class="hp-logo-marquee__title">ATOMIC FINDS ATX</span>
+    <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
+    <div class="hp-word-slot">
+      <div class="hp-word-slot__track">
+        <span class="hp-word-slot__word">ATOMIC</span>
+        <span class="hp-word-slot__word">FINDS</span>
+        <span class="hp-word-slot__word">ATX</span>
+        <span class="hp-word-slot__word" aria-hidden="true">ATOMIC</span>
       </div>
     </div>
+    <svg class="hp-logo-marquee__gem af-sparkle" viewBox="0 0 40 64" fill="currentColor" aria-hidden="true"><path d="M20 0 Q22.5 27 40 32 Q22.5 37 20 64 Q17.5 37 0 32 Q17.5 27 20 0 Z"/></svg>
   </section>
 
   <!-- ============================ 08 FOOTER ============================ -->
