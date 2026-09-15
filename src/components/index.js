@@ -6,3 +6,4 @@ export { PassportCard } from './PassportCard.jsx';
 export { CuratorCard } from './CuratorCard.jsx';
 export { RecordCard } from './RecordCard.jsx';
 export { MotifStarburst, MotifSparkle } from './Motifs.jsx';
+export { AnimatedLogoMarquee } from './AnimatedLogoMarquee.jsx';
