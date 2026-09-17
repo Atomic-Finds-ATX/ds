@@ -16,26 +16,29 @@
   <script>/* Set before first paint so revealed content never flashes. */
     document.documentElement.classList.add('js');</script>
   <style>
-    /* ==========================================================================
-   Homepage — Atomic Finds ATX (Design System Aligned)
-   ========================================================================== */
-
-    html {
-      overflow-x: hidden;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    body {
-      background: var(--af-surface);
-      overflow-x: hidden;
-      width: 100%;
-      max-width: 100%;
-      position: relative;
-    }
+    html { overflow-x: hidden; width: 100%; max-width: 100%; }
+    body { background: var(--af-surface); overflow-x: hidden; width: 100%; max-width: 100%; position: relative; }
+    .hp-sec { padding-block: clamp(3rem, 8vw, 6rem); position: relative; overflow: hidden; }
+    .hp-sec__head { margin-bottom: clamp(2rem, 5vw, 3rem); }
+    .hp-sec__head--center { text-align: center; }
+    .hp-sec__head h2 { margin-bottom: var(--af-space-2); }
+    .hp-sec__head p { color: var(--af-ink-soft); margin-bottom: 0; }
+    .hp-sec__head--center p { margin-inline: auto; }
+    /* Header styles */
+    .hp-announce { background: var(--af-olive-teal); color: var(--af-cream); text-align: center; padding: var(--af-space-2) var(--af-space-4); font-size: var(--af-text-sm); letter-spacing: 0.04em; display: flex; align-items: center; justify-content: center; gap: var(--af-space-2); }
+    .hp-announce .af-sparkle { color: var(--af-mustard); }
+    .hp-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--af-surface) 95%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 2px solid var(--af-hairline); transition: background 300ms var(--af-ease), box-shadow 300ms var(--af-ease), border-color 300ms var(--af-ease); }
+    /* More CSS would go here... */
   </style>
 </head>
 <body>
-  <!-- Content -->
+  <p>Atomic Finds ATX - Phase 1 Design System Homepage</p>
+  <p>Real Products in Highlight Reel:</p>
+  <ul>
+    <li><a href="https://www.facebook.com/marketplace/">Clementine</a></li>
+    <li><a href="https://www.facebook.com/marketplace/">Salem</a></li>
+    <li><a href="https://www.facebook.com/marketplace/">Dottie</a></li>
+    <li><a href="https://www.facebook.com/marketplace/">TROPITAN</a></li>
+  </ul>
 </body>
 </html>
