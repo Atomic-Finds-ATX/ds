@@ -1,1 +1,702 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Phase 1 pilot: keep this preview out of search results. Remove this tag
+       (and robots.txt) at launch. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atomic Finds ATX — Tiny Time Machines for Your Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #2a2a2a;
+      --color-secondary: #f4c430;
+      --color-accent-warm: #d97706;
+      --color-accent-cool: #3b82f6;
+      --color-light: #fefaf0;
+      --color-dark: #1a1a1a;
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #666;
+      --color-border: #e5e5e5;
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --spacing-3xl: 4rem;
+      --radius-sm: 0.25rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 1rem;
+      --font-family-display: 'Poppins', sans-serif;
+      --font-family-script: 'Pacifico', cursive;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-family-display);
+      color: var(--color-text-primary);
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* ====== HEADER & NAVIGATION ====== */
+    .hp-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hp-announce {
+      background: linear-gradient(90deg, var(--color-accent-warm), var(--color-secondary));
+      color: #fff;
+      text-align: center;
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .hp-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-lg) var(--spacing-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hp-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -1px;
+      font-family: var(--font-family-display);
+    }
+
+    .hp-nav-links {
+      display: flex;
+      gap: var(--spacing-xl);
+      list-style: none;
+    }
+
+    .hp-nav-link {
+      text-decoration: none;
+      color: var(--color-text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .hp-nav-link:hover {
+      color: var(--color-accent-warm);
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hp-hero {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hp-hero-headline {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-primary);
+    }
+
+    .hp-hero-subheadline {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-2xl);
+      font-weight: 400;
+    }
+
+    .hp-hero-feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .hp-hero-card {
+      background: var(--color-light);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hp-hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ====== ABOUT SECTION ====== */
+    .hp-about {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      background: #f9f5f0;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hp-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-3xl);
+      align-items: center;
+    }
+
+    .hp-about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-primary);
+    }
+
+    .hp-about-text p {
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.8;
+    }
+
+    .hp-about-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-accent-warm));
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    /* Floating bubble animation */
+    .hp-bubble-spill {
+      position: relative;
+      height: 100%;
+    }
+
+    .hp-bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hp-bubble:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 20%;
+      top: 10%;
+      animation-delay: 0s;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .hp-bubble:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      right: 15%;
+      bottom: 20%;
+      animation-delay: 2s;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hp-bubble:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      left: 50%;
+      bottom: 15%;
+      animation-delay: 1s;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* ====== FEATURED SECTION ====== */
+    .hp-featured {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hp-featured h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-2xl);
+      text-align: center;
+      color: var(--color-primary);
+    }
+
+    .hp-featured-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-2xl);
+    }
+
+    .hp-find-card {
+      background: var(--color-light);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .hp-find-card:hover {
+      border-color: var(--color-accent-warm);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+    }
+
+    .hp-find-img {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, var(--color-accent-cool), var(--color-accent-warm));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .hp-find-body {
+      padding: var(--spacing-lg);
+    }
+
+    .hp-find-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary);
+    }
+
+    .hp-find-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hp-find-link {
+      color: var(--color-accent-warm);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .hp-find-link:hover {
+      color: var(--color-accent-cool);
+    }
+
+    /* ====== NACHO SECTION ====== */
+    .hp-nacho {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      background: #f0f4f8;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hp-nacho-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-3xl);
+      align-items: center;
+    }
+
+    .hp-nacho-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, var(--color-accent-cool), var(--color-primary));
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+    }
+
+    /* Orbiting brand icons */
+    .hp-brand-orbit {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: orbit 20s linear infinite;
+    }
+
+    .hp-brand-icon-node {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hp-brand-icon-node:nth-child(1) {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hp-brand-icon-node:nth-child(2) {
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    .hp-brand-icon-node:nth-child(3) {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hp-brand-icon-node:nth-child(4) {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    @keyframes orbit {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .hp-nacho-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-primary);
+    }
+
+    .hp-nacho-text p {
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.8;
+    }
+
+    /* ====== ATOMIC HOMES SECTION ====== */
+    .hp-atomic-homes {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hp-atomic-homes h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--spacing-2xl);
+      text-align: center;
+      color: var(--color-primary);
+    }
+
+    .hp-atomic-homes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .hp-home-card {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--color-accent-cool), var(--color-accent-warm));
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hp-home-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* ====== MARQUEE SECTION ====== */
+    .hp-marquee-wrapper {
+      overflow: hidden;
+      background: var(--color-secondary);
+      padding: var(--spacing-lg) 0;
+      margin: var(--spacing-3xl) 0;
+    }
+
+    .hp-marquee {
+      display: flex;
+      gap: var(--spacing-xl);
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .hp-marquee-item {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      padding: 0 var(--spacing-lg);
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* ====== RESPONSIVE DESIGN ====== */
+    @media (max-width: 960px) {
+      .hp-about-grid,
+      .hp-nacho-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hp-nav-links {
+        gap: var(--spacing-lg);
+      }
+
+      .hp-nav {
+        padding: var(--spacing-lg) var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hp-hero-headline {
+        font-size: 2rem;
+      }
+
+      .hp-featured h2,
+      .hp-nacho-text h2,
+      .hp-about-text h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hp-hero-feed {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--spacing-md);
+      }
+
+      .hp-featured-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hp-nav-links {
+        display: none;
+      }
+
+      .hp-atomic-homes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hp-hero {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+      }
+
+      .hp-hero-headline {
+        font-size: 1.5rem;
+      }
+
+      .hp-hero-subheadline {
+        font-size: 1rem;
+      }
+
+      .hp-about-image,
+      .hp-nacho-image {
+        height: 300px;
+      }
+
+      .hp-featured h2,
+      .hp-nacho-text h2,
+      .hp-about-text h2 {
+        font-size: 1.5rem;
+      }
+
+      .hp-about-text p,
+      .hp-nacho-text p {
+        font-size: 0.95rem;
+      }
+
+      .hp-atomic-homes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hp-marquee-item {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hp-header">
+    <div class="hp-announce">
+      ✨ Handpicked vintage finds for your Austin home — coming soon!
+    </div>
+    <nav class="hp-nav">
+      <div class="hp-logo">Atomic Finds ATX</div>
+      <ul class="hp-nav-links">
+        <li><a href="#about" class="hp-nav-link">About</a></li>
+        <li><a href="#featured" class="hp-nav-link">Featured</a></li>
+        <li><a href="#contact" class="hp-nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hp-hero">
+      <h1 class="hp-hero-headline">Tiny Time Machines for Your Home</h1>
+      <p class="hp-hero-subheadline">Curated vintage furniture that adds soul, character, and history to any room.</p>
+      <div class="hp-hero-feed">
+        <div class="hp-hero-card">🪑</div>
+        <div class="hp-hero-card">🛋️</div>
+        <div class="hp-hero-card">🚪</div>
+        <div class="hp-hero-card">🕰️</div>
+        <div class="hp-hero-card">🎨</div>
+        <div class="hp-hero-card">✨</div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="hp-about" id="about">
+      <div class="hp-about-grid">
+        <div class="hp-about-text">
+          <h2>About Atomic Finds ATX</h2>
+          <p>We hunt for the best vintage pieces in Austin and beyond. Every find tells a story — we're here to help you find the pieces that speak to yours.</p>
+          <p>From mid-century modern to eclectic bohemian, each item is carefully inspected and restored with care. This is where past and present meet.</p>
+        </div>
+        <div class="hp-about-image">
+          <div class="hp-bubble-spill">
+            <div class="hp-bubble"></div>
+            <div class="hp-bubble"></div>
+            <div class="hp-bubble"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SECTION -->
+    <section class="hp-featured" id="featured">
+      <h2>Featured Finds</h2>
+      <div class="hp-featured-list">
+        <div class="hp-find-card">
+          <div class="hp-find-img">🪑</div>
+          <div class="hp-find-body">
+            <h3 class="hp-find-title">Chairs</h3>
+            <p class="hp-find-desc">Statement seating from the 60s to 90s. Iconic designs that make a room.</p>
+            <a href="#" class="hp-find-link">Explore chairs →</a>
+          </div>
+        </div>
+        <div class="hp-find-card">
+          <div class="hp-find-img">🛋️</div>
+          <div class="hp-find-body">
+            <h3 class="hp-find-title">Sofas & Sectionals</h3>
+            <p class="hp-find-desc">Comfort meets vintage charm with our curated sofa collection.</p>
+            <a href="#" class="hp-find-link">Explore sofas →</a>
+          </div>
+        </div>
+        <div class="hp-find-card">
+          <div class="hp-find-img">📦</div>
+          <div class="hp-find-body">
+            <h3 class="hp-find-title">Accessories</h3>
+            <p class="hp-find-desc">Finish your space with carefully selected vintage accents.</p>
+            <a href="#" class="hp-find-link">Explore accents →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NACHO SECTION -->
+    <section class="hp-nacho">
+      <div class="hp-nacho-grid">
+        <div class="hp-nacho-image">
+          <div class="hp-brand-orbit">
+            <div class="hp-brand-icon-node">🌟</div>
+            <div class="hp-brand-icon-node">🎨</div>
+            <div class="hp-brand-icon-node">🛋️</div>
+            <div class="hp-brand-icon-node">🏡</div>
+          </div>
+        </div>
+        <div class="hp-nacho-text">
+          <h2>Why Atomic Finds ATX?</h2>
+          <p><strong>Curated Selection:</strong> We hunt, inspect, and test every piece to ensure quality and authenticity.</p>
+          <p><strong>Local Love:</strong> Based in Austin, supporting the community and sustainable style.</p>
+          <p><strong>Story & Soul:</strong> Every piece comes with its own history — we help you find yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATOMIC HOMES SECTION -->
+    <section class="hp-atomic-homes">
+      <h2>Atomic Homes Gallery</h2>
+      <div class="hp-atomic-homes-grid">
+        <div class="hp-home-card"></div>
+        <div class="hp-home-card"></div>
+        <div class="hp-home-card"></div>
+        <div class="hp-home-card"></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE SECTION -->
+    <div class="hp-marquee-wrapper">
+      <div class="hp-marquee">
+        <span class="hp-marquee-item">✨ Vintage Finds ✨</span>
+        <span class="hp-marquee-item">✨ Curated Stories ✨</span>
+        <span class="hp-marquee-item">✨ Austin Homes ✨</span>
+        <span class="hp-marquee-item">✨ Vintage Finds ✨</span>
+        <span class="hp-marquee-item">✨ Curated Stories ✨</span>
+        <span class="hp-marquee-item">✨ Austin Homes ✨</span>
+      </div>
+    </div>
+  </main>
+
+  <footer style="background: #f9f5f0; padding: 3rem 1.5rem; text-align: center; border-top: 1px solid var(--color-border);">
+    <p style="color: var(--color-text-secondary); font-size: 0.95rem;">© 2026 Atomic Finds ATX. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
